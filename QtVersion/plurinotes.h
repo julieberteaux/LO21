@@ -3,6 +3,7 @@
 #define PLURINOTES_H
 
 #include <QString>
+#include <vector>
 
 class Exception{
     QString info;
@@ -37,9 +38,37 @@ public:
     }
 };
 
-class NotesManager{
 
+
+class Note{
+    int idNote;
+public:
+    Note(const int& id): idNote(id){}
+    int getidNote(){return idNote;}
 };
+
+class NotesManager{
+    //singleton
+    //we use a vector of Notes
+    std::vector<Note*> notes;
+
+    NotesManager();
+    ~NotesManager();
+
+public:
+    static NotesManager& getInstance(){
+        static NotesManager instance;
+        return instance;
+    }
+    Note& addNote();
+/*
+    modifyNote (va appeler addNoteVersion ou copyVersion)
+    deleteNote
+    getNote (appelle getLatestVersion)
+    listNotes (voir toutes les notes active?)
+*/
+};
+
 
 class NoteVersion{
     int idNote;

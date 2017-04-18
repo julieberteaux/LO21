@@ -41,15 +41,16 @@ public:
 
 
 class Note{
-    int idNote;
+    unsigned int idNote;
 public:
-    Note(const int& id): idNote(id){}
-    int getidNote(){return idNote;}
+    Note(const int& id): idNote(id){}//used by addNote in NotesManager
+    unsigned int getidNote(){return idNote;}
 };
 
 class NotesManager{
     //singleton
     //we use a vector of Notes
+    //notes are sorted by idNote
     std::vector<Note*> notes;
 
     NotesManager();
@@ -60,7 +61,9 @@ public:
         static NotesManager instance;
         return instance;
     }
+    //addNote adds a note with a new id which is greatest id(=id of latest note) + 1
     Note& addNote();
+    Note& getNote(unsigned int id);
 /*
     modifyNote (va appeler addNoteVersion ou copyVersion)
     deleteNote

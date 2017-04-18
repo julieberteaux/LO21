@@ -1,8 +1,10 @@
 
 #ifndef PLURINOTES_H
 #define PLURINOTES_H
-
+#include <iostream>
+#include <QApplication>
 #include <QString>
+#include <QFileDialog>
 #include <vector>
 
 class Exception{
@@ -23,12 +25,12 @@ public:
     void setDay(const int & d){
         if ((d>=1) && (d<=31))
             day=d;
-        else throw Exception("Wrong day");
+        else throw Exception("Jour incorrect");
     }
     void setMonth(const int & m){
         if ((m>=1) && (m<=12))
             month=m;
-        else throw Exception("Wrong month");
+        else throw Exception("Mois incorrect");
     }
     void setYear(const int & y){year=y;}
     Date(int d, int m, int y){
@@ -51,10 +53,10 @@ class NotesManager{
     //singleton
     //we use a vector of Notes
     //notes are sorted by idNote
-    std::vector<Note*> notes;
+    std::vector<Note*>* notes;
 
-    NotesManager();
-    ~NotesManager();
+    NotesManager(): notes(nullptr){}
+    ~NotesManager(){}
 
 public:
     static NotesManager& getInstance(){

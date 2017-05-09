@@ -1,2 +1,6 @@
-# LO21
-Projet de LO21 ---- PluriNotes
+# Pluri-notes
+
+C++ : Development of notes manager application.
+Build up the architecture in UML and develop in C ++.
+
+

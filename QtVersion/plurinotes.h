@@ -47,6 +47,10 @@ class Note{
 public:
     Note(const int& id): idNote(id){}//used by addNote in NotesManager
     unsigned int getidNote(){return idNote;}
+/*
+     changeState
+     getLatestVersion
+*/
 };
 
 class NotesManager{
@@ -81,5 +85,53 @@ class NoteVersion{
     Date dateCrea;
     Date dateEdit;
     int idVersion;
+    
+public :
+    const string& getTitle() const {return title;}
+    NoteVersion( const int& n, const int& v, const string& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
+    NoteVersion(NoteVersion &)
+    
+/*
+ addNoteVersion :
+    copyLatest : copie de la dernière version
+    ajout dans la liste des versions de copyLatest
+    Incremente latestVersion
+ changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
+
+*/
+
 };
+
+class Article : public NoteVersion {
+    QString text;
+    
+    
+public :
+    Article (const int& n, const int& v, const string& t, const date& de, const date& dc, const string& te): NoteVersion(n, v, t, de, dc), text(te){}
+    
+    const string& getText() const {return text;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif // PLURINOTES_H

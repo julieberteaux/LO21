@@ -45,12 +45,13 @@ public:
 class Note{
     unsigned int idNote;
     Date datecrea;
-    NoteVersion** listVersion;
+    std::vector<NoteVersion*>* listVersion;
     NoteVersion* latestVersion;
 
 public:
     Note(const int& id): idNote(id){}//used by addNote in NotesManager
     unsigned int getidNote(){return idNote;}
+    ~Note(){}
 /*
      changeState
      getLatestVersion
@@ -176,22 +177,6 @@ public:
     listRelations (voir toutes les relations)
 */
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

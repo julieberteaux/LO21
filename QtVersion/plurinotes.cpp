@@ -1,4 +1,5 @@
 #include "plurinotes.h"
+/********************************** NotesManager ****************************/
 
 Note& NotesManager::addNote(){
     if(notes.size()==0){
@@ -18,6 +19,14 @@ Note& NotesManager::getNote(unsigned int id){
     return **it;
 }
 
+/********************************** Note ****************************/
+
+~Note::Note(){
+    for(int unsigned i=0;i<vect.size();i++){
+        delete listVersion[i];
+    }
+    delete[] listversion;
+}
 
 /********************************** Relation ****************************/
 

@@ -41,6 +41,28 @@ class Date {
     };
 
 /********************************** Note & co ****************************/
+class NoteVersion{
+    int idNote;
+    QString title;
+    Date dateCrea;
+    Date dateEdit;
+    int idVersion;
+
+public :
+    const QString& getTitle() const {return title;}
+    NoteVersion( const int& n, const int& v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
+    NoteVersion(NoteVersion &){}
+
+/*
+ addNoteVersion :
+    copyLatest : copie de la dernière version
+    ajout dans la liste des versions de copyLatest
+    Incremente latestVersion
+ changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
+
+*/
+
+};
 
 class Note{
     unsigned int idNote;
@@ -84,28 +106,7 @@ public:
 };
 
 
-class NoteVersion{
-    int idNote;
-    QString title;
-    Date dateCrea;
-    Date dateEdit;
-    int idVersion;
-    
-public :
-    const string& getTitle() const {return title;}
-    NoteVersion( const int& n, const int& v, const string& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
-    NoteVersion(NoteVersion &)
-    
-/*
- addNoteVersion :
-    copyLatest : copie de la dernière version
-    ajout dans la liste des versions de copyLatest
-    Incremente latestVersion
- changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
 
-*/
-
-};
 
 /********************************** Article ****************************/
 
@@ -114,36 +115,36 @@ class Article : public NoteVersion {
     
     
 public :
-    Article (const int& n, const int& v, const string& t, const date& de, const date& dc, const string& te): NoteVersion(n, v, t, de, dc), text(te){}
+    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& te): NoteVersion(n, v, t, de, dc), text(te){}
     
-    const string& getText() const {return text;}
+    const QString& getText() const {return text;}
 
 };
 
 /********************************** Couple ****************************/
 
 class Couple{
-    string label;
+    QString label;
     Note& n1;
     Note& n2;
 public:
-    Couple(const string& l="", const Note& id1,const Note& id2): label(l), n1(id1), n2(id2){}
+    Couple(const Note& id1,const Note& id2, const QString& l=""): label(l), n1(id1), n2(id2){}
 };
 
 
 /********************************** Relation & co ****************************/
 
 class Relation {
-    string title;
-    string description;
+    QString title;
+    QString description;
     Couple** listCouples;
     unsigned int nbCouples;
     unsigned int nbMaxCouples;
     bool oriented;
 public:
-    Relation(const string& t, const string& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple**[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
-    const string& getTitle() {return title;}
-    const string& getDescription() {return description;}
+    Relation(const QString& t, const QString& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
+    const QString& getTitle() {return title;}
+    const QString& getDescription() {return description;}
 
     //pour accéder/parcourir les couples d'une relation faire un iterator ?
 
@@ -170,7 +171,7 @@ public:
     }
 
     Relation& addRelation();
-    Relation& getRelation(const string& t);
+    Relation& getRelation(const QString& t);
 /*
     deleteRelation
     getRelation (appelle listCouples)

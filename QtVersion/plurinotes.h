@@ -62,9 +62,9 @@ class NotesManager{
     //singleton
     //we use a vector of Notes
     //notes are sorted by idNote
-    std::vector<Note*>* notes;
+    std::vector<Note*>* listNotes;
 
-    NotesManager(): notes(nullptr){}
+    NotesManager(): listNotes(nullptr){}
     ~NotesManager(){}
 
 public:
@@ -159,9 +159,9 @@ class RelationsManager{
     //singleton
     //we use a vector of Relation
     //Relation are sorted by Title
-    std::vector<Relation*>* relations;
+    std::vector<Relation*>* listRelations;
 
-    RelationsManager(): relations(nullptr){}
+    RelationsManager(): listRelations(nullptr){}
     ~RelationsManager(){}
 public:
     static RelationsManager& getInstance(){

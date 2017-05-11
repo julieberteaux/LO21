@@ -40,7 +40,7 @@ public:
     }
 };
 
-
+/********************************** Note & co ****************************/
 
 class Note{
     unsigned int idNote;
@@ -102,6 +102,8 @@ public :
 
 };
 
+/********************************** Article ****************************/
+
 class Article : public NoteVersion {
     QString text;
     
@@ -111,10 +113,65 @@ public :
     
     const string& getText() const {return text;}
 
+};
+
+/********************************** Couple ****************************/
+
+class Couple{
+    string label;
+    Note& n1;
+    Note& n2;
+public:
+    Couple(const string& l, const Note& id1,const Note& id2): label(l), n1(id1), n2(id2){}
+};
 
 
+/********************************** Relation & co ****************************/
 
+class Relation {
+    string title;
+    string description;
+    Couple** listCouples;
+    unsigned int nbCouples;
+    unsigned int nbMaxCouples;
+    bool oriented;
+public:
+    Relation(const string& t, const string& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple**[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
+    const string& getTitle() {return title;}
+    const string& getDescription() {return description;}
 
+    //pour accéder/parcourir les couples d'une relation faire un iterator ?
+
+    bool getOrientation() {return oriented;}
+
+    //addCouple : aggrégation de Couples
+    Relation& operator<<(Couple& c);
+
+    //getArborescence()
+};
+
+class RelationsManager{
+    //singleton
+    //we use a vector of Relation
+    //Relation are sorted by Title
+    std::vector<Relation*>* relations;
+
+    RelationsManager(): relations(nullptr){}
+    ~RelationsManager(){}
+public:
+    static RelationsManager& getInstance(){
+        static RelationsManager instance;
+        return instance;
+    }
+
+    Relation& addRelation();
+    Relation& getRelation(const string& t);
+/*
+    deleteRelation
+    getRelation (appelle listCouples)
+    listRelations (voir toutes les relations)
+*/
+};
 
 
 

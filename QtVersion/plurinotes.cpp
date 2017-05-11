@@ -18,3 +18,11 @@ Note& NotesManager::getNote(unsigned int id){
     return **it;
 }
 
+
+/********************************** Relation ****************************/
+
+Relation& Relation::operator<<(Couple& c){
+    if (nbCouples==nbMaxCouples)
+        //faire l'agrandissement sauf si on utilise une autre structure que le tableau
+    listCouples[nbCouples++]= &c;
+}

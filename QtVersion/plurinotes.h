@@ -44,7 +44,7 @@ public:
 
 class Note{
     unsigned int idNote;
-    Date datecrea;
+    Date dateCrea;
     std::vector<NoteVersion*>* listVersion;
     NoteVersion* latestVersion;
 
@@ -127,7 +127,7 @@ class Couple{
     Note& n1;
     Note& n2;
 public:
-    Couple(const string& l, const Note& id1,const Note& id2): label(l), n1(id1), n2(id2){}
+    Couple(const string& l="", const Note& id1,const Note& id2): label(l), n1(id1), n2(id2){}
 };
 
 

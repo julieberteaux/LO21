@@ -142,6 +142,87 @@ public :
 
 
 };
+    
+
+/********************************** Task ****************************/
+    
+class Task : public NoteVersion {
+    QString action;
+    int priority;
+    date deadline;
+    enum status {waiting, ended, in_progress};
+        
+        
+public :
+        
+    Task (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& a, const int p, const date d, const enum s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
+        
+    const QString& getAction() const {return action;}
+    const int& getPriority() const {return priority;}
+    const date& getDeadline() const {return deadline;}
+    const enum& getStatus() const {return status;}
+        
+        
+};
+    
+    
+/********************************** Image ****************************/
+    
+class Image : public NoteVersion {
+    QString description;
+    image file;
+        
+        
+public :
+        
+    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const image& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+        
+    const QString& getDescription() const {return description;}
+    const image& getFile() const {return file};
+        
+        
+};
+    
+    
+/********************************** Image ****************************/
+    
+class Audio : public NoteVersion {
+    QString description;
+    audio file;
+        
+        
+public :
+        
+    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const audio& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+        
+    const QString& getDescription() const {return description;}
+    const audio& getFile() const {return file};
+        
+        
+};
+    
+
+/********************************** Image ****************************/
+    
+class video : public NoteVersion {
+    QString description;
+    video file;
+        
+        
+public :
+        
+    video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const video& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+        
+    const QString& getDescription() const {return description;}
+    const video& getFile() const {return file};
+        
+        
+};
+
+
+
+
+
 
 /********************************** Couple ****************************/
 

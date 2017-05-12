@@ -14,33 +14,55 @@ public:
     const QString & getInfo() const{return info;}
 };
 
-class Date{
-    int day;
-    int month;
-    int year;
-public:
-    int getDay(){return day;}
-    int getMonth(){return month;}
-    int getYear(){return year;}
-    void setDay(const int & d){
-        if ((d>=1) && (d<=31))
-            day=d;
-        else throw Exception("Jour incorrect");
-    }
-    void setMonth(const int & m){
-        if ((m>=1) && (m<=12))
-            month=m;
-        else throw Exception("Mois incorrect");
-    }
-    void setYear(const int & y){year=y;}
-    Date(int d, int m, int y){
-        setDay(d);
-        setMonth(m);
-        setYear(y);
-    }
-};
+class Date {
+    public:
+        //! Constructeur ‡ partir d'un jour, mois, annÈe
+        /*! \param j jour avec 1<=j<=31
+            \param m mois avec 1<=m<=12
+            \param a annÈe avec a>=0
+            */
+        Date(unsigned int short j=1, unsigned int short m=1, unsigned int a=0):jour(1),mois(1),annee(0){ setDate(j,m,a); }
+        // mÈthodes
+        unsigned short int  getJour() const { return jour; } //<! Retourne le jour de la date
+        unsigned short int  getMois() const { return mois; } //<! Retourne le mois de la date
+        unsigned int getAnnee() const { return annee; } //<! Retourne l'annÈe de la date
+        void setDate(unsigned short int j, unsigned short int m, unsigned int a); //!< initialisation de la date
+        void afficher(std::ostream& f=std::cout) const; //!< affiche le date sous le format JJ/MM/AAAA
+        bool operator==(const Date& d) const; //<! d1==d2 retourne vrai si les deux dates sont Ègales
+        bool operator<(const Date& d) const; //<! Compare deux dates dans le temps : d1<d2 retourne true si d1 est avant d2
+        int operator-(const Date& d) const; //<! Retourne le nombre de jours sÈparant les deux dates
+        Date demain() const; //<! Retourne la date du lendemain
+        Date operator+(unsigned int nb) const; //<!Retourne la date de dans nb jours
+    private:
+        // attributs
+        unsigned short int jour; // jour entre 1 et 31
+        unsigned short int mois; // mois entre 1 et 12
+        unsigned int annee;
+    };
 
 /********************************** Note & co ****************************/
+class NoteVersion{
+    int idNote;
+    QString title;
+    Date dateCrea;
+    Date dateEdit;
+    int idVersion;
+
+public :
+    const QString& getTitle() const {return title;}
+    NoteVersion( const int& n, const int& v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
+    NoteVersion(NoteVersion &){}
+
+/*
+ addNoteVersion :
+    copyLatest : copie de la dernière version
+    ajout dans la liste des versions de copyLatest
+    Incremente latestVersion
+ changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
+
+*/
+
+};
 
 class Note{
     unsigned int idNote;
@@ -62,9 +84,9 @@ class NotesManager{
     //singleton
     //we use a vector of Notes
     //notes are sorted by idNote
-    std::vector<Note*>* notes;
+    std::vector<Note*>* listNotes;
 
-    NotesManager(): notes(nullptr){}
+    NotesManager(): listNotes(nullptr){}
     ~NotesManager(){}
 
 public:
@@ -82,6 +104,7 @@ public:
     listNotes (voir toutes les notes active?)
 */
 };
+
 
 
 class NoteVersion{
@@ -103,9 +126,7 @@ public :
     Incremente latestVersion
  changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
 
-*/
 
-};
 
 /********************************** Article ****************************/
 
@@ -114,36 +135,43 @@ class Article : public NoteVersion {
     
     
 public :
-    Article (const int& n, const int& v, const Qstring& t, const date& de, const date& dc, const Qstring& te): NoteVersion(n, v, t, de, dc), text(te){}
+
+    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& te): NoteVersion(n, v, t, de, dc), text(te){}
     
-    const Qstring& getText() const {return text;}
+    const QString& getText() const {return text;}
+
 
 };
 
 /********************************** Couple ****************************/
 
 class Couple{
-    Qstring label;
+
+    QString label;
     Note& n1;
     Note& n2;
 public:
-    Couple(const Qstring& l="", const Note& id1,const Note& id2): label(l), n1(id1), n2(id2){}
+    Couple(const Note& id1,const Note& id2, const QString& l=""): label(l), n1(id1), n2(id2){}
+
 };
 
 
 /********************************** Relation & co ****************************/
 
 class Relation {
-    Qstring title;
-    Qstring description;
+
+    QString title;
+    QString description;
     Couple** listCouples;
     unsigned int nbCouples;
     unsigned int nbMaxCouples;
     bool oriented;
 public:
-    Relation(const string& t, const Qstring& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple**[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
-    const string& getTitle() {return title;}
-    const string& getDescription() {return description;}
+
+    Relation(const QString& t, const QString& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
+    const QString& getTitle() {return title;}
+    const QString& getDescription() {return description;}
+
 
     //pour accéder/parcourir les couples d'une relation faire un iterator ?
 
@@ -159,9 +187,9 @@ class RelationsManager{
     //singleton
     //we use a vector of Relation
     //Relation are sorted by Title
-    std::vector<Relation*>* relations;
+    std::vector<Relation*>* listRelations;
 
-    RelationsManager(): relations(nullptr){}
+    RelationsManager(): listRelations(nullptr){}
     ~RelationsManager(){}
 public:
     static RelationsManager& getInstance(){
@@ -170,7 +198,7 @@ public:
     }
 
     Relation& addRelation();
-    Relation& getRelation(const string& t);
+    Relation& getRelation(const QString& t);
 /*
     deleteRelation
     getRelation (appelle listCouples)

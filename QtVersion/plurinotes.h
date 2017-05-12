@@ -49,7 +49,7 @@ class Note{
     NoteVersion* latestVersion;
 
 public:
-    Note(const int& id): idNote(id){}//used by addNote in NotesManager
+    Note(const int& id): idNote(id){}     //used by addNote in NotesManager
     unsigned int getidNote(){return idNote;}
     ~Note(){}
 /*
@@ -92,8 +92,8 @@ class NoteVersion{
     int idVersion;
     
 public :
-    const string& getTitle() const {return title;}
-    NoteVersion( const int& n, const int& v, const string& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
+    const Qstring& getTitle() const {return title;}
+    NoteVersion( const int& n, const int& v, const Qstring& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
     NoteVersion(NoteVersion &)
     
 /*
@@ -114,34 +114,34 @@ class Article : public NoteVersion {
     
     
 public :
-    Article (const int& n, const int& v, const string& t, const date& de, const date& dc, const string& te): NoteVersion(n, v, t, de, dc), text(te){}
+    Article (const int& n, const int& v, const Qstring& t, const date& de, const date& dc, const Qstring& te): NoteVersion(n, v, t, de, dc), text(te){}
     
-    const string& getText() const {return text;}
+    const Qstring& getText() const {return text;}
 
 };
 
 /********************************** Couple ****************************/
 
 class Couple{
-    string label;
+    Qstring label;
     Note& n1;
     Note& n2;
 public:
-    Couple(const string& l="", const Note& id1,const Note& id2): label(l), n1(id1), n2(id2){}
+    Couple(const Qstring& l="", const Note& id1,const Note& id2): label(l), n1(id1), n2(id2){}
 };
 
 
 /********************************** Relation & co ****************************/
 
 class Relation {
-    string title;
-    string description;
+    Qstring title;
+    Qstring description;
     Couple** listCouples;
     unsigned int nbCouples;
     unsigned int nbMaxCouples;
     bool oriented;
 public:
-    Relation(const string& t, const string& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple**[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
+    Relation(const string& t, const Qstring& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple**[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
     const string& getTitle() {return title;}
     const string& getDescription() {return description;}
 

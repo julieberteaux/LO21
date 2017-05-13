@@ -70,7 +70,7 @@ class NotesManager{
     //we use a vector of Notes
     //notes are sorted by idNote
     //composition between NotesManager and Note
-    //std::vector<Note*> listNotes;
+    std::vector<Note*> listNotes;
 
     const NotesManager& operator =(const NotesManager&);
     NotesManager(const NotesManager&);
@@ -78,8 +78,6 @@ class NotesManager{
     ~NotesManager();
 
 public:
-    std::vector<Note*> listNotes;
-
     static NotesManager& getInstance(){
         static NotesManager instance;
         return instance;

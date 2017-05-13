@@ -40,18 +40,24 @@ public :
 };
 
 class Note{
+    friend class NotesManager;
     unsigned int idNote;
     Date dateCrea;
     std::vector<NoteVersion*> listVersion;
     NoteVersion* latestVersion;
 
-public:
+    //the constructor is private because only NotesManager can use it
+    //used by addNote in NotesManager
     Note(const int& id): idNote(id), dateCrea(), listVersion(), latestVersion(nullptr){
         dateCrea.today();
-    }     //used by addNote in NotesManager
+    }
+    //only NotesManager can delete a Note or duplicate a Note
+    const Note& operator =(const Note&);
+    Note(const Note&);
     ~Note();
+public:
     const unsigned int& getidNote() const{return idNote;}
-    const Date& getDateCrea(){return dateCrea;}
+    const Date& getDateCrea() const {return dateCrea;}
 
 /*
      changeState
@@ -64,7 +70,7 @@ class NotesManager{
     //we use a vector of Notes
     //notes are sorted by idNote
     //composition between NotesManager and Note
-    std::vector<Note*> listNotes;
+    //std::vector<Note*> listNotes;
 
     const NotesManager& operator =(const NotesManager&);
     NotesManager(const NotesManager&);
@@ -72,6 +78,7 @@ class NotesManager{
     ~NotesManager();
 
 public:
+    std::vector<Note*> listNotes;
 
     static NotesManager& getInstance(){
         static NotesManager instance;
@@ -79,11 +86,10 @@ public:
     }
     //addNote adds a note with a new id which is greatest id(=id of latest note) + 1, the new note is empty
     Note& addNote();
-    Note& getNote(unsigned int id) const;
+    Note& getNote(const unsigned int& id) const;
+    void deleteNote(const unsigned int& id);
 /*
     modifyNote (va appeler addNoteVersion ou copyVersion)
-    deleteNote
-    getNote (appelle getLatestVersion)
     listNotes (voir toutes les notes active?)
 */
 };

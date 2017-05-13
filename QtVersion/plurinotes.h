@@ -115,7 +115,7 @@ public:
 
 
 
-class NoteVersion{
+/*class NoteVersion{
     int idNote;
     QString title;
     Date dateCrea;
@@ -126,7 +126,7 @@ public :
     const QString& getTitle() const {return title;}
     NoteVersion( const int& n, const int& v, const QString& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
     NoteVersion(NoteVersion &)
-    
+*/
 /*
  addNoteVersion :
     copyLatest : copie de la dernière version

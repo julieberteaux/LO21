@@ -5,7 +5,9 @@ QT += xml
 
 SOURCES += \
     plurinotes.cpp \
-    main.cpp
+    main.cpp \
+    date.cpp
 
 HEADERS += \
-    plurinotes.h
+    plurinotes.h \
+    date.h

@@ -73,7 +73,7 @@ class Note{
 public:
     Note(const int& id): idNote(id){}     //used by addNote in NotesManager
     unsigned int getidNote(){return idNote;}
-    ~Note(){}
+    ~Note();
 /*
      changeState
      getLatestVersion
@@ -92,11 +92,7 @@ class NotesManager{
     NotesManager(): listNotes(nullptr){}
 
 public:
-    ~NotesManager(){//composition: we delete every objects pointed by the vector
-        for(std::vector<Note*>::iterator it=listNotes->begin(); it!=listNotes->end(); ++it)
-            delete *it;
-        delete listNotes;
-    }
+    ~NotesManager();
 
     static NotesManager& getInstance(){
         static NotesManager instance;
@@ -240,8 +236,7 @@ class Couple{
     Note& n1;
     Note& n2;
 public:
-    Couple(const Note& id1,const Note& id2, const QString& l=""): label(l), n1(id1), n2(id2){}
-
+    Couple(Note& id1, Note& id2, const QString& l=""): label(l), n1(id1), n2(id2){}
 };
 
 

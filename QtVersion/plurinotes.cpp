@@ -1,5 +1,10 @@
 #include "plurinotes.h"
 /********************************** NotesManager ****************************/
+NotesManager::~NotesManager(){//composition: we delete every objects pointed by the vector
+    for(std::vector<Note*>::iterator it=listNotes->begin(); it!=listNotes->end(); ++it)
+        delete *it;
+    delete listNotes;
+}
 
 Note& NotesManager::addNote(){
     if(listNotes->size()==0){
@@ -10,7 +15,7 @@ Note& NotesManager::addNote(){
     return *(listNotes->back());
 }
 
-Note& NotesManager::getNote(unsigned int id){
+Note& NotesManager::getNote(unsigned int id) const{
     if(listNotes->size()==0)
         throw Exception("Il n'y a pas de notes!");
     auto it = find_if(listNotes->begin(), listNotes->end(), [&id](Note* obj) {return obj->getidNote() == id;});
@@ -21,10 +26,9 @@ Note& NotesManager::getNote(unsigned int id){
 
 /********************************** Note ****************************/
 
-~Note::Note(){
-    for(int unsigned i=0;i<vect.size();i++){
-        delete listVersion[i];
-    }
+Note::~Note(){
+    for(std::vector<NoteVersion*>::iterator it=listVersion->begin(); it!=listVersion->end(); ++it)
+        delete *it;
     delete[] listVersion;
 }
 

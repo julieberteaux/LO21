@@ -29,6 +29,7 @@ class Date {
         bool operator==(const Date& d) const; //<! d1==d2 retourne vrai si les deux dates sont Ègales
         bool operator<(const Date& d) const; //<! Compare deux dates dans le temps : d1<d2 retourne true si d1 est avant d2
         int operator-(const Date& d) const; //<! Retourne le nombre de jours sÈparant les deux dates
+        void today(); //Changes the date by putting the date of today
         Date demain() const; //<! Retourne la date du lendemain
         Date operator+(unsigned int nb) const; //<!Retourne la date de dans nb jours
     private:

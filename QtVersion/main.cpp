@@ -5,7 +5,7 @@ int main() {
         std::cout<<"Début du programme plurinotes"<<std::endl;
         NotesManager& manager=NotesManager::getInstance();
         Date d(10,1,12);
-        Note& n=manager.getNote(0);
+        //Note& n=manager.getNote(0);
         manager.addNote();
         std::cout<<"fin du try plurinotes"<<std::endl;
 

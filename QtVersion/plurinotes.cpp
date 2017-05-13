@@ -10,12 +10,16 @@ NotesManager::~NotesManager(){//composition: we delete every objects pointed by 
 }
 
 Note& NotesManager::addNote(){
+    if(listNotes==nullptr){
+        listNotes=new std::vector<Note*>;
+    }
     if(listNotes->size()==0){
-        listNotes->push_back(new Note(0));
-    }else {
+        Note* n=new Note(0);
+        listNotes->push_back(n);
+    }/*else {
         listNotes->push_back(new Note((listNotes->back())->getidNote()+1));
     }
-    return *(listNotes->back());
+    return *(listNotes->back());*/
 }
 
 Note& NotesManager::getNote(unsigned int id) const{

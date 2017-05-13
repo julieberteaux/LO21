@@ -45,7 +45,9 @@ class Note{
     NoteVersion* latestVersion;
 
 public:
-    Note(const int& id): idNote(id){}     //used by addNote in NotesManager
+    Note(const int& id): idNote(id), dateCrea(), listVersion(nullptr), latestVersion(nullptr){
+        //dateCrea.today();
+    }     //used by addNote in NotesManager
     unsigned int getidNote(){return idNote;}
     ~Note();
 /*

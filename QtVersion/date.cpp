@@ -42,6 +42,13 @@ int Date::operator-(const Date& d) const{
     n+=jour-d.jour;
     return n;
 }
+void Date::today(){
+    struct tm Today;
+    time_t maintenant;
+    time(&maintenant);
+    Today = *localtime(&maintenant);
+    setDate(Today.tm_mday,Today.tm_mon+1, Today.tm_year+1900);
+}
 
 Date Date::demain() const{
     Date d=*this;

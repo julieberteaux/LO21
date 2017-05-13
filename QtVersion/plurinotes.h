@@ -278,8 +278,17 @@ class RelationsManager{
     //Relation are sorted by Title
     std::vector<Relation*>* listRelations;
 
+    const RelationsManager& operator =(const RelationsManager&);
+    RelationsManager(const RelationsManager&) const;
+
     RelationsManager(): listRelations(nullptr){}
-    ~RelationsManager(){}
+    ~RelationsManager(){
+        //composition: we delete every objects pointed by the vector
+                for(std::vector<Relation*>::iterator it=listRelations->begin(); it!=listRelations->end(); ++it)
+                    delete *it;
+                delete listRelations;
+    }
+
 public:
     static RelationsManager& getInstance(){
         static RelationsManager instance;
@@ -287,7 +296,7 @@ public:
     }
 
     Relation& addRelation();
-    Relation& getRelation(const QString& t);
+    Relation& getRelation(const QString& t) const;
 /*
     deleteRelation
     getRelation (appelle listCouples)

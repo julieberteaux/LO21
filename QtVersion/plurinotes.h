@@ -17,10 +17,11 @@ public:
 /********************************** Note & co ****************************/
 class NoteVersion{
     int idNote;
-    QString title;
-    Date dateCrea;
-    Date dateEdit;
     int idVersion;
+    QString title;
+    Date dateEdit;
+    Date dateCrea;
+
 
 public :
     const QString& getTitle() const {return title;}
@@ -48,8 +49,10 @@ public:
     Note(const int& id): idNote(id), dateCrea(), listVersion(), latestVersion(nullptr){
         dateCrea.today();
     }     //used by addNote in NotesManager
-    unsigned int getidNote(){return idNote;}
     ~Note();
+    const unsigned int& getidNote() const{return idNote;}
+    const Date& getDateCrea(){return dateCrea;}
+
 /*
      changeState
      getLatestVersion
@@ -223,9 +226,10 @@ class Relation {
     QString title;
     QString description;
     Couple** listCouples;
+    bool oriented;
     unsigned int nbCouples;
     unsigned int nbMaxCouples;
-    bool oriented;
+
 public:
 
     Relation(const QString& t, const QString& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}

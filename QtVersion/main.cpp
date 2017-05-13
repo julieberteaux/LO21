@@ -14,6 +14,8 @@ int main() {
         //Note& n3=manager.getNote(3);
         std::cout<<"n0 id:"<<n0.getidNote()<<std::endl;
         std::cout<<"n2 id:"<<n2.getidNote()<<std::endl;
+        std::cout<<"n2 id:"<<n2.getidNote()<<std::endl;
+        std::cout<<n2.getDateCrea().getJour()<<" "<<n2.getDateCrea().getMois()<<" "<<n2.getDateCrea().getAnnee()<<std::endl;
         std::cout<<"fin du try plurinotes"<<std::endl;
 
     }

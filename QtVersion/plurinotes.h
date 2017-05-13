@@ -84,19 +84,27 @@ class NotesManager{
     //singleton
     //we use a vector of Notes
     //notes are sorted by idNote
+    //composition between NotesManager and Note
     std::vector<Note*>* listNotes;
 
+    const NotesManager& operator =(const NotesManager&);
+    NotesManager(const NotesManager&) const;
     NotesManager(): listNotes(nullptr){}
-    ~NotesManager(){}
 
 public:
+    ~NotesManager(){//composition: we delete every objects pointed by the vector
+        for(std::vector<Note*>::iterator it=listNotes->begin(); it!=listNotes->end(); ++it)
+            delete *it;
+        delete listNotes;
+    }
+
     static NotesManager& getInstance(){
         static NotesManager instance;
         return instance;
     }
-    //addNote adds a note with a new id which is greatest id(=id of latest note) + 1
+    //addNote adds a note with a new id which is greatest id(=id of latest note) + 1, the new note is empty
     Note& addNote();
-    Note& getNote(unsigned int id);
+    Note& getNote(unsigned int id) const;
 /*
     modifyNote (va appeler addNoteVersion ou copyVersion)
     deleteNote

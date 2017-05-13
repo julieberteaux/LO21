@@ -2,17 +2,17 @@
 /********************************** NotesManager ****************************/
 NotesManager::~NotesManager(){//composition: we delete every objects pointed by the vector
     for(std::vector<Note*>::iterator it=listNotes.begin(); it!=listNotes.end(); ++it)
-        delete (*it);
+        delete *it;
 }
 
 Note& NotesManager::addNote(){
     if(listNotes.size()==0){
         Note* n=new Note(0);
         listNotes.push_back(n);
-    }/*else {
+    }else {
         listNotes.push_back(new Note((listNotes.back())->getidNote()+1));
     }
-    return *(listNotes.back());*/
+    return *(listNotes.back());
 }
 
 Note& NotesManager::getNote(unsigned int id) const{
@@ -26,11 +26,10 @@ Note& NotesManager::getNote(unsigned int id) const{
 
 /********************************** Note ****************************/
 
-/*Note::~Note(){
-    for(std::vector<NoteVersion*>::iterator it=listVersion->begin(); it!=listVersion->end(); ++it)
+Note::~Note(){
+    for(std::vector<NoteVersion*>::iterator it=listVersion.begin(); it!=listVersion.end(); ++it)
         delete *it;
-    delete[] listVersion;
-}*/
+}
 
 /********************************** Relation ****************************/
 

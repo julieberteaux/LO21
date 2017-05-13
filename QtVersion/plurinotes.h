@@ -41,15 +41,15 @@ public :
 class Note{
     unsigned int idNote;
     Date dateCrea;
-    std::vector<NoteVersion*>* listVersion;
+    std::vector<NoteVersion*> listVersion;
     NoteVersion* latestVersion;
 
 public:
-    Note(const int& id): idNote(id), dateCrea(), listVersion(nullptr), latestVersion(nullptr){
-        //dateCrea.today();
+    Note(const int& id): idNote(id), dateCrea(), listVersion(), latestVersion(nullptr){
+        dateCrea.today();
     }     //used by addNote in NotesManager
     unsigned int getidNote(){return idNote;}
-    ~Note(){};
+    ~Note();
 /*
      changeState
      getLatestVersion

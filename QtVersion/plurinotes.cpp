@@ -1,9 +1,12 @@
 #include "plurinotes.h"
 /********************************** NotesManager ****************************/
 NotesManager::~NotesManager(){//composition: we delete every objects pointed by the vector
-    for(std::vector<Note*>::iterator it=listNotes->begin(); it!=listNotes->end(); ++it)
-        delete *it;
-    delete listNotes;
+    if(listNotes!=nullptr){
+        for(std::vector<Note*>::iterator it=listNotes->begin(); it!=listNotes->end(); ++it)
+            delete *it;
+        delete listNotes;
+    }
+    std::cout<<"destruction de l'objet NotesManager"<<std::endl;
 }
 
 Note& NotesManager::addNote(){

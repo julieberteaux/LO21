@@ -64,9 +64,9 @@ class NotesManager{
     const NotesManager& operator =(const NotesManager&);
     NotesManager(const NotesManager&);
     NotesManager(): listNotes(nullptr){}
+    ~NotesManager();
 
 public:
-    ~NotesManager();
 
     static NotesManager& getInstance(){
         static NotesManager instance;

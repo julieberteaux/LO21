@@ -123,8 +123,8 @@ class NoteVersion{
     int idVersion;
     
 public :
-    const Qstring& getTitle() const {return title;}
-    NoteVersion( const int& n, const int& v, const Qstring& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
+    const QString& getTitle() const {return title;}
+    NoteVersion( const int& n, const int& v, const QString& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
     NoteVersion(NoteVersion &)
     
 /*
@@ -178,15 +178,15 @@ public :
     
 class Image : public NoteVersion {
     QString description;
-    Qstring file;
+    QString file;
         
         
 public :
         
-    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const Qstring& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
         
     const QString& getDescription() const {return description;}
-    const Qstring& getFile() const {return file};
+    const QString& getFile() const {return file};
         
         
 };
@@ -196,15 +196,15 @@ public :
     
 class Audio : public NoteVersion {
     QString description;
-    Qstring file;
+    QString file;
         
         
 public :
         
-    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const Qstring& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
         
     const QString& getDescription() const {return description;}
-    const Qstring& getFile() const {return file};
+    const QString& getFile() const {return file};
         
         
 };
@@ -214,15 +214,15 @@ public :
     
 class video : public NoteVersion {
     QString description;
-    Qstring file;
+    QString file;
         
         
 public :
         
-    video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const Qstring& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
         
     const QString& getDescription() const {return description;}
-    const Qstring& getFile() const {return file};
+    const QString& getFile() const {return file};
         
         
 };

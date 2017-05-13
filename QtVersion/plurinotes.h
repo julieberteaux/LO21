@@ -178,15 +178,15 @@ public :
     
 class Image : public NoteVersion {
     QString description;
-    image file;
+    Qstring file;
         
         
 public :
         
-    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const image& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const Qstring& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
         
     const QString& getDescription() const {return description;}
-    const image& getFile() const {return file};
+    const Qstring& getFile() const {return file};
         
         
 };
@@ -196,15 +196,15 @@ public :
     
 class Audio : public NoteVersion {
     QString description;
-    audio file;
+    Qstring file;
         
         
 public :
         
-    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const audio& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const Qstring& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
         
     const QString& getDescription() const {return description;}
-    const audio& getFile() const {return file};
+    const Qstring& getFile() const {return file};
         
         
 };
@@ -214,15 +214,15 @@ public :
     
 class video : public NoteVersion {
     QString description;
-    video file;
+    Qstring file;
         
         
 public :
         
-    video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const video& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const Qstring& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
         
     const QString& getDescription() const {return description;}
-    const video& getFile() const {return file};
+    const Qstring& getFile() const {return file};
         
         
 };

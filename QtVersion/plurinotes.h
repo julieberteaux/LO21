@@ -158,17 +158,17 @@ class Task : public NoteVersion {
     QString action;
     int priority;
     Date deadline;
-    enum status {waiting, ended, in_progress};
-        
+    enum Status {waiting, ended, in_progress};
+    Status status;
         
 public :
         
-    Task (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& a, const int p, const Date d, const enum s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
+    Task (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& a, const int p, const Date d, const Status s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
         
     const QString& getAction() const {return action;}
     const int& getPriority() const {return priority;}
     const Date& getDeadline() const {return deadline;}
-    const enum status& getStatus() const {return status;}
+    const Status& getStatus() const {return status;}
         
         
 };
@@ -183,10 +183,10 @@ class Image : public NoteVersion {
         
 public :
         
-    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    Image(const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
         
     const QString& getDescription() const {return description;}
-    const QString& getFile() const {return file};
+    const QString& getFile() const {return file;}
         
         
 };
@@ -201,10 +201,10 @@ class Audio : public NoteVersion {
         
 public :
         
-    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
         
     const QString& getDescription() const {return description;}
-    const QString& getFile() const {return file};
+    const QString& getFile() const {return file;}
         
         
 };
@@ -212,17 +212,17 @@ public :
 
 /********************************** Image ****************************/
     
-class video : public NoteVersion {
+class Video : public NoteVersion {
     QString description;
     QString file;
         
         
 public :
         
-    video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), fichier(f){}
+    Video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
         
     const QString& getDescription() const {return description;}
-    const QString& getFile() const {return file};
+    const QString& getFile() const {return file;}
         
         
 };
@@ -279,7 +279,7 @@ class RelationsManager{
     std::vector<Relation*>* listRelations;
 
     const RelationsManager& operator =(const RelationsManager&);
-    RelationsManager(const RelationsManager&) const;
+    RelationsManager(const RelationsManager&);
 
     RelationsManager(): listRelations(nullptr){}
     ~RelationsManager(){

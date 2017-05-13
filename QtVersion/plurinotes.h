@@ -49,7 +49,7 @@ public:
         //dateCrea.today();
     }     //used by addNote in NotesManager
     unsigned int getidNote(){return idNote;}
-    ~Note();
+    ~Note(){};
 /*
      changeState
      getLatestVersion

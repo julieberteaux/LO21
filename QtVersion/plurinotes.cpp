@@ -2,8 +2,7 @@
 /********************************** NotesManager ****************************/
 NotesManager::~NotesManager(){//composition: we delete every objects pointed by the vector
     for(std::vector<Note*>::iterator it=listNotes.begin(); it!=listNotes.end(); ++it)
-        delete *it;
-    std::cout<<"destruction de l'objet NotesManager"<<std::endl;
+        delete (*it);
 }
 
 Note& NotesManager::addNote(){
@@ -27,11 +26,11 @@ Note& NotesManager::getNote(unsigned int id) const{
 
 /********************************** Note ****************************/
 
-Note::~Note(){
+/*Note::~Note(){
     for(std::vector<NoteVersion*>::iterator it=listVersion->begin(); it!=listVersion->end(); ++it)
         delete *it;
     delete[] listVersion;
-}
+}*/
 
 /********************************** Relation ****************************/
 

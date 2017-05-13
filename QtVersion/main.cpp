@@ -19,7 +19,7 @@ int main() {
         /*for(std::vector<Note*>::iterator it=manager.listNotes.begin(); it!=manager.listNotes.end(); ++it)
             std::cout<<(*it)->getidNote()<<std::endl;*/
         Note& n4=manager.getNote(5);
-
+        NoteVersion test;
         std::cout<<"fin du try plurinotes"<<std::endl;
 
     }

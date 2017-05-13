@@ -88,7 +88,7 @@ public:
     void deleteNote(const unsigned int& id);
 /*
     modifyNote (va appeler addNoteVersion ou copyVersion)
-    listNotes (voir toutes les notes active?)
+    listNotes (voir toutes les notes active?) avec un iterator??
 */
 };
 
@@ -171,7 +171,7 @@ public :
 };
     
     
-/********************************** Image ****************************/
+/********************************** Audio ****************************/
     
 class Audio : public NoteVersion {
     QString description;
@@ -189,7 +189,7 @@ public :
 };
     
 
-/********************************** Image ****************************/
+/********************************** Video ****************************/
     
 class Video : public NoteVersion {
     QString description;

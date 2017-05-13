@@ -719,17 +719,21 @@ compiler_clean: compiler_moc_predefs_clean
 ####### Compile
 
 plurinotes.o: ../QtVersion/plurinotes.cpp ../QtVersion/plurinotes.h \
-		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
-		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qstring.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o plurinotes.o ../QtVersion/plurinotes.cpp
-
-main.o: ../QtVersion/main.cpp /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../QtVersion/plurinotes.h
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o plurinotes.o ../QtVersion/plurinotes.cpp
+
+main.o: ../QtVersion/main.cpp ../QtVersion/plurinotes.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../QtVersion/main.cpp
 
 ####### Install

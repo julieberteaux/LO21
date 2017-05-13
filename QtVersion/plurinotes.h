@@ -88,7 +88,7 @@ class NotesManager{
     std::vector<Note*>* listNotes;
 
     const NotesManager& operator =(const NotesManager&);
-    NotesManager(const NotesManager&) const;
+    NotesManager(const NotesManager&);
     NotesManager(): listNotes(nullptr){}
 
 public:
@@ -157,18 +157,18 @@ public :
 class Task : public NoteVersion {
     QString action;
     int priority;
-    date deadline;
+    Date deadline;
     enum status {waiting, ended, in_progress};
         
         
 public :
         
-    Task (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& a, const int p, const date d, const enum s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
+    Task (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& a, const int p, const Date d, const enum s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
         
     const QString& getAction() const {return action;}
     const int& getPriority() const {return priority;}
-    const date& getDeadline() const {return deadline;}
-    const enum& getStatus() const {return status;}
+    const Date& getDeadline() const {return deadline;}
+    const enum status& getStatus() const {return status;}
         
         
 };

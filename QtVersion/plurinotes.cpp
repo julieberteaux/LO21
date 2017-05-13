@@ -25,7 +25,7 @@ Note& NotesManager::getNote(unsigned int id){
     for(int unsigned i=0;i<vect.size();i++){
         delete listVersion[i];
     }
-    delete[] listversion;
+    delete[] listVersion;
 }
 
 /********************************** Relation ****************************/

@@ -3,10 +3,11 @@
 int main() {
     try{
         std::cout<<"Début du programme plurinotes"<<std::endl;
-        NotesManager &n1=NotesManager::getInstance();
+        NotesManager& manager=NotesManager::getInstance();
         Date d(10,1,12);
-        //n.getNote(0);
-        //n.addNote();
+        Note& n=manager.getNote(0);
+        manager.addNote();
+        std::cout<<"fin du try plurinotes"<<std::endl;
 
     }
     catch(Exception& e){std::cout<<e.getInfo().toStdString()<<std::endl;}

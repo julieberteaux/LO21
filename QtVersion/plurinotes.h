@@ -236,7 +236,7 @@ class Relation {
 
 public:
 
-    Relation(const QString& t, const QString& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
+    Relation(const QString& t, const QString& d, bool o=true, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
     const QString& getTitle() {return title;}
     const QString& getDescription() {return description;}
 

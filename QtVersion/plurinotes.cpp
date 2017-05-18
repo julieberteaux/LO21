@@ -41,19 +41,18 @@ Note::~Note(){
     //std::cout<<"suppression de la note d'id"<<idNote<<std::endl;
 }
 
+NoteVersion& Note::addNoteVersion(const NoteVersion& n){
+    if(listVersion.size()==0){
+        listVersion.push_back(n.clone(0));
+    }else {
+        listVersion.push_back(n.clone((listVersion.back())->getIdVersion()+1));
+    }
+    return *(listVersion.back());
+}
+
 /********************************** NotesVersion ****************************/
 
-void addNoteVersion(unsigned int id){
-    Note& n = getNote(id);
-    NotesVersion& latestVersion = n.listVersion.back();
-    NotesVersion newVersion = latestVersion;
-    newVersion.dateEdit.today();
-    newVersion.idVersion++;
-    //cout<<
-    n.listVersion.push_back(newVersion);
-    
-    
-}
+
 
 /********************************** Relation ****************************/
 
@@ -61,4 +60,33 @@ Relation& Relation::operator<<(Couple& c){
     if (nbCouples==nbMaxCouples)
         //faire l'agrandissement sauf si on utilise une autre structure que le tableau
     listCouples[nbCouples++]= &c;
+}
+
+/********************************** Article ****************************/
+
+Article* Article::clone(unsigned int id) const{
+    Article* art=new Article(*this);
+    art->idVersion=id;
+    return art;
+}
+/********************************** Task ****************************/
+
+Task* Task::clone(unsigned int id) const{
+    Task* tsk=new Task(*this);
+    tsk->idVersion=id;
+    return tsk;
+}
+/********************************** Image ****************************/
+
+Image* Image::clone(unsigned int id) const{
+    Image* img=new Image(*this);
+    img->idVersion=id;
+    return img;
+}
+/********************************** Audio ****************************/
+
+Audio* Audio::clone(unsigned int id) const{
+    Audio* aud=new Audio(*this);
+    aud->idVersion=id;
+    return aud;
 }

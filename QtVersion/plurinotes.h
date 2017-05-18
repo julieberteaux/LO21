@@ -66,7 +66,7 @@ class Note{
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}
-    
+    void addNoteVersion(unsigned int id);
     /*
      changeState
      getLatestVersion
@@ -88,7 +88,7 @@ public :
     NoteVersion( unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
     const QString& getTitle() const {return title;}
     NoteVersion(NoteVersion &){}
-    void addNoteVersion(unsigned int id);
+    
 
 /*
  addNoteVersion :

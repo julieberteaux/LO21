@@ -47,9 +47,9 @@ void addNoteVersion(unsigned int id){
     Note& n = getNote(id);
     NotesVersion& latestVersion = n.listVersion.back();
     NotesVersion newVersion = latestVersion;
-    newVersion.dateCrea.today();
+    newVersion.dateEdit.today();
     newVersion.idVersion++;
-    //user modification
+    //cout<<
     n.listVersion.push_back(newVersion);
     
     

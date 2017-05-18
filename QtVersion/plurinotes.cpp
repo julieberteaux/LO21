@@ -50,6 +50,14 @@ NoteVersion& Note::addNoteVersion(const NoteVersion& n){
     return *(listVersion.back());
 }
 
+NoteVersion& Note::getNoteVersion(unsigned int id) const{
+    if(listVersion.size()==0)
+        throw Exception("Il n'y a pas de verion pour cette note!");
+    auto it = find_if(listVersion.begin(), listVersion.end(), [&id](NoteVersion* obj) {return obj->getIdVersion() == id;});
+    if(it==listVersion.end())
+        throw Exception("Il n'y a pas de version correspondant à l'id");
+    return **it;
+}
 /********************************** NotesVersion ****************************/
 
 

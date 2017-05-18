@@ -33,6 +33,7 @@ public :
     const QString& getTitle() const {
         return title;
     }
+    virtual ~NoteVersion(){};
     unsigned int getIdVersion() const{return idVersion;}
 
     //NoteVersion(NoteVersion &){}
@@ -72,6 +73,7 @@ public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}
     NoteVersion &addNoteVersion(const NoteVersion &);
+    NoteVersion& getNoteVersion(unsigned int id) const;
     /*
      changeState
      getLatestVersion

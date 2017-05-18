@@ -16,6 +16,60 @@ public:
 };
 
 /********************************** Note & co ****************************/
+class NoteVersion{
+    unsigned int idNote;
+    unsigned int idVersion;
+    QString title;
+    Date dateEdit;
+    Date dateCrea;
+
+
+public :
+
+    NoteVersion( unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
+    const QString& getTitle() const {return title;}
+    NoteVersion(NoteVersion &){}
+    void addNoteVersion(unsigned int id);
+
+/*
+ addNoteVersion :
+    copyLatest : copie de la dernière version
+    demande les parametre a changer
+    modifie la copie de note: changer dateEdit, id version, title...
+    ajout dans la liste des versions de copyLatest :
+    Incremente latestVersion
+
+ changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
+
+*/
+
+};
+
+class Note{
+    friend class NotesManager;
+    unsigned int idNote;
+    Date dateCrea;
+    std::vector<NoteVersion*> listVersion;
+
+
+    //the constructor is private because only NotesManager can use it
+    //used by addNote in NotesManager
+    Note(unsigned int id): idNote(id), dateCrea(), listVersion(){
+        dateCrea.today();
+    }
+    //only NotesManager can delete a Note or duplicate a Note
+    const Note& operator =(const Note&);
+    Note(const Note&);
+    ~Note();
+public:
+    unsigned int getIdNote() const{return idNote;}
+    const Date& getDateCrea() const {return dateCrea;}
+
+    /*
+     changeState
+     getLatestVersion
+     */
+};
 
 class NotesManager{
     //singleton
@@ -47,62 +101,9 @@ public:
 
 
 
-class Note{
-    friend class NotesManager;
-    unsigned int idNote;
-    Date dateCrea;
-    std::vector<NoteVersion*> listVersion;
-    
-    
-    //the constructor is private because only NotesManager can use it
-    //used by addNote in NotesManager
-    Note(unsigned int id): idNote(id), dateCrea(), listVersion(){
-        dateCrea.today();
-    }
-    //only NotesManager can delete a Note or duplicate a Note
-    const Note& operator =(const Note&);
-    Note(const Note&);
-    ~Note();
-public:
-    unsigned int getIdNote() const{return idNote;}
-    const Date& getDateCrea() const {return dateCrea;}
-    
-    /*
-     changeState
-     getLatestVersion
-     */
-};
 
 
 
-class NoteVersion{
-    unsigned int idNote;
-    unsigned int idVersion;
-    QString title;
-    Date dateEdit;
-    Date dateCrea;
-
-
-public :
-    
-    NoteVersion( unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
-    const QString& getTitle() const {return title;}
-    NoteVersion(NoteVersion &){}
-    void addNoteVersion(unsigned int id);
-
-/*
- addNoteVersion :
-    copyLatest : copie de la dernière version 
-    demande les parametre a changer
-    modifie la copie de note: changer dateEdit, id version, title...
-    ajout dans la liste des versions de copyLatest :
-    Incremente latestVersion
- 
- changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
-
-*/
-
-};
 
 
 
@@ -227,7 +228,7 @@ class Relation {
 
 public:
 
-    Relation(const QString& t, const QString& d, bool o=true, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
+    Relation(const QString& t, const QString& d, bool o, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
     const QString& getTitle() {return title;}
     const QString& getDescription() {return description;}
 

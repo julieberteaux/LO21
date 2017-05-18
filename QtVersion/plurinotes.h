@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <vector>
 #include "date.h"
+
 class Exception{
     QString info;
 public:
@@ -15,55 +16,6 @@ public:
 };
 
 /********************************** Note & co ****************************/
-class NoteVersion{
-    int idNote;
-    int idVersion;
-    QString title;
-    Date dateEdit;
-    Date dateCrea;
-
-
-public :
-    const QString& getTitle() const {return title;}
-    NoteVersion( const int& n, const int& v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
-    NoteVersion(NoteVersion &){}
-
-/*
- addNoteVersion :
-    copyLatest : copie de la dernière version
-    ajout dans la liste des versions de copyLatest
-    Incremente latestVersion
- changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
-
-*/
-
-};
-
-class Note{
-    friend class NotesManager;
-    unsigned int idNote;
-    Date dateCrea;
-    std::vector<NoteVersion*> listVersion;
-    NoteVersion* latestVersion;
-
-    //the constructor is private because only NotesManager can use it
-    //used by addNote in NotesManager
-    Note(const int& id): idNote(id), dateCrea(), listVersion(), latestVersion(nullptr){
-        dateCrea.today();
-    }
-    //only NotesManager can delete a Note or duplicate a Note
-    const Note& operator =(const Note&);
-    Note(const Note&);
-    ~Note();
-public:
-    const unsigned int& getidNote() const{return idNote;}
-    const Date& getDateCrea() const {return dateCrea;}
-
-/*
-     changeState
-     getLatestVersion
-*/
-};
 
 class NotesManager{
     //singleton
@@ -71,12 +23,12 @@ class NotesManager{
     //notes are sorted by idNote
     //composition between NotesManager and Note
     std::vector<Note*> listNotes;
-
+    
     const NotesManager& operator =(const NotesManager&);
     NotesManager(const NotesManager&);
     NotesManager(): listNotes(){}
     ~NotesManager();
-
+    
 public:
     static NotesManager& getInstance(){
         static NotesManager instance;
@@ -84,34 +36,73 @@ public:
     }
     //addNote adds a note with a new id which is greatest id(=id of latest note) + 1, the new note is empty
     Note& addNote();
-    Note& getNote(const unsigned int& id) const;
-    void deleteNote(const unsigned int& id);
-/*
-    modifyNote (va appeler addNoteVersion ou copyVersion)
-    listNotes (voir toutes les notes active?) avec un iterator??
-*/
+    Note& getNote(unsigned int id) const;
+    void deleteNote(unsigned int id);
+    
+    /*
+     modifyNote (va appeler addNoteVersion ou copyVersion)
+     listNotes (voir toutes les notes active?) avec un iterator??
+     */
 };
 
 
 
-/*class NoteVersion{
-    int idNote;
-    QString title;
+class Note{
+    friend class NotesManager;
+    unsigned int idNote;
     Date dateCrea;
-    Date dateEdit;
-    int idVersion;
+    std::vector<NoteVersion*> listVersion;
     
+    
+    //the constructor is private because only NotesManager can use it
+    //used by addNote in NotesManager
+    Note(unsigned int id): idNote(id), dateCrea(), listVersion(){
+        dateCrea.today();
+    }
+    //only NotesManager can delete a Note or duplicate a Note
+    const Note& operator =(const Note&);
+    Note(const Note&);
+    ~Note();
+public:
+    unsigned int getIdNote() const{return idNote;}
+    const Date& getDateCrea() const {return dateCrea;}
+    
+    /*
+     changeState
+     getLatestVersion
+     */
+};
+
+
+
+class NoteVersion{
+    unsigned int idNote;
+    unsigned int idVersion;
+    QString title;
+    Date dateEdit;
+    Date dateCrea;
+
+
 public :
+    
+    NoteVersion( unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
     const QString& getTitle() const {return title;}
-    NoteVersion( const int& n, const int& v, const QString& t, const date& de, const date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
-    NoteVersion(NoteVersion &)
-*/
+    NoteVersion(NoteVersion &){}
+    void addNoteVersion(unsigned int id);
+
 /*
  addNoteVersion :
-    copyLatest : copie de la dernière version
-    ajout dans la liste des versions de copyLatest
+    copyLatest : copie de la dernière version 
+    demande les parametre a changer
+    modifie la copie de note: changer dateEdit, id version, title...
+    ajout dans la liste des versions de copyLatest :
     Incremente latestVersion
+ 
  changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
+
+*/
+
+};
 
 
 
@@ -123,7 +114,7 @@ class Article : public NoteVersion {
     
 public :
 
-    Article (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& te): NoteVersion(n, v, t, de, dc), text(te){}
+    Article (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& te): NoteVersion(n, v, t, de, dc), text(te){}
     
     const QString& getText() const {return text;}
 
@@ -135,17 +126,17 @@ public :
     
 class Task : public NoteVersion {
     QString action;
-    int priority;
+    unsigned int priority;
     Date deadline;
     enum Status {waiting, ended, in_progress};
     Status status;
         
 public :
         
-    Task (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& a, const int p, const Date d, const Status s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
+    Task (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& a, unsigned int p, const Date d, const Status s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
         
     const QString& getAction() const {return action;}
-    const int& getPriority() const {return priority;}
+    unsigned int getPriority() const {return priority;}
     const Date& getDeadline() const {return deadline;}
     const Status& getStatus() const {return status;}
         
@@ -162,7 +153,7 @@ class Image : public NoteVersion {
         
 public :
         
-    Image(const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
+    Image(unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
         
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
@@ -180,7 +171,7 @@ class Audio : public NoteVersion {
         
 public :
         
-    Audio (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
+    Audio (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
         
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
@@ -198,7 +189,7 @@ class Video : public NoteVersion {
         
 public :
         
-    Video (const int& n, const int& v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
+    Video (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
         
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}

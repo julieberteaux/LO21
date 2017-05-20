@@ -217,7 +217,7 @@ class Relation {
 
     QString title;
     QString description;
-    std::vector<Couple*>* listCouples;
+    std::vector<Couple*> listCouples;
     bool oriented;
 
 
@@ -242,12 +242,12 @@ class RelationsManager{
     //singleton
     //we use a vector of Relation
     //Relation are sorted by Title
-    std::vector<Relation*>* listRelations;
+    std::vector<Relation*> listRelations;
 
     const RelationsManager& operator =(const RelationsManager&);
     RelationsManager(const RelationsManager&);
 
-    RelationsManager(): listRelations(nullptr){}
+    RelationsManager(): listRelations(){}
     ~RelationsManager(){
         //composition: we delete every objects pointed by the vector
                 for(std::vector<Relation*>::iterator it=listRelations->begin(); it!=listRelations->end(); ++it)
@@ -261,11 +261,12 @@ public:
         return instance;
     }
 
-    Relation& addRelation();
+    void addRelation(const QString& t, const QString& d, bool o);
     Relation& getRelation(const QString& t) const;
+    void RelationsManager::deleteRelation(const QString& t);
+    void displayRelationCouples (const QString& t, std::ostream& f);
 /*
-    deleteRelation
-    getRelation (appelle listCouples)
+
     listRelations (voir toutes les relations)
 */
 };

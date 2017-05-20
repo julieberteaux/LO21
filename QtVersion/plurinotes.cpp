@@ -62,3 +62,49 @@ void Relation::addCouple(Couple& c){
 }
 
 /********************************** RelationsManager ****************************/
+
+void addRelation(const QString& t, const QString& d, bool o){
+
+    if (! getRelation(t))
+    {
+        listNotes.push_back(new Relation(t, d, o));
+
+    }
+    else
+    {
+        throw Exception("Cette relation existe deja");
+    }
+
+
+}
+
+// QUESTION :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
+// est ce qu'on peut comparer 2 string avec ==
+
+Relation& getRelation(const QString& t) const{
+    if(listRelations.size()==0)
+        throw Exception("Il n'y a pas de relation!");
+    auto it = find_if(listRelations.begin(), listRelations.end(), [&t](Relation* obj) {return obj->getTitle() == t;});
+    if(it==listRelations.end())
+        throw Exception("Il n'y a pas de Relation correspondant à ce titre");
+    return **it;
+
+}
+
+void displayRelationCouples (const QString& t, std::ostream& f) {
+    Relation r = getRelation(t);
+
+    //parcourir r.listCouples et tous les afficher
+}
+
+// QUESTION :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
+// est ce qu'on peut comparer 2 string avec ==
+void RelationsManager::deleteRelation(const QString& t){
+    if(listRelations.size()==0)
+        throw Exception("Il n'y a pas de Relation!");
+    auto it = find_if(listRelations.begin(), listRelations.end(), [&t](Relation* obj) {return obj->getTitle() == t;});
+    if(it==listRelations.end())
+        throw Exception("Il n'y a pas de Relation correspondant à ce titre");
+    delete *it;
+    listRelations.erase(it);
+}

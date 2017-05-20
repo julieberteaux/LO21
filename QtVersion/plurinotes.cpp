@@ -43,22 +43,22 @@ Note::~Note(){
 
 /********************************** NotesVersion ****************************/
 
-void addNoteVersion(unsigned int id){
-    Note& n = getNote(id);
-    NotesVersion& latestVersion = n.listVersion.back();
-    NotesVersion newVersion = latestVersion;
-    newVersion.dateEdit.today();
-    newVersion.idVersion++;
-    //cout<<
-    n.listVersion.push_back(newVersion);
+//void addNoteVersion(unsigned int id){
+//    Note& n = getNote(id);
+//    NotesVersion& latestVersion = n.listVersion.back();
+//    NotesVersion newVersion = latestVersion;
+//    newVersion.dateEdit.today();
+//    newVersion.idVersion++;
+//    //cout<<
+//    n.listVersion.push_back(newVersion);
     
     
-}
+//}
 
 /********************************** Relation ****************************/
 
-Relation& Relation::operator<<(Couple& c){
-    if (nbCouples==nbMaxCouples)
-        //faire l'agrandissement sauf si on utilise une autre structure que le tableau
-    listCouples[nbCouples++]= &c;
+void Relation::addCouple(Couple& c){
+    listCouples.push_back(&c);
 }
+
+/********************************** RelationsManager ****************************/

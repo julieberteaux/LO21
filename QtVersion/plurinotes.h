@@ -217,14 +217,13 @@ class Relation {
 
     QString title;
     QString description;
-    Couple** listCouples;
+    std::vector<Couple*>* listCouples;
     bool oriented;
-    unsigned int nbCouples;
-    unsigned int nbMaxCouples;
+
 
 public:
 
-    Relation(const QString& t, const QString& d, bool o= true, unsigned int nb): title(t), description(d), listCouples(new Couple*[10]), oriented(o), nbCouples(nb),nbMaxCouples(10){}
+    Relation(const QString& t, const QString& d, bool o= true): title(t), description(d), listCouples(), oriented(o){}
     const QString& getTitle() {return title;}
     const QString& getDescription() {return description;}
 
@@ -234,7 +233,7 @@ public:
     bool getOrientation() {return oriented;}
 
     //addCouple : aggrégation de Couples
-    Relation& operator<<(Couple& c);
+    void addCouple(Couple& c);
 
     //getArborescence()
 };

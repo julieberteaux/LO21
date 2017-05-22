@@ -63,25 +63,12 @@ void Relation::addCouple(Couple& c){
 
 /********************************** RelationsManager ****************************/
 
-void addRelation(const QString& t, const QString& d, bool o){
 
-    if (! getRelation(t))
-    {
-        listNotes.push_back(new Relation(t, d, o));
-
-    }
-    else
-    {
-        throw Exception("Cette relation existe deja");
-    }
-
-
-}
 
 // QUESTION :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
 // est ce qu'on peut comparer 2 string avec ==
 
-Relation& getRelation(const QString& t) const{
+const Relation& RelationsManager::getRelation(const QString& t) const{
     if(listRelations.size()==0)
         throw Exception("Il n'y a pas de relation!");
     auto it = find_if(listRelations.begin(), listRelations.end(), [&t](Relation* obj) {return obj->getTitle() == t;});
@@ -91,7 +78,27 @@ Relation& getRelation(const QString& t) const{
 
 }
 
-void displayRelationCouples (const QString& t, std::ostream& f) {
+//PROBLEME
+//void RelationsManager::addRelation(const QString& t, const QString& d, bool o){
+
+//    //PROBLEME
+//    const Relation& r = getRelation(t);
+//    if (!r)
+//    {
+//        listRelations.push_back(new Relation(t, d, o));
+
+//    }
+//    else
+//    {
+//        throw Exception("Cette relation existe deja");
+//    }
+
+
+//}
+
+
+
+void RelationsManager::displayRelationCouples (const QString& t, std::ostream& f) {
     Relation r = getRelation(t);
 
     //parcourir r.listCouples et tous les afficher

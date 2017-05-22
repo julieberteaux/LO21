@@ -250,9 +250,9 @@ class RelationsManager{
     RelationsManager(): listRelations(){}
     ~RelationsManager(){
         //composition: we delete every objects pointed by the vector
-                for(std::vector<Relation*>::iterator it=listRelations->begin(); it!=listRelations->end(); ++it)
+                for(std::vector<Relation*>::iterator it=listRelations.begin(); it!=listRelations.end(); ++it)
                     delete *it;
-                delete listRelations;
+                listRelations.clear() ;
     }
 
 public:
@@ -262,8 +262,8 @@ public:
     }
 
     void addRelation(const QString& t, const QString& d, bool o);
-    Relation& getRelation(const QString& t) const;
-    void RelationsManager::deleteRelation(const QString& t);
+    const Relation& getRelation(const QString& t) const;
+    void deleteRelation(const QString& t);
     void displayRelationCouples (const QString& t, std::ostream& f);
 /*
 

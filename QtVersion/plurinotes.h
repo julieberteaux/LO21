@@ -72,7 +72,8 @@ class Note{
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}
-    NoteVersion &addNoteVersion(const NoteVersion &);
+    int addNoteVersion(const NoteVersion &);
+    int copyLatestVersion();
     NoteVersion& getNoteVersion(unsigned int id) const;
     /*
      changeState
@@ -98,7 +99,7 @@ public:
         return instance;
     }
     //addNote adds a note with a new id which is greatest id(=id of latest note) + 1, the new note is empty
-    Note& addNote();
+    int addNote();
     Note& getNote(unsigned int id) const;
     void deleteNote(unsigned int id);
     
@@ -122,6 +123,8 @@ public :
     Article (const QString& t, const QString& te): NoteVersion(0, t), text(te){}
     
     const QString& getText() const {return text;}
+    void setText(const QString& str) const {text=str;}
+
     Article* clone(unsigned int id) const;
 
 };
@@ -270,7 +273,7 @@ public:
         return instance;
     }
 
-    Relation& addRelation();
+    int addRelation();
     Relation& getRelation(const QString& t) const;
 /*
     deleteRelation

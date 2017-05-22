@@ -262,7 +262,7 @@ public:
     }
 
     void addRelation(const QString& t, const QString& d, bool o);
-    const Relation& getRelation(const QString& t) const;
+    const Relation* getRelation(const QString& t) const;
     void deleteRelation(const QString& t);
     void displayRelationCouples (const QString& t, std::ostream& f);
 /*

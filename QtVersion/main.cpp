@@ -19,7 +19,8 @@ int main() {
         //NoteVersion& art0=n0.getNoteVersion(0);
 
         //affichage de l'article
-        std::cout<<"titre de la note"<<art.getTitle().toStdString()<<" texte de l'article"<<art.getText().toStdString()<<std::endl;
+        Article& art2=dynamic_cast<Article&>(art);
+        std::cout<<"titre de la note: "<<art2.getTitle().toStdString()<<" texte de l'article: "<<art2.getText().toStdString()<<std::endl;
 
         //modification de la note=affichage de la note dans l'interface puis l'utilisateur modifie certains champs
         //lors de l'enregistrement cela créer une version du même type (Article, Image, ...). Cette version est enregistrée

@@ -50,10 +50,20 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/main.cpp \
-		../QtVersion/date.cpp 
+		../QtVersion/date.cpp \
+		../QtVersion/notesmanager.cpp \
+		../QtVersion/note.cpp \
+		../QtVersion/noteversion.cpp \
+		../QtVersion/relation.cpp \
+		../QtVersion/relationsmanager.cpp 
 OBJECTS       = plurinotes.o \
 		main.o \
-		date.o
+		date.o \
+		notesmanager.o \
+		note.o \
+		noteversion.o \
+		relation.o \
+		relationsmanager.o
 DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/qdevice.pri \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/device_config.prf \
@@ -231,9 +241,19 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/yacc.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/lex.prf \
 		../QtVersion/QtVersion.pro ../QtVersion/plurinotes.h \
-		../QtVersion/date.h ../QtVersion/plurinotes.cpp \
+		../QtVersion/date.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		../QtVersion/relation.h \
+		../QtVersion/relationsmanager.h ../QtVersion/plurinotes.cpp \
 		../QtVersion/main.cpp \
-		../QtVersion/date.cpp
+		../QtVersion/date.cpp \
+		../QtVersion/notesmanager.cpp \
+		../QtVersion/note.cpp \
+		../QtVersion/noteversion.cpp \
+		../QtVersion/relation.cpp \
+		../QtVersion/relationsmanager.cpp
 QMAKE_TARGET  = QtVersion
 DESTDIR       = 
 TARGET        = QtVersion.app/Contents/MacOS/QtVersion
@@ -639,8 +659,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -700,18 +720,116 @@ plurinotes.o: ../QtVersion/plurinotes.cpp ../QtVersion/plurinotes.h \
 		../QtVersion/date.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o plurinotes.o ../QtVersion/plurinotes.cpp
 
-main.o: ../QtVersion/main.cpp ../QtVersion/plurinotes.h \
+main.o: ../QtVersion/main.cpp /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		../QtVersion/date.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/relationsmanager.h \
+		../QtVersion/relation.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../QtVersion/main.cpp
+
+date.o: ../QtVersion/date.cpp ../QtVersion/date.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o date.o ../QtVersion/date.cpp
+
+notesmanager.o: ../QtVersion/notesmanager.cpp ../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../QtVersion/date.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../QtVersion/main.cpp
+		../QtVersion/date.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o notesmanager.o ../QtVersion/notesmanager.cpp
 
-date.o: ../QtVersion/date.cpp ../QtVersion/date.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o date.o ../QtVersion/date.cpp
+note.o: ../QtVersion/note.cpp ../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../QtVersion/date.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o note.o ../QtVersion/note.cpp
+
+noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../QtVersion/date.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o noteversion.o ../QtVersion/noteversion.cpp
+
+relation.o: ../QtVersion/relation.cpp ../QtVersion/relation.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../QtVersion/date.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relation.o ../QtVersion/relation.cpp
+
+relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmanager.h \
+		../QtVersion/relation.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../QtVersion/date.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relationsmanager.o ../QtVersion/relationsmanager.cpp
 
 ####### Install
 

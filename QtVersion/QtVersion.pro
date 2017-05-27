@@ -6,8 +6,18 @@ QT += xml
 SOURCES += \
     plurinotes.cpp \
     main.cpp \
-    date.cpp
+    date.cpp \
+    notesmanager.cpp \
+    note.cpp \
+    noteversion.cpp \
+    relation.cpp \
+    relationsmanager.cpp
 
 HEADERS += \
     plurinotes.h \
-    date.h
+    date.h \
+    notesmanager.h \
+    note.h \
+    noteversion.h \
+    relation.h \
+    relationsmanager.h

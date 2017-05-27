@@ -1,7 +1,9 @@
 #include <QApplication>
 #include <QString>
 #include <QFileDialog>
-#include "plurinotes.h"
+//#include "plurinotes.h"
+#include "notesmanager.h"
+#include "relationsmanager.h"
 
 int main(int argc, char* argv[]) {
 

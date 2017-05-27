@@ -24,6 +24,7 @@ public:
     int addNote();
     Note& getNote(unsigned int id) const;
     void deleteNote(unsigned int id);
+    void save() const;
 
     /*
      modifyNote (va appeler addNoteVersion ou copyVersion)

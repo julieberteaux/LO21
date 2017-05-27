@@ -6,6 +6,10 @@
 #include "relationsmanager.h"
 
 int main(int argc, char* argv[]) {
+//objectif:
+//chargement et sauvegarde
+//on ouvre le logiciel, on charge les notes (articles pour commencer) et on les affiche
+
 
 //    QApplication app(argc, argv);
 //    //QString fichier = "../TD6/notes.xml";
@@ -42,8 +46,8 @@ int main(int argc, char* argv[]) {
         //modification de la note=affichage de la note dans l'interface puis l'utilisateur modifie certains champs
         //lors de l'enregistrement cela créer une version du même type (Article, Image, ...). Cette version est enregistrée
         int idCopyLatestVersion=n0.copyLatestVersion();
-        NoteVersion& art=n0.getNoteVersion(idCopyLatestVersion);
-        Article& art2=dynamic_cast<Article&>(art);//conversion pour pouvoir utiliser les méthodes de la classe article
+        art=n0.getNoteVersion(idCopyLatestVersion);
+        art2=dynamic_cast<Article&>(art);//conversion pour pouvoir utiliser les méthodes de la classe article
 
         /*for(std::vector<Note*>::iterator it=manager.listNotes.begin(); it!=manager.listNotes.end(); ++it)
             std::cout<<(*it)->getidNote()<<std::endl;*/

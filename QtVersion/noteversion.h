@@ -61,7 +61,8 @@ public :
     Article (const QString& t, const QString& te): NoteVersion(0, t), text(te){}
 
     const QString& getText() const {return text;}
-    void setText(const QString& str) const {text=str;}
+    void setText(QString str) const {//text=str;
+    }
 
     Article* clone(unsigned int id) const;
 

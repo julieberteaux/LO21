@@ -21,13 +21,13 @@ public:
         return instance;
     }
     //addNote adds a note with a new id which is greatest id(=id of latest note) + 1, the new note is empty
-    Note& addNote();
+    int addNote();
     Note& getNote(unsigned int id) const;
     void deleteNote(unsigned int id);
 
     /*
      modifyNote (va appeler addNoteVersion ou copyVersion)
-     listNotes (voir toutes les notes active?) avec un iterator??
+     listNotes (voir toutes les notes active?) à faire avec l'interface
      */
 };
 

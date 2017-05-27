@@ -6,14 +6,14 @@ NotesManager::~NotesManager(){//composition: we delete every objects pointed by 
         delete *it;
 }
 
-Note& NotesManager::addNote(){
+int NotesManager::addNote(){
     if(listNotes.size()==0){
         Note* n=new Note(0);
         listNotes.push_back(n);
     }else {
         listNotes.push_back(new Note((listNotes.back())->getIdNote()+1));
     }
-    return *(listNotes.back());
+    return (listNotes.back())->getIdNote();
 }
 
 Note& NotesManager::getNote(unsigned int id) const{

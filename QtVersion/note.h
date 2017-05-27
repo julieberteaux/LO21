@@ -24,7 +24,9 @@ class Note{
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}
-
+    int addNoteVersion(const NoteVersion &);
+    int copyLatestVersion();
+    NoteVersion& getNoteVersion(unsigned int id) const;
     /*
      changeState
      getLatestVersion

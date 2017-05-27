@@ -31,3 +31,21 @@ void RelationsManager::addRelation(const QString& t, const QString& d, bool o){
 
 
 }
+
+void RelationsManager::displayRelationCouples (const QString& t, std::ostream& f) {
+    const Relation* r = getRelation(t);
+
+    //parcourir r.listCouples et tous les afficher
+}
+
+// QUESTION :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
+// est ce qu'on peut comparer 2 string avec ==
+void RelationsManager::deleteRelation(const QString& t){
+    if(listRelations.size()==0)
+        throw Exception("Il n'y a pas de Relation!");
+    auto it = find_if(listRelations.begin(), listRelations.end(), [&t](Relation* obj) {return obj->getTitle() == t;});
+    if(it==listRelations.end())
+        throw Exception("Il n'y a pas de Relation correspondant à ce titre");
+    delete *it;
+    listRelations.erase(it);
+}

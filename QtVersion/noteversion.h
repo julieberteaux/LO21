@@ -14,19 +14,27 @@
 
 
 class NoteVersion{
-    unsigned int idNote;
+    //unsigned int idNote;
+protected:
     unsigned int idVersion;
+
+private:
     QString title;
     Date dateEdit;
-    Date dateCrea;
+    //Date dateCrea;
 
 
 public :
 
-    NoteVersion( unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc): idNote(n), idVersion(v), title(t), dateEdit(de),dateCrea(dc){}
-    const QString& getTitle() const {return title;}
-    NoteVersion(NoteVersion &){}
-    void addNoteVersion(unsigned int id);
+    NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
+    const QString& getTitle() const {
+        return title;
+    }
+    virtual ~NoteVersion(){};
+    unsigned int getIdVersion() const{return idVersion;}
+
+    //NoteVersion(NoteVersion &){}
+    virtual NoteVersion* clone(unsigned int id) const=0;
 
 /*
  addNoteVersion :
@@ -48,13 +56,14 @@ public :
 class Article : public NoteVersion {
     QString text;
 
-
 public :
 
-    Article (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& te): NoteVersion(n, v, t, de, dc), text(te){}
+    Article (const QString& t, const QString& te): NoteVersion(0, t), text(te){}
 
     const QString& getText() const {return text;}
+    void setText(const QString& str) const {text=str;}
 
+    Article* clone(unsigned int id) const;
 
 };
 
@@ -70,17 +79,15 @@ class Task : public NoteVersion {
 
 public :
 
-    Task (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& a, unsigned int p, const Date d, const Status s): NoteVersion(n, v, t, de, dc), action(a), priority(p), deadline(d), status(s){}
+    Task (const QString& t,const QString& a, unsigned int p, const Date d, const Status s): NoteVersion(0, t), action(a), priority(p), deadline(d), status(s){}
 
     const QString& getAction() const {return action;}
     unsigned int getPriority() const {return priority;}
     const Date& getDeadline() const {return deadline;}
     const Status& getStatus() const {return status;}
-
+    Task* clone(unsigned int id) const;
 
 };
-
-
 /********************************** Image ****************************/
 
 class Image : public NoteVersion {
@@ -90,11 +97,11 @@ class Image : public NoteVersion {
 
 public :
 
-    Image(unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
+    Image(const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
 
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
-
+    Image* clone(unsigned int id) const;
 
 };
 
@@ -108,11 +115,11 @@ class Audio : public NoteVersion {
 
 public :
 
-    Audio (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
+    Audio (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
 
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
-
+    Audio* clone(unsigned int id) const;
 
 };
 
@@ -126,14 +133,13 @@ class Video : public NoteVersion {
 
 public :
 
-    Video (unsigned int n, unsigned int v, const QString& t, const Date& de, const Date& dc, const QString& d, const QString& f): NoteVersion(n, v, t, de, dc), description(d), file(f){}
+    Video (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
 
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
-
+    Video* clone(unsigned int id) const;
 
 };
-
 
 
 #endif // NOTEVERSION_H

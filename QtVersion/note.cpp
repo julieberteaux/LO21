@@ -7,3 +7,54 @@ Note::~Note(){
         delete *it;
     //std::cout<<"suppression de la note d'id"<<idNote<<std::endl;
 }
+
+int Note::addNoteVersion(const NoteVersion& n){
+    /*the former version of addNoteVersion (version which is bleow) had the disavantage that we could add several
+     NoteVersion of different types (Image, Article...)
+    if(listVersion.size()==0){
+        listVersion.push_back(n.clone(0));
+    }else {
+        listVersion.push_back(n.clone((listVersion.back())->getIdVersion()+1));
+    }
+    return (listVersion.back())->getIdVersion();
+    */
+    /*The new version below allows to add only one version (artcile, image...) in a note. If we want to add a new version
+    we have to use copylatestversion*/
+    if(listVersion.size()==0){
+        listVersion.push_back(n.clone(0));
+    }else {
+        throw Exception("La note n'est pas vide...");
+    }
+    return (listVersion.back())->getIdVersion();
+}
+
+//void addNoteVersion(unsigned int id){
+//    Note& n = getNote(id);
+//    NotesVersion& latestVersion = n.listVersion.back();
+//    NotesVersion newVersion = latestVersion;
+//    newVersion.dateEdit.today();
+//    newVersion.idVersion++;
+//    //cout<<
+//    n.listVersion.push_back(newVersion);
+
+
+//}
+
+int Note::copyLatestVersion(){
+    if(listVersion.size()==0){
+        throw Exception("La note est vide...");
+    }else {
+        NoteVersion* copyLatestVersion=listVersion.back()->clone(listVersion.back()->getIdVersion()+1);
+        listVersion.push_back(copyLatestVersion);
+    }
+    return (listVersion.back())->getIdVersion();
+}
+
+NoteVersion& Note::getNoteVersion(unsigned int id) const{
+    if(listVersion.size()==0)
+        throw Exception("Il n'y a pas de verion pour cette note!");
+    auto it = find_if(listVersion.begin(), listVersion.end(), [&id](NoteVersion* obj) {return obj->getIdVersion() == id;});
+    if(it==listVersion.end())
+        throw Exception("Il n'y a pas de version correspondant à l'id");
+    return **it;
+}

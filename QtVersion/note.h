@@ -4,6 +4,8 @@
 
 #include "noteversion.h"
 
+#include <QXmlStreamWriter>
+
 
 class Note{
     friend class NotesManager;
@@ -21,7 +23,7 @@ class Note{
     const Note& operator =(const Note&);
     Note(const Note&);
     ~Note();
-    saveNote(QXmlStreamWriter* stream) const;
+    void saveNote(QXmlStreamWriter* stream) const;
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}

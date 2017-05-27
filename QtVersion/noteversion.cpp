@@ -18,6 +18,13 @@ Article* Article::clone(unsigned int id) const{
     art->idVersion=id;
     return art;
 }
+
+void Article::saveNoteVersion(QXmlStreamWriter* stream) const{
+    stream.writeStartElement("article");
+    stream.writeTextElement("texte",text);
+    stream.writeEndElement();
+}
+
 /********************************** Task ****************************/
 
 Task* Task::clone(unsigned int id) const{

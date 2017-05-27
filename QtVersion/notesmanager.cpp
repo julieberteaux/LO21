@@ -37,15 +37,17 @@ void NotesManager::deleteNote(unsigned int id){
 void NotesManager::save() const {
     QFile newfile(filename);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text))
-        throw NotesException(QString("erreur sauvegarde notes : ouverture fichier xml"));
+        throw Exception("erreur sauvegarde notes : ouverture fichier xml");
     QXmlStreamWriter stream(&newfile);
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
     stream.writeStartElement("notes");
-    for(std::vector<Note*>::iterator it=listNotes.begin(); it!=listNotes.end(); ++it){
+
+    for(std::vector<Note*>::const_iterator it=listNotes.begin(); it!=listNotes.end(); ++it)
         (**it).saveNote(&stream);
-    }
+
     stream.writeEndElement();
     stream.writeEndDocument();
     newfile.close();
 }
+

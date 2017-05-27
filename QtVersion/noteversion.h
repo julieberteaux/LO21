@@ -11,6 +11,7 @@
 #include <QMainWindow>
 #include <QObject>
 #include <QWidget>
+#include <QXmlStreamWriter>
 
 
 class NoteVersion{
@@ -23,7 +24,7 @@ private:
     Date dateEdit;
     //Date dateCrea;
 
-
+    virtual void saveNoteVersion(QXmlStreamWriter* stream) const=0;
 public :
 
     NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
@@ -35,7 +36,7 @@ public :
 
     //NoteVersion(NoteVersion &){}
     virtual NoteVersion* clone(unsigned int id) const=0;
-
+    virtual QString type() const =0;
 /*
  addNoteVersion :
     copyLatest : copie de la dernière version
@@ -54,17 +55,20 @@ public :
 /********************************** Article ****************************/
 
 class Article : public NoteVersion {
+    friend class Note;
+
     QString text;
+    void saveNoteVersion(QXmlStreamWriter* stream) const;
 
 public :
 
     Article (const QString& t, const QString& te): NoteVersion(0, t), text(te){}
 
     const QString& getText() const {return text;}
-    void setText(QString str) const {//text=str;
-    }
+    void setText(const QString& str) {text=str;}
 
     Article* clone(unsigned int id) const;
+    QString type() const {return "Article";}
 
 };
 

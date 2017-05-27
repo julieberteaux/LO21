@@ -8,6 +8,28 @@ Note::~Note(){
     //std::cout<<"suppression de la note d'id"<<idNote<<std::endl;
 }
 
+void Note::saveNote(QXmlStreamWriter* stream) const {
+    //we consider that a note has ONE specific type (article, image, ...)
+    //a note is saved if it has at least one version...
+    if(listVersion.size()!=0){
+        stream->writeStartElement("note");
+        stream->writeTextElement("type",(listVersion.back())->type());
+        stream->writeTextElement("id",QString::number(idNote));
+
+        stream->writeStartElement("dateCrea");
+        stream->writeTextElement("jour",QString::number(dateCrea.getJour()));
+        stream->writeTextElement("mois",QString::number(dateCrea.getMois()));
+        stream->writeTextElement("annee",QString::number(dateCrea.getAnnee()));
+        stream->writeEndElement();
+
+        for(std::vector<NoteVersion*>::const_iterator it=listVersion.begin(); it!=listVersion.end(); ++it)
+            (**it).saveNoteVersion(stream);
+
+        stream->writeEndElement();
+        stream->writeEndDocument();
+    }
+}
+
 int Note::addNoteVersion(const NoteVersion& n){
     /*the former version of addNoteVersion (version which is bleow) had the disavantage that we could add several
      NoteVersion of different types (Image, Article...)

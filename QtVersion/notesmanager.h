@@ -9,10 +9,11 @@ class NotesManager{
     //notes are sorted by idNote
     //composition between NotesManager and Note
     std::vector<Note*> listNotes;
+    mutable QString filename;
 
     const NotesManager& operator =(const NotesManager&);
     NotesManager(const NotesManager&);
-    NotesManager(): listNotes(){}
+    NotesManager(): listNotes(), filename(""){}
     ~NotesManager();
 
 public:

@@ -2,7 +2,7 @@
 #define NOTESMANAGER_H
 
 #include "note.h"
-
+//fusion
 class NotesManager{
     //singleton
     //we use a vector of Notes

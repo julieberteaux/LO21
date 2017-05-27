@@ -21,3 +21,6 @@ HEADERS += \
     noteversion.h \
     relation.h \
     relationsmanager.h
+
+FORMS += \
+    mainwindow.ui

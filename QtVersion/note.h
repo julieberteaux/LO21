@@ -16,14 +16,15 @@ class Note{
 
     //the constructor is private because only NotesManager can use it
     //used by addNote in NotesManager
-    Note(unsigned int id): idNote(id), dateCrea(), listVersion(){
-        dateCrea.today();
-    }
+    Note(unsigned int id): idNote(id), dateCrea(), listVersion(){dateCrea.today();}
+    Note(unsigned int id, Date date): idNote(id), dateCrea(date), listVersion(){}
+
     //only NotesManager can delete a Note or duplicate a Note
     const Note& operator =(const Note&);
     Note(const Note&);
     ~Note();
     void saveNote(QXmlStreamWriter* stream) const;
+    void loadVersion(QXmlStreamReader* xml);
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}

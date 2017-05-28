@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <notes>
     <note>
-        <type>Article</type>
         <idNote>0</idNote>
         <dateCrea>
             <jour>28</jour>
             <mois>5</mois>
             <annee>2017</annee>
         </dateCrea>
+        <type>Article</type>
         <version>
             <idVersion>0</idVersion>
             <title>titre de l'article...</title>
@@ -30,13 +30,13 @@
         </version>
     </note>
     <note>
-        <type>Image</type>
         <idNote>1</idNote>
         <dateCrea>
             <jour>28</jour>
             <mois>5</mois>
             <annee>2017</annee>
         </dateCrea>
+        <type>Image</type>
         <version>
             <idVersion>0</idVersion>
             <title>image des vacances</title>

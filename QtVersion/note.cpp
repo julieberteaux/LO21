@@ -13,7 +13,6 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
     //a note is saved if it has at least one version...
     if(listVersion.size()!=0){
         stream->writeStartElement("note");
-        stream->writeTextElement("type",(listVersion.back())->type());
         stream->writeTextElement("idNote",QString::number(idNote));
 
         stream->writeStartElement("dateCrea");
@@ -22,11 +21,16 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
         stream->writeTextElement("annee",QString::number(dateCrea.getAnnee()));
         stream->writeEndElement();
 
+        stream->writeTextElement("type",(listVersion.back())->type());
+
         for(std::vector<NoteVersion*>::const_iterator it=listVersion.begin(); it!=listVersion.end(); ++it)
             (**it).saveNoteVersion(stream);
 
         stream->writeEndElement();
     }
+}
+void Note::loadVersion(QXmlStreamReader *xml){
+
 }
 
 int Note::addNoteVersion(const NoteVersion& n){

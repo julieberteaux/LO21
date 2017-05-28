@@ -16,6 +16,7 @@ class NotesManager{
     NotesManager(): listNotes(), filename(""){}
     ~NotesManager();
 
+
 public:
     static NotesManager& getInstance(){
         static NotesManager instance;
@@ -27,7 +28,7 @@ public:
     Note& getNote(unsigned int id) const;
     void deleteNote(unsigned int id);
     void save() const;
-
+    void load();
     /*
      modifyNote (va appeler addNoteVersion ou copyVersion)
      listNotes (voir toutes les notes active?) à faire avec l'interface

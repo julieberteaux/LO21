@@ -15,7 +15,7 @@ CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefau
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -std=c++11 -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I../QtVersion -I. -I/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtXml.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Qt/5.9/clang_64/mkspecs/macx-clang -F/Applications/Qt/5.9/clang_64/lib
+INCPATH       = -I../QtVersion -I. -I/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtXml.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Applications/Qt/5.9/clang_64/mkspecs/macx-clang -F/Applications/Qt/5.9/clang_64/lib
 QMAKE         = /Applications/Qt/5.9/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -55,7 +55,8 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/note.cpp \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
-		../QtVersion/relationsmanager.cpp 
+		../QtVersion/relationsmanager.cpp \
+		../QtVersion/mainwindow.cpp moc_mainwindow.cpp
 OBJECTS       = plurinotes.o \
 		main.o \
 		date.o \
@@ -63,7 +64,9 @@ OBJECTS       = plurinotes.o \
 		note.o \
 		noteversion.o \
 		relation.o \
-		relationsmanager.o
+		relationsmanager.o \
+		mainwindow.o \
+		moc_mainwindow.o
 DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/qdevice.pri \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/device_config.prf \
@@ -255,14 +258,16 @@ DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
 		../QtVersion/relation.h \
-		../QtVersion/relationsmanager.h ../QtVersion/plurinotes.cpp \
+		../QtVersion/relationsmanager.h \
+		../QtVersion/mainwindow.h ../QtVersion/plurinotes.cpp \
 		../QtVersion/main.cpp \
 		../QtVersion/date.cpp \
 		../QtVersion/notesmanager.cpp \
 		../QtVersion/note.cpp \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
-		../QtVersion/relationsmanager.cpp
+		../QtVersion/relationsmanager.cpp \
+		../QtVersion/mainwindow.cpp
 QMAKE_TARGET  = QtVersion
 DESTDIR       = 
 TARGET        = QtVersion.app/Contents/MacOS/QtVersion
@@ -276,7 +281,7 @@ EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_
 first: all
 ####### Build rules
 
-$(TARGET):  $(OBJECTS)  
+$(TARGET): ui_mainwindow.h $(OBJECTS)  
 	@test -d QtVersion.app/Contents/MacOS/ || mkdir -p QtVersion.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -691,8 +696,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -724,12 +730,25 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++11 -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_mainwindow.cpp
+moc_mainwindow.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../QtVersion/mainwindow.h \
+		moc_predefs.h \
+		/Applications/Qt/5.9/clang_64/bin/moc
+	/Applications/Qt/5.9/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Applications/Qt/5.9/clang_64/mkspecs/macx-clang -I/Users/Antoine/OneDrive/Cours/GI02/LO21/projet/LO21/QtVersion -I/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtXml.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Applications/Qt/5.9/clang_64/lib ../QtVersion/mainwindow.h -o moc_mainwindow.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all:
+compiler_uic_make_all: ui_mainwindow.h
 compiler_uic_clean:
+	-$(DEL_FILE) ui_mainwindow.h
+ui_mainwindow.h: ../QtVersion/mainwindow.ui \
+		/Applications/Qt/5.9/clang_64/bin/uic
+	/Applications/Qt/5.9/clang_64/bin/uic ../QtVersion/mainwindow.ui -o ui_mainwindow.h
+
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
 compiler_yacc_decl_make_all:
@@ -738,7 +757,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -878,6 +897,15 @@ relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmana
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relationsmanager.o ../QtVersion/relationsmanager.cpp
+
+mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
+
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
 

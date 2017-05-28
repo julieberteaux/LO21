@@ -49,13 +49,21 @@ int main(int argc, char* argv[]) {
         Article& art2=dynamic_cast<Article&>(art);//conversion pour pouvoir utiliser les méthodes de la classe article
         std::cout<<"titre de la note: "<<art2.getTitle().toStdString()<<" texte de l'article: "<<art2.getText().toStdString()<<std::endl;
 
-        manager.save();
-
         //modification de la note=affichage de la note dans l'interface puis l'utilisateur modifie certains champs
         //lors de l'enregistrement cela créer une version du même type (Article, Image, ...). Cette version est enregistrée
         int idCopyLatestVersion=n0.copyLatestVersion();
-        art=n0.getNoteVersion(idCopyLatestVersion);
-        art2=dynamic_cast<Article&>(art);//conversion pour pouvoir utiliser les méthodes de la classe article
+        NoteVersion& artv2=n0.getNoteVersion(idCopyLatestVersion);
+        Article& artV2=dynamic_cast<Article&>(artv2);
+        artV2.setText("ceci est un essai");
+
+        int idn1=manager.addNote();//1
+        Note& n1=manager.getNote(idn1);
+
+        Image* img=new Image("image des vacances", "c'est une image des vacances","/vacances.jpeg");
+        int idimg=n1.addNoteVersion(*img);
+
+        manager.save();
+
 
         /*for(std::vector<Note*>::iterator it=manager.listNotes.begin(); it!=manager.listNotes.end(); ++it)
             std::cout<<(*it)->getidNote()<<std::endl;*/

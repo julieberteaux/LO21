@@ -62,7 +62,9 @@ Image* Image::clone(unsigned int id) const{
 }
 
 void Image::saveNoteVersionType(QXmlStreamWriter* stream) const{
-    //A FAIRE
+    stream->writeTextElement("description",description);
+    stream->writeTextElement("file",file);
+
 }
 /********************************** Audio ****************************/
 

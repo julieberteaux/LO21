@@ -18,6 +18,35 @@
             </dateEdit>
             <texte>texte de l'article...</texte>
         </version>
+        <version>
+            <idVersion>1</idVersion>
+            <title>titre de l'article...</title>
+            <dateEdit>
+                <jour>28</jour>
+                <mois>5</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <texte>ceci est un essai</texte>
+        </version>
+    </note>
+    <note>
+        <type>Image</type>
+        <idNote>1</idNote>
+        <dateCrea>
+            <jour>28</jour>
+            <mois>5</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <version>
+            <idVersion>0</idVersion>
+            <title>image des vacances</title>
+            <dateEdit>
+                <jour>28</jour>
+                <mois>5</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description>c'est une image des vacances</description>
+            <file>/vacances.jpeg</file>
+        </version>
     </note>
 </notes>
-

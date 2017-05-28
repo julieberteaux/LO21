@@ -26,7 +26,6 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
             (**it).saveNoteVersion(stream);
 
         stream->writeEndElement();
-        stream->writeEndDocument();
     }
 }
 
@@ -66,7 +65,7 @@ int Note::copyLatestVersion(){
     if(listVersion.size()==0){
         throw Exception("La note est vide...");
     }else {
-        NoteVersion* copyLatestVersion=listVersion.back()->clone(listVersion.back()->getIdVersion()+1);
+        NoteVersion* copyLatestVersion=listVersion.back()->clone((listVersion.back()->getIdVersion())+1);
         listVersion.push_back(copyLatestVersion);
     }
     return (listVersion.back())->getIdVersion();

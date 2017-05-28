@@ -11,6 +11,25 @@
 
 
 //}
+void NoteVersion::saveNoteVersion(QXmlStreamWriter* stream) const{
+    stream->writeStartElement("version");
+
+    stream->writeTextElement("idVersion",QString::number(idVersion));
+
+    stream->writeTextElement("title",title);
+
+    stream->writeStartElement("dateEdit");
+    stream->writeTextElement("jour",QString::number(dateEdit.getJour()));
+    stream->writeTextElement("mois",QString::number(dateEdit.getMois()));
+    stream->writeTextElement("annee",QString::number(dateEdit.getAnnee()));
+    stream->writeEndElement();
+
+    saveNoteVersionType(stream);
+
+    stream->writeEndElement();
+
+}
+
 /********************************** Article ****************************/
 
 Article* Article::clone(unsigned int id) const{
@@ -19,10 +38,8 @@ Article* Article::clone(unsigned int id) const{
     return art;
 }
 
-void Article::saveNoteVersion(QXmlStreamWriter* stream) const{
-    stream->writeStartElement("article");
+void Article::saveNoteVersionType(QXmlStreamWriter* stream) const{
     stream->writeTextElement("texte",text);
-    stream->writeEndElement();
 }
 
 /********************************** Task ****************************/
@@ -33,7 +50,7 @@ Task* Task::clone(unsigned int id) const{
     return tsk;
 }
 
-void Task::saveNoteVersion(QXmlStreamWriter* stream) const{
+void Task::saveNoteVersionType(QXmlStreamWriter* stream) const{
     //A FAIRE
 }
 /********************************** Image ****************************/
@@ -44,7 +61,7 @@ Image* Image::clone(unsigned int id) const{
     return img;
 }
 
-void Image::saveNoteVersion(QXmlStreamWriter* stream) const{
+void Image::saveNoteVersionType(QXmlStreamWriter* stream) const{
     //A FAIRE
 }
 /********************************** Audio ****************************/
@@ -54,6 +71,6 @@ Audio* Audio::clone(unsigned int id) const{
     aud->idVersion=id;
     return aud;
 }
-void Audio::saveNoteVersion(QXmlStreamWriter* stream) const{
+void Audio::saveNoteVersionType(QXmlStreamWriter* stream) const{
     //A FAIRE
 }

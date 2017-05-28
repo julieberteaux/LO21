@@ -225,7 +225,6 @@ DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/qt_config.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/spec_post.prf \
-		../QtVersion/.qmake.stash \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/mac/sdk.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/toolchain.prf \
@@ -443,7 +442,6 @@ Makefile: ../QtVersion/QtVersion.pro /Applications/Qt/5.9/clang_64/mkspecs/macx-
 		/Applications/Qt/5.9/clang_64/mkspecs/features/qt_config.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/mac/sdk.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/toolchain.prf \
@@ -634,7 +632,6 @@ Makefile: ../QtVersion/QtVersion.pro /Applications/Qt/5.9/clang_64/mkspecs/macx-
 /Applications/Qt/5.9/clang_64/mkspecs/features/qt_config.prf:
 /Applications/Qt/5.9/clang_64/mkspecs/macx-clang/qmake.conf:
 /Applications/Qt/5.9/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /Applications/Qt/5.9/clang_64/mkspecs/features/exclusive_builds.prf:
 /Applications/Qt/5.9/clang_64/mkspecs/features/mac/sdk.prf:
 /Applications/Qt/5.9/clang_64/mkspecs/features/toolchain.prf:
@@ -708,7 +705,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r QtVersion.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -848,7 +844,9 @@ noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o noteversion.o ../QtVersion/noteversion.cpp
 
 relation.o: ../QtVersion/relation.cpp ../QtVersion/relation.h \

@@ -22,9 +22,9 @@ protected:
 private:
     QString title;
     Date dateEdit;
-    //Date dateCrea;
 
-    virtual void saveNoteVersion(QXmlStreamWriter* stream) const=0;
+    void saveNoteVersion(QXmlStreamWriter* stream) const;
+    virtual void saveNoteVersionType(QXmlStreamWriter* stream) const=0;
 public :
 
     NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
@@ -58,7 +58,7 @@ class Article : public NoteVersion {
     friend class Note;
 
     QString text;
-    void saveNoteVersion(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter* stream) const;
 
 public :
 
@@ -84,7 +84,7 @@ class Task : public NoteVersion {
     enum Status {waiting, ended, in_progress};
     Status status;
 
-    void saveNoteVersion(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter* stream) const;
 public :
 
     Task (const QString& t,const QString& a, unsigned int p, const Date d, const Status s): NoteVersion(0, t), action(a), priority(p), deadline(d), status(s){}
@@ -105,7 +105,7 @@ class Image : public NoteVersion {
     QString description;
     QString file;
 
-    void saveNoteVersion(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter* stream) const;
 
 
 public :
@@ -128,7 +128,7 @@ class Audio : public NoteVersion {
     QString description;
     QString file;
 
-    void saveNoteVersion(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter* stream) const;
 
 public :
 
@@ -150,7 +150,7 @@ class Video : public NoteVersion {
     QString description;
     QString file;
 
-    void saveNoteVersion(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter* stream) const;
 
 public :
 

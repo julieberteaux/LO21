@@ -14,7 +14,7 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
     if(listVersion.size()!=0){
         stream->writeStartElement("note");
         stream->writeTextElement("type",(listVersion.back())->type());
-        stream->writeTextElement("id",QString::number(idNote));
+        stream->writeTextElement("idNote",QString::number(idNote));
 
         stream->writeStartElement("dateCrea");
         stream->writeTextElement("jour",QString::number(dateCrea.getJour()));

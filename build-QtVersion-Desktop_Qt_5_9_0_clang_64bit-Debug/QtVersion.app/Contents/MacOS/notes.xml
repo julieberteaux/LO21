@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notes>
+    <note>
+        <type>Article</type>
+        <idNote>0</idNote>
+        <dateCrea>
+            <jour>28</jour>
+            <mois>5</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <version>
+            <idVersion>0</idVersion>
+            <title>titre de l'article...</title>
+            <dateEdit>
+                <jour>28</jour>
+                <mois>5</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <texte>texte de l'article...</texte>
+        </version>
+    </note>
+</notes>
+

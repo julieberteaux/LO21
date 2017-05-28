@@ -15,7 +15,7 @@
 
 
 class NoteVersion{
-    //unsigned int idNote;
+    friend class Note;
 protected:
     unsigned int idVersion;
 
@@ -76,12 +76,15 @@ public :
 /********************************** Task ****************************/
 
 class Task : public NoteVersion {
+    friend class Note;
+
     QString action;
     unsigned int priority;
     Date deadline;
     enum Status {waiting, ended, in_progress};
     Status status;
 
+    void saveNoteVersion(QXmlStreamWriter* stream) const;
 public :
 
     Task (const QString& t,const QString& a, unsigned int p, const Date d, const Status s): NoteVersion(0, t), action(a), priority(p), deadline(d), status(s){}
@@ -91,13 +94,18 @@ public :
     const Date& getDeadline() const {return deadline;}
     const Status& getStatus() const {return status;}
     Task* clone(unsigned int id) const;
+    QString type() const {return "Task";}
 
 };
 /********************************** Image ****************************/
 
 class Image : public NoteVersion {
+    friend class Note;
+
     QString description;
     QString file;
+
+    void saveNoteVersion(QXmlStreamWriter* stream) const;
 
 
 public :
@@ -107,6 +115,7 @@ public :
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
     Image* clone(unsigned int id) const;
+    QString type() const {return "Image";}
 
 };
 
@@ -114,9 +123,12 @@ public :
 /********************************** Audio ****************************/
 
 class Audio : public NoteVersion {
+    friend class Note;
+
     QString description;
     QString file;
 
+    void saveNoteVersion(QXmlStreamWriter* stream) const;
 
 public :
 
@@ -125,6 +137,7 @@ public :
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
     Audio* clone(unsigned int id) const;
+    QString type() const {return "Audio";}
 
 };
 
@@ -132,9 +145,12 @@ public :
 /********************************** Video ****************************/
 
 class Video : public NoteVersion {
+    friend class Note;
+
     QString description;
     QString file;
 
+    void saveNoteVersion(QXmlStreamWriter* stream) const;
 
 public :
 
@@ -143,6 +159,7 @@ public :
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
     Video* clone(unsigned int id) const;
+    QString type() const {return "Video";}
 
 };
 

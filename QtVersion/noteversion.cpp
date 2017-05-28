@@ -20,9 +20,9 @@ Article* Article::clone(unsigned int id) const{
 }
 
 void Article::saveNoteVersion(QXmlStreamWriter* stream) const{
-    stream.writeStartElement("article");
-    stream.writeTextElement("texte",text);
-    stream.writeEndElement();
+    stream->writeStartElement("article");
+    stream->writeTextElement("texte",text);
+    stream->writeEndElement();
 }
 
 /********************************** Task ****************************/
@@ -32,6 +32,10 @@ Task* Task::clone(unsigned int id) const{
     tsk->idVersion=id;
     return tsk;
 }
+
+void Task::saveNoteVersion(QXmlStreamWriter* stream) const{
+    //A FAIRE
+}
 /********************************** Image ****************************/
 
 Image* Image::clone(unsigned int id) const{
@@ -39,10 +43,17 @@ Image* Image::clone(unsigned int id) const{
     img->idVersion=id;
     return img;
 }
+
+void Image::saveNoteVersion(QXmlStreamWriter* stream) const{
+    //A FAIRE
+}
 /********************************** Audio ****************************/
 
 Audio* Audio::clone(unsigned int id) const{
     Audio* aud=new Audio(*this);
     aud->idVersion=id;
     return aud;
+}
+void Audio::saveNoteVersion(QXmlStreamWriter* stream) const{
+    //A FAIRE
 }

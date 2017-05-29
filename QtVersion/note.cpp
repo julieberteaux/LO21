@@ -29,7 +29,35 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
         stream->writeEndElement();
     }
 }
-void Note::loadVersion(QXmlStreamReader *xml){
+void Note::loadVersion(QXmlStreamReader& xml){
+    if(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "type")){
+        throw Exception("Erreur lors du chargement: la balise n'est pas <type>.");
+    }
+    xml.readNext();
+
+    while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "note")) {
+        if(xml.tokenType() == QXmlStreamReader::StartElement) {
+            // We've found identificteur.
+            if(xml.name() == "idNote") {
+                xml.readNext(); idNote=xml.text().toInt();
+                //qDebug()<<"idNote="<<idNote<<"\n";
+            }
+
+            // We've found dateCrea.
+            if(xml.name() == "dateCrea") {
+                xml.readNext(); xml.readNext();
+                unsigned int jour=xml.text().toInt();
+                xml.readNext(); xml.readNext(); xml.readNext();
+                unsigned int mois=xml.text().toInt();
+                xml.readNext(); xml.readNext(); xml.readNext();
+                unsigned int annee=xml.text().toInt();
+                dateCrea.setDate(jour,mois,annee);
+                //qDebug()<<"titre="<<titre<<"\n";
+            }
+        }
+        // ...and next...
+        xml.readNext();
+    }
 
 }
 

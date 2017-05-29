@@ -11,6 +11,9 @@
 
 
 //}
+//template<typename T> NoteVersion * createT() { return new T;}
+//NoteVersionFactory::map_type NoteVersionFactory::map = new NoteVersionFactory::map_type();
+
 void NoteVersion::saveNoteVersion(QXmlStreamWriter* stream) const{
     stream->writeStartElement("version");
 
@@ -31,6 +34,7 @@ void NoteVersion::saveNoteVersion(QXmlStreamWriter* stream) const{
 }
 
 /********************************** Article ****************************/
+//DerivedRegister<Article> Article::reg("Article");
 
 Article* Article::clone(unsigned int id) const{
     Article* art=new Article(*this);

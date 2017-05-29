@@ -78,7 +78,7 @@ void NotesManager::load() {
                 //qDebug()<<"new note\n";
                 unsigned int idNote;
                 Date dateCrea;
-                QXmlStreamAttributes attributes = xml.attributes();
+                //QXmlStreamAttributes attributes = xml.attributes();
                 xml.readNext();
                 //We're going to loop over the things because the order might change.
                 //We'll continue the loop until we hit an EndElement named note.
@@ -108,7 +108,7 @@ void NotesManager::load() {
                 //qDebug()<<"ajout note "<<idNote<<"\n";
                 Note* n=new Note(idNote,dateCrea);
                 listNotes.push_back(n);
-                n->loadVersion(&xml);
+                n->loadVersion(xml);
             }
         }
     }

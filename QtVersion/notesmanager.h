@@ -16,7 +16,6 @@ class NotesManager{
     NotesManager(): listNotes(), filename(""){}
     ~NotesManager();
 
-
 public:
     static NotesManager& getInstance(){
         static NotesManager instance;

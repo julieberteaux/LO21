@@ -28,9 +28,8 @@ private:
 public :
 
     NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
-    const QString& getTitle() const {
-        return title;
-    }
+    const QString& getTitle() const {return title;}
+    void setTitle(const QString& str) {title=str;}
     virtual ~NoteVersion(){};
     unsigned int getIdVersion() const{return idVersion;}
 
@@ -51,6 +50,39 @@ public :
 
 };
 
+/*********************************NoteVersionFactory***********************/
+
+template<typename T> NoteVersion * createT() { return new T;}
+
+class NoteVersionFactory {
+    typedef std::map<QString, NoteVersion*(*)()> map_type;
+
+    static map_type * map;
+
+protected:
+    static map_type * getMap() {
+        // never delete'ed. (exist until program termination)
+        // because we can't guarantee correct destruction order
+        if(!map) { map = new map_type; }
+        return map;
+    }
+
+public:
+
+    static NoteVersion * createInstance(const QString & s) {
+        map_type::iterator it = getMap()->find(s);
+        if(it == getMap()->end())
+            return 0;
+        return it->second();
+    }
+};
+
+template<typename T>
+struct DerivedRegister : NoteVersionFactory {
+    DerivedRegister(QString const& s) {
+        getMap()->insert(std::make_pair(s, &createT<T>));
+    }
+};
 
 /********************************** Article ****************************/
 
@@ -60,8 +92,10 @@ class Article : public NoteVersion {
     QString text;
     void saveNoteVersionType(QXmlStreamWriter* stream) const;
 
-public :
+    static DerivedRegister<Article> reg;
 
+public :
+    Article():NoteVersion(0, QString()), text(QString()){}
     Article (const QString& t, const QString& te): NoteVersion(0, t), text(te){}
 
     const QString& getText() const {return text;}

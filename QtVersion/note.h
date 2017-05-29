@@ -24,7 +24,7 @@ class Note{
     Note(const Note&);
     ~Note();
     void saveNote(QXmlStreamWriter* stream) const;
-    void loadVersion(QXmlStreamReader* xml);
+    void loadVersion(QXmlStreamReader &xml);
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}

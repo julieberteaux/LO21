@@ -12,7 +12,7 @@ class Note{
     friend class NotesManager;
     unsigned int idNote;
     Date dateCrea;
-    State noteState;
+    state noteState;
     std::vector<NoteVersion*> listVersion;
 
 

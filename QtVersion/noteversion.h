@@ -55,8 +55,10 @@ public :
 template<typename T> NoteVersion * createT() { return new T;}
 
 class NoteVersionFactory {
+public:
     typedef std::map<QString, NoteVersion*(*)()> map_type;
 
+private:
     static map_type * map;
 
 protected:
@@ -95,8 +97,8 @@ class Article : public NoteVersion {
     static DerivedRegister<Article> reg;
 
 public :
-    Article():NoteVersion(0, QString()), text(QString()){}
-    Article (const QString& t, const QString& te): NoteVersion(0, t), text(te){}
+    //Article():NoteVersion(0, QString()), text(QString()){}
+    Article (const QString& t=QString(), const QString& te=QString()): NoteVersion(0, t), text(te){}
 
     const QString& getText() const {return text;}
     void setText(const QString& str) {text=str;}

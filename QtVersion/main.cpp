@@ -64,7 +64,10 @@ int main(int argc, char* argv[]) {
 
         manager.save();
 
-
+        //test of load method:
+        NoteVersion* testArticle=NoteVersionFactory::createInstance("Article");
+        Article& testArticle2=dynamic_cast<Article&>(*testArticle);
+        testArticle2.setText("cedskplopkdz");
         /*for(std::vector<Note*>::iterator it=manager.listNotes.begin(); it!=manager.listNotes.end(); ++it)
             std::cout<<(*it)->getidNote()<<std::endl;*/
         std::cout<<"fin du try plurinotes"<<std::endl;

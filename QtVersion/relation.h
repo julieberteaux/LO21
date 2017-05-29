@@ -3,6 +3,9 @@
 
 #include "note.h"
 
+
+/********************************** Relation ****************************/
+
 class Relation {
 
     QString title;
@@ -28,3 +31,15 @@ public:
     //getArborescence()
 };
 #endif // RELATION_H
+
+
+/********************************** Couple ****************************/
+
+class Couple{
+
+    QString label;
+    Note& n1;
+    Note& n2;
+public:
+    Couple(Note& id1, Note& id2, const QString& l=""): label(l), n1(id1), n2(id2){}
+};

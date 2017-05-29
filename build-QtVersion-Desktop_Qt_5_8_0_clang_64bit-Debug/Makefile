@@ -15,7 +15,7 @@ CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefau
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.9 $(EXPORT_QMAKE_XARCH_CFLAGS) -g -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -std=c++11 -g -std=gnu++11 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I../QtVersion -I. -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -F/Users/Laura/Qt/5.8/clang_64/lib
+INCPATH       = -I../QtVersion -I. -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -F/Users/Laura/Qt/5.8/clang_64/lib
 QMAKE         = /Users/Laura/Qt/5.8/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -55,7 +55,8 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/note.cpp \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
-		../QtVersion/relationsmanager.cpp 
+		../QtVersion/relationsmanager.cpp \
+		../QtVersion/mainwindow.cpp moc_mainwindow.cpp
 OBJECTS       = plurinotes.o \
 		main.o \
 		date.o \
@@ -63,7 +64,9 @@ OBJECTS       = plurinotes.o \
 		note.o \
 		noteversion.o \
 		relation.o \
-		relationsmanager.o
+		relationsmanager.o \
+		mainwindow.o \
+		moc_mainwindow.o
 DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/qdevice.pri \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/device_config.prf \
@@ -246,14 +249,16 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
 		../QtVersion/relation.h \
-		../QtVersion/relationsmanager.h ../QtVersion/plurinotes.cpp \
+		../QtVersion/relationsmanager.h \
+		../QtVersion/mainwindow.h ../QtVersion/plurinotes.cpp \
 		../QtVersion/main.cpp \
 		../QtVersion/date.cpp \
 		../QtVersion/notesmanager.cpp \
 		../QtVersion/note.cpp \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
-		../QtVersion/relationsmanager.cpp
+		../QtVersion/relationsmanager.cpp \
+		../QtVersion/mainwindow.cpp
 QMAKE_TARGET  = QtVersion
 DESTDIR       = 
 TARGET        = QtVersion.app/Contents/MacOS/QtVersion
@@ -262,7 +267,7 @@ TARGET        = QtVersion.app/Contents/MacOS/QtVersion
 first: all
 ####### Build rules
 
-$(TARGET):  $(OBJECTS)  
+$(TARGET): ui_mainwindow.h $(OBJECTS)  
 	@test -d QtVersion.app/Contents/MacOS/ || mkdir -p QtVersion.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -659,8 +664,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -692,12 +698,45 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++11 -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_mainwindow.cpp
+moc_mainwindow.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFormLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qformlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDockWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTabWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h \
+		../QtVersion/mainwindow.h \
+		moc_predefs.h \
+		/Users/Laura/Qt/5.8/clang_64/bin/moc
+	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/mainwindow.h -o moc_mainwindow.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all:
+compiler_uic_make_all: ui_mainwindow.h
 compiler_uic_clean:
+	-$(DEL_FILE) ui_mainwindow.h
+ui_mainwindow.h: ../QtVersion/mainwindow.ui \
+		/Users/Laura/Qt/5.8/clang_64/bin/uic
+	/Users/Laura/Qt/5.8/clang_64/bin/uic ../QtVersion/mainwindow.ui -o ui_mainwindow.h
+
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
 compiler_yacc_decl_make_all:
@@ -706,7 +745,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -737,7 +776,24 @@ main.o: ../QtVersion/main.cpp /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framewo
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../QtVersion/relationsmanager.h \
-		../QtVersion/relation.h
+		../QtVersion/relation.h \
+		../QtVersion/mainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFormLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qformlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDockWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTabWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../QtVersion/main.cpp
 
 date.o: ../QtVersion/date.cpp ../QtVersion/date.h
@@ -830,6 +886,34 @@ relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmana
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relationsmanager.o ../QtVersion/relationsmanager.cpp
+
+mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFormLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qformlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDockWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTabWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
+
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
 

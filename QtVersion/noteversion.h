@@ -6,6 +6,7 @@
 #include <QString>
 #include <QFileDialog>
 #include <vector>
+#include<QDebug>
 #include "date.h"
 
 #include <QMainWindow>
@@ -13,6 +14,7 @@
 #include <QWidget>
 #include <QXmlStreamWriter>
 
+//template<typename T> struct DerivedRegister;
 
 class NoteVersion{
     friend class Note;
@@ -22,9 +24,14 @@ protected:
 private:
     QString title;
     Date dateEdit;
+    //template<typename T> static DerivedRegister<T> reg;
 
     void saveNoteVersion(QXmlStreamWriter* stream) const;
-    virtual void saveNoteVersionType(QXmlStreamWriter* stream) const=0;
+    void loadNoteVersion(QXmlStreamReader& stream);
+
+    virtual void saveNoteVersionType(QXmlStreamWriter& stream) const=0;
+    virtual void loadNoteVersionType(QXmlStreamReader& stream)=0;
+
 public :
 
     NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
@@ -51,7 +58,7 @@ public :
 };
 
 /*********************************NoteVersionFactory***********************/
-
+//used for load method
 template<typename T> NoteVersion * createT() { return new T;}
 
 class NoteVersionFactory {
@@ -59,8 +66,7 @@ public:
     typedef std::map<QString, NoteVersion*(*)()> map_type;
 
 private:
-    static map_type * map;
-
+    static map_type * map; //leak memory??
 protected:
     static map_type * getMap() {
         // never delete'ed. (exist until program termination)
@@ -77,10 +83,11 @@ public:
             return 0;
         return it->second();
     }
+
 };
 
 template<typename T>
-struct DerivedRegister : NoteVersionFactory {
+struct DerivedRegister :public NoteVersionFactory {
     DerivedRegister(QString const& s) {
         getMap()->insert(std::make_pair(s, &createT<T>));
     }
@@ -92,12 +99,13 @@ class Article : public NoteVersion {
     friend class Note;
 
     QString text;
-    void saveNoteVersionType(QXmlStreamWriter* stream) const;
-
     static DerivedRegister<Article> reg;
 
+    void saveNoteVersionType(QXmlStreamWriter &stream) const;
+    void loadNoteVersionType(QXmlStreamReader &xml);
+
+
 public :
-    //Article():NoteVersion(0, QString()), text(QString()){}
     Article (const QString& t=QString(), const QString& te=QString()): NoteVersion(0, t), text(te){}
 
     const QString& getText() const {return text;}
@@ -119,11 +127,14 @@ class Task : public NoteVersion {
     Date deadline;
     enum Status {waiting, ended, in_progress};
     Status status;
+    static DerivedRegister<Task> reg;
 
-    void saveNoteVersionType(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter &stream) const;
+    void loadNoteVersionType(QXmlStreamReader &stream);
+
 public :
 
-    Task (const QString& t,const QString& a, unsigned int p, const Date d, const Status s): NoteVersion(0, t), action(a), priority(p), deadline(d), status(s){}
+    Task (const QString& t=QString(),const QString& a=QString(), unsigned int p=0, const Date d=Date(1,1,2100), const Status s=Status()): NoteVersion(0, t), action(a), priority(p), deadline(d), status(s){}
 
     const QString& getAction() const {return action;}
     unsigned int getPriority() const {return priority;}
@@ -140,13 +151,15 @@ class Image : public NoteVersion {
 
     QString description;
     QString file;
+    static DerivedRegister<Image> reg;
 
-    void saveNoteVersionType(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter &stream) const;
+    void loadNoteVersionType(QXmlStreamReader &xml);
 
 
 public :
 
-    Image(const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
+    Image(const QString& t=QString(), const QString& d=QString(), const QString& f=QString()): NoteVersion(0, t), description(d), file(f){}
 
     const QString& getDescription() const {return description;}
     const QString& getFile() const {return file;}
@@ -164,7 +177,8 @@ class Audio : public NoteVersion {
     QString description;
     QString file;
 
-    void saveNoteVersionType(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter& stream) const;
+    void loadNoteVersionType(QXmlStreamReader& xml);
 
 public :
 
@@ -186,7 +200,8 @@ class Video : public NoteVersion {
     QString description;
     QString file;
 
-    void saveNoteVersionType(QXmlStreamWriter* stream) const;
+    void saveNoteVersionType(QXmlStreamWriter& stream) const;
+    void loadNoteVersionType(QXmlStreamReader& xml);
 
 public :
 

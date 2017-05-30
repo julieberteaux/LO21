@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QString>
 #include <QFileDialog>
-
+#include <unistd.h>
 #include <iostream>
 
 //#include "plurinotes.h"
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 
         // ATTENTION notes.xml est situé dans le working directory situé dans l'onglet projets/run
         manager.setFilename("notes.xml");
-
+        /*
         //création d'une note + affichage de l'id et de la date de création
         int idn0=manager.addNote();//0
 
@@ -63,13 +63,21 @@ int main(int argc, char* argv[]) {
         int idimg=n1.addNoteVersion(*img);
 
         manager.save();
+        Date d=Date(1,2,2017);
+        Article* temp2=new Article("titre de l'article...", "texte de l'article...");
 
         //test of load method:
         NoteVersion* testArticle=NoteVersionFactory::createInstance("Article");
         Article& testArticle2=dynamic_cast<Article&>(*testArticle);
         testArticle2.setText("cedskplopkdz");
+
         /*for(std::vector<Note*>::iterator it=manager.listNotes.begin(); it!=manager.listNotes.end(); ++it)
             std::cout<<(*it)->getidNote()<<std::endl;*/
+
+        manager.load();
+        sleep(10);
+        manager.save();
+
         std::cout<<"fin du try plurinotes"<<std::endl;
 
         Relation* rReference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);

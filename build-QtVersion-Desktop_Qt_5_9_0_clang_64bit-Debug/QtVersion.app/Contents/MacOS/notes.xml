@@ -3,7 +3,7 @@
     <note>
         <idNote>0</idNote>
         <dateCrea>
-            <jour>29</jour>
+            <jour>30</jour>
             <mois>5</mois>
             <annee>2017</annee>
         </dateCrea>
@@ -12,27 +12,27 @@
             <idVersion>0</idVersion>
             <title>titre de l'article...</title>
             <dateEdit>
-                <jour>29</jour>
+                <jour>30</jour>
                 <mois>5</mois>
                 <annee>2017</annee>
             </dateEdit>
-            <texte>texte de l'article...</texte>
+            <text>texte de l'article...</text>
         </version>
         <version>
             <idVersion>1</idVersion>
             <title>titre de l'article...</title>
             <dateEdit>
-                <jour>29</jour>
+                <jour>30</jour>
                 <mois>5</mois>
                 <annee>2017</annee>
             </dateEdit>
-            <texte>ceci est un essai</texte>
+            <text>ceci est un essai</text>
         </version>
     </note>
     <note>
         <idNote>1</idNote>
         <dateCrea>
-            <jour>29</jour>
+            <jour>30</jour>
             <mois>5</mois>
             <annee>2017</annee>
         </dateCrea>
@@ -41,7 +41,7 @@
             <idVersion>0</idVersion>
             <title>image des vacances</title>
             <dateEdit>
-                <jour>29</jour>
+                <jour>30</jour>
                 <mois>5</mois>
                 <annee>2017</annee>
             </dateEdit>

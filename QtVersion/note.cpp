@@ -29,33 +29,72 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
         stream->writeEndElement();
     }
 }
-void Note::loadVersion(QXmlStreamReader& xml){
-    if(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "type")){
+
+
+void Note::loadNote(QXmlStreamReader& xml){
+    /*if(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "idNote")){
         throw Exception("Erreur lors du chargement: la balise n'est pas <type>.");
     }
-    xml.readNext();
-
-    while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "note")) {
+    //QXmlStreamAttributes attributes = xml.attributes();
+    xml.readNext();*/
+    //We're going to loop over the things because the order might change.
+    //We'll continue the loop until we hit an EndElement named note.
+    unsigned int jour, mois, annee;
+    while(!(xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == "type")) {
         if(xml.tokenType() == QXmlStreamReader::StartElement) {
             // We've found identificteur.
             if(xml.name() == "idNote") {
-                xml.readNext(); idNote=xml.text().toInt();
-                //qDebug()<<"idNote="<<idNote<<"\n";
+                xml.readNext();
+                idNote=xml.text().toInt();
+                qDebug()<<"idNote:"<<idNote<<"\n";
             }
 
             // We've found dateCrea.
             if(xml.name() == "dateCrea") {
-                xml.readNext(); xml.readNext();
-                unsigned int jour=xml.text().toInt();
-                xml.readNext(); xml.readNext(); xml.readNext();
-                unsigned int mois=xml.text().toInt();
-                xml.readNext(); xml.readNext(); xml.readNext();
-                unsigned int annee=xml.text().toInt();
+                while(!(xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == "annee")) {
+                    if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                        if(xml.name() == "jour"){
+                            xml.readNext();
+                            jour=xml.text().toInt();
+                        }
+                        if(xml.name() == "mois"){
+                            xml.readNext();
+                            mois=xml.text().toInt();
+                        }
+                    }
+                    xml.readNext();
+                }
+                xml.readNext();
+                annee=xml.text().toInt();
                 dateCrea.setDate(jour,mois,annee);
-                //qDebug()<<"titre="<<titre<<"\n";
+                qDebug()<<"dateCrea="<<jour<<"-"<<mois<<"-"<<annee<<"\n";
+
             }
         }
         // ...and next...
+        xml.readNext();
+    }
+
+    xml.readNext();
+    QString type=xml.text().toString();
+
+    //We begin with the first version of the note...
+
+    NoteVersion* version=NoteVersionFactory::createInstance(type);
+    listVersion.push_back(version);
+    qDebug()<<"first version"<<"\n";
+
+    version->loadNoteVersion(xml);
+
+    //... then we do the others versions
+    int idVersion1;
+    NoteVersion* noteversion;
+    while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "note")) {
+        if(xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == "version"){
+            idVersion1=copyLatestVersion();
+            noteversion=&getNoteVersion(idVersion1);
+            noteversion->loadNoteVersion(xml);
+        }
         xml.readNext();
     }
 

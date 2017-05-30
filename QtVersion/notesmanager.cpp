@@ -75,40 +75,13 @@ void NotesManager::load() {
             if(xml.name() == "notes") continue;
             // If it's named tache, we'll dig the information from there.
             if(xml.name() == "note") {
-                //qDebug()<<"new note\n";
-                unsigned int idNote;
-                Date dateCrea;
-                //QXmlStreamAttributes attributes = xml.attributes();
-                xml.readNext();
-                //We're going to loop over the things because the order might change.
-                //We'll continue the loop until we hit an EndElement named note.
-                while(!(xml.tokenType() == QXmlStreamReader::StartElement && xml.name() == "type")) {
-                    if(xml.tokenType() == QXmlStreamReader::StartElement) {
-                        // We've found identificteur.
-                        if(xml.name() == "idNote") {
-                            xml.readNext(); idNote=xml.text().toInt();
-                            //qDebug()<<"idNote="<<idNote<<"\n";
-                        }
+                qDebug()<<"new note\n";
 
-                        // We've found dateCrea.
-                        if(xml.name() == "dateCrea") {
-                            xml.readNext(); xml.readNext();
-                            unsigned int jour=xml.text().toInt();
-                            xml.readNext(); xml.readNext(); xml.readNext();
-                            unsigned int mois=xml.text().toInt();
-                            xml.readNext(); xml.readNext(); xml.readNext();
-                            unsigned int annee=xml.text().toInt();
-                            dateCrea.setDate(jour,mois,annee);
-                            //qDebug()<<"titre="<<titre<<"\n";
-                        }
-                    }
-                    // ...and next...
-                    xml.readNext();
-                }
-                //qDebug()<<"ajout note "<<idNote<<"\n";
-                Note* n=new Note(idNote,dateCrea);
+                Note* n=new Note();
                 listNotes.push_back(n);
-                n->loadVersion(xml);
+                xml.readNext();
+                n->loadNote(xml);
+                qDebug()<<"note"<<"\n";
             }
         }
     }
@@ -118,5 +91,5 @@ void NotesManager::load() {
     }
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();
-    //qDebug()<<"fin load\n";
+    qDebug()<<"fin load\n";
 }

@@ -1,11 +1,6 @@
 #include "noteseditor.h"
 
-NotesEditor::NotesEditor()
-{
-
-
-
-}
+//NotesEditor::NotesEditor(){}
 
 
 

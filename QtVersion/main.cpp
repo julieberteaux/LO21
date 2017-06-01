@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
         manager.save();
         Date d=Date(1,2,2017);
         Article* temp2=new Article("titre de l'article...", "texte de l'article...");
-
+        /*
         //test of load method:
         NoteVersion* testArticle=NoteVersionFactory::createInstance("Article");
         Article& testArticle2=dynamic_cast<Article&>(*testArticle);

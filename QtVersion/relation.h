@@ -44,9 +44,4 @@ public:
     //getArborescence()
 };
 #endif // RELATION_H
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 59d63b6c66bf9163ff1a4275fbaa3662181a6ebc

@@ -21,6 +21,9 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
         stream->writeTextElement("annee",QString::number(dateCrea.getAnnee()));
         stream->writeEndElement();
 
+        //A verifier...
+        //stream->writeTextElement("noteState",QString::number(noteState));
+
         stream->writeTextElement("type",(listVersion.back())->type());
 
         for(std::vector<NoteVersion*>::const_iterator it=listVersion.begin(); it!=listVersion.end(); ++it)
@@ -70,6 +73,13 @@ void Note::loadNote(QXmlStreamReader& xml){
                 qDebug()<<"dateCrea="<<jour<<"-"<<mois<<"-"<<annee<<"\n";
 
             }
+
+            //A vérifier
+            /*if(xml.name() == "noteState") {
+                xml.readNext();
+                noteState=xml.text().toInt();
+                qDebug()<<"noteState:"<<noteState<<"\n";
+            }*/
         }
         // ...and next...
         xml.readNext();

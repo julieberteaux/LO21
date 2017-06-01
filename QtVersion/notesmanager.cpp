@@ -25,14 +25,28 @@ Note& NotesManager::getNote(unsigned int id) const{
         throw Exception("Il n'y a pas de note correspondant à l'id");
     return **it;
 }
+
+
+/********************************** Delete ****************************/
+/*Supprime une note et l'ensemble de ses versions
+  Elimine les couples dans lesquels la note supprimée est impliquée
+  Si une note est dans un couple de la relation reference elle est archivée -> couple pas supprimé
+  Si pas referencé elle est placé ds la corbeille où elle pourra encore etre restaurer. */
+
 void NotesManager::deleteNote(unsigned int id){
+  //relation* reference=getRelation("Reference");
     if(listNotes.size()==0)
         throw Exception("Il n'y a pas de notes!");
     auto it = find_if(listNotes.begin(), listNotes.end(), [&id](Note* obj) {return obj->getIdNote() == id;});
     if(it==listNotes.end())
         throw Exception("Il n'y a pas de note correspondant à l'id");
-    delete *it;
+
+    //auto it = find_if(reference->listCouples.begin(), reference->listCouples.end(), [&id](Note* obj) {return obj->getIdNote() == id;});
+    //reference->listCouples
+    //Trash::addNote(it);
     listNotes.erase(it);
+    delete *it;
+
 }
 
 void NotesManager::save() const {

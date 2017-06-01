@@ -1,7 +1,7 @@
 #include "relationsmanager.h"
 
 
-// QUESTION :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
+// QUESTIO :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
 // est ce qu'on peut comparer 2 string avec ==
 
 const Relation* RelationsManager::getRelation(const QString& t) const{

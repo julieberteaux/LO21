@@ -30,6 +30,7 @@ class Note{
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}
+    state getNoteState() {return noteState;}
     int addNoteVersion(const NoteVersion &);
     int copyLatestVersion();
     NoteVersion& getNoteVersion(unsigned int id) const;

@@ -7,6 +7,7 @@
 //#include "plurinotes.h"
 #include "notesmanager.h"
 #include "relationsmanager.h"
+#include "mainwindow.h"
 
 int main(int argc, char* argv[]) {
 //objectif:
@@ -88,4 +89,5 @@ int main(int argc, char* argv[]) {
     std::cout<<"fin du programme plurinotes"<<std::endl;
 
     return 0;
+
 }

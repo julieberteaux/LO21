@@ -6,44 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-<<<<<<< HEAD
-    <width>800</width>
-    <height>600</height>
-=======
     <width>551</width>
     <height>413</height>
->>>>>>> 4afd493511a41035892bd1b5504081a0cbd88438
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-<<<<<<< HEAD
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuCharger">
-    <property name="title">
-     <string>Charger</string>
-    </property>
-    <addaction name="actionArticles"/>
-   </widget>
-   <addaction name="menuCharger"/>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionArticles">
-   <property name="text">
-    <string>Articles</string>
-   </property>
-  </action>
-=======
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
@@ -55,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Notes">
      <attribute name="title">
@@ -161,7 +130,6 @@
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
->>>>>>> 4afd493511a41035892bd1b5504081a0cbd88438
  </widget>
  <resources/>
  <connections/>

@@ -12,21 +12,21 @@ class Note{
     friend class NotesManager;
     unsigned int idNote;
     Date dateCrea;
-    State noteState;
+    state noteState;
     std::vector<NoteVersion*> listVersion;
 
 
     //the constructor is private because only NotesManager can use it
     //used by addNote in NotesManager
-    Note(unsigned int id): idNote(id), dateCrea(), noteState(active), listVersion(){dateCrea.today();}
-    Note(unsigned int id, Date date): idNote(id), dateCrea(date), noteState(active), listVersion(){}
+    Note(unsigned int id=0): idNote(id), dateCrea(), noteState(active), listVersion(){dateCrea.today();}
+    //Note(unsigned int id, Date date): idNote(id), dateCrea(date), noteState(active), listVersion(){}
 
     //only NotesManager can delete a Note or duplicate a Note
     const Note& operator =(const Note&);
     Note(const Note&);
     ~Note();
     void saveNote(QXmlStreamWriter* stream) const;
-    void loadVersion(QXmlStreamReader* xml);
+    void loadNote(QXmlStreamReader &xml);
 public:
     unsigned int getIdNote() const{return idNote;}
     const Date& getDateCrea() const {return dateCrea;}

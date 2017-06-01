@@ -56,7 +56,8 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
 		../QtVersion/relationsmanager.cpp \
-		../QtVersion/mainwindow.cpp moc_mainwindow.cpp
+		../QtVersion/mainwindow.cpp \
+		../QtVersion/trash.cpp moc_mainwindow.cpp
 OBJECTS       = plurinotes.o \
 		main.o \
 		date.o \
@@ -66,6 +67,7 @@ OBJECTS       = plurinotes.o \
 		relation.o \
 		relationsmanager.o \
 		mainwindow.o \
+		trash.o \
 		moc_mainwindow.o
 DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/qdevice.pri \
@@ -259,7 +261,8 @@ DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/noteversion.h \
 		../QtVersion/relation.h \
 		../QtVersion/relationsmanager.h \
-		../QtVersion/mainwindow.h ../QtVersion/plurinotes.cpp \
+		../QtVersion/mainwindow.h \
+		../QtVersion/trash.h ../QtVersion/plurinotes.cpp \
 		../QtVersion/main.cpp \
 		../QtVersion/date.cpp \
 		../QtVersion/notesmanager.cpp \
@@ -267,7 +270,8 @@ DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
 		../QtVersion/relationsmanager.cpp \
-		../QtVersion/mainwindow.cpp
+		../QtVersion/mainwindow.cpp \
+		../QtVersion/trash.cpp
 QMAKE_TARGET  = QtVersion
 DESTDIR       = 
 TARGET        = QtVersion.app/Contents/MacOS/QtVersion
@@ -696,8 +700,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h ../QtVersion/trash.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp ../QtVersion/trash.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui $(DISTDIR)/
 
 
@@ -903,6 +907,9 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
+
+trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trash.o ../QtVersion/trash.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

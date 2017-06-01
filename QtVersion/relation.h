@@ -2,20 +2,19 @@
 #define RELATION_H
 
 #include "note.h"
-
 /********************************** Couple ****************************/
 
-class Couple{
+class Couple {
 
     QString label;
     Note& n1;
     Note& n2;
 public:
     Couple(Note& id1, Note& id2, const QString& l=""): label(l), n1(id1), n2(id2){}
+
     const Note& getNote1() const {return n1;}
     const Note& getNote2() const {return n2;}
 };
-
 
 
 /********************************** Relation ****************************/
@@ -45,3 +44,9 @@ public:
     //getArborescence()
 };
 #endif // RELATION_H
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 59d63b6c66bf9163ff1a4275fbaa3662181a6ebc

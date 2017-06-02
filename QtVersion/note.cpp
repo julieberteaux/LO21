@@ -152,7 +152,7 @@ int Note::copyLatestVersion(){
     return (listVersion.back())->getIdVersion();
 }
 
-NoteVersion& Note::getNoteVersion(unsigned int id) const{
+NoteVersion &Note::getNoteVersion(unsigned int id) const{
     if(listVersion.size()==0)
         throw Exception("Il n'y a pas de verion pour cette note!");
     auto it = find_if(listVersion.begin(), listVersion.end(), [&id](NoteVersion* obj) {return obj->getIdVersion() == id;});

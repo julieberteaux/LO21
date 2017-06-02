@@ -17,9 +17,11 @@
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -30,10 +32,12 @@ public:
     QWidget *centralwidget;
     QTabWidget *tabWidget;
     QWidget *Notes;
-    QGroupBox *groupBox;
-    QFrame *line_2;
-    QGroupBox *groupBox_3;
-    QGroupBox *groupBox_4;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout_4;
+    QVBoxLayout *verticalLayout_6;
+    QLabel *label_2;
+    QVBoxLayout *verticalLayout_5;
+    QListWidget *activenotes;
     QWidget *Relations;
     QGroupBox *groupBox_2;
     QLabel *label;
@@ -52,20 +56,32 @@ public:
         tabWidget->setGeometry(QRect(0, 0, 551, 411));
         Notes = new QWidget();
         Notes->setObjectName(QStringLiteral("Notes"));
-        groupBox = new QGroupBox(Notes);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(-1, -21, 171, 411));
-        line_2 = new QFrame(groupBox);
-        line_2->setObjectName(QStringLiteral("line_2"));
-        line_2->setGeometry(QRect(160, 20, 20, 381));
-        line_2->setFrameShape(QFrame::VLine);
-        line_2->setFrameShadow(QFrame::Sunken);
-        groupBox_3 = new QGroupBox(groupBox);
-        groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(0, 20, 161, 121));
-        groupBox_4 = new QGroupBox(groupBox);
-        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(0, 150, 161, 131));
+        verticalLayoutWidget = new QWidget(Notes);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(-1, -1, 161, 361));
+        verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        label_2 = new QLabel(verticalLayoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        verticalLayout_6->addWidget(label_2);
+
+
+        verticalLayout_4->addLayout(verticalLayout_6);
+
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        activenotes = new QListWidget(verticalLayoutWidget);
+        activenotes->setObjectName(QStringLiteral("activenotes"));
+
+        verticalLayout_5->addWidget(activenotes);
+
+
+        verticalLayout_4->addLayout(verticalLayout_5);
+
         tabWidget->addTab(Notes, QString());
         Relations = new QWidget();
         Relations->setObjectName(QStringLiteral("Relations"));
@@ -97,9 +113,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        groupBox->setTitle(QString());
-        groupBox_3->setTitle(QApplication::translate("MainWindow", "Active Notes :", Q_NULLPTR));
-        groupBox_4->setTitle(QApplication::translate("MainWindow", "Archived Notes :", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "Notes actives", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Notes), QApplication::translate("MainWindow", "Notes", Q_NULLPTR));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));

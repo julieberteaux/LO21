@@ -58,8 +58,7 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/relationsmanager.cpp \
 		../QtVersion/mainwindow.cpp \
 		../QtVersion/noteseditor.cpp \
-		../QtVersion/trash.cpp moc_mainwindow.cpp \
-		moc_noteseditor.cpp
+		../QtVersion/trash.cpp moc_mainwindow.cpp
 OBJECTS       = plurinotes.o \
 		main.o \
 		date.o \
@@ -71,8 +70,7 @@ OBJECTS       = plurinotes.o \
 		mainwindow.o \
 		noteseditor.o \
 		trash.o \
-		moc_mainwindow.o \
-		moc_noteseditor.o
+		moc_mainwindow.o
 DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/qdevice.pri \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/device_config.prf \
@@ -740,20 +738,33 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++11 -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_noteseditor.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_noteseditor.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../QtVersion/date.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../QtVersion/mainwindow.h \
 		moc_predefs.h \
 		/Applications/Qt/5.9/clang_64/bin/moc
 	/Applications/Qt/5.9/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Applications/Qt/5.9/clang_64/mkspecs/macx-clang -I/Users/Antoine/OneDrive/Cours/GI02/LO21/projet/LO21/QtVersion -I/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtXml.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Applications/Qt/5.9/clang_64/lib ../QtVersion/mainwindow.h -o moc_mainwindow.cpp
-
-moc_noteseditor.cpp: ../QtVersion/noteseditor.h \
-		moc_predefs.h \
-		/Applications/Qt/5.9/clang_64/bin/moc
-	/Applications/Qt/5.9/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Applications/Qt/5.9/clang_64/mkspecs/macx-clang -I/Users/Antoine/OneDrive/Cours/GI02/LO21/projet/LO21/QtVersion -I/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtXml.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Applications/Qt/5.9/clang_64/lib ../QtVersion/noteseditor.h -o moc_noteseditor.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -929,6 +940,24 @@ relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmana
 mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../QtVersion/date.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
 
@@ -940,9 +969,6 @@ trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
-moc_noteseditor.o: moc_noteseditor.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_noteseditor.o moc_noteseditor.cpp
 
 ####### Install
 

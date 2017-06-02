@@ -26,6 +26,8 @@ int main(int argc, char* argv[]) {
 //    fenetre.show();
 //    return app.exec();
     try{
+        //PARTIE 1 A NE PAS SUPPRIMER!
+        /*
         std::cout<<"Début du programme plurinotes"<<std::endl;
 
         NotesManager& manager=NotesManager::getInstance();
@@ -74,20 +76,22 @@ int main(int argc, char* argv[]) {
 
         /*for(std::vector<Note*>::iterator it=manager.listNotes.begin(); it!=manager.listNotes.end(); ++it)
             std::cout<<(*it)->getidNote()<<std::endl;*/
+        //Relation* rReference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);
 
+        //PARTIE 2***************************************************************************************
+        NotesManager& manager=NotesManager::getInstance();
+        manager.setFilename("notes.xml");
         manager.load();
-        sleep(10);
-        manager.save();
-
-        std::cout<<"fin du try plurinotes"<<std::endl;
-
-        Relation* rReference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);
-
+        QApplication app(argc, argv);
+        MainWindow fenetre(&manager);
+        fenetre.show();
+        return app.exec();
 
     }
     catch(Exception& e){std::cout<<e.getInfo().toStdString()<<std::endl;}
+
+
     std::cout<<"fin du programme plurinotes"<<std::endl;
 
-    return 0;
 
 }

@@ -2,18 +2,19 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "notesmanager.h"
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow{
     Q_OBJECT
+    NotesManager* manager;
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(NotesManager *m, QWidget *parent = 0);
     ~MainWindow();
+    void loadActiveNotes();
 
 private:
     Ui::MainWindow *ui;

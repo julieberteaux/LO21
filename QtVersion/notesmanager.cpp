@@ -27,6 +27,7 @@ Note& NotesManager::getNote(unsigned int id) const{
 }
 
 
+
 /********************************** Delete ****************************/
 /*Supprime une note et l'ensemble de ses versions
   Elimine les couples dans lesquels la note supprimée est impliquée

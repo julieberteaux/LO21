@@ -110,6 +110,8 @@ void Article::loadNoteVersionType(QXmlStreamReader &xml){
     xml.readNext();
 }
 
+//FormVersion* Article::formVersion() const{return new FormArticle();}
+
 /********************************** Task ****************************/
 DerivedRegister<Task> Task::reg("Task");
 

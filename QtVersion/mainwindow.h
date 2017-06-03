@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow{
     Q_OBJECT
     NotesManager* manager;
     FormNote* formnote;
-    FormVersion* formversion;
+    //FormVersion* formversion;
 public:
     explicit MainWindow(NotesManager *m, QWidget *parent = 0);
     ~MainWindow();

@@ -62,8 +62,7 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/formnote.cpp \
 		../QtVersion/formarticle.cpp \
 		../QtVersion/formversion.cpp moc_mainwindow.cpp \
-		moc_formnote.cpp \
-		moc_formarticle.cpp
+		moc_formnote.cpp
 OBJECTS       = plurinotes.o \
 		main.o \
 		date.o \
@@ -79,8 +78,7 @@ OBJECTS       = plurinotes.o \
 		formarticle.o \
 		formversion.o \
 		moc_mainwindow.o \
-		moc_formnote.o \
-		moc_formarticle.o
+		moc_formnote.o
 DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/qdevice.pri \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/device_config.prf \
@@ -754,9 +752,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++11 -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_formnote.cpp moc_formarticle.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_formnote.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_formnote.cpp moc_formarticle.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_formnote.cpp
 moc_mainwindow.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -764,6 +762,10 @@ moc_mainwindow.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Header
 		../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -775,8 +777,6 @@ moc_mainwindow.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Header
 		../QtVersion/date.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../QtVersion/formnote.h \
@@ -792,6 +792,8 @@ moc_formnote.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/
 		../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -811,13 +813,6 @@ moc_formnote.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/
 		moc_predefs.h \
 		/Applications/Qt/5.9/clang_64/bin/moc
 	/Applications/Qt/5.9/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Applications/Qt/5.9/clang_64/mkspecs/macx-clang -I/Users/Antoine/OneDrive/Cours/GI02/LO21/projet/LO21/QtVersion -I/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtXml.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Applications/Qt/5.9/clang_64/lib ../QtVersion/formnote.h -o moc_formnote.cpp
-
-moc_formarticle.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../QtVersion/formarticle.h \
-		moc_predefs.h \
-		/Applications/Qt/5.9/clang_64/bin/moc
-	/Applications/Qt/5.9/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Applications/Qt/5.9/clang_64/mkspecs/macx-clang -I/Users/Antoine/OneDrive/Cours/GI02/LO21/projet/LO21/QtVersion -I/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtXml.framework/Headers -I/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Applications/Qt/5.9/clang_64/lib ../QtVersion/formarticle.h -o moc_formarticle.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -867,6 +862,10 @@ main.o: ../QtVersion/main.cpp /Applications/Qt/5.9/clang_64/lib/QtWidgets.framew
 		../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QDebug \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../QtVersion/date.h \
@@ -874,8 +873,6 @@ main.o: ../QtVersion/main.cpp /Applications/Qt/5.9/clang_64/lib/QtWidgets.framew
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../QtVersion/relationsmanager.h \
@@ -892,6 +889,10 @@ date.o: ../QtVersion/date.cpp ../QtVersion/date.h
 notesmanager.o: ../QtVersion/notesmanager.cpp ../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -905,8 +906,6 @@ notesmanager.o: ../QtVersion/notesmanager.cpp ../QtVersion/notesmanager.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QFile \
@@ -917,6 +916,10 @@ notesmanager.o: ../QtVersion/notesmanager.cpp ../QtVersion/notesmanager.h \
 
 note.o: ../QtVersion/note.cpp ../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -930,13 +933,15 @@ note.o: ../QtVersion/note.cpp ../QtVersion/note.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o note.o ../QtVersion/note.cpp
 
 noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -950,8 +955,6 @@ noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o noteversion.o ../QtVersion/noteversion.cpp
@@ -959,6 +962,10 @@ noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
 relation.o: ../QtVersion/relation.cpp ../QtVersion/relation.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -972,8 +979,6 @@ relation.o: ../QtVersion/relation.cpp ../QtVersion/relation.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relation.o ../QtVersion/relation.cpp
@@ -982,6 +987,10 @@ relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmana
 		../QtVersion/relation.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -995,8 +1004,6 @@ relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmana
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relationsmanager.o ../QtVersion/relationsmanager.cpp
@@ -1009,6 +1016,10 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -1020,8 +1031,6 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		../QtVersion/date.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../QtVersion/formnote.h \
@@ -1042,6 +1051,8 @@ formnote.o: ../QtVersion/formnote.cpp ../QtVersion/formnote.h \
 		../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		../QtVersion/formversion.h \
+		../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
@@ -1063,10 +1074,13 @@ formnote.o: ../QtVersion/formnote.cpp ../QtVersion/formnote.h \
 formarticle.o: ../QtVersion/formarticle.cpp ../QtVersion/formarticle.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/formversion.h \
 		ui_formarticle.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formarticle.o ../QtVersion/formarticle.cpp
 
-formversion.o: ../QtVersion/formversion.cpp ../QtVersion/formversion.h
+formversion.o: ../QtVersion/formversion.cpp ../QtVersion/formversion.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formversion.o ../QtVersion/formversion.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
@@ -1074,9 +1088,6 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_formnote.o: moc_formnote.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_formnote.o moc_formnote.cpp
-
-moc_formarticle.o: moc_formarticle.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_formarticle.o moc_formarticle.cpp
 
 ####### Install
 

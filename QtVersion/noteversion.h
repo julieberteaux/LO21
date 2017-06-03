@@ -1,5 +1,7 @@
 #ifndef NOTEVERSION_H
 #define NOTEVERSION_H
+#include "formversion.h"
+#include "formarticle.h"
 
 #include <iostream>
 #include <QApplication>
@@ -30,7 +32,6 @@ private:
     virtual void saveNoteVersionType(QXmlStreamWriter& stream) const=0;
     virtual void loadNoteVersionType(QXmlStreamReader& stream)=0;
 
-    //virtual void FormVersion()=0;
 
 public :
 
@@ -44,6 +45,9 @@ public :
 
     virtual NoteVersion* clone(unsigned int id) const=0;
     virtual QString type() const =0;
+    //A mettre en virtuelle pure
+    //virtual FormVersion* formVersion() const;
+
 /*
  addNoteVersion :
     copyLatest : copie de la dernière version
@@ -105,7 +109,6 @@ class Article : public NoteVersion {
     void saveNoteVersionType(QXmlStreamWriter &stream) const;
     void loadNoteVersionType(QXmlStreamReader &xml);
 
-
 public :
     Article (const QString& t=QString(), const QString& te=QString()): NoteVersion(0, t), text(te){}
 
@@ -114,6 +117,7 @@ public :
 
     Article* clone(unsigned int id) const;
     QString type() const {return "Article";}
+    //FormVersion* formVersion() const;
 
 };
 

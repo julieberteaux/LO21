@@ -2,12 +2,13 @@
 #define FORMARTICLE_H
 
 #include <QWidget>
+#include "formversion.h"
 
-namespace Ui {
+/*namespace Ui {
 class FormArticle;
 }
 
-class FormArticle : public QWidget
+class FormArticle : public FormVersion
 {
     Q_OBJECT
 
@@ -18,5 +19,5 @@ public:
 private:
     Ui::FormArticle *ui;
 };
-
+*/
 #endif // FORMARTICLE_H

@@ -17,7 +17,7 @@ int NotesManager::addNote(){
     return (listNotes.back())->getIdNote();
 }
 
-Note& NotesManager::getNote(unsigned int id) const{
+const Note &NotesManager::getNote(unsigned int id) const{
     if(listNotes.size()==0)
         throw Exception("Il n'y a pas de notes!");
     auto it = find_if(listNotes.begin(), listNotes.end(), [&id](Note* obj) {return obj->getIdNote() == id;});

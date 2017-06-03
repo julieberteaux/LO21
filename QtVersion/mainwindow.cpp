@@ -14,7 +14,7 @@ void MainWindow::loadActiveNotes(){
     }
 }
 
-MainWindow::MainWindow(NotesManager* m, QWidget *parent) :manager(m), QMainWindow(parent),ui(new Ui::MainWindow)
+MainWindow::MainWindow(NotesManager* m, QWidget *parent) :manager(m), formnote(nullptr), QMainWindow(parent),ui(new Ui::MainWindow)
 {
 
     ui->setupUi(this);
@@ -24,15 +24,12 @@ MainWindow::MainWindow(NotesManager* m, QWidget *parent) :manager(m), QMainWindo
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete formnote;
 }
 
 void MainWindow::on_activenotes_itemClicked(QListWidgetItem *item)
 {
-    // get back the data
-    QVariant v = item->data(Qt::UserRole);
-    int idNote = v.value<int>();
-    Note& note=manager->getNote(idNote);
-    ui->idNoteLineEdit->setText(QString::number(note.getIdNote()));
-    const Date& dateCreation=note.getDateCrea();
-    ui->dateCreaDateEdit->setDate(QDate(dateCreation.getAnnee(),dateCreation.getMois(),dateCreation.getJour()));
+    delete formnote;
+    formnote=new FormNote(manager,item);
+    ui->centre->addWidget(formnote);
 }

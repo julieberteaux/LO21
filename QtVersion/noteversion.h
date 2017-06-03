@@ -14,8 +14,6 @@
 #include <QWidget>
 #include <QXmlStreamWriter>
 
-//template<typename T> struct DerivedRegister;
-
 class NoteVersion{
     friend class Note;
 protected:
@@ -32,15 +30,18 @@ private:
     virtual void saveNoteVersionType(QXmlStreamWriter& stream) const=0;
     virtual void loadNoteVersionType(QXmlStreamReader& stream)=0;
 
+    //virtual void FormVersion()=0;
+
 public :
 
     NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
     const QString& getTitle() const {return title;}
     void setTitle(const QString& str) {title=str;}
+    const Date& getDateEdit() const{return dateEdit;}
+    void setDateEdit(const Date& d){dateEdit=d;}
     virtual ~NoteVersion(){};
     unsigned int getIdVersion() const{return idVersion;}
 
-    //NoteVersion(NoteVersion &){}
     virtual NoteVersion* clone(unsigned int id) const=0;
     virtual QString type() const =0;
 /*

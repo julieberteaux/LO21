@@ -24,7 +24,7 @@ public:
     void setFilename(const QString& str){filename=str;}
     //addNote adds a note with a new id which is greatest id(=id of latest note) + 1, the new note is empty
     int addNote();
-    Note& getNote(unsigned int id) const;
+    const Note& getNote(unsigned int id) const;
     const std::vector<Note*>& getListNotes() const{return listNotes;}
 
     void deleteNote(unsigned int id);

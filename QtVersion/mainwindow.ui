@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>551</width>
-    <height>413</height>
+    <width>578</width>
+    <height>433</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -68,72 +68,7 @@
         <height>361</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_7">
-       <item>
-        <layout class="QFormLayout" name="formLayout">
-         <item row="0" column="0">
-          <widget class="QLabel" name="idNoteLabel">
-           <property name="text">
-            <string>idNote</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="idNoteLineEdit"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="dateCreaLabel">
-           <property name="text">
-            <string>Date de creation</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QDateEdit" name="dateCreaDateEdit">
-           <property name="currentSection">
-            <enum>QDateTimeEdit::DaySection</enum>
-           </property>
-           <property name="displayFormat">
-            <string>dd/MM/yyyy</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="idVersionLineEdit"/>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="titleLabel">
-           <property name="text">
-            <string>Titre</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="titleLineEdit"/>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="dateEditLabel">
-           <property name="text">
-            <string>Date d'édition</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QDateEdit" name="dateEditDateEdit"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="idVersionLabel">
-           <property name="text">
-            <string>idVersion</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QFormLayout" name="formLayout_3"/>
-       </item>
-      </layout>
+      <layout class="QVBoxLayout" name="centre"/>
      </widget>
      <zorder>verticalLayoutWidget</zorder>
      <zorder>verticalLayoutWidget_2</zorder>
@@ -185,8 +120,16 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>activenotes</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>dateCreaDateEdit_2</tabstop>
+  <tabstop>idNoteLineEdit_2</tabstop>
+  <tabstop>idVersionLineEdit_2</tabstop>
+  <tabstop>titleLineEdit_2</tabstop>
+  <tabstop>dateEditDateEdit_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

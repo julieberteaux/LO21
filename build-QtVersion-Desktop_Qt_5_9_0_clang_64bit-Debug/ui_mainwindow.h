@@ -13,10 +13,13 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDateEdit>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QStatusBar>
@@ -36,8 +39,22 @@ public:
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_6;
     QLabel *label_2;
-    QVBoxLayout *verticalLayout_5;
     QListWidget *activenotes;
+    QVBoxLayout *verticalLayout_5;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_7;
+    QFormLayout *formLayout;
+    QLabel *idNoteLabel;
+    QLineEdit *idNoteLineEdit;
+    QLabel *dateCreaLabel;
+    QDateEdit *dateCreaDateEdit;
+    QLineEdit *idVersionLineEdit;
+    QLabel *titleLabel;
+    QLineEdit *titleLineEdit;
+    QLabel *dateEditLabel;
+    QDateEdit *dateEditDateEdit;
+    QLabel *idVersionLabel;
+    QFormLayout *formLayout_3;
     QWidget *Relations;
     QGroupBox *groupBox_2;
     QLabel *label;
@@ -69,20 +86,90 @@ public:
 
         verticalLayout_6->addWidget(label_2);
 
+        activenotes = new QListWidget(verticalLayoutWidget);
+        activenotes->setObjectName(QStringLiteral("activenotes"));
+
+        verticalLayout_6->addWidget(activenotes);
+
 
         verticalLayout_4->addLayout(verticalLayout_6);
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        activenotes = new QListWidget(verticalLayoutWidget);
-        activenotes->setObjectName(QStringLiteral("activenotes"));
-
-        verticalLayout_5->addWidget(activenotes);
-
 
         verticalLayout_4->addLayout(verticalLayout_5);
 
+        verticalLayoutWidget_2 = new QWidget(Notes);
+        verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(172, 0, 341, 361));
+        verticalLayout_7 = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        verticalLayout_7->setContentsMargins(0, 0, 0, 0);
+        formLayout = new QFormLayout();
+        formLayout->setObjectName(QStringLiteral("formLayout"));
+        idNoteLabel = new QLabel(verticalLayoutWidget_2);
+        idNoteLabel->setObjectName(QStringLiteral("idNoteLabel"));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, idNoteLabel);
+
+        idNoteLineEdit = new QLineEdit(verticalLayoutWidget_2);
+        idNoteLineEdit->setObjectName(QStringLiteral("idNoteLineEdit"));
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, idNoteLineEdit);
+
+        dateCreaLabel = new QLabel(verticalLayoutWidget_2);
+        dateCreaLabel->setObjectName(QStringLiteral("dateCreaLabel"));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, dateCreaLabel);
+
+        dateCreaDateEdit = new QDateEdit(verticalLayoutWidget_2);
+        dateCreaDateEdit->setObjectName(QStringLiteral("dateCreaDateEdit"));
+        dateCreaDateEdit->setCurrentSection(QDateTimeEdit::DaySection);
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, dateCreaDateEdit);
+
+        idVersionLineEdit = new QLineEdit(verticalLayoutWidget_2);
+        idVersionLineEdit->setObjectName(QStringLiteral("idVersionLineEdit"));
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, idVersionLineEdit);
+
+        titleLabel = new QLabel(verticalLayoutWidget_2);
+        titleLabel->setObjectName(QStringLiteral("titleLabel"));
+
+        formLayout->setWidget(3, QFormLayout::LabelRole, titleLabel);
+
+        titleLineEdit = new QLineEdit(verticalLayoutWidget_2);
+        titleLineEdit->setObjectName(QStringLiteral("titleLineEdit"));
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, titleLineEdit);
+
+        dateEditLabel = new QLabel(verticalLayoutWidget_2);
+        dateEditLabel->setObjectName(QStringLiteral("dateEditLabel"));
+
+        formLayout->setWidget(4, QFormLayout::LabelRole, dateEditLabel);
+
+        dateEditDateEdit = new QDateEdit(verticalLayoutWidget_2);
+        dateEditDateEdit->setObjectName(QStringLiteral("dateEditDateEdit"));
+
+        formLayout->setWidget(4, QFormLayout::FieldRole, dateEditDateEdit);
+
+        idVersionLabel = new QLabel(verticalLayoutWidget_2);
+        idVersionLabel->setObjectName(QStringLiteral("idVersionLabel"));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, idVersionLabel);
+
+
+        verticalLayout_7->addLayout(formLayout);
+
+        formLayout_3 = new QFormLayout();
+        formLayout_3->setObjectName(QStringLiteral("formLayout_3"));
+
+        verticalLayout_7->addLayout(formLayout_3);
+
         tabWidget->addTab(Notes, QString());
+        verticalLayoutWidget->raise();
+        verticalLayoutWidget_2->raise();
+        activenotes->raise();
         Relations = new QWidget();
         Relations->setObjectName(QStringLiteral("Relations"));
         groupBox_2 = new QGroupBox(Relations);
@@ -114,6 +201,12 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Notes actives", Q_NULLPTR));
+        idNoteLabel->setText(QApplication::translate("MainWindow", "idNote", Q_NULLPTR));
+        dateCreaLabel->setText(QApplication::translate("MainWindow", "Date de creation", Q_NULLPTR));
+        dateCreaDateEdit->setDisplayFormat(QApplication::translate("MainWindow", "dd/MM/yyyy", Q_NULLPTR));
+        titleLabel->setText(QApplication::translate("MainWindow", "Titre", Q_NULLPTR));
+        dateEditLabel->setText(QApplication::translate("MainWindow", "Date d'\303\251dition", Q_NULLPTR));
+        idVersionLabel->setText(QApplication::translate("MainWindow", "idVersion", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Notes), QApplication::translate("MainWindow", "Notes", Q_NULLPTR));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));

@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "notesmanager.h"
-
 #include "ui_mainwindow.h"
 void MainWindow::loadActiveNotes(){
     const std::vector<Note*>& notes=manager->getListNotes();
@@ -13,9 +12,6 @@ void MainWindow::loadActiveNotes(){
             ui->activenotes->addItem(item);
         }
     }
-    // get back the data
-    //QVariant v = item->data(Qt::UserRole);
-    //int id = v.value<int>();
 }
 
 MainWindow::MainWindow(NotesManager* m, QWidget *parent) :manager(m), QMainWindow(parent),ui(new Ui::MainWindow)
@@ -28,4 +24,15 @@ MainWindow::MainWindow(NotesManager* m, QWidget *parent) :manager(m), QMainWindo
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_activenotes_itemClicked(QListWidgetItem *item)
+{
+    // get back the data
+    QVariant v = item->data(Qt::UserRole);
+    int idNote = v.value<int>();
+    Note& note=manager->getNote(idNote);
+    ui->idNoteLineEdit->setText(QString::number(note.getIdNote()));
+    const Date& dateCreation=note.getDateCrea();
+    ui->dateCreaDateEdit->setDate(QDate(dateCreation.getAnnee(),dateCreation.getMois(),dateCreation.getJour()));
 }

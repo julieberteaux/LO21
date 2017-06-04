@@ -14,6 +14,14 @@
 //NoteVersionFactory::map_type NoteVersionFactory::map = new NoteVersionFactory::map_type();
 NoteVersionFactory::map_type * NoteVersionFactory::map = NULL;
 
+NoteVersion::NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
+const QString& NoteVersion::getTitle() const {return title;}
+void NoteVersion::setTitle(const QString& str) {title=str;}
+const Date& NoteVersion::getDateEdit() const{return dateEdit;}
+void NoteVersion::setDateEdit(const Date& d){dateEdit=d;}
+NoteVersion::~NoteVersion(){};
+unsigned int NoteVersion::getIdVersion() const{return idVersion;}
+
 void NoteVersion::saveNoteVersion(QXmlStreamWriter* stream) const{
     stream->writeStartElement("version");
 
@@ -81,9 +89,32 @@ void NoteVersion::loadNoteVersion(QXmlStreamReader& xml){
 
     loadNoteVersionType(xml);
 }
+/*********************************NoteVersionFactory***********************/
+//used for load method
+
+NoteVersionFactory::map_type * NoteVersionFactory::getMap() {
+    // never delete'ed. (exist until program termination)
+    // because we can't guarantee correct destruction order
+    if(!map) { map = new map_type; }
+    return map;
+}
+
+
+NoteVersion * NoteVersionFactory::createInstance(const QString & s) {
+    map_type::iterator it = getMap()->find(s);
+    if(it == getMap()->end())
+        return 0;
+    return it->second();
+}
 
 /********************************** Article ****************************/
 DerivedRegister<Article> Article::reg("Article");
+
+Article::Article (const QString& t, const QString& te): NoteVersion(0, t), text(te){}
+
+const QString& Article::getText() const {return text;}
+void Article::setText(const QString& str) {text=str;}
+QString Article::type() const {return "Article";}
 
 Article* Article::clone(unsigned int id) const{
     Article* art=new Article(*this);
@@ -110,8 +141,18 @@ void Article::loadNoteVersionType(QXmlStreamReader &xml){
     xml.readNext();
 }
 
+FormVersion* Article::formVersion() {return new FormArticle(this);}
+
 /********************************** Task ****************************/
 DerivedRegister<Task> Task::reg("Task");
+
+Task::Task (const QString& t,const QString& a, unsigned int p, const Date d, const Status s): NoteVersion(0, t), action(a), priority(p), deadline(d), status(s){}
+
+const QString& Task::getAction() const {return action;}
+unsigned int Task::getPriority() const {return priority;}
+const Date& Task::getDeadline() const {return deadline;}
+const Task::Status& Task::getStatus() const {return status;}
+QString Task::type() const {return "Task";}
 
 Task* Task::clone(unsigned int id) const{
     Task* tsk=new Task(*this);
@@ -127,8 +168,15 @@ void Task::loadNoteVersionType(QXmlStreamReader& stream){
 
 }
 
+FormVersion* Task::formVersion() {return nullptr;}
+
 /********************************** Image ****************************/
 DerivedRegister<Image> Image::reg("Image");
+Image::Image(const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
+
+const QString& Image::getDescription() const {return description;}
+const QString& Image::getFile() const {return file;}
+QString Image::type() const {return "Image";}
 
 Image* Image::clone(unsigned int id) const{
     Image* img=new Image(*this);
@@ -163,7 +211,15 @@ void Image::loadNoteVersionType(QXmlStreamReader& xml){
     xml.readNext();
 }
 
+FormVersion* Image::formVersion() {return new FormImage(this);}
+
+
 /********************************** Audio ****************************/
+Audio::Audio (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
+
+const QString& Audio::getDescription() const {return description;}
+const QString& Audio::getFile() const {return file;}
+QString Audio::type() const {return "Audio";}
 
 Audio* Audio::clone(unsigned int id) const{
     Audio* aud=new Audio(*this);
@@ -177,3 +233,25 @@ void Audio::saveNoteVersionType(QXmlStreamWriter& stream) const{
 void Audio::loadNoteVersionType(QXmlStreamReader &xml){
 
 }
+FormVersion* Audio::formVersion() {return nullptr;}
+
+/********************************** Video ****************************/
+
+Video::Video (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
+
+const QString& Video::getDescription() const {return description;}
+const QString& Video::getFile() const {return file;}
+QString Video::type() const {return "Video";}
+
+Video* Video::clone(unsigned int id) const{
+    //A FAIRE
+}
+
+void Video::saveNoteVersionType(QXmlStreamWriter& stream) const{
+    //A FAIRE
+}
+
+void Video::loadNoteVersionType(QXmlStreamReader &xml){
+
+}
+FormVersion* Video::formVersion() {return nullptr;}

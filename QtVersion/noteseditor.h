@@ -1,17 +1,7 @@
+
 #ifndef NOTESEDITOR_H
 #define NOTESEDITOR_H
 
-
-class NotesEditor : public QWidget
-{
-    Q_OBJECT
-protected:
-
-public:
-    NotesEditor();
-};
-
-#endif // NOTESEDITOR_H
 
 /**
 * \class NotesEditor NotesEditor.h
@@ -55,3 +45,4 @@ signals :
 
 public slots :
 };
+#endif // NOTESEDITOR_H

@@ -1,5 +1,6 @@
 #include "noteseditor.h"
 
+
 NotesEditor::NotesEditor(Note* n, QWidget* parent)
 {
     title = new QLineEdit(n->getTitle());
@@ -14,6 +15,7 @@ NotesEditor::NotesEditor(Note* n, QWidget* parent)
 
 
 }
+
 
 
 

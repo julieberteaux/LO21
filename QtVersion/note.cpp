@@ -22,7 +22,7 @@ void Note::saveNote(QXmlStreamWriter* stream) const {
         stream->writeEndElement();
 
         //A verifier...
-        //stream->writeTextElement("noteState",QString::number(noteState));
+        stream->writeTextElement("noteState",QString::number(noteState));
 
         stream->writeTextElement("type",(listVersion.back())->type());
 
@@ -75,11 +75,11 @@ void Note::loadNote(QXmlStreamReader& xml){
             }
 
             //A vérifier
-            /*if(xml.name() == "noteState") {
+            if(xml.name() == "noteState") {
                 xml.readNext();
-                noteState=xml.text().toInt();
+                noteState=static_cast<state>(xml.text().toInt());
                 qDebug()<<"noteState:"<<noteState<<"\n";
-            }*/
+            }
         }
         // ...and next...
         xml.readNext();
@@ -152,7 +152,7 @@ int Note::copyLatestVersion(){
     return (listVersion.back())->getIdVersion();
 }
 
-NoteVersion& Note::getNoteVersion(unsigned int id) const{
+NoteVersion &Note::getNoteVersion(unsigned int id) const{
     if(listVersion.size()==0)
         throw Exception("Il n'y a pas de verion pour cette note!");
     auto it = find_if(listVersion.begin(), listVersion.end(), [&id](NoteVersion* obj) {return obj->getIdVersion() == id;});

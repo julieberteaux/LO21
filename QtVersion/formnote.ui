@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormNote</class>
+ <widget class="QWidget" name="FormNote">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>415</width>
+    <height>484</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>8</x>
+     <y>2</y>
+     <width>381</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="idNoteLabel">
+      <property name="text">
+       <string>idNote</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="idNoteLineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="dateCreaLabel">
+      <property name="text">
+       <string>Date de creation</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateEdit" name="dateCreaDateEdit">
+      <property name="currentSection">
+       <enum>QDateTimeEdit::DaySection</enum>
+      </property>
+      <property name="displayFormat">
+       <string>dd/MM/yyyy</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="idVersionLabel">
+      <property name="text">
+       <string>idVersion</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="idVersionLineEdit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="titleLabel">
+      <property name="text">
+       <string>Titre</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="titleLineEdit"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="dateEditLabel">
+      <property name="text">
+       <string>Date d'édition</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QDateEdit" name="dateEditDateEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>169</y>
+     <width>381</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="versionLayout"/>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

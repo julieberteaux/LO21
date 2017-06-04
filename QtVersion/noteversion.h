@@ -8,13 +8,13 @@
 #include <vector>
 #include<QDebug>
 #include "date.h"
+#include "formversion.h"
 
 #include <QMainWindow>
 #include <QObject>
 #include <QWidget>
 #include <QXmlStreamWriter>
 
-//template<typename T> struct DerivedRegister;
 
 class NoteVersion{
     friend class Note;
@@ -32,17 +32,22 @@ private:
     virtual void saveNoteVersionType(QXmlStreamWriter& stream) const=0;
     virtual void loadNoteVersionType(QXmlStreamReader& stream)=0;
 
+
 public :
 
-    NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
-    const QString& getTitle() const {return title;}
-    void setTitle(const QString& str) {title=str;}
-    virtual ~NoteVersion(){};
-    unsigned int getIdVersion() const{return idVersion;}
+    NoteVersion(unsigned int v, const QString& t);
+    const QString& getTitle() const ;
+    void setTitle(const QString& str);
+    const Date& getDateEdit() const;
+    void setDateEdit(const Date& d);
+    virtual ~NoteVersion();
+    unsigned int getIdVersion() const;
 
-    //NoteVersion(NoteVersion &){}
     virtual NoteVersion* clone(unsigned int id) const=0;
     virtual QString type() const =0;
+    //A mettre en virtuelle pure
+    virtual FormVersion* formVersion()=0;
+
 /*
  addNoteVersion :
     copyLatest : copie de la dernière version
@@ -68,21 +73,10 @@ public:
 private:
     static map_type * map; //leak memory??
 protected:
-    static map_type * getMap() {
-        // never delete'ed. (exist until program termination)
-        // because we can't guarantee correct destruction order
-        if(!map) { map = new map_type; }
-        return map;
-    }
+    static map_type * getMap();
 
 public:
-
-    static NoteVersion * createInstance(const QString & s) {
-        map_type::iterator it = getMap()->find(s);
-        if(it == getMap()->end())
-            return 0;
-        return it->second();
-    }
+    static NoteVersion * createInstance(const QString & s) ;
 
 };
 
@@ -104,16 +98,15 @@ class Article : public NoteVersion {
     void saveNoteVersionType(QXmlStreamWriter &stream) const;
     void loadNoteVersionType(QXmlStreamReader &xml);
 
-
 public :
-    Article (const QString& t=QString(), const QString& te=QString()): NoteVersion(0, t), text(te){}
+    Article (const QString& t=QString(), const QString& te=QString());
 
-    const QString& getText() const {return text;}
-    void setText(const QString& str) {text=str;}
+    const QString& getText() const;
+    void setText(const QString& str);
 
     Article* clone(unsigned int id) const;
-    QString type() const {return "Article";}
-
+    QString type() const;
+    FormVersion* formVersion();
 };
 
 
@@ -134,14 +127,15 @@ class Task : public NoteVersion {
 
 public :
 
-    Task (const QString& t=QString(),const QString& a=QString(), unsigned int p=0, const Date d=Date(1,1,2100), const Status s=Status()): NoteVersion(0, t), action(a), priority(p), deadline(d), status(s){}
+    Task (const QString& t=QString(),const QString& a=QString(), unsigned int p=0, const Date d=Date(1,1,2100), const Status s=Status());
 
-    const QString& getAction() const {return action;}
-    unsigned int getPriority() const {return priority;}
-    const Date& getDeadline() const {return deadline;}
-    const Status& getStatus() const {return status;}
+    const QString& getAction() const ;
+    unsigned int getPriority() const ;
+    const Date& getDeadline() const ;
+    const Status& getStatus() const ;
     Task* clone(unsigned int id) const;
-    QString type() const {return "Task";}
+    QString type() const ;
+    FormVersion* formVersion();
 
 };
 /********************************** Image ****************************/
@@ -159,13 +153,12 @@ class Image : public NoteVersion {
 
 public :
 
-    Image(const QString& t=QString(), const QString& d=QString(), const QString& f=QString()): NoteVersion(0, t), description(d), file(f){}
-
-    const QString& getDescription() const {return description;}
-    const QString& getFile() const {return file;}
+    Image(const QString& t=QString(), const QString& d=QString(), const QString& f=QString());
+    const QString& getDescription() const;
+    const QString& getFile() const ;
     Image* clone(unsigned int id) const;
-    QString type() const {return "Image";}
-
+    QString type() const ;
+    FormVersion* formVersion();
 };
 
 
@@ -182,13 +175,13 @@ class Audio : public NoteVersion {
 
 public :
 
-    Audio (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
+    Audio (const QString& t, const QString& d, const QString& f);
 
-    const QString& getDescription() const {return description;}
-    const QString& getFile() const {return file;}
+    const QString& getDescription() const;
+    const QString& getFile() const;
     Audio* clone(unsigned int id) const;
-    QString type() const {return "Audio";}
-
+    QString type() const;
+    FormVersion* formVersion();
 };
 
 
@@ -205,13 +198,13 @@ class Video : public NoteVersion {
 
 public :
 
-    Video (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
+    Video (const QString& t, const QString& d, const QString& f);
 
-    const QString& getDescription() const {return description;}
-    const QString& getFile() const {return file;}
+    const QString& getDescription() const;
+    const QString& getFile() const;
     Video* clone(unsigned int id) const;
-    QString type() const {return "Video";}
-
+    QString type() const;
+    FormVersion* formVersion();
 };
 
 

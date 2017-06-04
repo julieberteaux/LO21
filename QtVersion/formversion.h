@@ -5,6 +5,7 @@
 #include <QListWidget>
 #include <QTextEdit>
 class Article;
+class Image;
 
 class FormVersion : public QWidget{
         Q_OBJECT
@@ -22,6 +23,16 @@ class FormArticle : public FormVersion{
 public:
     FormArticle(Article* a, QWidget *parent = 0);
     ~FormArticle();
+
+};
+
+class FormImage : public FormVersion{
+    Image *image;
+    QLabel *imageLabel;
+    QHBoxLayout *imageHbox;
+public:
+    FormImage(Image* a, QWidget *parent = 0);
+    ~FormImage();
 
 };
 

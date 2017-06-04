@@ -211,7 +211,7 @@ void Image::loadNoteVersionType(QXmlStreamReader& xml){
     xml.readNext();
 }
 
-FormVersion* Image::formVersion() {return nullptr;}
+FormVersion* Image::formVersion() {return new FormImage(this);}
 
 
 /********************************** Audio ****************************/

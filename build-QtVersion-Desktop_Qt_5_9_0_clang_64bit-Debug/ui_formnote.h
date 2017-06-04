@@ -45,7 +45,7 @@ public:
     {
         if (FormNote->objectName().isEmpty())
             FormNote->setObjectName(QStringLiteral("FormNote"));
-        FormNote->resize(423, 308);
+        FormNote->resize(415, 484);
         formLayoutWidget = new QWidget(FormNote);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(8, 2, 381, 161));
@@ -105,7 +105,7 @@ public:
 
         verticalLayoutWidget = new QWidget(FormNote);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(9, 169, 381, 131));
+        verticalLayoutWidget->setGeometry(QRect(9, 169, 381, 261));
         versionLayout = new QVBoxLayout(verticalLayoutWidget);
         versionLayout->setObjectName(QStringLiteral("versionLayout"));
         versionLayout->setContentsMargins(0, 0, 0, 0);

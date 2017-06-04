@@ -19,7 +19,7 @@
      <x>8</x>
      <y>2</y>
      <width>381</width>
-     <height>161</height>
+     <height>179</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -67,9 +67,6 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="titleLineEdit"/>
-    </item>
     <item row="4" column="0">
      <widget class="QLabel" name="dateEditLabel">
       <property name="text">
@@ -79,6 +76,9 @@
     </item>
     <item row="4" column="1">
      <widget class="QDateEdit" name="dateEditDateEdit"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="titleLineEdit"/>
     </item>
    </layout>
   </widget>
@@ -93,7 +93,37 @@
    </property>
    <layout class="QVBoxLayout" name="versionLayout"/>
   </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>440</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>titleLineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>save</receiver>
+   <slot>animateClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>337</x>
+     <y>450</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

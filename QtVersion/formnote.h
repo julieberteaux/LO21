@@ -14,6 +14,7 @@ class FormNote : public QWidget
     NotesManager* manager;
     QListWidgetItem *item;
     FormVersion* version;
+    QPushButton *save;
 public:
     explicit FormNote(NotesManager* m, QListWidgetItem *i, QWidget *parent = 0);
     ~FormNote();

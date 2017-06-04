@@ -9,7 +9,7 @@ FormArticle::FormArticle(Article *a, QWidget *parent): FormVersion(parent), arti
     textLabel=new QLabel("Texte:");
     text=new QTextEdit();
     textHbox=new QHBoxLayout();
-    text->setText(a->getText());
+//    text->setText(a->getText());
     textHbox->addWidget(textLabel);
     textHbox->addWidget(text);
     this->setLayout(textHbox);

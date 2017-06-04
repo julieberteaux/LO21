@@ -27,14 +27,14 @@ int main(int argc, char* argv[]) {
 //    return app.exec();
     try{
         //PARTIE 1 A NE PAS SUPPRIMER!
-        /*
-        std::cout<<"Début du programme plurinotes"<<std::endl;
+
+/*        std::cout<<"Début du programme plurinotes"<<std::endl;
 
         NotesManager& manager=NotesManager::getInstance();
 
         // ATTENTION notes.xml est situé dans le working directory situé dans l'onglet projets/run
         manager.setFilename("notes.xml");
-        /*
+
         //création d'une note + affichage de l'id et de la date de création
         int idn0=manager.addNote();//0
 
@@ -58,6 +58,7 @@ int main(int argc, char* argv[]) {
         NoteVersion& artv2=n0.getNoteVersion(idCopyLatestVersion);
         Article& artV2=dynamic_cast<Article&>(artv2);
         artV2.setText("ceci est un essai");
+        std::cout<<"titre de la note: "<<artV2.getTitle().toStdString()<<" texte de l'article: "<<artV2.getText().toStdString()<<std::endl;
 
         int idn1=manager.addNote();//1
         Note& n1=manager.getNote(idn1);
@@ -68,12 +69,12 @@ int main(int argc, char* argv[]) {
         manager.save();
         Date d=Date(1,2,2017);
         Article* temp2=new Article("titre de l'article...", "texte de l'article...");
-        /*
+
         //test of load method:
         NoteVersion* testArticle=NoteVersionFactory::createInstance("Article");
         Article& testArticle2=dynamic_cast<Article&>(*testArticle);
         testArticle2.setText("cedskplopkdz");
-
+*/
         /*for(std::vector<Note*>::iterator it=manager.listNotes.begin(); it!=manager.listNotes.end(); ++it)
             std::cout<<(*it)->getidNote()<<std::endl;*/
         //Relation* rReference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);

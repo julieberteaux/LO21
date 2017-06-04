@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QListWidget>
 #include <QTextEdit>
+
 class Article;
 class Image;
 
@@ -21,7 +22,7 @@ class FormArticle : public FormVersion{
     //QPushButton *save;
     QHBoxLayout *textHbox;
 public:
-    FormArticle(Article* a, QWidget *parent = 0);
+    FormArticle(Article *a, QWidget *parent = 0);
     ~FormArticle();
 
 };

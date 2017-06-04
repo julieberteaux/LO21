@@ -15,6 +15,7 @@
 #include <QWidget>
 #include <QXmlStreamWriter>
 
+class FormVersion;
 
 class NoteVersion{
     friend class Note;

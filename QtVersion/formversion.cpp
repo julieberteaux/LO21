@@ -5,11 +5,11 @@ FormVersion::~FormVersion(){}
 
 /***********************ARTICLE***********************/
 
-FormArticle::FormArticle(Article* a, QWidget *parent): FormVersion(parent), article(a){
+FormArticle::FormArticle(Article *a, QWidget *parent): FormVersion(parent), article(a){
     textLabel=new QLabel("Texte:");
     text=new QTextEdit();
     textHbox=new QHBoxLayout();
-    //text->setText(a->getText());
+    text->setText(a->getText());
     textHbox->addWidget(textLabel);
     textHbox->addWidget(text);
     this->setLayout(textHbox);

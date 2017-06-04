@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include "notesmanager.h"
 #include "formnote.h"
+#include "formversion.h"
 namespace Ui {
 class MainWindow;
 }

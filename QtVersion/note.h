@@ -27,7 +27,6 @@ class Note{
     ~Note();
     void saveNote(QXmlStreamWriter* stream) const;
     void loadNote(QXmlStreamReader &xml);
-    NoteVersion& getNoteVersion(unsigned int id) const;
 
 public:
     unsigned int getIdNote() const{return idNote;}
@@ -35,6 +34,7 @@ public:
     state getNoteState() {return noteState;}
     int addNoteVersion(const NoteVersion &);
     int copyLatestVersion();
+    NoteVersion& getNoteVersion(unsigned int id) const;
     NoteVersion& getLatestNoteVersion(){return *(listVersion.back());}
     /*
      changeState

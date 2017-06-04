@@ -56,7 +56,14 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
 		../QtVersion/relationsmanager.cpp \
-		../QtVersion/mainwindow.cpp moc_mainwindow.cpp
+		../QtVersion/mainwindow.cpp \
+		../QtVersion/noteseditor.cpp \
+		../QtVersion/trash.cpp \
+		../QtVersion/formnote.cpp \
+		../QtVersion/formversion.cpp moc_mainwindow.cpp \
+		moc_noteseditor.cpp \
+		moc_formnote.cpp \
+		moc_formversion.cpp
 OBJECTS       = plurinotes.o \
 		main.o \
 		date.o \
@@ -66,7 +73,14 @@ OBJECTS       = plurinotes.o \
 		relation.o \
 		relationsmanager.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		noteseditor.o \
+		trash.o \
+		formnote.o \
+		formversion.o \
+		moc_mainwindow.o \
+		moc_noteseditor.o \
+		moc_formnote.o \
+		moc_formversion.o
 DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/qdevice.pri \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/device_config.prf \
@@ -216,7 +230,6 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/qt_config.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_post.prf \
-		../QtVersion/.qmake.stash \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -250,7 +263,11 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/noteversion.h \
 		../QtVersion/relation.h \
 		../QtVersion/relationsmanager.h \
-		../QtVersion/mainwindow.h ../QtVersion/plurinotes.cpp \
+		../QtVersion/mainwindow.h \
+		../QtVersion/noteseditor.h \
+		../QtVersion/trash.h \
+		../QtVersion/formnote.h \
+		../QtVersion/formversion.h ../QtVersion/plurinotes.cpp \
 		../QtVersion/main.cpp \
 		../QtVersion/date.cpp \
 		../QtVersion/notesmanager.cpp \
@@ -258,7 +275,11 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/noteversion.cpp \
 		../QtVersion/relation.cpp \
 		../QtVersion/relationsmanager.cpp \
-		../QtVersion/mainwindow.cpp
+		../QtVersion/mainwindow.cpp \
+		../QtVersion/noteseditor.cpp \
+		../QtVersion/trash.cpp \
+		../QtVersion/formnote.cpp \
+		../QtVersion/formversion.cpp
 QMAKE_TARGET  = QtVersion
 DESTDIR       = 
 TARGET        = QtVersion.app/Contents/MacOS/QtVersion
@@ -267,7 +288,7 @@ TARGET        = QtVersion.app/Contents/MacOS/QtVersion
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_formnote.h $(OBJECTS)  
 	@test -d QtVersion.app/Contents/MacOS/ || mkdir -p QtVersion.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -420,7 +441,6 @@ Makefile: ../QtVersion/QtVersion.pro /Users/Laura/Qt/5.8/clang_64/mkspecs/macx-c
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/qt_config.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -602,7 +622,6 @@ Makefile: ../QtVersion/QtVersion.pro /Users/Laura/Qt/5.8/clang_64/mkspecs/macx-c
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/qt_config.prf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/toolchain.prf:
@@ -664,9 +683,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h ../QtVersion/noteseditor.h ../QtVersion/trash.h ../QtVersion/formnote.h ../QtVersion/formversion.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp ../QtVersion/noteseditor.cpp ../QtVersion/trash.cpp ../QtVersion/formnote.cpp ../QtVersion/formversion.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui ../QtVersion/formnote.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -676,7 +695,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r QtVersion.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -698,44 +716,108 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++11 -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_noteseditor.cpp moc_formnote.cpp moc_formversion.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+	-$(DEL_FILE) moc_mainwindow.cpp moc_noteseditor.cpp moc_formnote.cpp moc_formversion.cpp
+moc_mainwindow.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFormLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qformlayout.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlayout.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDockWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdockwidget.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTabWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../QtVersion/formnote.h \
 		../QtVersion/mainwindow.h \
 		moc_predefs.h \
 		/Users/Laura/Qt/5.8/clang_64/bin/moc
 	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/mainwindow.h -o moc_mainwindow.cpp
 
+moc_noteseditor.cpp: ../QtVersion/noteseditor.h \
+		moc_predefs.h \
+		/Users/Laura/Qt/5.8/clang_64/bin/moc
+	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/noteseditor.h -o moc_noteseditor.cpp
+
+moc_formnote.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../QtVersion/formnote.h \
+		moc_predefs.h \
+		/Users/Laura/Qt/5.8/clang_64/bin/moc
+	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/formnote.h -o moc_formnote.cpp
+
+moc_formversion.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
+		../QtVersion/formversion.h \
+		moc_predefs.h \
+		/Users/Laura/Qt/5.8/clang_64/bin/moc
+	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/formversion.h -o moc_formversion.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_formnote.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_formnote.h
 ui_mainwindow.h: ../QtVersion/mainwindow.ui \
 		/Users/Laura/Qt/5.8/clang_64/bin/uic
 	/Users/Laura/Qt/5.8/clang_64/bin/uic ../QtVersion/mainwindow.ui -o ui_mainwindow.h
+
+ui_formnote.h: ../QtVersion/formnote.ui \
+		/Users/Laura/Qt/5.8/clang_64/bin/uic
+	/Users/Laura/Qt/5.8/clang_64/bin/uic ../QtVersion/formnote.ui -o ui_formnote.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -768,32 +850,30 @@ main.o: ../QtVersion/main.cpp /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framewo
 		../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../QtVersion/relationsmanager.h \
 		../QtVersion/relation.h \
 		../QtVersion/mainwindow.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFormLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qformlayout.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlayout.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDockWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdockwidget.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTabWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h
+		../QtVersion/formnote.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../QtVersion/main.cpp
 
 date.o: ../QtVersion/date.cpp ../QtVersion/date.h
@@ -808,13 +888,30 @@ notesmanager.o: ../QtVersion/notesmanager.cpp ../QtVersion/notesmanager.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QFile \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QTextStream \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qtextstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o notesmanager.o ../QtVersion/notesmanager.cpp
 
 note.o: ../QtVersion/note.cpp ../QtVersion/note.h \
@@ -825,13 +922,26 @@ note.o: ../QtVersion/note.cpp ../QtVersion/note.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o note.o ../QtVersion/note.cpp
 
 noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
@@ -841,13 +951,26 @@ noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o noteversion.o ../QtVersion/noteversion.cpp
 
 relation.o: ../QtVersion/relation.cpp ../QtVersion/relation.h \
@@ -859,13 +982,26 @@ relation.o: ../QtVersion/relation.cpp ../QtVersion/relation.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relation.o ../QtVersion/relation.cpp
 
 relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmanager.h \
@@ -878,42 +1014,123 @@ relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmana
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o relationsmanager.o ../QtVersion/relationsmanager.cpp
 
 mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFormLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qformlayout.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlayout.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDockWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdockwidget.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTabWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtabwidget.h
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		../QtVersion/formnote.h \
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
+
+noteseditor.o: ../QtVersion/noteseditor.cpp ../QtVersion/noteseditor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o noteseditor.o ../QtVersion/noteseditor.cpp
+
+trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trash.o ../QtVersion/trash.cpp
+
+formnote.o: ../QtVersion/formnote.cpp ../QtVersion/formnote.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../QtVersion/notesmanager.h \
+		../QtVersion/note.h \
+		../QtVersion/noteversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../QtVersion/date.h \
+		../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
+		ui_formnote.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formnote.o ../QtVersion/formnote.cpp
+
+formversion.o: ../QtVersion/formversion.cpp ../QtVersion/formversion.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
+		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formversion.o ../QtVersion/formversion.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_noteseditor.o: moc_noteseditor.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_noteseditor.o moc_noteseditor.cpp
+
+moc_formnote.o: moc_formnote.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_formnote.o moc_formnote.cpp
+
+moc_formversion.o: moc_formversion.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_formversion.o moc_formversion.cpp
 
 ####### Install
 

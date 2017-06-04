@@ -14,14 +14,14 @@ public:
 #endif // NOTESEDITOR_H
 
 /**
-* \class NotesEditeur NotesEditeur.h
+* \class NotesEditor NotesEditor.h
 */
-class NotesEditeur : public QWidget {
+class NotesEditor : public QWidget {
     Q_OBJECT
 protected :
     QLineEdit *title;
     QPushButton *save;
-    QPushButton *addTag;
+
     QPushButton *supp;
     QVBoxLayout *layout;
     QHBoxLayout *buttonLayout;
@@ -29,14 +29,14 @@ protected :
 public:
 
 /**
- * \brief		Constructeur de NotesEditeur
+ * \brief		Constructeur de NotesEditor
  * \param		n note a recopier
  * \param		parent QWidget, 0 par defaut
  */
-    NotesEditeur(Note* n, QWidget* parent=0);
+    NotesEditor(Note* n, QWidget* parent=0);
     QLineEdit& getTitle() const {return *title;}
     virtual Note* getNote() const=0;
-    QPushButton* getAddTag(){ return addTag; }
+
     QPushButton* getSuppButton() {return supp;}
     QPushButton* getSaveButton() {return save;}
     bool getSaved() const {return saved;}

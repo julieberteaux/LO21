@@ -18,6 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -37,12 +38,14 @@ public:
     QLineEdit *titleLineEdit;
     QLabel *dateEditLabel;
     QDateEdit *dateEditDateEdit;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *versionLayout;
 
     void setupUi(QWidget *FormNote)
     {
         if (FormNote->objectName().isEmpty())
             FormNote->setObjectName(QStringLiteral("FormNote"));
-        FormNote->resize(401, 168);
+        FormNote->resize(423, 308);
         formLayoutWidget = new QWidget(FormNote);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(8, 2, 381, 161));
@@ -100,6 +103,12 @@ public:
 
         formLayout->setWidget(4, QFormLayout::FieldRole, dateEditDateEdit);
 
+        verticalLayoutWidget = new QWidget(FormNote);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(9, 169, 381, 131));
+        versionLayout = new QVBoxLayout(verticalLayoutWidget);
+        versionLayout->setObjectName(QStringLiteral("versionLayout"));
+        versionLayout->setContentsMargins(0, 0, 0, 0);
 
         retranslateUi(FormNote);
 

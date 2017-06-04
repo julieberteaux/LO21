@@ -35,7 +35,7 @@ public:
     state getNoteState() {return noteState;}
     int addNoteVersion(const NoteVersion &);
     int copyLatestVersion();
-    const NoteVersion& getLatestNoteVersion() const{return *(listVersion.back());}
+    NoteVersion& getLatestNoteVersion(){return *(listVersion.back());}
     /*
      changeState
      getLatestVersion

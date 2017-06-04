@@ -16,7 +16,6 @@ SOURCES += \
     noteseditor.cpp \
     trash.cpp \
     formnote.cpp \
-    formarticle.cpp \
     formversion.cpp
 
     trash.cpp
@@ -36,7 +35,6 @@ HEADERS += \
     noteseditor.h \
     trash.h \
     formnote.h \
-    formarticle.h \
     formversion.h
 
     trash.h
@@ -44,5 +42,4 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
-    formnote.ui \
-    formarticle.ui
+    formnote.ui

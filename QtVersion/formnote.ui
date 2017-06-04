@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>168</height>
+    <width>423</width>
+    <height>308</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,6 +81,17 @@
      <widget class="QDateEdit" name="dateEditDateEdit"/>
     </item>
    </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>169</y>
+     <width>381</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="versionLayout"/>
   </widget>
  </widget>
  <resources/>

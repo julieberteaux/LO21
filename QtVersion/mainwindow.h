@@ -5,7 +5,6 @@
 #include <QMainWindow>
 #include "notesmanager.h"
 #include "formnote.h"
-#include "formversion.h"
 namespace Ui {
 class MainWindow;
 }
@@ -14,7 +13,6 @@ class MainWindow : public QMainWindow{
     Q_OBJECT
     NotesManager* manager;
     FormNote* formnote;
-    //FormVersion* formversion;
 public:
     explicit MainWindow(NotesManager *m, QWidget *parent = 0);
     ~MainWindow();

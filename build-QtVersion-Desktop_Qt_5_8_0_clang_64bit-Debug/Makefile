@@ -61,7 +61,6 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/trash.cpp \
 		../QtVersion/formnote.cpp \
 		../QtVersion/formversion.cpp moc_mainwindow.cpp \
-		moc_noteseditor.cpp \
 		moc_formnote.cpp \
 		moc_formversion.cpp
 OBJECTS       = plurinotes.o \
@@ -78,7 +77,6 @@ OBJECTS       = plurinotes.o \
 		formnote.o \
 		formversion.o \
 		moc_mainwindow.o \
-		moc_noteseditor.o \
 		moc_formnote.o \
 		moc_formversion.o
 DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
@@ -230,6 +228,7 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/qt_config.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_post.prf \
+		../QtVersion/.qmake.stash \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -441,6 +440,7 @@ Makefile: ../QtVersion/QtVersion.pro /Users/Laura/Qt/5.8/clang_64/mkspecs/macx-c
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/qt_config.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -622,6 +622,7 @@ Makefile: ../QtVersion/QtVersion.pro /Users/Laura/Qt/5.8/clang_64/mkspecs/macx-c
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/qt_config.prf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/Laura/Qt/5.8/clang_64/mkspecs/features/toolchain.prf:
@@ -695,6 +696,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r QtVersion.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -716,9 +718,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++11 -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_noteseditor.cpp moc_formnote.cpp moc_formversion.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_formnote.cpp moc_formversion.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_noteseditor.cpp moc_formnote.cpp moc_formversion.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_formnote.cpp moc_formversion.cpp
 moc_mainwindow.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -753,11 +755,6 @@ moc_mainwindow.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers
 		moc_predefs.h \
 		/Users/Laura/Qt/5.8/clang_64/bin/moc
 	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/mainwindow.h -o moc_mainwindow.cpp
-
-moc_noteseditor.cpp: ../QtVersion/noteseditor.h \
-		moc_predefs.h \
-		/Users/Laura/Qt/5.8/clang_64/bin/moc
-	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/noteseditor.h -o moc_noteseditor.cpp
 
 moc_formnote.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
@@ -1070,10 +1067,10 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
 
-noteseditor.o: ../QtVersion/noteseditor.cpp ../QtVersion/noteseditor.h
+noteseditor.o: ../QtVersion/noteseditor.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o noteseditor.o ../QtVersion/noteseditor.cpp
 
-trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h
+trash.o: ../QtVersion/trash.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trash.o ../QtVersion/trash.cpp
 
 formnote.o: ../QtVersion/formnote.cpp ../QtVersion/formnote.h \
@@ -1122,9 +1119,6 @@ formversion.o: ../QtVersion/formversion.cpp ../QtVersion/formversion.h \
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
-moc_noteseditor.o: moc_noteseditor.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_noteseditor.o moc_noteseditor.cpp
 
 moc_formnote.o: moc_formnote.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_formnote.o moc_formnote.cpp

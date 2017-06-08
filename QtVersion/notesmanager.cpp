@@ -17,6 +17,15 @@ int NotesManager::addNote(){
     return (listNotes.back())->getIdNote();
 }
 
+void NotesManager::addExistingNote (Note* n){
+    if(listNotes.size()==0)
+        listNotes.push_back(n);
+    int id=n->getIdNote();
+    auto it = find_if(listNotes.begin(), listNotes.end(), [&id](Note* obj) {return obj->getIdNote() == id;});
+    if(it==listNotes.end())
+        listNotes.insert(listNotes.begin()+n->getIdNote(), n);
+}
+
  Note &NotesManager::getNote(unsigned int id) {
     if(listNotes.size()==0)
         throw Exception("Il n'y a pas de notes!");
@@ -29,12 +38,19 @@ int NotesManager::addNote(){
 
 
 /********************************** Delete ****************************/
-/*Supprime une note et l'ensemble de ses versions
+
+// void deleteNote(Note* n){
+//    delete n;
+// }
+
+ /*Supprime une note et l'ensemble de ses versions
   Elimine les couples dans lesquels la note supprimée est impliquée
   Si une note est dans un couple de la relation reference elle est archivée -> couple pas supprimé
   Si pas referencé elle est placé ds la corbeille où elle pourra encore etre restaurer. */
 
-void NotesManager::deleteNote(unsigned int id){
+
+
+void NotesManager::putToTrash(unsigned int id){
   //relation* reference=getRelation("Reference");
     if(listNotes.size()==0)
         throw Exception("Il n'y a pas de notes!");
@@ -44,11 +60,14 @@ void NotesManager::deleteNote(unsigned int id){
 
     //auto it = find_if(reference->listCouples.begin(), reference->listCouples.end(), [&id](Note* obj) {return obj->getIdNote() == id;});
     //reference->listCouples
-    //Trash::addNote(it);
+    Trash::getInstance().addNote(*it);
+
     listNotes.erase(it);
     delete *it;
 
 }
+
+
 
 void NotesManager::save() const {
     QFile newfile(filename);

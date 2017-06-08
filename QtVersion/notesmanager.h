@@ -2,6 +2,7 @@
 #define NOTESMANAGER_H
 
 #include "note.h"
+#include "trash.h"
 //fusion
 class NotesManager{
     //singleton
@@ -24,10 +25,11 @@ public:
     void setFilename(const QString& str){filename=str;}
     //addNote adds a note with a new id which is greatest id(=id of latest note) + 1, the new note is empty
     int addNote();
+    void addExistingNote (Note* n);
     Note &getNote(unsigned int id);
     const std::vector<Note*>& getListNotes() const{return listNotes;}
-
-    void deleteNote(unsigned int id);
+    //void deleteNote(Note* n);
+    void putToTrash(unsigned int id);
     void save() const;
     void load();
     /*

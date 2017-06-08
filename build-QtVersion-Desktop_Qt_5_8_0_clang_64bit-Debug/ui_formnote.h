@@ -42,6 +42,7 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *versionLayout;
     QPushButton *save;
+    QPushButton *supp;
 
     void setupUi(QWidget *FormNote)
     {
@@ -107,13 +108,16 @@ public:
 
         verticalLayoutWidget = new QWidget(FormNote);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(9, 169, 381, 261));
+        verticalLayoutWidget->setGeometry(QRect(9, 169, 381, 251));
         versionLayout = new QVBoxLayout(verticalLayoutWidget);
         versionLayout->setObjectName(QStringLiteral("versionLayout"));
         versionLayout->setContentsMargins(0, 0, 0, 0);
         save = new QPushButton(FormNote);
         save->setObjectName(QStringLiteral("save"));
-        save->setGeometry(QRect(280, 440, 113, 32));
+        save->setGeometry(QRect(160, 440, 113, 32));
+        supp = new QPushButton(FormNote);
+        supp->setObjectName(QStringLiteral("supp"));
+        supp->setGeometry(QRect(280, 440, 113, 32));
 
         retranslateUi(FormNote);
         QObject::connect(titleLineEdit, SIGNAL(textChanged(QString)), save, SLOT(animateClick()));
@@ -130,7 +134,8 @@ public:
         idVersionLabel->setText(QApplication::translate("FormNote", "idVersion", Q_NULLPTR));
         titleLabel->setText(QApplication::translate("FormNote", "Titre", Q_NULLPTR));
         dateEditLabel->setText(QApplication::translate("FormNote", "Date d'\303\251dition", Q_NULLPTR));
-        save->setText(QApplication::translate("FormNote", "Save", Q_NULLPTR));
+        save->setText(QApplication::translate("FormNote", "Sauver", Q_NULLPTR));
+        supp->setText(QApplication::translate("FormNote", "Supprimer", Q_NULLPTR));
     } // retranslateUi
 
 };

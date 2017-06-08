@@ -2,10 +2,10 @@
 
 
 
-//Trash* Trash::instance = 0;
-//Trash::Trash(){}
+Trash* Trash::instance = 0;
+Trash::Trash(){}
 
-//Trash& Trash::getInstance(){if (!instance) instance= new Trash(); return *instance;}
+Trash& Trash::getInstance(){if (!instance) instance= new Trash(); return *instance;}
 
 //Note* Trash::getNoteId(int id)
 //{
@@ -19,33 +19,34 @@
 
 
 
-//void Trash::addNote(Note* n)
-//{
-//    listTrashedNotes.push_back(n);
-//}
+void Trash::addNote(Note* n)
+{
+    listTrashedNotes.push_back(n);
+}
 
-//void Trash::putBackNote(Note* n)
+void Trash::putBackNote(Note* n)
 
-//{
-//    //la remttre au bon endroit : respecter l'ordre croissant
-//    int j=getPosNote(n);
-//    NotesManager::getInstance().addNote(n);
-//     for (unsigned int i=0;i<n->getSizeTabTags();i++)
-//            {
-//                QString name = n->getTag(i)->getName();
-//                TagManager::getInstance().addAssociatedTag(name,n);
-//            }
-//            dust.removeAt(j);
+{
+    //la remttre au bon endroit : respecter l'ordre croissant
+    NotesManager::getInstance().addExistingNote(n);
+    deleteNote(n);
 
-//}
+}
+
+//ne supprime pas vraiment ..
+void Trash::deleteNote(Note* n){
+    if(listTrashedNotes.size()==0)
+        throw Exception("Il n'y a pas de notes!");
+    int id=n->getIdNote();
+    auto it = find_if(listTrashedNotes.begin(), listTrashedNotes.end(), [&id](Note* obj) {return obj->getIdNote() == id;});
+    if(it==listTrashedNotes.end())
+        throw Exception("Cette note n'est pas présente dans la Corbeille");
+
+    listTrashedNotes.erase(it);
+//    NotesManager::getInstance().deleteNote(n);
+}
 
 
-//int Trash::getPosNote(Note*n)
-//{
-//    for( int i=0;i<dust.size();i++)
-//        if(dust[i]==n) return i;
-//    throw("la note n'existe pas");
-//}
 
 
 

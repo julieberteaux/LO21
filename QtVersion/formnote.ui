@@ -88,12 +88,25 @@
      <x>9</x>
      <y>169</y>
      <width>381</width>
-     <height>261</height>
+     <height>251</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="versionLayout"/>
   </widget>
   <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>440</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sauver</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="supp">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -103,7 +116,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Save</string>
+    <string>Supprimer</string>
    </property>
   </widget>
  </widget>

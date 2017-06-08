@@ -23,6 +23,7 @@ FormNote::FormNote(NotesManager *m, QListWidgetItem *i, QWidget *parent) : manag
     version=ver.formVersion();
     ui->versionLayout->addWidget(version);
 
+
 }
 
 FormNote::~FormNote()

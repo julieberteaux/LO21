@@ -17,7 +17,6 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-
       <x>20</x>
       <y>30</y>
       <width>651</width>
@@ -25,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Notes">
      <attribute name="title">
@@ -70,6 +69,47 @@
        </rect>
       </property>
       <layout class="QVBoxLayout" name="centre"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Corbeille">
+     <attribute name="title">
+      <string>Corbeille</string>
+     </attribute>
+     <widget class="QListWidget" name="trashedNotes">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>20</y>
+        <width>281</width>
+        <height>201</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>250</y>
+        <width>228</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="supp">
+         <property name="text">
+          <string>Supprimer</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="save">
+         <property name="text">
+          <string>Restaurer</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="Relations">
@@ -127,13 +167,26 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
    <widget class="QMenu" name="menuTrash">
     <property name="title">
      <string>Corbeille</string>
     </property>
     <addaction name="actionOpenTrash"/>
    </widget>
+   <widget class="QMenu" name="menutest">
+    <property name="title">
+     <string>test</string>
+    </property>
+    <addaction name="actiontest"/>
+   </widget>
    <addaction name="menuTrash"/>
+   <addaction name="menutest"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
@@ -149,6 +202,11 @@
   <action name="actionOpenTrash">
    <property name="text">
     <string>Afficher le contenu</string>
+   </property>
+  </action>
+  <action name="actiontest">
+   <property name="text">
+    <string>test</string>
    </property>
   </action>
  </widget>

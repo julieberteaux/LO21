@@ -32,5 +32,4 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
-    formnote.ui \
-    trasheditor.ui
+    formnote.ui

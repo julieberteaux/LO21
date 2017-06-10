@@ -104,7 +104,7 @@ void FormNote::saveNote()
     mainwindow->refresh();
     QMessageBox::information(this,"Sauvegarde", "Article sauvegardé !!!");
 
-    //if (filename!="") save();
+    manager->save();
 }
 
 

@@ -71,7 +71,7 @@ public:
         TrashEditor->setWindowTitle(QApplication::translate("TrashEditor", "Dialog", Q_NULLPTR));
         label->setText(QApplication::translate("TrashEditor", "Corbeille", Q_NULLPTR));
         supp->setText(QApplication::translate("TrashEditor", "Supprimer", Q_NULLPTR));
-        save->setText(QApplication::translate("TrashEditor", "Sauver", Q_NULLPTR));
+        save->setText(QApplication::translate("TrashEditor", "Restaurer", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -74,11 +74,9 @@ public:
     typedef std::map<QString, NoteVersion*(*)()> map_type;
 
 private:
-    static map_type * map; //leak memory??
-protected:
-    static map_type * getMap();
-
+    static map_type * map;
 public:
+    static map_type * getMap();
     static NoteVersion * createInstance(const QString & s) ;
 
 };

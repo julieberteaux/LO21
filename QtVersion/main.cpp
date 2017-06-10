@@ -82,9 +82,11 @@ int main(int argc, char* argv[]) {
 //        testArticle2.setText("cedskplopkdz");
 
 
-//        manager.putToTrash(idn2);
+////        manager.putToTrash(idn2);
 
 //        std::vector<Note*> notes = manager.getListNotes();
+
+
 
 //        for(std::vector<Note*>::iterator it=notes.begin(); it!=notes.end(); ++it)
 //            std::cout<<(*it)->getIdNote()<<std::endl;
@@ -92,14 +94,18 @@ int main(int argc, char* argv[]) {
 
 
 //        Trash& trash=Trash::getInstance();
-//        trash.deleteNote(idn2);
+////        trash.deleteNote(idn2);
+
 //        std::vector<Note*> tnotes=trash.getListTrashedNotes();
+//        if (tnotes.empty())
+//            std::cout<<"empty"<<std::endl;
+//        else std::cout<<"nope "<<tnotes.size()<<std::endl;
 //        for(std::vector<Note*>::iterator it=tnotes.begin(); it!=tnotes.end(); ++it)
 //            std::cout<<(*it)->getIdNote()<<std::endl;
-////        trash.putBackNote(idn2);
+//        trash.putBackNote(idn2);
 
-////       trash.putBackNote(idn2);
-////        manager.addExistingNote(&n2);
+//       trash.putBackNote(idn2);
+//        manager.addExistingNote(&n2);
 
 //        std::vector<Note*> note = manager.getListNotes();
 

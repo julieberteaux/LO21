@@ -6,6 +6,16 @@
 #include "ui_typenote.h"
 
 #include<QMessageBox>
+
+void FormNote::activateButtons()
+{
+    const std::vector<Note*>& notes=manager->getListNotes();
+    if (!notes.empty()){
+        ui->save->setEnabled(true);
+        ui->supp->setEnabled(true);
+    }
+}
+
 void MainWindow::loadActiveNotes(){
     const std::vector<Note*>& notes=manager->getListNotes();
     for(std::vector<Note* const>::iterator it=notes.begin(); it!=notes.end(); ++it){
@@ -15,8 +25,11 @@ void MainWindow::loadActiveNotes(){
             v.setValue((**it).getIdNote());
             item->setData(Qt::UserRole, v);
             ui->activenotes->addItem(item);
+
         }
     }
+
+    if (formnote) formnote->activateButtons();
 }
 
 void MainWindow::unloadActiveNotes(){
@@ -32,6 +45,8 @@ MainWindow::MainWindow(NotesManager* m,Trash* t, QWidget *parent) :manager(m), f
 {
     ui->setupUi(this);
     loadActiveNotes();
+    QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
+    QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 }
 
 MainWindow::~MainWindow()
@@ -84,7 +99,7 @@ FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget 
     //ui->save->setEnabled(false);
     //QObject::connect(ui->titleLineEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
     QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
-    QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
+    QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(PutToTrash()));
 }
 
 FormNote::~FormNote()
@@ -93,10 +108,9 @@ FormNote::~FormNote()
     delete ui;
 }
 
-void FormNote::activerSave()
-{
-    //ui->save->setEnabled(true);
-}
+
+
+
 
 void FormNote::saveNote()
 {
@@ -117,11 +131,31 @@ void FormNote::saveNote()
     QMessageBox::information(this,"Sauvegarde", "Note sauvegardée !!!");
 
     manager->save();
+
 }
 
-void FormNote::deleteNote()
+void MainWindow::unloadTrashedNotes(){
+     QListWidgetItem *item;
+    for(int row = 0; row <= (ui->trashedNotes->count()); row++)
+    {
+        item = ui->trashedNotes->item(0);
+        delete item;
+    }
+}
+
+void FormNote::disableButtons() {
+    const std::vector<Note*>& notes=manager->getListNotes();
+    if (notes.empty()){
+        ui->supp->setDisabled(true);
+        ui->save->setDisabled(true);
+    }
+
+}
+
+void FormNote::PutToTrash()
 {
-    Note& n=manager->getNote(idNote);
+    mainwindow->unloadTrashedNotes();
+//    Note& n=manager->getNote(idNote);
     manager->putToTrash(idNote);
     //ui->save->setDisabled(true);
     mainwindow->refresh();
@@ -129,6 +163,8 @@ void FormNote::deleteNote()
 
     //manager->save(); A remettre quand la corbeille sera opérationnelle
     mainwindow->loadTrashedNotes();
+    disableButtons();
+
 }
 
 void MainWindow::loadTrashedNotes(){
@@ -150,7 +186,15 @@ void MainWindow::on_trashedNotes_itemClicked(QListWidgetItem *item)
     ui->supp->setEnabled(true);
 }
 
+void MainWindow::restoreNote(){
+   //recuperer l'id venant de l'item cliqué...
+//    trash->putBackNote(item->v);
+}
 
+void MainWindow::deleteNote(){
+    //recuperer l'id venant de l'item cliqué...
+//    trash->deleteNote(idNote);
+}
 
 typeNote::typeNote(NotesManager *m, QWidget *parent) : manager(m), QWidget(parent), ui(new Ui::typeNote)
 {

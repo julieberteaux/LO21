@@ -34,12 +34,11 @@ public:
     ~MainWindow();
     void loadActiveNotes();
     void unloadActiveNotes();
-
-
     void refresh();
-
-
+    void unloadTrashedNotes();
     void loadTrashedNotes();
+    void restoreNote();
+    void deleteNote();
 
 
 
@@ -79,9 +78,10 @@ public:
     ~FormNote();
 
 public slots:
-    void activerSave();
+    void activateButtons();
+    void disableButtons();
     void saveNote();
-    void deleteNote();
+    void PutToTrash();
 
 private:
     Ui::FormNote *ui;

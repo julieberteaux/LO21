@@ -26,7 +26,7 @@ void MainWindow::unloadActiveNotes(){
     }
 }
 
-MainWindow::MainWindow(NotesManager* m, QWidget *parent) :manager(m), formnote(nullptr), QMainWindow(parent),ui(new Ui::MainWindow)
+MainWindow::MainWindow(NotesManager* m,Trash* t, QWidget *parent) :manager(m), formnote(nullptr), QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
 {
     ui->setupUi(this);
     loadActiveNotes();
@@ -73,6 +73,7 @@ FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget 
     //ui->save->setEnabled(false);
     //QObject::connect(ui->titleLineEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
     QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
+    QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 }
 
 FormNote::~FormNote()
@@ -102,17 +103,47 @@ void FormNote::saveNote()
 
     //ui->save->setDisabled(true);
     mainwindow->refresh();
-    QMessageBox::information(this,"Sauvegarde", "Article sauvegardé !!!");
+    QMessageBox::information(this,"Sauvegarde", "Note sauvegardée !!!");
 
     manager->save();
 }
 
-
-void MainWindow::displayTrash()
+void FormNote::deleteNote()
 {
-    TrashEditor *trash= new TrashEditor();
-    trash->show();
+    Note& n=manager->getNote(idNote);
+    manager->putToTrash(idNote);
+    //ui->save->setDisabled(true);
+    mainwindow->refresh();
+    QMessageBox::information(this,"Supression", "Note supprimée !!!");
+
+    //manager->save(); A remettre quand la corbeille sera opérationnelle
+    mainwindow->loadTrashedNotes();
 }
+
+void MainWindow::loadTrashedNotes(){
+    const std::vector<Note*>& notes=trash->getListTrashedNotes();
+    for(std::vector<Note* const>::iterator it=notes.begin(); it!=notes.end(); ++it){
+            std::cout<< "load trash"<<std::endl;
+            QListWidgetItem *item = new QListWidgetItem((**it).getLatestNoteVersion().getTitle());
+            QVariant v;
+            v.setValue((**it).getIdNote());
+            item->setData(Qt::UserRole, v);
+            ui->trashedNotes->addItem(item);
+
+    }
+}
+
+void MainWindow::on_trashedNotes_itemClicked(QListWidgetItem *item)
+{
+    ui->save->setEnabled(true);
+    ui->supp->setEnabled(true);
+}
+
+//void MainWindow::displayTrash()
+//{
+//    TrashEditor *trash= new TrashEditor();
+//    trash->show();
+//}
 //QMenu *menuCorbeille = new QMenu;
 //menuCorbeille = menuBar()->addMenu("&Corbeille");
 

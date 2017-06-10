@@ -31,19 +31,19 @@ int main(int argc, char* argv[]) {
 
 //       std::cout<<"Début du programme plurinotes"<<std::endl;
 
-        //NotesManager& manager=NotesManager::getInstance();
+//        NotesManager& manager=NotesManager::getInstance();
 
 
 //        // ATTENTION notes.xml est situé dans le working directory situé dans l'onglet projets/run
-////        manager.setFilename("notes.xml");
+//        manager.setFilename("notes.xml");
 
-        //création d'une note + affichage de l'id et de la date de création
+//        //création d'une note + affichage de l'id et de la date de création
 
 //        int idn0=manager.addNote();//0
 
 //        Note& n0=manager.getNote(idn0);
-//        std::cout<<"n0 id:"<<n0.getIdNote()<<std::endl;
-//        std::cout<<n0.getDateCrea().getJour()<<" "<<n0.getDateCrea().getMois()<<" "<<n0.getDateCrea().getAnnee()<<std::endl;
+////        std::cout<<"n0 id:"<<n0.getIdNote()<<std::endl;
+////        std::cout<<n0.getDateCrea().getJour()<<" "<<n0.getDateCrea().getMois()<<" "<<n0.getDateCrea().getAnnee()<<std::endl;
 
 //        //création d'une version de la note: ici un article
 //        Article* temp=new Article("titre de l'article...", "texte de l'article...");
@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
 //        Image* img=new Image("image des vacances", "c'est une image des vacances","/vacances.jpeg");
 //        int idimg=n1.addNoteVersion(*img);
 
-////        manager.save();
+//        manager.save();
 //        Date d=Date(1,2,2017);
 //        Article* temp2=new Article("titre de l'article...", "texte de l'article...");
 
@@ -81,7 +81,6 @@ int main(int argc, char* argv[]) {
 //        Article& testArticle2=dynamic_cast<Article&>(*testArticle);
 //        testArticle2.setText("cedskplopkdz");
 
-//        std::vector<Note*> notes = manager.getListNotes();
 
 //        manager.putToTrash(idn2);
 
@@ -89,15 +88,18 @@ int main(int argc, char* argv[]) {
 
 //        for(std::vector<Note*>::iterator it=notes.begin(); it!=notes.end(); ++it)
 //            std::cout<<(*it)->getIdNote()<<std::endl;
+//        std::cout<<std::endl;
+
 
 //        Trash& trash=Trash::getInstance();
-//        //trash.putBackNote(&n2);
-//        //trash.deleteNote(&n2);
+//        trash.deleteNote(idn2);
+//        std::vector<Note*> tnotes=trash.getListTrashedNotes();
+//        for(std::vector<Note*>::iterator it=tnotes.begin(); it!=tnotes.end(); ++it)
+//            std::cout<<(*it)->getIdNote()<<std::endl;
+////        trash.putBackNote(idn2);
 
-//        Trash& trash=Trash::getInstance();
-//        trash.putBackNote(&n2);
-//        trash.deleteNote(&n2);
-//        manager.addExistingNote(&n2);
+////       trash.putBackNote(idn2);
+////        manager.addExistingNote(&n2);
 
 //        std::vector<Note*> note = manager.getListNotes();
 
@@ -107,11 +109,12 @@ int main(int argc, char* argv[]) {
         //Relation* rReference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);
 
         //PARTIE 2***************************************************************************************
-        NotesManager& manager=NotesManager::getInstance();
-        manager.setFilename("notes.xml");
-        manager.load();
+        NotesManager& manager2=NotesManager::getInstance();
+        Trash& trash=Trash::getInstance();
+        manager2.setFilename("notes.xml");
+        manager2.load();
         QApplication app(argc, argv);
-        MainWindow fenetre(&manager);
+        MainWindow fenetre(&manager2, &trash);
         fenetre.show();
         return app.exec();
 

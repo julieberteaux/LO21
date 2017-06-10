@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[6];
-    char stringdata0[74];
+    char stringdata0[89];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,11 +36,12 @@ QT_MOC_LITERAL(1, 11, 26), // "on_activenotes_itemClicked"
 QT_MOC_LITERAL(2, 38, 0), // ""
 QT_MOC_LITERAL(3, 39, 16), // "QListWidgetItem*"
 QT_MOC_LITERAL(4, 56, 4), // "item"
-QT_MOC_LITERAL(5, 61, 12) // "displayTrash"
+QT_MOC_LITERAL(5, 61, 27) // "on_trashedNotes_itemClicked"
 
     },
     "MainWindow\0on_activenotes_itemClicked\0"
-    "\0QListWidgetItem*\0item\0displayTrash"
+    "\0QListWidgetItem*\0item\0"
+    "on_trashedNotes_itemClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,11 +60,11 @@ static const uint qt_meta_data_MainWindow[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    1,   24,    2, 0x08 /* Private */,
-       5,    0,   27,    2, 0x08 /* Private */,
+       5,    1,   27,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
 };
@@ -75,7 +76,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_activenotes_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 1: _t->displayTrash(); break;
+        case 1: _t->on_trashedNotes_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -113,6 +114,105 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 2;
+    }
+    return _id;
+}
+struct qt_meta_stringdata_FormNote_t {
+    QByteArrayData data[5];
+    char stringdata0[42];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_FormNote_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
+static const qt_meta_stringdata_FormNote_t qt_meta_stringdata_FormNote = {
+    {
+QT_MOC_LITERAL(0, 0, 8), // "FormNote"
+QT_MOC_LITERAL(1, 9, 11), // "activerSave"
+QT_MOC_LITERAL(2, 21, 0), // ""
+QT_MOC_LITERAL(3, 22, 8), // "saveNote"
+QT_MOC_LITERAL(4, 31, 10) // "deleteNote"
+
+    },
+    "FormNote\0activerSave\0\0saveNote\0"
+    "deleteNote"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_FormNote[] = {
+
+ // content:
+       7,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       3,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: name, argc, parameters, tag, flags
+       1,    0,   29,    2, 0x0a /* Public */,
+       3,    0,   30,    2, 0x0a /* Public */,
+       4,    0,   31,    2, 0x0a /* Public */,
+
+ // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+
+       0        // eod
+};
+
+void FormNote::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        FormNote *_t = static_cast<FormNote *>(_o);
+        Q_UNUSED(_t)
+        switch (_id) {
+        case 0: _t->activerSave(); break;
+        case 1: _t->saveNote(); break;
+        case 2: _t->deleteNote(); break;
+        default: ;
+        }
+    }
+    Q_UNUSED(_a);
+}
+
+const QMetaObject FormNote::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_FormNote.data,
+      qt_meta_data_FormNote,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+};
+
+
+const QMetaObject *FormNote::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *FormNote::qt_metacast(const char *_clname)
+{
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_FormNote.stringdata0))
+        return static_cast<void*>(const_cast< FormNote*>(this));
+    return QWidget::qt_metacast(_clname);
+}
+
+int FormNote::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 3)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 3;
     }
     return _id;
 }

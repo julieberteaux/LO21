@@ -28,8 +28,9 @@ HEADERS += \
     mainwindow.h \
     trasheditor.h \
     trash.h \
-    noteseditor.h \
+    noteseditor.h
 
 FORMS += \
     mainwindow.ui \
-    formnote.ui
+    formnote.ui \
+    typenote.ui

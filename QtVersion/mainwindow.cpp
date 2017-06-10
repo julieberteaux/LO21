@@ -3,6 +3,8 @@
 #include "trasheditor.h"
 #include "ui_mainwindow.h"
 #include "ui_formnote.h"
+#include "ui_typenote.h"
+
 #include<QMessageBox>
 void MainWindow::loadActiveNotes(){
     const std::vector<Note*>& notes=manager->getListNotes();
@@ -36,6 +38,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete formnote;
+    delete type;
 }
 
 void MainWindow::on_activenotes_itemClicked(QListWidgetItem *item)
@@ -46,6 +49,14 @@ void MainWindow::on_activenotes_itemClicked(QListWidgetItem *item)
     formnote=new FormNote(this, manager, i);
     ui->centre->addWidget(formnote);
 }
+
+void MainWindow::on_createNote_clicked(){
+    type=new typeNote(manager);
+    type->loadTypes();
+    type->show();
+
+}
+
 void MainWindow::refresh(){
     unloadActiveNotes();
     loadActiveNotes();
@@ -139,22 +150,33 @@ void MainWindow::on_trashedNotes_itemClicked(QListWidgetItem *item)
     ui->supp->setEnabled(true);
 }
 
-//void MainWindow::displayTrash()
-//{
-//    TrashEditor *trash= new TrashEditor();
-//    trash->show();
-//}
-//QMenu *menuCorbeille = new QMenu;
-//menuCorbeille = menuBar()->addMenu("&Corbeille");
-
-//QAction *afficherCorbeille = new QAction("&Afficher le contenu", this);
-//menuCorbeille->addAction(afficherCorbeille);
-
-//QObject::connect(afficherCorbeille, SIGNAL(triggered()), this, SLOT(displayTrash()));
 
 
+typeNote::typeNote(NotesManager *m, QWidget *parent) : manager(m), QWidget(parent), ui(new Ui::typeNote)
+{
+    ui->setupUi(this);
+}
 
-//void on_actionOpentrash_triggered(){
-//    TrashEditor *trash= new TrashEditor();
-//    trash->show();
-//}
+typeNote::~typeNote()
+{
+    delete ui;
+}
+
+void typeNote::loadTypes()
+{
+    NoteVersionFactory::map_type::iterator it = NoteVersionFactory::getMap()->begin();
+    for(NoteVersionFactory::map_type::iterator it = NoteVersionFactory::getMap()->begin(); it!=NoteVersionFactory::getMap()->end(); it++){
+        QListWidgetItem *item = new QListWidgetItem(it->first);
+        std::cout<<(it->first).toStdString()<<std::endl;
+        std::cout<<"test"<<std::endl;
+
+        //QVariant v;
+        //v.setValue((**it).getIdNote());
+        //item->setData(Qt::UserRole, v);
+        ui->listWidget->addItem(item);
+    }
+}
+void typeNote::on_validate_clicked(){
+
+}
+

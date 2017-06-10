@@ -43,6 +43,7 @@ public:
     QVBoxLayout *verticalLayout_6;
     QLabel *label_2;
     QListWidget *activenotes;
+    QPushButton *createNote;
     QVBoxLayout *verticalLayout_5;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *centre;
@@ -97,6 +98,11 @@ public:
 
 
         verticalLayout_4->addLayout(verticalLayout_6);
+
+        createNote = new QPushButton(verticalLayoutWidget);
+        createNote->setObjectName(QStringLiteral("createNote"));
+
+        verticalLayout_4->addWidget(createNote);
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
@@ -169,7 +175,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -181,6 +187,7 @@ public:
         actionOpenTrash->setText(QApplication::translate("MainWindow", "Afficher le contenu", Q_NULLPTR));
         actiontest->setText(QApplication::translate("MainWindow", "test", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Notes actives", Q_NULLPTR));
+        createNote->setText(QApplication::translate("MainWindow", "Nouvelle note", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Notes), QApplication::translate("MainWindow", "Notes", Q_NULLPTR));
         supp->setText(QApplication::translate("MainWindow", "Supprimer", Q_NULLPTR));
         save->setText(QApplication::translate("MainWindow", "Restaurer", Q_NULLPTR));

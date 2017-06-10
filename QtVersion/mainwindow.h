@@ -15,13 +15,20 @@ namespace Ui {
 class MainWindow;
 }
 class FormNote;
-class TrashEditor;
+
+class typeNote;
+
 
 class MainWindow : public QMainWindow{
     Q_OBJECT
     NotesManager* manager;
     FormNote* formnote;
+
     Trash *trash;
+
+    typeNote* type;
+
+
 public:
     explicit MainWindow(NotesManager *m,Trash* t, QWidget *parent = 0);
     ~MainWindow();
@@ -38,8 +45,10 @@ public:
 
 private slots:
     void on_activenotes_itemClicked(QListWidgetItem *item);
-    //void displayTrash();
-    //void on_actionOpentrash_triggered();
+
+    void on_createNote_clicked();
+
+
     void on_trashedNotes_itemClicked(QListWidgetItem *item);
 
 
@@ -78,6 +87,25 @@ private:
     Ui::FormNote *ui;
 };
 
+
+namespace Ui {
+class typeNote;
+}
+
+class typeNote : public QWidget
+{
+    Q_OBJECT
+    NotesManager* manager;
+
+public:
+    explicit typeNote(NotesManager* m, QWidget *parent = 0);
+    ~typeNote();
+    void loadTypes();
+    void on_validate_clicked();
+
+private:
+    Ui::typeNote *ui;
+};
 
 
 #endif // MAINWINDOW_H

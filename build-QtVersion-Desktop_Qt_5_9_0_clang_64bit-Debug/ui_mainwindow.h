@@ -53,7 +53,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 0, 551, 411));
+        tabWidget->setGeometry(QRect(0, 0, 571, 431));
         Notes = new QWidget();
         Notes->setObjectName(QStringLiteral("Notes"));
         verticalLayoutWidget = new QWidget(Notes);
@@ -84,14 +84,11 @@ public:
 
         verticalLayoutWidget_2 = new QWidget(Notes);
         verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(172, 0, 341, 361));
+        verticalLayoutWidget_2->setGeometry(QRect(172, 0, 391, 401));
         centre = new QVBoxLayout(verticalLayoutWidget_2);
         centre->setObjectName(QStringLiteral("centre"));
         centre->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(Notes, QString());
-        verticalLayoutWidget->raise();
-        verticalLayoutWidget_2->raise();
-        activenotes->raise();
         Relations = new QWidget();
         Relations->setObjectName(QStringLiteral("Relations"));
         groupBox_2 = new QGroupBox(Relations);

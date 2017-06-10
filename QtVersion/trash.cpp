@@ -30,7 +30,6 @@ void Trash::putBackNote(Note* n)
     //la remttre au bon endroit : respecter l'ordre croissant
     NotesManager::getInstance().addExistingNote(n);
     deleteNote(n);
-
 }
 
 //ne supprime pas vraiment ..
@@ -43,6 +42,7 @@ void Trash::deleteNote(Note* n){
         throw Exception("Cette note n'est pas présente dans la Corbeille");
 
     listTrashedNotes.erase(it);
+    delete *it;
 //    NotesManager::getInstance().deleteNote(n);
 }
 

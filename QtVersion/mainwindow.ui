@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>551</width>
-      <height>411</height>
+      <width>571</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -64,15 +64,12 @@
        <rect>
         <x>172</x>
         <y>0</y>
-        <width>341</width>
-        <height>361</height>
+        <width>391</width>
+        <height>401</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="centre"/>
      </widget>
-     <zorder>verticalLayoutWidget</zorder>
-     <zorder>verticalLayoutWidget_2</zorder>
-     <zorder>activenotes</zorder>
     </widget>
     <widget class="QWidget" name="Relations">
      <attribute name="title">

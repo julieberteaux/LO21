@@ -10,6 +10,7 @@ enum state { active=1, archived=0, trashed=-1 };
 
 class Note{
     friend class NotesManager;
+    friend class Trash;
     unsigned int idNote;
     Date dateCrea;
     state noteState;

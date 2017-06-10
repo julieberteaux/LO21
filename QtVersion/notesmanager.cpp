@@ -63,7 +63,7 @@ void NotesManager::putToTrash(unsigned int id){
     Trash::getInstance().addNote(*it);
 
     listNotes.erase(it);
-    delete *it;
+    //delete *it;
 
 }
 

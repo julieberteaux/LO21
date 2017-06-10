@@ -13,14 +13,9 @@ SOURCES += \
     relation.cpp \
     relationsmanager.cpp \
     mainwindow.cpp \
-    noteseditor.cpp \
     trash.cpp \
-    formnote.cpp
-
-    trash.cpp
-
+    trasheditor.cpp \
     noteseditor.cpp
-
 
 HEADERS += \
     plurinotes.h \
@@ -31,13 +26,11 @@ HEADERS += \
     relation.h \
     relationsmanager.h \
     mainwindow.h \
-    noteseditor.h \
+    trasheditor.h \
     trash.h \
-    formnote.h
-
-    trash.h
-    noteseditor.h
+    noteseditor.h \
 
 FORMS += \
     mainwindow.ui \
-    formnote.ui
+    formnote.ui \
+    trasheditor.ui

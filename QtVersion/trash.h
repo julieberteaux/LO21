@@ -24,6 +24,8 @@ public:
      */
         static void deleteInstance(){if(instance) delete instance;}
 
+        const std::vector<Note*>& getListTrashedNotes() const{return listTrashedNotes;}
+
         /**
      * \brief		Fonction qui vide Trash
      */
@@ -41,12 +43,11 @@ public:
      * \brief		Fonction qui remet la note dans les notes actives (dans le tableau de notes de NotesManager)
     * \param		n		note a restaurer
      */
-        void putBackNote(Note* n);
+        void putBackNote(unsigned int id);
 
-        void deleteNote(Note* n);
+        void deleteNote(unsigned int id);
 
 };
 
 #endif // TRASH_H
-
 

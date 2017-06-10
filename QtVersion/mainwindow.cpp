@@ -41,7 +41,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_activenotes_itemClicked(QListWidgetItem *item)
 {
     delete formnote;
-    formnote=new FormNote(this, manager, item);
+    QVariant v = item->data(Qt::UserRole);
+    unsigned int i=v.toInt();
+    formnote=new FormNote(this, manager, i);
     ui->centre->addWidget(formnote);
 }
 void MainWindow::refresh(){
@@ -49,12 +51,10 @@ void MainWindow::refresh(){
     loadActiveNotes();
 }
 
-FormNote::FormNote(MainWindow *mwind, NotesManager *m, QListWidgetItem *i, QWidget *parent) : mainwindow(mwind), manager(m), item(i),version(nullptr),
+FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget *parent) : mainwindow(mwind), manager(m), idNote(id),version(nullptr),
     QWidget(parent),ui(new Ui::FormNote)
 {
     ui->setupUi(this);
-    QVariant v = item->data(Qt::UserRole);
-    int idNote = v.value<int>();
     Note& note=manager->getNote(idNote);
     ui->idNoteLineEdit->setText(QString::number(note.getIdNote()));
     ui->idNoteLineEdit->setReadOnly(true);
@@ -83,16 +83,15 @@ FormNote::~FormNote()
 
 void FormNote::activerSave()
 {
-    ui->save->setEnabled(true);
+    //ui->save->setEnabled(true);
 }
 
 void FormNote::saveNote()
 {
-    QVariant v = item->data(Qt::UserRole);
-    int idNote = v.toInt();
     Note& n=manager->getNote(idNote);
     n.copyLatestVersion();
     NoteVersion& LatestVersion=n.getLatestNoteVersion();
+
     LatestVersion.setTitle(ui->titleLineEdit->text());
 
     version->saveVersion(&LatestVersion);

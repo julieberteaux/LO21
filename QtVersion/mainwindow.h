@@ -48,11 +48,11 @@ class FormNote : public QWidget
     Q_OBJECT
     MainWindow* mainwindow;
     NotesManager* manager;
-    QListWidgetItem *item;
+    unsigned int idNote;
     FormVersion* version;
 
 public:
-    explicit FormNote(MainWindow* mwind, NotesManager* m, QListWidgetItem *i, QWidget *parent = 0);
+    explicit FormNote(MainWindow* mwind, NotesManager* m, unsigned int id, QWidget *parent = 0);
     ~FormNote();
 
 public slots:

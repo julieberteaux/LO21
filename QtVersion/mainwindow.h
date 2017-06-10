@@ -3,9 +3,13 @@
 
 #include <QListWidget>
 #include <QMainWindow>
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
 #include "notesmanager.h"
 #include "formnote.h"
 #include "formversion.h"
+//#include "trasheditor.h"
 namespace Ui {
 class MainWindow;
 }
@@ -19,8 +23,12 @@ public:
     ~MainWindow();
     void loadActiveNotes();
 
+
 private slots:
     void on_activenotes_itemClicked(QListWidgetItem *item);
+    void displayTrash();
+    //void on_actionOpentrash_triggered();
+
 
 private:
     Ui::MainWindow *ui;

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "notesmanager.h"
+#include "trasheditor.h"
 #include "ui_mainwindow.h"
 void MainWindow::loadActiveNotes(){
     const std::vector<Note*>& notes=manager->getListNotes();
@@ -33,3 +34,24 @@ void MainWindow::on_activenotes_itemClicked(QListWidgetItem *item)
     formnote=new FormNote(manager,item);
     ui->centre->addWidget(formnote);
 }
+
+
+void MainWindow::displayTrash()
+{
+    TrashEditor *trash= new TrashEditor();
+    trash->show();
+}
+//QMenu *menuCorbeille = new QMenu;
+//menuCorbeille = menuBar()->addMenu("&Corbeille");
+
+//QAction *afficherCorbeille = new QAction("&Afficher le contenu", this);
+//menuCorbeille->addAction(afficherCorbeille);
+
+//QObject::connect(afficherCorbeille, SIGNAL(triggered()), this, SLOT(displayTrash()));
+
+
+
+//void on_actionOpentrash_triggered(){
+//    TrashEditor *trash= new TrashEditor();
+//    trash->show();
+//}

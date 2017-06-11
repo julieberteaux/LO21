@@ -1,3 +1,10 @@
+/**
+ * \file	relation.h
+ * \brief	Définition de la classe Couple et Relation
+ * \details La classe Couple définit les caractéristiques d'un couple de notes dans une relation.
+ * \details La classe Relation définit les attributs et les méthodes des relations.
+ */
+
 #ifndef RELATION_H
 #define RELATION_H
 
@@ -44,4 +51,3 @@ public:
     //getArborescence()
 };
 #endif // RELATION_H
-

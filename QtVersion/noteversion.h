@@ -4,12 +4,6 @@
  * \details La classe NoteVersion est une amie de la classe Note, une version de note peut être un article, un fichier image, un fichier vidéo, un fichier son ou une tâche.
  */
 
- /**
- * \brief
- * \details
- * \param
- */
-
 #ifndef NOTEVERSION_H
 #define NOTEVERSION_H
 

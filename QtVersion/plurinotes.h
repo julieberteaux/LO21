@@ -1,3 +1,6 @@
+/**
+ * \file	plurinotes.h
+ */
 
 #ifndef PLURINOTES_H
 #define PLURINOTES_H

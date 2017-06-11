@@ -215,8 +215,8 @@ void typeNote::loadTypes()
         ui->type->addItem(item);
     }
 }
+
 void typeNote::on_type_itemClicked(QListWidgetItem *item){
-    //std::cout<<item->text().toStdString()<<std::endl;
     int idNote=manager->addNote();
     Note& n=manager->getNote(idNote);
     NoteVersion* version=NoteVersionFactory::createInstance(item->text());

@@ -96,12 +96,13 @@ class typeNote : public QWidget
 {
     Q_OBJECT
     NotesManager* manager;
-
+    MainWindow* mainwindow;
 public:
-    explicit typeNote(NotesManager* m, QWidget *parent = 0);
+    explicit typeNote(NotesManager* m, MainWindow* mwindow, QWidget *parent = 0);
     ~typeNote();
     void loadTypes();
-    void on_validate_clicked();
+public slots:
+    void on_type_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::typeNote *ui;

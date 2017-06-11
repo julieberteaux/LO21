@@ -15,11 +15,17 @@
 NoteVersionFactory::map_type * NoteVersionFactory::map = NULL;
 
 NoteVersion::NoteVersion(unsigned int v, const QString& t): idVersion(v), title(t), dateEdit(){dateEdit.today();}
+
 const QString& NoteVersion::getTitle() const {return title;}
+
 void NoteVersion::setTitle(const QString& str) {title=str;}
+
 const Date& NoteVersion::getDateEdit() const{return dateEdit;}
+
 void NoteVersion::setDateEdit(const Date& d){dateEdit=d;}
+
 NoteVersion::~NoteVersion(){};
+
 unsigned int NoteVersion::getIdVersion() const{return idVersion;}
 
 void NoteVersion::saveNoteVersion(QXmlStreamWriter* stream) const{

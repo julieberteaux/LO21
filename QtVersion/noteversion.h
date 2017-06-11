@@ -23,11 +23,14 @@
 #include <QWidget>
 #include <QXmlStreamWriter>
 
+class FormVersion;
 
 /**
 * \class NoteVersion noteversion.h
 * \details Classe amie de Note
 */
+
+
 class NoteVersion{
     friend class Note;
 
@@ -124,6 +127,33 @@ public :
 
 };
 
+/*********************************NoteVersionFactory***********************/
+/**
+* \brief Utilisée pour les méthodes de chargement
+*/
+template<typename T> NoteVersion * createT() { return new T;}
+
+/**
+* \class NoteVersionFactory noteversion.h
+*/
+class NoteVersionFactory {
+public:
+    typedef std::map<QString, NoteVersion*(*)()> map_type;
+
+private:
+    static map_type * map;
+public:
+    static map_type * getMap();
+    static NoteVersion * createInstance(const QString & s) ;
+
+};
+
+template<typename T>
+struct DerivedRegister :public NoteVersionFactory {
+    DerivedRegister(QString const& s) {
+        getMap()->insert(std::make_pair(s, &createT<T>));
+    }
+};
 
 
 /********************************** Article ****************************/
@@ -367,33 +397,6 @@ public :
     FormVersion* formVersion();
 };
 
-/*********************************NoteVersionFactory***********************/
-/**
-* \brief Utilisée pour les méthodes de chargement
-*/
-template<typename T> NoteVersion * createT() { return new T;}
-
-/**
-* \class NoteVersionFactory noteversion.h
-*/
-class NoteVersionFactory {
-public:
-    typedef std::map<QString, NoteVersion*(*)()> map_type;
-
-private:
-    static map_type * map;
-public:
-    static map_type * getMap();
-    static NoteVersion * createInstance(const QString & s) ;
-
-};
-
-template<typename T>
-struct DerivedRegister :public NoteVersionFactory {
-    DerivedRegister(QString const& s) {
-        getMap()->insert(std::make_pair(s, &createT<T>));
-    }
-};
 
 /*************************INTERFACE NOTEVERSION************************/
 

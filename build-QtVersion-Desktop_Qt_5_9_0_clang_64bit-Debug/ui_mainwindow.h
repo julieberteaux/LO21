@@ -15,11 +15,16 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,6 +33,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionOpenTrash;
+    QAction *actiontest;
     QWidget *centralwidget;
     QTabWidget *tabWidget;
     QWidget *Notes;
@@ -36,24 +43,39 @@ public:
     QVBoxLayout *verticalLayout_6;
     QLabel *label_2;
     QListWidget *activenotes;
+    QPushButton *createNote;
     QVBoxLayout *verticalLayout_5;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *centre;
+    QWidget *Corbeille;
+    QListWidget *trashedNotes;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *supp;
+    QPushButton *save;
     QWidget *Relations;
     QGroupBox *groupBox_2;
     QLabel *label;
     QFrame *line;
+    QMenuBar *menuBar;
+    QMenu *menuTrash;
+    QMenu *menutest;
+    QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(578, 433);
+        MainWindow->resize(833, 597);
+        actionOpenTrash = new QAction(MainWindow);
+        actionOpenTrash->setObjectName(QStringLiteral("actionOpenTrash"));
+        actiontest = new QAction(MainWindow);
+        actiontest->setObjectName(QStringLiteral("actiontest"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 0, 551, 411));
+        tabWidget->setGeometry(QRect(20, 30, 651, 481));
         Notes = new QWidget();
         Notes->setObjectName(QStringLiteral("Notes"));
         verticalLayoutWidget = new QWidget(Notes);
@@ -77,6 +99,11 @@ public:
 
         verticalLayout_4->addLayout(verticalLayout_6);
 
+        createNote = new QPushButton(verticalLayoutWidget);
+        createNote->setObjectName(QStringLiteral("createNote"));
+
+        verticalLayout_4->addWidget(createNote);
+
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
 
@@ -84,14 +111,33 @@ public:
 
         verticalLayoutWidget_2 = new QWidget(Notes);
         verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(172, 0, 341, 361));
+        verticalLayoutWidget_2->setGeometry(QRect(172, 0, 391, 401));
         centre = new QVBoxLayout(verticalLayoutWidget_2);
         centre->setObjectName(QStringLiteral("centre"));
         centre->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(Notes, QString());
-        verticalLayoutWidget->raise();
-        verticalLayoutWidget_2->raise();
-        activenotes->raise();
+        Corbeille = new QWidget();
+        Corbeille->setObjectName(QStringLiteral("Corbeille"));
+        trashedNotes = new QListWidget(Corbeille);
+        trashedNotes->setObjectName(QStringLiteral("trashedNotes"));
+        trashedNotes->setGeometry(QRect(190, 20, 281, 201));
+        horizontalLayoutWidget = new QWidget(Corbeille);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(240, 250, 228, 41));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        supp = new QPushButton(horizontalLayoutWidget);
+        supp->setObjectName(QStringLiteral("supp"));
+
+        horizontalLayout->addWidget(supp);
+
+        save = new QPushButton(horizontalLayoutWidget);
+        save->setObjectName(QStringLiteral("save"));
+
+        horizontalLayout->addWidget(save);
+
+        tabWidget->addTab(Corbeille, QString());
         Relations = new QWidget();
         Relations->setObjectName(QStringLiteral("Relations"));
         groupBox_2 = new QGroupBox(Relations);
@@ -107,7 +153,25 @@ public:
         line->setFrameShadow(QFrame::Sunken);
         tabWidget->addTab(Relations, QString());
         MainWindow->setCentralWidget(centralwidget);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 833, 22));
+        menuBar->setAutoFillBackground(false);
+        menuBar->setDefaultUp(false);
+        menuTrash = new QMenu(menuBar);
+        menuTrash->setObjectName(QStringLiteral("menuTrash"));
+        menutest = new QMenu(menuBar);
+        menutest->setObjectName(QStringLiteral("menutest"));
+        MainWindow->setMenuBar(menuBar);
+        toolBar = new QToolBar(MainWindow);
+        toolBar->setObjectName(QStringLiteral("toolBar"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(activenotes, tabWidget);
+
+        menuBar->addAction(menuTrash->menuAction());
+        menuBar->addAction(menutest->menuAction());
+        menuTrash->addAction(actionOpenTrash);
+        menutest->addAction(actiontest);
 
         retranslateUi(MainWindow);
 
@@ -120,11 +184,20 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        actionOpenTrash->setText(QApplication::translate("MainWindow", "Afficher le contenu", Q_NULLPTR));
+        actiontest->setText(QApplication::translate("MainWindow", "test", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Notes actives", Q_NULLPTR));
+        createNote->setText(QApplication::translate("MainWindow", "Nouvelle note", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Notes), QApplication::translate("MainWindow", "Notes", Q_NULLPTR));
+        supp->setText(QApplication::translate("MainWindow", "Supprimer", Q_NULLPTR));
+        save->setText(QApplication::translate("MainWindow", "Restaurer", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(Corbeille), QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Relations), QApplication::translate("MainWindow", "Relations", Q_NULLPTR));
+        menuTrash->setTitle(QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
+        menutest->setTitle(QApplication::translate("MainWindow", "test", Q_NULLPTR));
+        toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
     } // retranslateUi
 
 };

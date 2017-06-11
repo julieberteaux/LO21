@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -41,6 +42,8 @@ public:
     QLineEdit *titleLineEdit;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *versionLayout;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
     QPushButton *save;
     QPushButton *supp;
 
@@ -108,19 +111,33 @@ public:
 
         verticalLayoutWidget = new QWidget(FormNote);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(9, 169, 381, 251));
+        verticalLayoutWidget->setGeometry(QRect(9, 189, 381, 121));
         versionLayout = new QVBoxLayout(verticalLayoutWidget);
         versionLayout->setObjectName(QStringLiteral("versionLayout"));
         versionLayout->setContentsMargins(0, 0, 0, 0);
-        save = new QPushButton(FormNote);
+        horizontalLayoutWidget = new QWidget(FormNote);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(160, 350, 231, 51));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        save = new QPushButton(horizontalLayoutWidget);
         save->setObjectName(QStringLiteral("save"));
-        save->setGeometry(QRect(160, 440, 113, 32));
-        supp = new QPushButton(FormNote);
+        save->setAutoDefault(false);
+        save->setFlat(false);
+
+        horizontalLayout->addWidget(save);
+
+        supp = new QPushButton(horizontalLayoutWidget);
         supp->setObjectName(QStringLiteral("supp"));
-        supp->setGeometry(QRect(280, 440, 113, 32));
+
+        horizontalLayout->addWidget(supp);
+
 
         retranslateUi(FormNote);
-        QObject::connect(titleLineEdit, SIGNAL(textChanged(QString)), save, SLOT(animateClick()));
+
+        save->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(FormNote);
     } // setupUi

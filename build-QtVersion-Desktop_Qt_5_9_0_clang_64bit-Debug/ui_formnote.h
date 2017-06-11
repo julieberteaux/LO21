@@ -15,9 +15,11 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -35,11 +37,15 @@ public:
     QLabel *idVersionLabel;
     QLineEdit *idVersionLineEdit;
     QLabel *titleLabel;
-    QLineEdit *titleLineEdit;
     QLabel *dateEditLabel;
     QDateEdit *dateEditDateEdit;
+    QLineEdit *titleLineEdit;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *versionLayout;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *save;
+    QPushButton *supp;
 
     void setupUi(QWidget *FormNote)
     {
@@ -48,7 +54,7 @@ public:
         FormNote->resize(415, 484);
         formLayoutWidget = new QWidget(FormNote);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(8, 2, 381, 161));
+        formLayoutWidget->setGeometry(QRect(8, 2, 381, 179));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
@@ -88,11 +94,6 @@ public:
 
         formLayout->setWidget(3, QFormLayout::LabelRole, titleLabel);
 
-        titleLineEdit = new QLineEdit(formLayoutWidget);
-        titleLineEdit->setObjectName(QStringLiteral("titleLineEdit"));
-
-        formLayout->setWidget(3, QFormLayout::FieldRole, titleLineEdit);
-
         dateEditLabel = new QLabel(formLayoutWidget);
         dateEditLabel->setObjectName(QStringLiteral("dateEditLabel"));
 
@@ -103,14 +104,40 @@ public:
 
         formLayout->setWidget(4, QFormLayout::FieldRole, dateEditDateEdit);
 
+        titleLineEdit = new QLineEdit(formLayoutWidget);
+        titleLineEdit->setObjectName(QStringLiteral("titleLineEdit"));
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, titleLineEdit);
+
         verticalLayoutWidget = new QWidget(FormNote);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(9, 169, 381, 261));
+        verticalLayoutWidget->setGeometry(QRect(9, 189, 381, 121));
         versionLayout = new QVBoxLayout(verticalLayoutWidget);
         versionLayout->setObjectName(QStringLiteral("versionLayout"));
         versionLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayoutWidget = new QWidget(FormNote);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(160, 350, 231, 51));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        save = new QPushButton(horizontalLayoutWidget);
+        save->setObjectName(QStringLiteral("save"));
+        save->setAutoDefault(false);
+        save->setFlat(false);
+
+        horizontalLayout->addWidget(save);
+
+        supp = new QPushButton(horizontalLayoutWidget);
+        supp->setObjectName(QStringLiteral("supp"));
+
+        horizontalLayout->addWidget(supp);
+
 
         retranslateUi(FormNote);
+
+        save->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(FormNote);
     } // setupUi
@@ -124,6 +151,8 @@ public:
         idVersionLabel->setText(QApplication::translate("FormNote", "idVersion", Q_NULLPTR));
         titleLabel->setText(QApplication::translate("FormNote", "Titre", Q_NULLPTR));
         dateEditLabel->setText(QApplication::translate("FormNote", "Date d'\303\251dition", Q_NULLPTR));
+        save->setText(QApplication::translate("FormNote", "Sauver", Q_NULLPTR));
+        supp->setText(QApplication::translate("FormNote", "Supprimer", Q_NULLPTR));
     } // retranslateUi
 
 };

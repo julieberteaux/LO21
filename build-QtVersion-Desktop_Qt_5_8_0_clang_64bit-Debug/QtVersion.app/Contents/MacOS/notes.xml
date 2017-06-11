@@ -3,7 +3,7 @@
     <note>
         <idNote>0</idNote>
         <dateCrea>
-            <jour>4</jour>
+            <jour>10</jour>
             <mois>6</mois>
             <annee>2017</annee>
         </dateCrea>
@@ -13,7 +13,7 @@
             <idVersion>0</idVersion>
             <title>titre de l'article...</title>
             <dateEdit>
-                <jour>4</jour>
+                <jour>10</jour>
                 <mois>6</mois>
                 <annee>2017</annee>
             </dateEdit>
@@ -23,7 +23,7 @@
             <idVersion>1</idVersion>
             <title>titre de l'article...</title>
             <dateEdit>
-                <jour>4</jour>
+                <jour>10</jour>
                 <mois>6</mois>
                 <annee>2017</annee>
             </dateEdit>
@@ -33,7 +33,7 @@
     <note>
         <idNote>1</idNote>
         <dateCrea>
-            <jour>4</jour>
+            <jour>10</jour>
             <mois>6</mois>
             <annee>2017</annee>
         </dateCrea>
@@ -43,7 +43,7 @@
             <idVersion>0</idVersion>
             <title>image des vacances</title>
             <dateEdit>
-                <jour>4</jour>
+                <jour>10</jour>
                 <mois>6</mois>
                 <annee>2017</annee>
             </dateEdit>

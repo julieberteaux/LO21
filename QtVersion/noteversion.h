@@ -8,10 +8,12 @@
 #include <vector>
 #include<QDebug>
 #include "date.h"
-#include "formversion.h"
 
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QMainWindow>
 #include <QObject>
+#include <QTextEdit>
 #include <QWidget>
 #include <QXmlStreamWriter>
 
@@ -21,10 +23,10 @@ class NoteVersion{
     friend class Note;
 protected:
     unsigned int idVersion;
+    Date dateEdit;
 
 private:
     QString title;
-    Date dateEdit;
     //template<typename T> static DerivedRegister<T> reg;
 
     void saveNoteVersion(QXmlStreamWriter* stream) const;
@@ -72,11 +74,9 @@ public:
     typedef std::map<QString, NoteVersion*(*)()> map_type;
 
 private:
-    static map_type * map; //leak memory??
-protected:
-    static map_type * getMap();
-
+    static map_type * map;
 public:
+    static map_type * getMap();
     static NoteVersion * createInstance(const QString & s) ;
 
 };
@@ -208,5 +208,34 @@ public :
     FormVersion* formVersion();
 };
 
+/*************************INTERFACE NOTEVERSION************************/
+class FormVersion : public QWidget{
+        Q_OBJECT
+public:
+    FormVersion(QWidget *parent = 0);
+    virtual void saveVersion(NoteVersion*)=0;
+    virtual ~FormVersion()=0;
+};
 
+class FormArticle : public FormVersion{
+    Article *article;
+    QLabel *textLabel;
+    QTextEdit *text;
+    QHBoxLayout *textHbox;
+public:
+    FormArticle(Article *a, QWidget *parent = 0);
+    void saveVersion(NoteVersion*ver);
+    ~FormArticle();
+};
+
+class FormImage : public FormVersion{
+    Image *image;
+    QLabel *imageLabel;
+    QHBoxLayout *imageHbox;
+public:
+    FormImage(Image* a, QWidget *parent = 0);
+    void saveVersion(NoteVersion*){};
+    ~FormImage();
+
+};
 #endif // NOTEVERSION_H

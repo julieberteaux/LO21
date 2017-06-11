@@ -29,6 +29,26 @@
             </dateEdit>
             <text>ceci est un essai</text>
         </version>
+        <version>
+            <idVersion>2</idVersion>
+            <title>titre de l'...</title>
+            <dateEdit>
+                <jour>10</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un essai</text>
+        </version>
+        <version>
+            <idVersion>3</idVersion>
+            <title>titre de l'hhh...</title>
+            <dateEdit>
+                <jour>10</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un essai</text>
+        </version>
     </note>
     <note>
         <idNote>1</idNote>

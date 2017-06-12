@@ -1,0 +1,219 @@
+\hypertarget{class_date}{}\section{Date Class Reference}
+\label{class_date}\index{Date@{Date}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_date_afbee955665b0aeb1a62764c0984628ca}{Date} (unsigned int short j=1, unsigned int short m=1, unsigned int a=0)
+\begin{DoxyCompactList}\small\item\em Constructeur à partir d\textquotesingle{}un jour, mois, année. \end{DoxyCompactList}\item 
+unsigned short int \hyperlink{class_date_af62b5126cdc9296302151791b333c8c5}{get\+Jour} () const
+\begin{DoxyCompactList}\small\item\em Retourne le jour de la date. \end{DoxyCompactList}\item 
+unsigned short int \hyperlink{class_date_a42e4cba117fe2bf546509313cba561c8}{get\+Mois} () const
+\begin{DoxyCompactList}\small\item\em Retourne le mois de la date. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_date_aa0da782e7848c098e8bff1b6ecbf6880}{get\+Annee} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}année de la date. \end{DoxyCompactList}\item 
+void \hyperlink{class_date_a7419902750e61b9473ab05ccd5ced33d}{set\+Date} (unsigned short int j, unsigned short int m, unsigned int a)
+\begin{DoxyCompactList}\small\item\em initialisation de la date \end{DoxyCompactList}\item 
+void \hyperlink{class_date_aa1d8af4081975eb4a323afd962a25fd7}{afficher} (std\+::ostream \&f=std\+::cout) const
+\begin{DoxyCompactList}\small\item\em affiche le date sous le format J\+J/\+M\+M/\+A\+A\+AA \end{DoxyCompactList}\item 
+bool \hyperlink{class_date_a16b90fa191e5d3080aa558fb29c676d2}{operator==} (const \hyperlink{class_date}{Date} \&d) const
+\begin{DoxyCompactList}\small\item\em d1==d2 retourne vrai si les deux dates sont égales \end{DoxyCompactList}\item 
+bool \hyperlink{class_date_a42bf31e1ff4d0cfcf71849876e670a1b}{operator$<$} (const \hyperlink{class_date}{Date} \&d) const
+\begin{DoxyCompactList}\small\item\em Compare deux dates dans le temps. \end{DoxyCompactList}\item 
+int \hyperlink{class_date_adcce792d461f182f9f3107e98029f8a8}{operator-\/} (const \hyperlink{class_date}{Date} \&d) const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre de jours séparant les deux dates. \end{DoxyCompactList}\item 
+void \hyperlink{class_date_a4a148f744c00b74fff4ead1bed014d64}{today} ()
+\begin{DoxyCompactList}\small\item\em Met à jour la date appelant cette méthode avec la date du jour. \end{DoxyCompactList}\item 
+\hyperlink{class_date}{Date} \hyperlink{class_date_abed6f57b6368b738e37b6ad9a4c99879}{demain} () const
+\begin{DoxyCompactList}\small\item\em Retourne la date du lendemain. \end{DoxyCompactList}\item 
+\hyperlink{class_date}{Date} \hyperlink{class_date_ad5cfa3a4ad369bcbc59c0fbacd775fc5}{operator+} (unsigned int nb) const
+\begin{DoxyCompactList}\small\item\em Retourne la date dans nb jours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_date_afbee955665b0aeb1a62764c0984628ca}\label{class_date_afbee955665b0aeb1a62764c0984628ca}} 
+\index{Date@{Date}!Date@{Date}}
+\index{Date@{Date}!Date@{Date}}
+\subsubsection{\texorpdfstring{Date()}{Date()}}
+{\footnotesize\ttfamily Date\+::\+Date (\begin{DoxyParamCaption}\item[{unsigned int short}]{j = {\ttfamily 1},  }\item[{unsigned int short}]{m = {\ttfamily 1},  }\item[{unsigned int}]{a = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructeur à partir d\textquotesingle{}un jour, mois, année. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em j} & jour avec 1$<$=j$<$=31 \\
+\hline
+{\em m} & mois avec 1$<$=m$<$=12 \\
+\hline
+{\em a} & année avec a$>$=0 \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_date_aa1d8af4081975eb4a323afd962a25fd7}\label{class_date_aa1d8af4081975eb4a323afd962a25fd7}} 
+\index{Date@{Date}!afficher@{afficher}}
+\index{afficher@{afficher}!Date@{Date}}
+\subsubsection{\texorpdfstring{afficher()}{afficher()}}
+{\footnotesize\ttfamily void Date\+::afficher (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{f = {\ttfamily std\+:\+:cout} }\end{DoxyParamCaption}) const}
+
+
+
+affiche le date sous le format J\+J/\+M\+M/\+A\+A\+AA 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & flux de sortie \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_date_abed6f57b6368b738e37b6ad9a4c99879}\label{class_date_abed6f57b6368b738e37b6ad9a4c99879}} 
+\index{Date@{Date}!demain@{demain}}
+\index{demain@{demain}!Date@{Date}}
+\subsubsection{\texorpdfstring{demain()}{demain()}}
+{\footnotesize\ttfamily \hyperlink{class_date}{Date} Date\+::demain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la date du lendemain. 
+
+Donne la date du lendemain où la méthodes est appelée \mbox{\Hypertarget{class_date_aa0da782e7848c098e8bff1b6ecbf6880}\label{class_date_aa0da782e7848c098e8bff1b6ecbf6880}} 
+\index{Date@{Date}!get\+Annee@{get\+Annee}}
+\index{get\+Annee@{get\+Annee}!Date@{Date}}
+\subsubsection{\texorpdfstring{get\+Annee()}{getAnnee()}}
+{\footnotesize\ttfamily unsigned int Date\+::get\+Annee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne l\textquotesingle{}année de la date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em annee} & $>$=0 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_date_af62b5126cdc9296302151791b333c8c5}\label{class_date_af62b5126cdc9296302151791b333c8c5}} 
+\index{Date@{Date}!get\+Jour@{get\+Jour}}
+\index{get\+Jour@{get\+Jour}!Date@{Date}}
+\subsubsection{\texorpdfstring{get\+Jour()}{getJour()}}
+{\footnotesize\ttfamily unsigned short int Date\+::get\+Jour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le jour de la date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em 1} & $<$= jour $<$= 31 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_date_a42e4cba117fe2bf546509313cba561c8}\label{class_date_a42e4cba117fe2bf546509313cba561c8}} 
+\index{Date@{Date}!get\+Mois@{get\+Mois}}
+\index{get\+Mois@{get\+Mois}!Date@{Date}}
+\subsubsection{\texorpdfstring{get\+Mois()}{getMois()}}
+{\footnotesize\ttfamily unsigned short int Date\+::get\+Mois (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retourne le mois de la date. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em 1} & $<$= mois $<$= 12 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_date_ad5cfa3a4ad369bcbc59c0fbacd775fc5}\label{class_date_ad5cfa3a4ad369bcbc59c0fbacd775fc5}} 
+\index{Date@{Date}!operator+@{operator+}}
+\index{operator+@{operator+}!Date@{Date}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \hyperlink{class_date}{Date} Date\+::operator+ (\begin{DoxyParamCaption}\item[{unsigned int}]{nb }\end{DoxyParamCaption}) const}
+
+
+
+Retourne la date dans nb jours. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb} & nombre de jours\\
+\hline
+\end{DoxyParams}
+Donne la date actuelle à laquelle on ajoute nb jours. En respectant bien entendu le format d\textquotesingle{}une date. \mbox{\Hypertarget{class_date_adcce792d461f182f9f3107e98029f8a8}\label{class_date_adcce792d461f182f9f3107e98029f8a8}} 
+\index{Date@{Date}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Date@{Date}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily int Date\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_date}{Date} \&}]{d }\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nombre de jours séparant les deux dates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & date \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_date_a42bf31e1ff4d0cfcf71849876e670a1b}\label{class_date_a42bf31e1ff4d0cfcf71849876e670a1b}} 
+\index{Date@{Date}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Date@{Date}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Date\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{class_date}{Date} \&}]{d }\end{DoxyParamCaption}) const}
+
+
+
+Compare deux dates dans le temps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & date\\
+\hline
+\end{DoxyParams}
+d1$<$d2 retourne true si d1 est avant d2 \mbox{\Hypertarget{class_date_a16b90fa191e5d3080aa558fb29c676d2}\label{class_date_a16b90fa191e5d3080aa558fb29c676d2}} 
+\index{Date@{Date}!operator==@{operator==}}
+\index{operator==@{operator==}!Date@{Date}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Date\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{class_date}{Date} \&}]{d }\end{DoxyParamCaption}) const}
+
+
+
+d1==d2 retourne vrai si les deux dates sont égales 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & date\\
+\hline
+\end{DoxyParams}
+on va comparer la date d avec la date appelant la méthode pour voir si elles sont égales \mbox{\Hypertarget{class_date_a7419902750e61b9473ab05ccd5ced33d}\label{class_date_a7419902750e61b9473ab05ccd5ced33d}} 
+\index{Date@{Date}!set\+Date@{set\+Date}}
+\index{set\+Date@{set\+Date}!Date@{Date}}
+\subsubsection{\texorpdfstring{set\+Date()}{setDate()}}
+{\footnotesize\ttfamily void Date\+::set\+Date (\begin{DoxyParamCaption}\item[{unsigned short int}]{j,  }\item[{unsigned short int}]{m,  }\item[{unsigned int}]{a }\end{DoxyParamCaption})}
+
+
+
+initialisation de la date 
+
+
+\begin{DoxyParams}{Parameters}
+{\em j} & jour avec 1$<$=j$<$=31 \\
+\hline
+{\em m} & mois avec 1$<$=m$<$=12 \\
+\hline
+{\em a} & année avec a$>$=0 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_date_a4a148f744c00b74fff4ead1bed014d64}\label{class_date_a4a148f744c00b74fff4ead1bed014d64}} 
+\index{Date@{Date}!today@{today}}
+\index{today@{today}!Date@{Date}}
+\subsubsection{\texorpdfstring{today()}{today()}}
+{\footnotesize\ttfamily void Date\+::today (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Met à jour la date appelant cette méthode avec la date du jour. 
+
+Donne la date du jour même où la méthodes est appelée 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Documents/\+U\+T\+C/\+G\+I02/\+L\+O21/\+L\+O21/\+Qt\+Version/\hyperlink{date_8h}{date.\+h}\item 
+Documents/\+U\+T\+C/\+G\+I02/\+L\+O21/\+L\+O21/\+Qt\+Version/date.\+cpp\end{DoxyCompactItemize}

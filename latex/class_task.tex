@@ -1,0 +1,97 @@
+\hypertarget{class_task}{}\section{Task Class Reference}
+\label{class_task}\index{Task@{Task}}
+Inheritance diagram for Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_task}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_task_a848131e6d6b7132cb77d636a3e2794c7}{Task} (const Q\+String \&t=Q\+String(), const Q\+String \&a=Q\+String(), unsigned int p=0, const \hyperlink{class_date}{Date} d=\hyperlink{class_date}{Date}(1, 1, 2100), const Status s=Status())
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe Tâche. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_task_a90e80d51eae7ed6235497cd53a1f4930}\label{class_task_a90e80d51eae7ed6235497cd53a1f4930}} 
+const Q\+String \& \hyperlink{class_task_a90e80d51eae7ed6235497cd53a1f4930}{get\+Action} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir l\textquotesingle{}action d\textquotesingle{}une tâche \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_task_a1f685a6b0201fd10d576e3b57ada937e}\label{class_task_a1f685a6b0201fd10d576e3b57ada937e}} 
+unsigned int \hyperlink{class_task_a1f685a6b0201fd10d576e3b57ada937e}{get\+Priority} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir la prioritée d\textquotesingle{}une tâche \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_task_ab14cae63f329fae9a6db8257fb7b051c}\label{class_task_ab14cae63f329fae9a6db8257fb7b051c}} 
+const \hyperlink{class_date}{Date} \& \hyperlink{class_task_ab14cae63f329fae9a6db8257fb7b051c}{get\+Deadline} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir la date deadline d\textquotesingle{}une tâche \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_task_a02289a96ff470980ee371f822e71f125}\label{class_task_a02289a96ff470980ee371f822e71f125}} 
+const Status \& \hyperlink{class_task_a02289a96ff470980ee371f822e71f125}{get\+Status} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir le statut d\textquotesingle{}une tâche \end{DoxyCompactList}\item 
+\hyperlink{class_task}{Task} $\ast$ \hyperlink{class_task_a1bbd4cedca0617ce64237e90af5a797a}{clone} (unsigned int id) const
+\begin{DoxyCompactList}\small\item\em methode clone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_task_ab7c7359a7703a41d4a46773443679213}\label{class_task_ab7c7359a7703a41d4a46773443679213}} 
+Q\+String {\bfseries type} () const
+\item 
+\mbox{\Hypertarget{class_task_a9fd0d2efe3910eb438bbff7076a41d24}\label{class_task_a9fd0d2efe3910eb438bbff7076a41d24}} 
+\hyperlink{class_form_version}{Form\+Version} $\ast$ {\bfseries form\+Version} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_task_a93d7e72623acdfa5b079a11fbf2d9f9d}\label{class_task_a93d7e72623acdfa5b079a11fbf2d9f9d}} 
+class {\bfseries Note}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_task_a848131e6d6b7132cb77d636a3e2794c7}\label{class_task_a848131e6d6b7132cb77d636a3e2794c7}} 
+\index{Task@{Task}!Task@{Task}}
+\index{Task@{Task}!Task@{Task}}
+\subsubsection{\texorpdfstring{Task()}{Task()}}
+{\footnotesize\ttfamily Task\+::\+Task (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{t = {\ttfamily QString()},  }\item[{const Q\+String \&}]{a = {\ttfamily QString()},  }\item[{unsigned int}]{p = {\ttfamily 0},  }\item[{const \hyperlink{class_date}{Date}}]{d = {\ttfamily \hyperlink{class_date}{Date}(1,1,2100)},  }\item[{const Status}]{s = {\ttfamily Status()} }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe Tâche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & titre de la tâche (utilisé par le constructeur de \hyperlink{class_note_version}{Note\+Version}) \\
+\hline
+{\em a} & action de la tâche \\
+\hline
+{\em p} & prioritée de la tâche \\
+\hline
+{\em d} & date de la tâche \\
+\hline
+{\em s} & statut de la tâche \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_task_a1bbd4cedca0617ce64237e90af5a797a}\label{class_task_a1bbd4cedca0617ce64237e90af5a797a}} 
+\index{Task@{Task}!clone@{clone}}
+\index{clone@{clone}!Task@{Task}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{class_task}{Task} $\ast$ Task\+::clone (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+methode clone 
+
+\begin{DoxyReturn}{Returns}
+un pointeur de task sur le clone de la tâche grâce à l\textquotesingle{}id 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & L\textquotesingle{}id de la tâche que l\textquotesingle{}on souhaite cloner \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_note_version_a7eb23a52291ec623b9bc1b6fe3e86c5a}{Note\+Version}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Documents/\+U\+T\+C/\+G\+I02/\+L\+O21/\+L\+O21/\+Qt\+Version/\hyperlink{noteversion_8h}{noteversion.\+h}\item 
+Documents/\+U\+T\+C/\+G\+I02/\+L\+O21/\+L\+O21/\+Qt\+Version/noteversion.\+cpp\end{DoxyCompactItemize}

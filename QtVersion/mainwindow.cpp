@@ -4,7 +4,6 @@
 #include "ui_mainwindow.h"
 #include "ui_formnote.h"
 #include "ui_typenote.h"
-
 #include<QMessageBox>
 
 void FormNote::activateButtons()
@@ -34,7 +33,8 @@ void MainWindow::loadActiveNotes(){
 
 void MainWindow::unloadActiveNotes(){
      QListWidgetItem *item;
-    for(int row = 0; row <= (ui->activenotes->count()); row++)
+     unsigned int numberRows=ui->activenotes->count();
+    for(int row = 0; row < numberRows; row++)
     {
         item = ui->activenotes->item(0);
         delete item;
@@ -66,7 +66,7 @@ void MainWindow::on_activenotes_itemClicked(QListWidgetItem *item)
 }
 
 void MainWindow::on_createNote_clicked(){
-    type=new typeNote(manager);
+    type=new typeNote(manager,this);
     type->loadTypes();
     type->show();
 
@@ -196,9 +196,10 @@ void MainWindow::deleteNote(){
 //    trash->deleteNote(idNote);
 }
 
-typeNote::typeNote(NotesManager *m, QWidget *parent) : manager(m), QWidget(parent), ui(new Ui::typeNote)
+typeNote::typeNote(NotesManager *m, MainWindow *mwindow, QWidget *parent) : manager(m), mainwindow(mwindow), QWidget(parent), ui(new Ui::typeNote)
 {
     ui->setupUi(this);
+    //QObject::connect(ui->validate, SIGNAL(clicked()),this, SLOT(on_validate_clicked()));
 }
 
 typeNote::~typeNote()
@@ -211,16 +212,19 @@ void typeNote::loadTypes()
     NoteVersionFactory::map_type::iterator it = NoteVersionFactory::getMap()->begin();
     for(NoteVersionFactory::map_type::iterator it = NoteVersionFactory::getMap()->begin(); it!=NoteVersionFactory::getMap()->end(); it++){
         QListWidgetItem *item = new QListWidgetItem(it->first);
-        std::cout<<(it->first).toStdString()<<std::endl;
-        std::cout<<"test"<<std::endl;
-
-        //QVariant v;
-        //v.setValue((**it).getIdNote());
-        //item->setData(Qt::UserRole, v);
-        ui->listWidget->addItem(item);
+        ui->type->addItem(item);
     }
 }
-void typeNote::on_validate_clicked(){
 
+void typeNote::on_type_itemClicked(QListWidgetItem *item){
+    int idNote=manager->addNote();
+    Note& n=manager->getNote(idNote);
+    NoteVersion* version=NoteVersionFactory::createInstance(item->text());
+    version->setTitle("A MODIFIER: Nouvelle note!");
+    n.addNoteVersion(*version);
+    delete version;
+    mainwindow->refresh();
+    manager->save();
+    this->close();
 }
 

@@ -296,7 +296,10 @@ void FormArticle::saveVersion(NoteVersion* ver){
 FormImage::FormImage(Image *a, QWidget *parent): FormVersion(parent), image(a){
     imageLabel=new QLabel();
     imageHbox=new QHBoxLayout();
-    imageLabel->setPixmap(QPixmap("../../../Images/vacances.jpeg").scaled(250,250,Qt::KeepAspectRatio));
+    QString path="../../../Images";
+    path=path+a->getFile();
+
+    imageLabel->setPixmap(QPixmap(path).scaled(250,250,Qt::KeepAspectRatio));
 
     imageHbox->addWidget(imageLabel);
     this->setLayout(imageHbox);

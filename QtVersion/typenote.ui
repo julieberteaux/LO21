@@ -24,14 +24,14 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QListWidget" name="listWidget"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="validate">
+     <widget class="QLabel" name="label">
       <property name="text">
-       <string>Valider</string>
+       <string>Cliquez sur un type de note:</string>
       </property>
      </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="type"/>
     </item>
    </layout>
   </widget>

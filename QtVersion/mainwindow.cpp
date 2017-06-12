@@ -45,7 +45,7 @@ MainWindow::MainWindow(NotesManager* m,Trash* t, QWidget *parent) :manager(m), f
 {
     ui->setupUi(this);
     loadActiveNotes();
-    QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
+    QObject::connect(ui->restore, SIGNAL(clicked()),this, SLOT(saveNote()));
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 }
 
@@ -167,6 +167,11 @@ void FormNote::PutToTrash()
 
 }
 
+
+// get back the data
+//QVariant v = item->data(Qt::UserRole);
+//int id = v.value<int>();
+
 void MainWindow::loadTrashedNotes(){
     const std::vector<Note*>& notes=trash->getListTrashedNotes();
     for(std::vector<Note* const>::iterator it=notes.begin(); it!=notes.end(); ++it){
@@ -182,7 +187,7 @@ void MainWindow::loadTrashedNotes(){
 
 void MainWindow::on_trashedNotes_itemClicked(QListWidgetItem *item)
 {
-    ui->save->setEnabled(true);
+    ui->restore->setEnabled(true);
     ui->supp->setEnabled(true);
 }
 

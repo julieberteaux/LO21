@@ -51,4 +51,73 @@
             <file>/vacances.jpeg</file>
         </version>
     </note>
+    <note>
+        <idNote>2</idNote>
+        <dateCrea>
+            <jour>12</jour>
+            <mois>6</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <noteState>1</noteState>
+        <type>Article</type>
+        <version>
+            <idVersion>0</idVersion>
+            <title>A MODIFIER: Nouvelle note!</title>
+            <dateEdit>
+                <jour>12</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text></text>
+        </version>
+        <version>
+            <idVersion>1</idVersion>
+            <title> Nouvelle note!</title>
+            <dateEdit>
+                <jour>12</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>La nouvelle note!</text>
+        </version>
+        <version>
+            <idVersion>2</idVersion>
+            <title> Nouvelle note, v2</title>
+            <dateEdit>
+                <jour>12</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>La nouvelle note qui a une nouvelle version!</text>
+        </version>
+        <version>
+            <idVersion>3</idVersion>
+            <title> Nouvelle note, v2</title>
+            <dateEdit>
+                <jour>12</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>La nouvelle note qui a une nouvelle version!</text>
+        </version>
+    </note>
+    <note>
+        <idNote>3</idNote>
+        <dateCrea>
+            <jour>12</jour>
+            <mois>6</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <noteState>1</noteState>
+        <type>Task</type>
+        <version>
+            <idVersion>0</idVersion>
+            <title>A MODIFIER: Nouvelle note!</title>
+            <dateEdit>
+                <jour>12</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+        </version>
+    </note>
 </notes>

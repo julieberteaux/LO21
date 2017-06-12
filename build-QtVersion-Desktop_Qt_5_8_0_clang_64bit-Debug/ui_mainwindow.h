@@ -52,7 +52,7 @@ public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *supp;
-    QPushButton *save;
+    QPushButton *restore;
     QWidget *Relations;
     QGroupBox *groupBox_2;
     QLabel *label;
@@ -132,10 +132,10 @@ public:
 
         horizontalLayout->addWidget(supp);
 
-        save = new QPushButton(horizontalLayoutWidget);
-        save->setObjectName(QStringLiteral("save"));
+        restore = new QPushButton(horizontalLayoutWidget);
+        restore->setObjectName(QStringLiteral("restore"));
 
-        horizontalLayout->addWidget(save);
+        horizontalLayout->addWidget(restore);
 
         tabWidget->addTab(Corbeille, QString());
         Relations = new QWidget();
@@ -175,7 +175,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -190,7 +190,7 @@ public:
         createNote->setText(QApplication::translate("MainWindow", "Nouvelle note", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Notes), QApplication::translate("MainWindow", "Notes", Q_NULLPTR));
         supp->setText(QApplication::translate("MainWindow", "Supprimer", Q_NULLPTR));
-        save->setText(QApplication::translate("MainWindow", "Restaurer", Q_NULLPTR));
+        restore->setText(QApplication::translate("MainWindow", "Restaurer", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Corbeille), QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));

@@ -1,0 +1,149 @@
+\hypertarget{class_note_version}{}\section{Note\+Version Class Reference}
+\label{class_note_version}\index{Note\+Version@{Note\+Version}}
+
+
+{\ttfamily \#include $<$noteversion.\+h$>$}
+
+Inheritance diagram for Note\+Version\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_note_version}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_note_version_ad4404543d7a26d44a5a40690d262de5f}{Note\+Version} (unsigned int v, const Q\+String \&t)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \hyperlink{class_note_version}{Note\+Version}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_note_version_a8277b7b1b364d999accd276ef8107e4c}\label{class_note_version_a8277b7b1b364d999accd276ef8107e4c}} 
+const Q\+String \& \hyperlink{class_note_version_a8277b7b1b364d999accd276ef8107e4c}{get\+Title} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir le titre d\textquotesingle{}une version d\textquotesingle{}une note \end{DoxyCompactList}\item 
+void \hyperlink{class_note_version_a1b9f3da6615a30ce9cda5c884559f37a}{set\+Title} (const Q\+String \&str)
+\begin{DoxyCompactList}\small\item\em méthode pour appliquer un titre à une version d\textquotesingle{}une note \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_note_version_aee1009d4e2ff0d26cc24350846685c25}\label{class_note_version_aee1009d4e2ff0d26cc24350846685c25}} 
+const \hyperlink{class_date}{Date} \& \hyperlink{class_note_version_aee1009d4e2ff0d26cc24350846685c25}{get\+Date\+Edit} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir la date d\textquotesingle{}édition d\textquotesingle{}une version d\textquotesingle{}une note \end{DoxyCompactList}\item 
+void \hyperlink{class_note_version_ae8b130460a53c39631ffa283387067f5}{set\+Date\+Edit} (const \hyperlink{class_date}{Date} \&d)
+\begin{DoxyCompactList}\small\item\em méthode pour appliquer une date d\textquotesingle{}édition à une version d\textquotesingle{}une note \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_note_version_a45dcb249d3bc6ce68f8c9dcabf153187}\label{class_note_version_a45dcb249d3bc6ce68f8c9dcabf153187}} 
+unsigned int \hyperlink{class_note_version_a45dcb249d3bc6ce68f8c9dcabf153187}{get\+Id\+Version} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir l\textquotesingle{}id d\textquotesingle{}une version d\textquotesingle{}une note \end{DoxyCompactList}\item 
+virtual \hyperlink{class_note_version_a84b32b9c97fa1de8b37b1170b9453f00}{$\sim$\+Note\+Version} ()
+\begin{DoxyCompactList}\small\item\em destructeur d\textquotesingle{}une version d\textquotesingle{}une note \end{DoxyCompactList}\item 
+virtual \hyperlink{class_note_version}{Note\+Version} $\ast$ \hyperlink{class_note_version_a7eb23a52291ec623b9bc1b6fe3e86c5a}{clone} (unsigned int id) const =0
+\begin{DoxyCompactList}\small\item\em methode clone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_note_version_a950a828eafaae43fff4c37d990d3a4cc}\label{class_note_version_a950a828eafaae43fff4c37d990d3a4cc}} 
+virtual Q\+String {\bfseries type} () const =0
+\item 
+\mbox{\Hypertarget{class_note_version_a18ab9b2f07fb4a832218ca30db27e9bd}\label{class_note_version_a18ab9b2f07fb4a832218ca30db27e9bd}} 
+virtual \hyperlink{class_form_version}{Form\+Version} $\ast$ {\bfseries form\+Version} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_note_version_a933ace1d0a9c02d3c58dd4a905629adc}\label{class_note_version_a933ace1d0a9c02d3c58dd4a905629adc}} 
+unsigned int {\bfseries id\+Version}
+\item 
+\mbox{\Hypertarget{class_note_version_ac1ccf3cfef8c72bba33ff65d688226fa}\label{class_note_version_ac1ccf3cfef8c72bba33ff65d688226fa}} 
+\hyperlink{class_date}{Date} {\bfseries date\+Edit}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_note_version_a93d7e72623acdfa5b079a11fbf2d9f9d}\label{class_note_version_a93d7e72623acdfa5b079a11fbf2d9f9d}} 
+class {\bfseries Note}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe amie de \hyperlink{class_note}{Note} 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_note_version_ad4404543d7a26d44a5a40690d262de5f}\label{class_note_version_ad4404543d7a26d44a5a40690d262de5f}} 
+\index{Note\+Version@{Note\+Version}!Note\+Version@{Note\+Version}}
+\index{Note\+Version@{Note\+Version}!Note\+Version@{Note\+Version}}
+\subsubsection{\texorpdfstring{Note\+Version()}{NoteVersion()}}
+{\footnotesize\ttfamily Note\+Version\+::\+Note\+Version (\begin{DoxyParamCaption}\item[{unsigned int}]{v,  }\item[{const Q\+String \&}]{t }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \hyperlink{class_note_version}{Note\+Version}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & id de la version \\
+\hline
+{\em t} & titre de la version \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_note_version_a84b32b9c97fa1de8b37b1170b9453f00}\label{class_note_version_a84b32b9c97fa1de8b37b1170b9453f00}} 
+\index{Note\+Version@{Note\+Version}!````~Note\+Version@{$\sim$\+Note\+Version}}
+\index{````~Note\+Version@{$\sim$\+Note\+Version}!Note\+Version@{Note\+Version}}
+\subsubsection{\texorpdfstring{$\sim$\+Note\+Version()}{~NoteVersion()}}
+{\footnotesize\ttfamily Note\+Version\+::$\sim$\+Note\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+destructeur d\textquotesingle{}une version d\textquotesingle{}une note 
+
+il est virtuel 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_note_version_a7eb23a52291ec623b9bc1b6fe3e86c5a}\label{class_note_version_a7eb23a52291ec623b9bc1b6fe3e86c5a}} 
+\index{Note\+Version@{Note\+Version}!clone@{clone}}
+\index{clone@{clone}!Note\+Version@{Note\+Version}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \hyperlink{class_note_version}{Note\+Version}$\ast$ Note\+Version\+::clone (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+methode clone 
+
+\begin{DoxyReturn}{Returns}
+un pointeur de \hyperlink{class_note_version}{Note\+Version} sur le clone de la version grâce à l\textquotesingle{}id 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & L\textquotesingle{}id de la version que l\textquotesingle{}on souhaite cloner \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_video_a505ceb0063f73cf8dd06bc6c6ff72c5d}{Video}, \hyperlink{class_audio_ae389c3ddd81187769876a1b1790be587}{Audio}, \hyperlink{class_image_a31a754ded7599e3f1a9b83bdcc4437c0}{Image}, \hyperlink{class_task_a1bbd4cedca0617ce64237e90af5a797a}{Task}, and \hyperlink{class_article_a78188a4d3c5b071caf13db46ecdc32b9}{Article}.
+
+\mbox{\Hypertarget{class_note_version_ae8b130460a53c39631ffa283387067f5}\label{class_note_version_ae8b130460a53c39631ffa283387067f5}} 
+\index{Note\+Version@{Note\+Version}!set\+Date\+Edit@{set\+Date\+Edit}}
+\index{set\+Date\+Edit@{set\+Date\+Edit}!Note\+Version@{Note\+Version}}
+\subsubsection{\texorpdfstring{set\+Date\+Edit()}{setDateEdit()}}
+{\footnotesize\ttfamily void Note\+Version\+::set\+Date\+Edit (\begin{DoxyParamCaption}\item[{const \hyperlink{class_date}{Date} \&}]{d }\end{DoxyParamCaption})}
+
+
+
+méthode pour appliquer une date d\textquotesingle{}édition à une version d\textquotesingle{}une note 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \hyperlink{class_date}{Date} d\textquotesingle{}édition d\textquotesingle{}une version \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_note_version_a1b9f3da6615a30ce9cda5c884559f37a}\label{class_note_version_a1b9f3da6615a30ce9cda5c884559f37a}} 
+\index{Note\+Version@{Note\+Version}!set\+Title@{set\+Title}}
+\index{set\+Title@{set\+Title}!Note\+Version@{Note\+Version}}
+\subsubsection{\texorpdfstring{set\+Title()}{setTitle()}}
+{\footnotesize\ttfamily void Note\+Version\+::set\+Title (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{str }\end{DoxyParamCaption})}
+
+
+
+méthode pour appliquer un titre à une version d\textquotesingle{}une note 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Titre d\textquotesingle{}une version \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Documents/\+G\+I02/\+L\+O21/\+Projet/\+L\+O21/\+Qt\+Version/\hyperlink{noteversion_8h}{noteversion.\+h}\item 
+Documents/\+G\+I02/\+L\+O21/\+Projet/\+L\+O21/\+Qt\+Version/noteversion.\+cpp\end{DoxyCompactItemize}

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Notes">
      <attribute name="title">
@@ -110,7 +110,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="save">
+        <widget class="QPushButton" name="restore">
          <property name="text">
           <string>Restaurer</string>
          </property>

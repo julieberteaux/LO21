@@ -1,0 +1,99 @@
+\hypertarget{class_article}{}\section{Article Class Reference}
+\label{class_article}\index{Article@{Article}}
+Inheritance diagram for Article\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_article}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_article_a972ec00d52c495a57f8c657b96280327}{Article} (const Q\+String \&t=Q\+String(), const Q\+String \&te=Q\+String())
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \hyperlink{class_article}{Article}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_article_a66368afb3591b3b4427317e054dd21c7}\label{class_article_a66368afb3591b3b4427317e054dd21c7}} 
+const Q\+String \& \hyperlink{class_article_a66368afb3591b3b4427317e054dd21c7}{get\+Text} () const
+\begin{DoxyCompactList}\small\item\em accesseur pour obtenir le texte d\textquotesingle{}un article \end{DoxyCompactList}\item 
+void \hyperlink{class_article_aaff3219cf9a04413349ff091f1674a26}{set\+Text} (const Q\+String \&str)
+\begin{DoxyCompactList}\small\item\em méthode pour appliquer un texte à un article \end{DoxyCompactList}\item 
+\hyperlink{class_article}{Article} $\ast$ \hyperlink{class_article_a78188a4d3c5b071caf13db46ecdc32b9}{clone} (unsigned int id) const
+\begin{DoxyCompactList}\small\item\em methode clone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_article_a85b13c2eb79223ce0c86fa2a82529c60}\label{class_article_a85b13c2eb79223ce0c86fa2a82529c60}} 
+Q\+String {\bfseries type} () const
+\item 
+\mbox{\Hypertarget{class_article_a160945b868825fde17945453e9a70787}\label{class_article_a160945b868825fde17945453e9a70787}} 
+\hyperlink{class_form_version}{Form\+Version} $\ast$ {\bfseries form\+Version} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_article_a93d7e72623acdfa5b079a11fbf2d9f9d}\label{class_article_a93d7e72623acdfa5b079a11fbf2d9f9d}} 
+class {\bfseries Note}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_article_a972ec00d52c495a57f8c657b96280327}\label{class_article_a972ec00d52c495a57f8c657b96280327}} 
+\index{Article@{Article}!Article@{Article}}
+\index{Article@{Article}!Article@{Article}}
+\subsubsection{\texorpdfstring{Article()}{Article()}}
+{\footnotesize\ttfamily Article\+::\+Article (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{t = {\ttfamily QString()},  }\item[{const Q\+String \&}]{te = {\ttfamily QString()} }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \hyperlink{class_article}{Article}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em te} & texte de l\textquotesingle{}article \\
+\hline
+{\em t} & titre de l\textquotesingle{}article (utilisé par le constructeur de \hyperlink{class_note_version}{Note\+Version}) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_article_a78188a4d3c5b071caf13db46ecdc32b9}\label{class_article_a78188a4d3c5b071caf13db46ecdc32b9}} 
+\index{Article@{Article}!clone@{clone}}
+\index{clone@{clone}!Article@{Article}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{class_article}{Article} $\ast$ Article\+::clone (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+methode clone 
+
+\begin{DoxyReturn}{Returns}
+un pointeur de \hyperlink{class_article}{Article} sur le clone de l\textquotesingle{}article grâce à l\textquotesingle{}id 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & L\textquotesingle{}id de l\textquotesingle{}article que l\textquotesingle{}on souhaite cloner \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_note_version_a7eb23a52291ec623b9bc1b6fe3e86c5a}{Note\+Version}.
+
+\mbox{\Hypertarget{class_article_aaff3219cf9a04413349ff091f1674a26}\label{class_article_aaff3219cf9a04413349ff091f1674a26}} 
+\index{Article@{Article}!set\+Text@{set\+Text}}
+\index{set\+Text@{set\+Text}!Article@{Article}}
+\subsubsection{\texorpdfstring{set\+Text()}{setText()}}
+{\footnotesize\ttfamily void Article\+::set\+Text (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{str }\end{DoxyParamCaption})}
+
+
+
+méthode pour appliquer un texte à un article 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Texte d\textquotesingle{}une version \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Documents/\+G\+I02/\+L\+O21/\+Projet/\+L\+O21/\+Qt\+Version/\hyperlink{noteversion_8h}{noteversion.\+h}\item 
+Documents/\+G\+I02/\+L\+O21/\+Projet/\+L\+O21/\+Qt\+Version/noteversion.\+cpp\end{DoxyCompactItemize}

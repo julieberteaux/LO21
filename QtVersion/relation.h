@@ -63,17 +63,28 @@ public:
     * \param    o   orientation de la relation (booléen)
     */
     Relation(const QString& t, const QString& d, bool o= true): title(t), description(d), listCouples(), oriented(o){}
+
+    /**
+    * \brief		accesseur pour obtenir le titre de la relation
+    */
     const QString& getTitle() {return title;}
+
+    /**
+    * \brief		accesseur pour obtenir la description de la relation
+    */
     const QString& getDescription() {return description;}
 
-
-    //pour accéder/parcourir les couples d'une relation faire un iterator ?
-
+    /**
+    * \brief		accesseur pour obtenir l'orientation de la relation
+    */
     bool getOrientation() {return oriented;}
 
-    //addCouple : aggrégation de Couples
+    /**
+    * \brief  méthode pour ajouter un couple
+    * \details  lors de la construction d'une relation, on initialise un vecteur de couple qui est vide. Avec la méthode addCouple on ajoute un couple c à ce vecteur
+    * \param  c   Référence sur le couple à ajouter
+    */
     void addCouple(Couple& c);
 
-    //getArborescence()
 };
 #endif // RELATION_H

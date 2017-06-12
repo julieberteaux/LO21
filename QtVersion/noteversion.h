@@ -70,7 +70,7 @@ public :
     NoteVersion(unsigned int v, const QString& t);
 
     /**
-    * \brief		accesseur pour obtenir le titre d'une version d'une note
+    * \brief		Accesseur pour obtenir le titre d'une version d'une note
     */
     const QString& getTitle() const ;
 
@@ -81,7 +81,7 @@ public :
     void setTitle(const QString& str);
 
     /**
-    * \brief		accesseur pour obtenir la date d'édition d'une version d'une note
+    * \brief		Accesseur pour obtenir la date d'édition d'une version d'une note
     */
     const Date& getDateEdit() const;
 
@@ -92,7 +92,7 @@ public :
     void setDateEdit(const Date& d);
 
     /**
-    * \brief		accesseur pour obtenir l'id d'une version d'une note
+    * \brief		Accesseur pour obtenir l'id d'une version d'une note
     */
     unsigned int getIdVersion() const;
 
@@ -103,8 +103,8 @@ public :
     virtual ~NoteVersion();
 
     /**
-    * \brief methode clone
-    * \return un pointeur de NoteVersion sur le clone de la version grâce à l'id
+    * \brief Méthode clone
+    * \return Un pointeur de NoteVersion sur le clone de la version grâce à l'id
     * \param  id  L'id de la version que l'on souhaite cloner
     */
     virtual NoteVersion* clone(unsigned int id) const=0;
@@ -180,19 +180,19 @@ public :
     Article (const QString& t=QString(), const QString& te=QString());
 
     /**
-    * \brief		accesseur pour obtenir le texte d'un article
+    * \brief		Accesseur pour obtenir le texte d'un article
     */
     const QString& getText() const;
 
     /**
-    * \brief		méthode pour appliquer un texte à un article
+    * \brief		Méthode pour appliquer un texte à un article
     * \param    str   Texte d'une version
     */
     void setText(const QString& str);
 
     /**
-    * \brief methode clone
-    * \return un pointeur de Article sur le clone de l'article grâce à l'id
+    * \brief Méthode clone
+    * \return Un pointeur de Article sur le clone de l'article grâce à l'id
     * \param  id  L'id de l'article que l'on souhaite cloner
     */
     Article* clone(unsigned int id) const;
@@ -232,28 +232,28 @@ public :
     Task (const QString& t=QString(),const QString& a=QString(), unsigned int p=0, const Date d=Date(1,1,2100), const Status s=Status());
 
     /**
-    * \brief		accesseur pour obtenir l'action d'une tâche
+    * \brief		Accesseur pour obtenir l'action d'une tâche
     */
     const QString& getAction() const ;
 
     /**
-    * \brief		accesseur pour obtenir la prioritée d'une tâche
+    * \brief		Accesseur pour obtenir la prioritée d'une tâche
     */
     unsigned int getPriority() const ;
 
     /**
-    * \brief		accesseur pour obtenir la date deadline d'une tâche
+    * \brief		Accesseur pour obtenir la date deadline d'une tâche
     */
     const Date& getDeadline() const ;
 
     /**
-    * \brief		accesseur pour obtenir le statut d'une tâche
+    * \brief		Accesseur pour obtenir le statut d'une tâche
     */
     const Status& getStatus() const ;
 
     /**
-    * \brief methode clone
-    * \return un pointeur de task sur le clone de la tâche grâce à l'id
+    * \brief Méthode clone
+    * \return Un pointeur de task sur le clone de la tâche grâce à l'id
     * \param  id  L'id de la tâche que l'on souhaite cloner
     */
     Task* clone(unsigned int id) const;
@@ -287,19 +287,19 @@ public :
     Image(const QString& t=QString(), const QString& d=QString(), const QString& f=QString());
 
     /**
-    * \brief		accesseur pour obtenir la description d'une Image
+    * \brief		Accesseur pour obtenir la description d'une Image
     */
     const QString& getDescription() const;
 
     /**
-    * \brief		accesseur pour obtenir le fichier d'une Image
+    * \brief		Accesseur pour obtenir le fichier d'une Image
     */
     const QString& getFile() const ;
 
 
     /**
-    * \brief methode clone
-    * \return un pointeur de Image sur le clone de l'image grâce à l'id
+    * \brief Méthode clone
+    * \return Un pointeur de Image sur le clone de l'image grâce à l'id
     * \param  id  L'id de l'image que l'on souhaite cloner
     */
     Image* clone(unsigned int id) const;
@@ -333,18 +333,18 @@ public :
     Audio (const QString& t, const QString& d, const QString& f);
 
     /**
-    * \brief		accesseur pour obtenir la description d'une note Audio
+    * \brief		Accesseur pour obtenir la description d'une note Audio
     */
     const QString& getDescription() const;
 
     /**
-    * \brief		accesseur pour obtenir le fichier d'une note Audio
+    * \brief		Accesseur pour obtenir le fichier d'une note Audio
     */
     const QString& getFile() const;
 
     /**
-    * \brief methode clone
-    * \return un pointeur de Audio sur le clone de la note Audio grâce à l'id
+    * \brief Méthode clone
+    * \return Un pointeur de Audio sur le clone de la note Audio grâce à l'id
     * \param  id  L'id de la note Audio que l'on souhaite cloner
     */
     Audio* clone(unsigned int id) const;
@@ -378,18 +378,18 @@ public :
     Video (const QString& t, const QString& d, const QString& f);
 
     /**
-    * \brief		accesseur pour obtenir la description d'une note Video
+    * \brief		Accesseur pour obtenir la description d'une note Video
     */
     const QString& getDescription() const;
 
     /**
-    * \brief		accesseur pour obtenir le fichier d'une note Video
+    * \brief  Accesseur pour obtenir le fichier d'une note Video
     */
     const QString& getFile() const;
 
     /**
-    * \brief methode clone
-    * \return un pointeur de Video sur le clone de la note Video grâce à l'id
+    * \brief Méthode clone
+    * \return Un pointeur de Video sur le clone de la note Video grâce à l'id
     * \param  id  L'id de la note Video que l'on souhaite cloner
     */
     Video* clone(unsigned int id) const;

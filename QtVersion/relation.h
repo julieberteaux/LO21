@@ -56,6 +56,7 @@ class Relation {
 
 public:
 
+
     /**
     * \brief		Constructeur de la classe Relation
     * \param    t   titre de la relation

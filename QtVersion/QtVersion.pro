@@ -13,7 +13,8 @@ SOURCES += \
     relationsmanager.cpp \
     mainwindow.cpp \
     trash.cpp \
-    trasheditor.cpp
+    trasheditor.cpp \
+    formrelation.cpp
 
 
 HEADERS += \
@@ -25,10 +26,12 @@ HEADERS += \
     relationsmanager.h \
     mainwindow.h \
     trasheditor.h \
-    trash.h
+    trash.h \
+    formrelation.h
 
 
 FORMS += \
     mainwindow.ui \
     formnote.ui \
-    typenote.ui
+    typenote.ui \
+    formrelation.ui

@@ -58,6 +58,7 @@ public:
     QLabel *label;
     QFrame *line;
     QListWidget *activerelations;
+    QPushButton *createRelation;
     QMenuBar *menuBar;
     QMenu *menuTrash;
     QMenu *menutest;
@@ -155,6 +156,9 @@ public:
         activerelations = new QListWidget(groupBox_2);
         activerelations->setObjectName(QStringLiteral("activerelations"));
         activerelations->setGeometry(QRect(10, 70, 147, 283));
+        createRelation = new QPushButton(groupBox_2);
+        createRelation->setObjectName(QStringLiteral("createRelation"));
+        createRelation->setGeometry(QRect(10, 370, 161, 32));
         tabWidget->addTab(Relations, QString());
         MainWindow->setCentralWidget(centralwidget);
         menuBar = new QMenuBar(MainWindow);
@@ -179,7 +183,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -198,6 +202,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(Corbeille), QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));
+        createRelation->setText(QApplication::translate("MainWindow", "Nouvelle relation", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Relations), QApplication::translate("MainWindow", "Relations", Q_NULLPTR));
         menuTrash->setTitle(QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
         menutest->setTitle(QApplication::translate("MainWindow", "test", Q_NULLPTR));

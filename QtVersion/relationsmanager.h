@@ -82,6 +82,13 @@ public:
     const Relation* getRelation(const QString& t) const;
 
     /**
+        * \brief		Attribue un nom de fichier pour les sauvegardes
+        * \param    str   Chaine de caractère qui définit le nom du fichier
+    */
+    void setFilename(const QString& str){filename=str;}
+
+
+    /**
     * \brief	Supprimer une relation à partir de son titre
     * \param  t    titre de la relation que l'on souhaite supprimer
     */

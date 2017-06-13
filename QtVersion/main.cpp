@@ -123,15 +123,18 @@ int main(int argc, char* argv[]) {
 
 //       std::cout<<std::endl;
 //       for(std::vector<Relation*>::iterator it=rel.begin(); it!=rel.end(); ++it)
-//           std::cout<<(*it)->getTitle()<<std::endl; //(*it)->getTitle()
+//           std::cout<<"R"<<std::endl; //(*it)->getTitle()
+//       managerR.setFilename("relations.xml");
+//       managerR.save();
 
         //PARTIE 2***************************************************************************************
         RelationsManager& managerR=RelationsManager::getInstance();
         NotesManager& manager2=NotesManager::getInstance();
         Trash& trash=Trash::getInstance();
         manager2.setFilename("notes.xml");
+        managerR.setFilename("relations.xml");
         manager2.load();
-        //managerR.load();
+        managerR.load();
 
         QApplication app(argc, argv);
         MainWindow fenetre(&manager2,&managerR, &trash);

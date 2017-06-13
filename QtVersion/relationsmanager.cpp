@@ -111,3 +111,4 @@ void RelationsManager::load() {
     xml.clear();
     qDebug()<<"fin load\n";
 }
+

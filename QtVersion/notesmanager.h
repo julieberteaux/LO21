@@ -66,8 +66,8 @@ public:
     }
 
     /**
-    * \brief		Défini le nom de l'instance NotesManager
-    * \param    std   Nom de l'instance
+        * \brief		Attribue un nom de fichier pour les sauvegardes
+        * \param    str   Chaine de caractère qui définit le nom du fichier
     */
     void setFilename(const QString& str){filename=str;}
 

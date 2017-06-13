@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relation>
+    <relation>
+        <title>Reference</title>
+        <description>Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale</description>
+    </relation>
+    <relation>
+        <title>Theme</title>
+        <description>Cette relation permet de matérialiser les notes de même thème</description>
+    </relation>
+</relation>

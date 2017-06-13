@@ -47,8 +47,6 @@ public:
     void refreshTrash();
     void unloadTrashedNotes();
     void loadTrashedNotes();
-   // void restoreNote();
-    //void deleteNote();
     void loadRelations();
 
 

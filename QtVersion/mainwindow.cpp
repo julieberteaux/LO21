@@ -176,14 +176,11 @@ void FormNote::PutToTrash()
 }
 
 
-// get back the data
-//QVariant v = item->data(Qt::UserRole);
-//int id = v.value<int>();
+
 
 void MainWindow::loadTrashedNotes(){
     const std::vector<Note*>& notes=trash->getListTrashedNotes();
     for(std::vector<Note* const>::iterator it=notes.begin(); it!=notes.end(); ++it){
-            std::cout<< "load trash"<<std::endl;
             QListWidgetItem *item = new QListWidgetItem((**it).getLatestNoteVersion().getTitle());
             QVariant v;
             v.setValue((**it).getIdNote());
@@ -201,15 +198,12 @@ void MainWindow::on_trashedNotes_itemClicked(QListWidgetItem *item)
 
 void MainWindow::restoreNote(){
    //recuperer l'id venant de l'item cliqué...
-//    trash->putBackNote(item->v);
     QListWidgetItem* item = ui->trashedNotes->currentItem();
     QVariant v = item->data(Qt::UserRole);
     int id = v.value<int>();
     trash->putBackNote(id);
-
-   // trash->deleteNote(id);
     refreshTrash();
-     refresh();
+    refresh();
 
 
 }
@@ -272,4 +266,12 @@ void MainWindow::loadRelations(){
 
 
 }
+
+
+//void MainWindow::on_createRelation_clicked(){
+//    type=new typeNote(manager,this);
+//    type->loadTypes();
+//    type->show();
+
+//}
 

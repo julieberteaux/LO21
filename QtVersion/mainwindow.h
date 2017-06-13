@@ -17,6 +17,7 @@
 #include <QMessageBox>
 
 #include "notesmanager.h"
+#include "relationsmanager.h"
 //#include "trasheditor.h"
 namespace Ui {
 class MainWindow;
@@ -30,6 +31,7 @@ class MainWindow : public QMainWindow{
     Q_OBJECT
     NotesManager* manager;
     FormNote* formnote;
+    RelationsManager* managerR;
 
     Trash *trash;
 
@@ -37,22 +39,26 @@ class MainWindow : public QMainWindow{
 
 
 public:
-    explicit MainWindow(NotesManager *m,Trash* t, QWidget *parent = 0);
+    explicit MainWindow(NotesManager *m,RelationsManager* r,Trash* t, QWidget *parent = 0);
     ~MainWindow();
     void loadActiveNotes();
     void unloadActiveNotes();
     void refresh();
+    void refreshTrash();
     void unloadTrashedNotes();
     void loadTrashedNotes();
-    void restoreNote();
-    void deleteNote();
+   // void restoreNote();
+    //void deleteNote();
+    void loadRelations();
 
 
 
-private slots:
+public slots:
     void on_activenotes_itemClicked(QListWidgetItem *item);
 
     void on_createNote_clicked();
+    void restoreNote();
+    void deleteNote();
 
 
     void on_trashedNotes_itemClicked(QListWidgetItem *item);

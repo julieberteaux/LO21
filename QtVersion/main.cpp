@@ -84,35 +84,46 @@ int main(int argc, char* argv[]) {
 
 ////        manager.putToTrash(idn2);
 
-//        std::vector<Note*> notes = manager.getListNotes();
+////        std::vector<Note*> notes = manager.getListNotes();
 
 
 
-//        for(std::vector<Note*>::iterator it=notes.begin(); it!=notes.end(); ++it)
-//            std::cout<<(*it)->getIdNote()<<std::endl;
-//        std::cout<<std::endl;
+////        for(std::vector<Note*>::iterator it=notes.begin(); it!=notes.end(); ++it)
+////            std::cout<<(*it)->getIdNote()<<std::endl;
+////        std::cout<<std::endl;
 
 
-//        Trash& trash=Trash::getInstance();
-////        trash.deleteNote(idn2);
+////        Trash& trash=Trash::getInstance();
+//////        trash.deleteNote(idn2);
 
-//        std::vector<Note*> tnotes=trash.getListTrashedNotes();
-//        if (tnotes.empty())
-//            std::cout<<"empty"<<std::endl;
-//        else std::cout<<"nope "<<tnotes.size()<<std::endl;
-//        for(std::vector<Note*>::iterator it=tnotes.begin(); it!=tnotes.end(); ++it)
-//            std::cout<<(*it)->getIdNote()<<std::endl;
-//        trash.putBackNote(idn2);
+////        std::vector<Note*> tnotes=trash.getListTrashedNotes();
+////        if (tnotes.empty())
+////            std::cout<<"empty"<<std::endl;
+////        else std::cout<<"nope "<<tnotes.size()<<std::endl;
+////        for(std::vector<Note*>::iterator it=tnotes.begin(); it!=tnotes.end(); ++it)
+////            std::cout<<(*it)->getIdNote()<<std::endl;
+////        trash.putBackNote(idn2);
 
-//       trash.putBackNote(idn2);
-//        manager.addExistingNote(&n2);
+////       trash.putBackNote(idn2);
+////        manager.addExistingNote(&n2);
 
 //        std::vector<Note*> note = manager.getListNotes();
 
 //        std::cout<<std::endl;
 //        for(std::vector<Note*>::iterator it=note.begin(); it!=note.end(); ++it)
 //            std::cout<<(*it)->getIdNote()<<std::endl;
-        //Relation* rReference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);
+
+//        RelationsManager& managerR=RelationsManager::getInstance();
+//       // Relation* Reference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);
+//       //Relation* theme = new Relation("Theme", "Cette relation permet de matérialiser les notes de même thème", false);
+//       managerR.addRelation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);
+//       managerR.addRelation("Theme", "Cette relation permet de matérialiser les notes de même thème", false);
+
+//       std::vector<Relation*> rel = managerR.getListRelations();
+
+//       std::cout<<std::endl;
+//       for(std::vector<Relation*>::iterator it=rel.begin(); it!=rel.end(); ++it)
+//           std::cout<<(*it)->getTitle()<<std::endl; //(*it)->getTitle()
 
         //PARTIE 2***************************************************************************************
         RelationsManager& managerR=RelationsManager::getInstance();
@@ -120,10 +131,11 @@ int main(int argc, char* argv[]) {
         Trash& trash=Trash::getInstance();
         manager2.setFilename("notes.xml");
         manager2.load();
-        managerR.load();
+        //managerR.load();
 
         QApplication app(argc, argv);
-        MainWindow fenetre(&manager2, &managerR, &trash);
+        MainWindow fenetre(&manager2,&managerR, &trash);
+
         fenetre.show();
         return app.exec();
 

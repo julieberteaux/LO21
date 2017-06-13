@@ -23,6 +23,7 @@ class RelationsManager{
     */
     std::vector<Relation*> listRelations;
 
+    mutable QString filename;
 
     /**
     * \brief		Constructeur d'affectation
@@ -93,16 +94,20 @@ public:
     */
     void displayRelationCouples (const QString& t, std::ostream& f);
 
+
+     const std::vector<Relation*>& getListRelations() const{return listRelations;}
+
     /**
     * \brief  Charger la liste de Relations
     * \details  Cette méthode charge le vecteur de relations à partir d'un fichier xml à l'ouverture de l'application
     */
-    void load()
+    void load();
 
     /**
     * \brief  Sauvegarder la liste de Relations
     * \details  Cette méthode sauvegarde le vecteur de Relations dans un fichier xml à la fermeture de l'application
     */
     void save() const;
+
 };
 #endif // RELATIONMANAGER_H

@@ -70,7 +70,7 @@ void RelationsManager::save() const {
     newfile.close();
 }
 
-
+/*
 void RelationsManager::load() {
     //LOAD MUST BE USED ONLY AT THE START-UP OF THE PROGRAM (no verification of idNote...)
     QFile fin(filename);
@@ -111,3 +111,4 @@ void RelationsManager::load() {
     xml.clear();
     qDebug()<<"fin load\n";
 }
+*/

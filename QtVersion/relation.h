@@ -80,6 +80,20 @@ public:
     bool getOrientation() {return oriented;}
 
     /**
+    * \brief		Méthode pour sauvegarder une relation
+    * \details  Elle permet de sauvegarder les relations dans un fichier xml lors d'un enregistrement
+    * \param    stream  fichier QXmlStreamWriter qui permet de sauver les relations
+    */
+    void saveRelation(QXmlStreamWriter* stream) const;
+
+    /**
+    * \brief		Méthode pour charger une note
+    * \details  Elle permet de charger les notes à partir d'un fichier xml
+    * \param    &xml  référence vers le fichier xml d'où on va charger les notes
+    */
+    void loadRelation(QXmlStreamReader &xml);
+
+    /**
     * \brief  Méthode pour ajouter un couple
     * \details  Lors de la construction d'une relation, on initialise un vecteur de couple qui est vide. Avec la méthode addCouple on ajoute un couple c à ce vecteur
     * \param  c   Référence sur le couple à ajouter

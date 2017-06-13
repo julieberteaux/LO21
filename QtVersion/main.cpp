@@ -115,12 +115,15 @@ int main(int argc, char* argv[]) {
         //Relation* rReference = new Relation("Reference", "Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale",true);
 
         //PARTIE 2***************************************************************************************
+        RelationsManager& managerR=RelationsManager::getInstance();
         NotesManager& manager2=NotesManager::getInstance();
         Trash& trash=Trash::getInstance();
         manager2.setFilename("notes.xml");
         manager2.load();
+        managerR.load();
+
         QApplication app(argc, argv);
-        MainWindow fenetre(&manager2, &trash);
+        MainWindow fenetre(&manager2, &managerR, &trash);
         fenetre.show();
         return app.exec();
 

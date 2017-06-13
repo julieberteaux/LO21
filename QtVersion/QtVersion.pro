@@ -4,7 +4,6 @@ QMAKE_LFLAGS = -std=c++11
 QT += xml
 
 SOURCES += \
-    plurinotes.cpp \
     main.cpp \
     date.cpp \
     notesmanager.cpp \
@@ -14,11 +13,10 @@ SOURCES += \
     relationsmanager.cpp \
     mainwindow.cpp \
     trash.cpp \
-    trasheditor.cpp \
-    noteseditor.cpp
+    trasheditor.cpp
+
 
 HEADERS += \
-    plurinotes.h \
     date.h \
     notesmanager.h \
     note.h \
@@ -27,8 +25,8 @@ HEADERS += \
     relationsmanager.h \
     mainwindow.h \
     trasheditor.h \
-    trash.h \
-    noteseditor.h
+    trash.h
+
 
 FORMS += \
     mainwindow.ui \

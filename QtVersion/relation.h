@@ -56,13 +56,14 @@ class Relation {
 
 public:
 
+
     /**
     * \brief		Constructeur de la classe Relation
     * \param    t   titre de la relation
     * \param    d   description de la relation
     * \param    o   orientation de la relation (booléen)
     */
-    Relation(const QString& t, const QString& d, bool o= true): title(t), description(d), listCouples(), oriented(o){}
+    Relation(const QString& t=0, const QString& d=0, bool o= true): title(t), description(d), listCouples(), oriented(o){}
 
     /**
     * \brief		Accesseur pour obtenir le titre de la relation

@@ -296,6 +296,7 @@ public :
     * \brief		Accesseur pour obtenir le fichier d'une Image
     */
     const QString& getFile() const ;
+    void setFile(const QString& str);
 
 
     /**
@@ -441,6 +442,7 @@ private slots:
     void importImage();
 
 public:
+    void printImage();
     FormImage(Image* a, QWidget *parent = 0);
     void saveVersion(NoteVersion*){};
     ~FormImage();

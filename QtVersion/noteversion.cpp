@@ -200,6 +200,9 @@ void Image::saveNoteVersionType(QXmlStreamWriter& stream) const{
 
 }
 
+void Image::setFile(const QString& str){
+    file=str;
+}
 
 void Image::loadNoteVersionType(QXmlStreamReader& xml){
     while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "version")) {
@@ -297,16 +300,15 @@ void FormArticle::saveVersion(NoteVersion* ver){
 }
 
 /***********************IMAGE***********************/
+void FormImage::printImage(){
+    imageLabel->setPixmap(QPixmap(image->getFile()).scaled(200,200,Qt::KeepAspectRatio));
+    imageHbox->addWidget(imageLabel);
+}
 
 FormImage::FormImage(Image *a, QWidget *parent): FormVersion(parent), import(new QPushButton("Importer")), image(a), imageLabel(new QLabel()), imageHbox(new QHBoxLayout()){
     imageHbox->addWidget(import);
-
-    QString path="../../../Images";
-    path=path+a->getFile();
-
-    imageLabel->setPixmap(QPixmap(path).scaled(250,250,Qt::KeepAspectRatio));
-
-    imageHbox->addWidget(imageLabel);
+    printImage();
+    QObject::connect(import, SIGNAL(clicked()), this, SLOT(importImage()));
     this->setLayout(imageHbox);
 
 }
@@ -317,5 +319,9 @@ FormImage::~FormImage(){
 }
 
 void FormImage::importImage(){
-    std::cout<<"test"<<std::endl;
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Ouvrir une Image"), "./", tr("Image Files (*.png *.jpg *.bmp *.jpeg)"));
+    //std::cout<<fileName.toStdString()<<std::endl;
+    image->setFile(fileName);
+    printImage();
 }
+

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notes>
+    <note>
+        <idNote>0</idNote>
+        <dateCrea>
+            <jour>1</jour>
+            <mois>6</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <noteState>1</noteState>
+        <type>Article</type>
+        <version>
+            <idVersion>0</idVersion>
+            <title>titre de l'article...</title>
+            <dateEdit>
+                <jour>1</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>texte de l'article...</text>
+        </version>
+        <version>
+            <idVersion>1</idVersion>
+            <title>titre de l'article...</title>
+            <dateEdit>
+                <jour>1</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un essai</text>
+        </version>
+        <version>
+            <idVersion>2</idVersion>
+            <title>titre de l'...</title>
+            <dateEdit>
+                <jour>10</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un essai</text>
+        </version>
+        <version>
+            <idVersion>3</idVersion>
+            <title>titre de l'hhh...</title>
+            <dateEdit>
+                <jour>10</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un essai</text>
+        </version>
+        <version>
+            <idVersion>4</idVersion>
+            <title>titre de l'article...</title>
+            <dateEdit>
+                <jour>11</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un essai</text>
+        </version>
+        <version>
+            <idVersion>5</idVersion>
+            <title>titre de l'article...</title>
+            <dateEdit>
+                <jour>11</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un deuxième essai</text>
+        </version>
+    </note>
+    <note>
+        <idNote>1</idNote>
+        <dateCrea>
+            <jour>1</jour>
+            <mois>6</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <noteState>1</noteState>
+        <type>Image</type>
+        <version>
+            <idVersion>0</idVersion>
+            <title>image des vacances</title>
+            <dateEdit>
+                <jour>1</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description>c'est une image des vacances</description>
+            <file>/vacances.jpeg</file>
+        </version>
+    </note>
+    <note>
+        <idNote>2</idNote>
+        <dateCrea>
+            <jour>11</jour>
+            <mois>6</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <noteState>1</noteState>
+        <type>Article</type>
+        <version>
+            <idVersion>0</idVersion>
+            <title>A MODIFIER: Nouvelle note!</title>
+            <dateEdit>
+                <jour>11</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text></text>
+        </version>
+        <version>
+            <idVersion>1</idVersion>
+            <title>Article de presse</title>
+            <dateEdit>
+                <jour>11</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>Description de l'article</text>
+        </version>
+        <version>
+            <idVersion>2</idVersion>
+            <title>Article de presse</title>
+            <dateEdit>
+                <jour>11</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>Description de l'article...</text>
+        </version>
+    </note>
+</notes>

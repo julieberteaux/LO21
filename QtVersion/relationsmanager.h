@@ -92,5 +92,7 @@ public:
     * \param  f   fichier de sortie standard 
     */
     void displayRelationCouples (const QString& t, std::ostream& f);
+
+     const std::vector<Relation*>& getListRelations() const{return listRelations;}
 };
 #endif // RELATIONMANAGER_H

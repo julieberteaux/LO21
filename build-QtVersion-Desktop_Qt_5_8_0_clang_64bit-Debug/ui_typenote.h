@@ -14,8 +14,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
+
+#include <QtWidgets/QPushButton>
+
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -26,8 +30,13 @@ class Ui_typeNote
 public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
+
     QLabel *label;
     QListWidget *type;
+
+    QListWidget *listWidget;
+    QPushButton *validate;
+
 
     void setupUi(QWidget *typeNote)
     {
@@ -40,6 +49,7 @@ public:
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+
         label = new QLabel(verticalLayoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
@@ -50,6 +60,17 @@ public:
 
         verticalLayout->addWidget(type);
 
+        listWidget = new QListWidget(verticalLayoutWidget);
+        listWidget->setObjectName(QStringLiteral("listWidget"));
+
+        verticalLayout->addWidget(listWidget);
+
+        validate = new QPushButton(verticalLayoutWidget);
+        validate->setObjectName(QStringLiteral("validate"));
+
+        verticalLayout->addWidget(validate);
+
+
 
         retranslateUi(typeNote);
 
@@ -59,7 +80,11 @@ public:
     void retranslateUi(QWidget *typeNote)
     {
         typeNote->setWindowTitle(QApplication::translate("typeNote", "Form", Q_NULLPTR));
+
         label->setText(QApplication::translate("typeNote", "Cliquez sur un type de note:", Q_NULLPTR));
+
+        validate->setText(QApplication::translate("typeNote", "Valider", Q_NULLPTR));
+
     } // retranslateUi
 
 };

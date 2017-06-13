@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 #include "ui_formnote.h"
 #include "ui_typenote.h"
+#include <QDebug>
 #include<QMessageBox>
 
 void FormNote::activateButtons()
@@ -41,11 +42,13 @@ void MainWindow::unloadActiveNotes(){
     }
 }
 
-MainWindow::MainWindow(NotesManager* m,Trash* t, QWidget *parent) :manager(m), formnote(nullptr), QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
+MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *parent) :manager(m), managerR(r),formnote(nullptr), QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
 {
     ui->setupUi(this);
     loadActiveNotes();
-    QObject::connect(ui->restore, SIGNAL(clicked()),this, SLOT(saveNote()));
+
+    QObject::connect(ui->restore, SIGNAL(clicked()),this, SLOT(restoreNote()));
+
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 }
 
@@ -75,6 +78,11 @@ void MainWindow::on_createNote_clicked(){
 void MainWindow::refresh(){
     unloadActiveNotes();
     loadActiveNotes();
+}
+
+void MainWindow::refreshTrash(){
+    unloadTrashedNotes();
+    loadTrashedNotes();
 }
 
 FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget *parent) : mainwindow(mwind), manager(m), idNote(id),version(nullptr),
@@ -194,11 +202,26 @@ void MainWindow::on_trashedNotes_itemClicked(QListWidgetItem *item)
 void MainWindow::restoreNote(){
    //recuperer l'id venant de l'item cliqué...
 //    trash->putBackNote(item->v);
+    QListWidgetItem* item = ui->trashedNotes->currentItem();
+    QVariant v = item->data(Qt::UserRole);
+    int id = v.value<int>();
+    trash->putBackNote(id);
+
+   // trash->deleteNote(id);
+    refreshTrash();
+     refresh();
+
+
 }
 
 void MainWindow::deleteNote(){
     //recuperer l'id venant de l'item cliqué...
 //    trash->deleteNote(idNote);
+    QListWidgetItem* item = ui->trashedNotes->currentItem();
+    QVariant v = item->data(Qt::UserRole);
+    int id = v.value<int>();
+    trash->deleteNote(id);
+    refreshTrash();
 }
 
 typeNote::typeNote(NotesManager *m, MainWindow *mwindow, QWidget *parent) : manager(m), mainwindow(mwindow), QWidget(parent), ui(new Ui::typeNote)
@@ -231,5 +254,22 @@ void typeNote::on_type_itemClicked(QListWidgetItem *item){
     mainwindow->refresh();
     manager->save();
     this->close();
+}
+
+
+///////////// Relations /////////////////////
+
+void MainWindow::loadRelations(){
+    const std::vector<Relation*>& relations=managerR->getListRelations();
+    for(std::vector<Relation* const>::iterator it=relations.begin(); it!=relations.end(); ++it){
+
+            QListWidgetItem *item = new QListWidgetItem((**it).getTitle());
+
+            ui->activerelations->addItem(item);
+
+
+    }
+
+
 }
 

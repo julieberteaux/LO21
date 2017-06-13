@@ -69,46 +69,6 @@
             </dateEdit>
             <text>ceci est un deuxième essai</text>
         </version>
-        <version>
-            <idVersion>6</idVersion>
-            <title>titre de l'article2...</title>
-            <dateEdit>
-                <jour>12</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>ceci est un deuxième essai</text>
-        </version>
-        <version>
-            <idVersion>7</idVersion>
-            <title>titre de l'article...</title>
-            <dateEdit>
-                <jour>12</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>ceci est un deuxième essai</text>
-        </version>
-        <version>
-            <idVersion>8</idVersion>
-            <title>titre de l'article...</title>
-            <dateEdit>
-                <jour>12</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>ceci est un troisième essai</text>
-        </version>
-        <version>
-            <idVersion>9</idVersion>
-            <title>titre de l'article...</title>
-            <dateEdit>
-                <jour>12</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>ceci est un quatrième essai</text>
-        </version>
     </note>
     <note>
         <idNote>1</idNote>
@@ -121,28 +81,6 @@
         <type>Image</type>
         <version>
             <idVersion>0</idVersion>
-            <title>image des vacances</title>
-            <dateEdit>
-                <jour>1</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <description>c'est une image des vacances</description>
-            <file>/vacances.jpeg</file>
-        </version>
-        <version>
-            <idVersion>1</idVersion>
-            <title>image de vacances</title>
-            <dateEdit>
-                <jour>1</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <description>c'est une image des vacances</description>
-            <file>/vacances.jpeg</file>
-        </version>
-        <version>
-            <idVersion>2</idVersion>
             <title>image des vacances</title>
             <dateEdit>
                 <jour>1</jour>
@@ -187,16 +125,6 @@
             <title>Article de presse</title>
             <dateEdit>
                 <jour>11</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>Description de l'article...</text>
-        </version>
-        <version>
-            <idVersion>3</idVersion>
-            <title>Article de presse n°2</title>
-            <dateEdit>
-                <jour>12</jour>
                 <mois>6</mois>
                 <annee>2017</annee>
             </dateEdit>

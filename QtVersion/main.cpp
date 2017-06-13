@@ -131,8 +131,11 @@ int main(int argc, char* argv[]) {
         Trash& trash=Trash::getInstance();
         manager2.setFilename("notes.xml");
         manager2.load();
+        //managerR.load();
+
         QApplication app(argc, argv);
         MainWindow fenetre(&manager2,&managerR, &trash);
+
         fenetre.show();
         return app.exec();
 

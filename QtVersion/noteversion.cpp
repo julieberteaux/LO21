@@ -169,10 +169,11 @@ Task* Task::clone(unsigned int id) const{
 }
 
 void Task::saveNoteVersionType(QXmlStreamWriter& stream) const{
-    //A FAIRE
+    //A FAIRE SUR LE MEME MODELE QUE ARTICLES EN AJOUTANT DES CHAMPS
 }
 
 void Task::loadNoteVersionType(QXmlStreamReader& stream){
+  //A FAIRE SUR LE MEME MODELE QUE ARTICLES EN AJOUTANT DES CHAMPS
 
 }
 

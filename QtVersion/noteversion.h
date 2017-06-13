@@ -19,6 +19,7 @@
 #include <QLabel>
 #include <QMainWindow>
 #include <QObject>
+#include <QPushButton>
 #include <QTextEdit>
 #include <QWidget>
 #include <QXmlStreamWriter>
@@ -429,9 +430,16 @@ public:
 * \class FormImage noteversion.h
 */
 class FormImage : public FormVersion{
+    Q_OBJECT
+
+    QPushButton *import;
     Image *image;
     QLabel *imageLabel;
     QHBoxLayout *imageHbox;
+
+private slots:
+    void importImage();
+
 public:
     FormImage(Image* a, QWidget *parent = 0);
     void saveVersion(NoteVersion*){};

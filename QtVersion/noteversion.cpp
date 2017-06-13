@@ -164,6 +164,7 @@ QString Task::type() const {return "Task";}
 Task* Task::clone(unsigned int id) const{
     Task* tsk=new Task(*this);
     tsk->idVersion=id;
+    (tsk->dateEdit).today();
     return tsk;
 }
 
@@ -188,6 +189,7 @@ QString Image::type() const {return "Image";}
 Image* Image::clone(unsigned int id) const{
     Image* img=new Image(*this);
     img->idVersion=id;
+    (img->dateEdit).today();
     return img;
 }
 
@@ -231,6 +233,8 @@ QString Audio::type() const {return "Audio";}
 Audio* Audio::clone(unsigned int id) const{
     Audio* aud=new Audio(*this);
     aud->idVersion=id;
+    (aud->dateEdit).today();
+
     return aud;
 }
 void Audio::saveNoteVersionType(QXmlStreamWriter& stream) const{
@@ -293,9 +297,9 @@ void FormArticle::saveVersion(NoteVersion* ver){
 
 /***********************IMAGE***********************/
 
-FormImage::FormImage(Image *a, QWidget *parent): FormVersion(parent), image(a){
-    imageLabel=new QLabel();
-    imageHbox=new QHBoxLayout();
+FormImage::FormImage(Image *a, QWidget *parent): FormVersion(parent), import(new QPushButton("Importer")), image(a), imageLabel(new QLabel()), imageHbox(new QHBoxLayout()){
+    imageHbox->addWidget(import);
+
     QString path="../../../Images";
     path=path+a->getFile();
 
@@ -303,9 +307,14 @@ FormImage::FormImage(Image *a, QWidget *parent): FormVersion(parent), image(a){
 
     imageHbox->addWidget(imageLabel);
     this->setLayout(imageHbox);
+
 }
 
 FormImage::~FormImage(){
     delete imageLabel;
     delete imageHbox;
+}
+
+void FormImage::importImage(){
+    std::cout<<"test"<<std::endl;
 }

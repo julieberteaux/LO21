@@ -45,7 +45,6 @@ MainWindow::MainWindow(NotesManager* m,Trash* t, QWidget *parent) :manager(m), f
 {
     ui->setupUi(this);
     loadActiveNotes();
-    QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 }
 

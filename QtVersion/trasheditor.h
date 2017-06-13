@@ -1,3 +1,9 @@
+/**
+ * \file	trasheditor.h
+ * \brief	Définition de la classe TrashEditor
+ * \details La classe TrashEditor permet l'implémentation graphique de la classe dans notre interface.
+ */
+
 #ifndef TRASHEDITOR_H
 #define TRASHEDITOR_H
 
@@ -80,4 +86,3 @@ private:
 
 
 //#endif // TRASHEDITOR_H
-

@@ -1,3 +1,10 @@
+/**
+ * \file	mainwindow.h
+ * \brief	Définition de la classe MainWindow
+ * \details La classe MainWindow permet de gérer l'interface grahique de notre application, elle a été réalisée à l'aide de Qt Designer.
+ */
+
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

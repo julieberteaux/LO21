@@ -40,6 +40,8 @@ void RelationsManager::displayRelationCouples (const QString& t, std::ostream& f
 
 // QUESTION :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
 // est ce qu'on peut comparer 2 string avec ==
+
+
 void RelationsManager::deleteRelation(const QString& t){
     if(listRelations.size()==0)
         throw Exception("Il n'y a pas de Relation!");

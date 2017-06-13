@@ -1,7 +1,7 @@
 /**
  * \file	notesmanager.h
  * \brief	Définition de la classe NotesManager
- * \details La classe NotesManager, on y définit les différents attributs et méthodes qui caractérise la gestion des notes au sein de l'application pluriNotes.
+ * \details La classe NotesManager définit les différents attributs et méthodes qui caractérise la gestion des notes au sein de l'application pluriNotes.
  * \details La relation entre les classes NotesManager et Note est une composition
  */
 

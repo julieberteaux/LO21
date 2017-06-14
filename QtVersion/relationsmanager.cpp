@@ -4,7 +4,7 @@
 // QUESTIO :??? [&t](Relation* obj) {return obj->getTitle() == t;}  ??????
 // est ce qu'on peut comparer 2 string avec ==
 
-const Relation* RelationsManager::getRelation(const QString& t) const{
+Relation* RelationsManager::getRelation(const QString& t) {
     if(listRelations.size()==0)
         return nullptr;
     auto it = find_if(listRelations.begin(), listRelations.end(), [&t](Relation* obj) {return obj->getTitle() == t;});

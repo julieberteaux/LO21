@@ -79,7 +79,7 @@ public:
     * \brief	Obtenir une relation à partir de son titre
     * \param  t    titre de la relation que l'on souhaite obtenir
     */
-    const Relation* getRelation(const QString& t) const;
+    Relation *getRelation(const QString& t);
 
     /**
         * \brief		Attribue un nom de fichier pour les sauvegardes

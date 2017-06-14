@@ -268,8 +268,7 @@ void MainWindow::loadRelations(){
 }
 void MainWindow::unloadRelations(){
      QListWidgetItem *item;
-     unsigned int nbrow=ui->activerelations->count();
-    for(int row = 0; row < nbrow; row++)
+    for(int row = 0; row <= (ui->activerelations->count()); row++)
     {
         item = ui->activerelations->item(0);
         delete item;
@@ -287,19 +286,9 @@ FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r, const QString
 {
     ui->setupUi(this);
     ui->saveR->setDisabled(true);
-    ui->oriented->setChecked(1);
+    ui->oriented->animateClick();
     if(title!=""){
-        const Relation* rela=managerR->getRelation(title);
-        ui->titleEdit->setText(rela->getTitle());
-        ui->descriptionEdit->setText(rela->getDescription());
-        std::cout<<"orientation: "<<rela->getOrientation()<<std::endl;
-        if(rela->getOrientation()==1){
-            ui->nonOriented->setChecked(1);
-            ui->oriented->setChecked(1);
-        }else{
-            ui->oriented->setChecked(0);
-            ui->nonOriented->setChecked(1);
-        }
+
     }
     QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activateSave()));
     QObject::connect(ui->descriptionEdit, SIGNAL(textChanged(QString)),this, SLOT(activateSave()));
@@ -314,6 +303,7 @@ FormRelation::~FormRelation()
 
 void MainWindow::on_createRelation_clicked(){
     FormRelation* rel=new FormRelation(this, managerR);
+
     rel->show();
 
 }
@@ -325,20 +315,20 @@ void FormRelation::activateSave(){
 void MainWindow::on_activerelations_itemClicked(QListWidgetItem *item)
 {
     delete formrelation;
-    formrelation=new FormRelation(this, managerR, item->text());
+    //QVariant v = item->data(Qt::UserRole);
+    //unsigned int i=v.toInt();
+    formrelation=new FormRelation(this, managerR);
     ui->centreRelation->addWidget(formrelation);
 }
 
 void FormRelation::saveRelation(){
-    bool o;
-    if(ui->oriented->isChecked())
-        o=1;
-    else
-        o=0;
+    bool o = ui->oriented;
+
     managerR->addRelation(ui->titleEdit->text(),ui->descriptionEdit->text(),o);
     //ui->save->setDisabled(true);
     mainwindow->refreshRelation();
     QMessageBox::information(this,"Sauvegarde", "Relation sauvegardée !!!");
     this->close();
+
     //managerR->save();
 }

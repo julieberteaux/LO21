@@ -24,14 +24,11 @@
 #include <QWidget>
 #include <QXmlStreamWriter>
 
-class FormVersion;
 
 /**
 * \class NoteVersion noteversion.h
 * \details Classe amie de Note
 */
-
-
 class NoteVersion{
     friend class Note;
 
@@ -76,7 +73,7 @@ public :
     const QString& getTitle() const ;
 
     /**
-    * \brief		méthode pour appliquer un titre à une version d'une note
+    * \brief		méthode pour attribuer un titre à une version d'une note
     * \param    str   Titre d'une version
     */
     void setTitle(const QString& str);
@@ -87,7 +84,7 @@ public :
     const Date& getDateEdit() const;
 
     /**
-    * \brief		méthode pour appliquer une date d'édition à une version d'une note
+    * \brief		méthode pour attribuer une date d'édition à une version d'une note
     * \param    d   Date d'édition d'une version
     */
     void setDateEdit(const Date& d);
@@ -111,7 +108,7 @@ public :
     virtual NoteVersion* clone(unsigned int id) const=0;
 
     virtual QString type() const =0;
-    //A mettre en virtuelle pure
+
     virtual FormVersion* formVersion()=0;
 
 /*
@@ -186,7 +183,7 @@ public :
     const QString& getText() const;
 
     /**
-    * \brief		Méthode pour appliquer un texte à un article
+    * \brief		Méthode pour attribuer un texte à un article
     * \param    str   Texte d'une version
     */
     void setText(const QString& str);
@@ -296,7 +293,6 @@ public :
     * \brief		Accesseur pour obtenir le fichier d'une Image
     */
     const QString& getFile() const ;
-    void setFile(const QString& str);
 
 
     /**
@@ -320,6 +316,7 @@ class Audio : public NoteVersion {
 
     QString description;
     QString file;
+    static DerivedRegister<Audio> reg;
 
     void saveNoteVersionType(QXmlStreamWriter& stream) const;
     void loadNoteVersionType(QXmlStreamReader& xml);
@@ -365,6 +362,7 @@ class Video : public NoteVersion {
 
     QString description;
     QString file;
+    static DerivedRegister<Video> reg;
 
     void saveNoteVersionType(QXmlStreamWriter& stream) const;
     void loadNoteVersionType(QXmlStreamReader& xml);
@@ -442,7 +440,6 @@ private slots:
     void importImage();
 
 public:
-    void printImage();
     FormImage(Image* a, QWidget *parent = 0);
     void saveVersion(NoteVersion*){};
     ~FormImage();

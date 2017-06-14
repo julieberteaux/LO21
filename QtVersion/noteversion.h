@@ -29,6 +29,7 @@
 * \class NoteVersion noteversion.h
 * \details Classe amie de Note
 */
+class FormVersion;
 class NoteVersion{
     friend class Note;
 
@@ -293,6 +294,7 @@ public :
     * \brief		Accesseur pour obtenir le fichier d'une Image
     */
     const QString& getFile() const ;
+    void setFile(const QString& str)  ;
 
 
     /**
@@ -441,6 +443,7 @@ private slots:
 
 public:
     FormImage(Image* a, QWidget *parent = 0);
+    void printImage();
     void saveVersion(NoteVersion*){};
     ~FormImage();
 

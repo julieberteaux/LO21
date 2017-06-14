@@ -3,6 +3,7 @@
 #include "trasheditor.h"
 #include "ui_mainwindow.h"
 #include "ui_formnote.h"
+#include "ui_formrelation.h"
 #include "ui_typenote.h"
 #include <QDebug>
 #include<QMessageBox>
@@ -42,7 +43,7 @@ void MainWindow::unloadActiveNotes(){
     }
 }
 
-MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *parent) :manager(m), managerR(r),formnote(nullptr), QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
+MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *parent) :manager(m), managerR(r),formnote(nullptr), formrelation(nullptr),QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
 {
     ui->setupUi(this);
     loadActiveNotes();
@@ -266,12 +267,43 @@ void MainWindow::loadRelations(){
 
 
 }
+void MainWindow::unloadRelations(){
+     QListWidgetItem *item;
+    for(int row = 0; row <= (ui->activerelations->count()); row++)
+    {
+        item = ui->activerelations->item(0);
+        delete item;
+    }
+}
 
+void MainWindow::refreshRelation(){
+    unloadRelations();
+    loadRelations();
+}
 
-//void MainWindow::on_createRelation_clicked(){
-//    type=new typeNote(manager,this);
-//    type->loadTypes();
-//    type->show();
+///////////// FormRelation /////////////////////
 
-//}
+FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r,  QWidget *parent) : managerR(r), mainwindow(mwind), QWidget(parent), ui(new Ui::FormRelation)
+{
+    ui->setupUi(this);
+    ui->oriented->animateClick();
+    QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
+
+}
+
+FormRelation::~FormRelation()
+{
+    delete ui;
+}
+
+void MainWindow::on_createRelation_clicked(){
+    FormRelation* rel=new FormRelation(this, managerR);
+
+    rel->show();
+
+}
+
+void FormRelation::activateSave(){
+    ui->saveR->setEnabled(true);
+}
 

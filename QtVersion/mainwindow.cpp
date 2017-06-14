@@ -6,6 +6,7 @@
 #include "ui_formrelation.h"
 #include "ui_typenote.h"
 #include "ui_formrelation.h"
+#include "ui_listversions.h"
 
 #include <QDebug>
 #include<QMessageBox>
@@ -54,7 +55,6 @@ MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *pa
     QObject::connect(ui->restore, SIGNAL(clicked()),this, SLOT(restoreNote()));
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 
-
     connect(ui->exit, SIGNAL(triggered()), this, SLOT(exit()));
 
 }
@@ -97,8 +97,7 @@ void MainWindow::refreshTrash(){
     loadTrashedNotes();
 }
 
-FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget *parent) : mainwindow(mwind), manager(m), idNote(id),version(nullptr),
-    QWidget(parent),ui(new Ui::FormNote)
+FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget *parent) : mainwindow(mwind), manager(m), idNote(id),version(nullptr),listversions(nullptr),QWidget(parent),ui(new Ui::FormNote)
 {
     ui->setupUi(this);
     Note& note=manager->getNote(idNote);
@@ -120,12 +119,15 @@ FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget 
     //QObject::connect(ui->titleLineEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
     QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(PutToTrash()));
+    QObject::connect(ui->versions, SIGNAL(clicked()),this, SLOT(showVersions()));
+
 }
 
 FormNote::~FormNote()
 {
     delete version;
     delete ui;
+    delete listversions;
 }
 
 void FormNote::saveNote()
@@ -181,8 +183,24 @@ void FormNote::PutToTrash()
     disableButtons();
 
 }
+void FormNote::showVersions(){
+    listversions=new ListVersions(manager,idNote);
+    listversions->loadVersions();
+    listversions->show();
+}
 
+ListVersions::ListVersions(NotesManager *m, unsigned int id, QWidget *parent) : manager(m), idNote(id),QWidget(parent),ui(new Ui::ListVersions)
+{
+    ui->setupUi(this);
+}
 
+ListVersions::~ListVersions()
+{
+    delete ui;
+}
+void ListVersions::loadVersions(){
+    Note& n=manager->getNote(idNote);
+}
 
 
 void MainWindow::loadTrashedNotes(){

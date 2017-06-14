@@ -59,7 +59,7 @@ public:
 
   /**
   * \brief		Constructeur de l'unique instance du singleton
-  * \details  c'est une méthode statique
+  * \details  C'est une méthode statique
   */
     static RelationsManager& getInstance(){
         static RelationsManager instance;
@@ -77,7 +77,7 @@ public:
 
     /**
     * \brief	Obtenir une relation à partir de son titre
-    * \param  t    titre de la relation que l'on souhaite obtenir
+    * \param  t    Titre de la relation que l'on souhaite obtenir
     */
     Relation *getRelation(const QString& t);
 
@@ -90,14 +90,14 @@ public:
 
     /**
     * \brief	Supprimer une relation à partir de son titre
-    * \param  t    titre de la relation que l'on souhaite supprimer
+    * \param  t    Titre de la relation que l'on souhaite supprimer
     */
     void deleteRelation(const QString& t);
 
     /**
     * \brief	Afficher les couples d'une relation à partir de son titre
-    * \param  t   titre de la relation que l'on souhaite supprimer
-    * \param  f   fichier de sortie standard
+    * \param  t   Titre de la relation que l'on souhaite supprimer
+    * \param  f   Fichier de sortie standard
     */
     void displayRelationCouples (const QString& t, std::ostream& f);
 

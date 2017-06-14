@@ -44,18 +44,29 @@ private:
     /**
     * \brief		Méthode pour sauvegarder une version d'une note
     * \details  Elle permet de sauvegarder les version d'une note dans un fichier xml lors d'un enregistrement
-    * \param    stream  fichier QXmlStreamWriter qui permet de sauver les versions d'une note
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les versions d'une note
     */
     void saveNoteVersion(QXmlStreamWriter* stream) const;
 
     /**
     * \brief		Méthode pour charger une version d'une note
     * \details  Elle permet de charger les versions d'une note à partir d'un fichier xml
-    * \param    &xml  référence vers le fichier xml d'où on va charger les versions d'une note
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les versions d'une note
     */
     void loadNoteVersion(QXmlStreamReader& stream);
 
+    /**
+    * \brief		Méthode pour sauvegarder une version d'un type de note
+    * \details  Elle permet de sauvegarder les version d'un type de note dans un fichier xml lors d'un enregistrement
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les versions d'un type de note
+    */
     virtual void saveNoteVersionType(QXmlStreamWriter& stream) const=0;
+
+    /**
+    * \brief		Méthode pour charger une version d'un type de note
+    * \details  Elle permet de charger les versions d'un type de note à partir d'un fichier xml
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les versions d'un type de note
+    */
     virtual void loadNoteVersionType(QXmlStreamReader& stream)=0;
 
 
@@ -63,8 +74,8 @@ public :
 
     /**
     * \brief		Constructeur de la classe NoteVersion
-    * \param    v  id de la version
-    * \param    t  titre de la version
+    * \param    v  Id de la version
+    * \param    t  Titre de la version
     */
     NoteVersion(unsigned int v, const QString& t);
 
@@ -74,7 +85,7 @@ public :
     const QString& getTitle() const ;
 
     /**
-    * \brief		méthode pour attribuer un titre à une version d'une note
+    * \brief		Méthode pour attribuer un titre à une version d'une note
     * \param    str   Titre d'une version
     */
     void setTitle(const QString& str);
@@ -85,7 +96,7 @@ public :
     const Date& getDateEdit() const;
 
     /**
-    * \brief		méthode pour attribuer une date d'édition à une version d'une note
+    * \brief		Méthode pour attribuer une date d'édition à une version d'une note
     * \param    d   Date d'édition d'une version
     */
     void setDateEdit(const Date& d);
@@ -96,8 +107,8 @@ public :
     unsigned int getIdVersion() const;
 
     /**
-    * \brief  destructeur d'une version d'une note
-    * \details  il est virtuel
+    * \brief  Destructeur d'une version d'une note
+    * \details  Il est virtuel
     */
     virtual ~NoteVersion();
 
@@ -113,12 +124,7 @@ public :
     virtual FormVersion* formVersion()=0;
 
 /*
- addNoteVersion :
-    copyLatest : copie de la dernière version
-    demande les parametre a changer
-    modifie la copie de note: changer dateEdit, id version, title...
-    ajout dans la liste des versions de copyLatest :
-    Incremente latestVersion
+A FAIRE :
 
  changeVersion : restaurer une ancienne version en tant que version actuelle (design pattern : memento?)
 
@@ -166,15 +172,26 @@ class Article : public NoteVersion {
     QString text;
     static DerivedRegister<Article> reg;
 
-    void saveNoteVersionType(QXmlStreamWriter &stream) const;
-    void loadNoteVersionType(QXmlStreamReader &xml);
+    /**
+    * \brief		Méthode pour sauvegarder une version d'un type de note
+    * \details  Elle permet de sauvegarder les version d'un type de note dans un fichier xml lors d'un enregistrement
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les versions d'un type de note
+    */
+    void saveNoteVersionType(QXmlStreamWriter& stream) const;
+
+    /**
+    * \brief		Méthode pour charger une version d'un type de note
+    * \details  Elle permet de charger les versions d'un type de note à partir d'un fichier xml
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les versions d'un type de note
+    */
+    void loadNoteVersionType(QXmlStreamReader& stream);
 
 public :
 
     /**
     * \brief		Constructeur de la classe Article
-    * \param    te  texte de l'article
-    * \param    t  titre de l'article (utilisé par le constructeur de NoteVersion)
+    * \param    te  Texte de l'article
+    * \param    t  Titre de l'article (utilisé par le constructeur de NoteVersion)
     */
     Article (const QString& t=QString(), const QString& te=QString());
 
@@ -215,18 +232,29 @@ class Task : public NoteVersion {
     Status status;
     static DerivedRegister<Task> reg;
 
-    void saveNoteVersionType(QXmlStreamWriter &stream) const;
-    void loadNoteVersionType(QXmlStreamReader &stream);
+    /**
+    * \brief		Méthode pour sauvegarder une version d'un type de note
+    * \details  Elle permet de sauvegarder les version d'un type de note dans un fichier xml lors d'un enregistrement
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les versions d'un type de note
+    */
+    void saveNoteVersionType(QXmlStreamWriter& stream) const;
+
+    /**
+    * \brief		Méthode pour charger une version d'un type de note
+    * \details  Elle permet de charger les versions d'un type de note à partir d'un fichier xml
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les versions d'un type de note
+    */
+    void loadNoteVersionType(QXmlStreamReader& stream);
 
 public :
 
     /**
     * \brief		Constructeur de la classe Tâche
-    * \param    t  titre de la tâche (utilisé par le constructeur de NoteVersion)
-    * \param    a  action de la tâche
-    * \param    p  prioritée de la tâche
-    * \param    d  date de la tâche
-    * \param    s  statut de la tâche
+    * \param    t  Titre de la tâche (utilisé par le constructeur de NoteVersion)
+    * \param    a  Action de la tâche
+    * \param    p  Prioritée de la tâche
+    * \param    d  Date de la tâche
+    * \param    s  Statut de la tâche
     */
     Task (const QString& t=QString(),const QString& a=QString(), unsigned int p=0, const Date d=Date(1,1,2100), const Status s=Status());
 
@@ -272,16 +300,27 @@ class Image : public NoteVersion {
     QString file;
     static DerivedRegister<Image> reg;
 
-    void saveNoteVersionType(QXmlStreamWriter &stream) const;
-    void loadNoteVersionType(QXmlStreamReader &xml);
+    /**
+    * \brief		Méthode pour sauvegarder une version d'un type de note
+    * \details  Elle permet de sauvegarder les version d'un type de note dans un fichier xml lors d'un enregistrement
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les versions d'un type de note
+    */
+    void saveNoteVersionType(QXmlStreamWriter& stream) const;
+
+    /**
+    * \brief		Méthode pour charger une version d'un type de note
+    * \details  Elle permet de charger les versions d'un type de note à partir d'un fichier xml
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les versions d'un type de note
+    */
+    void loadNoteVersionType(QXmlStreamReader& stream);
 
 
 public :
     /**
     * \brief		Constructeur de la classe Image
-    * \param    t  titre de l'Image (utilisé par le constructeur de NoteVersion)
-    * \param    d  description de l'Image
-    * \param    f  fichier de l'Image
+    * \param    t  Titre de l'Image (utilisé par le constructeur de NoteVersion)
+    * \param    d  Description de l'Image
+    * \param    f  Fichier de l'Image
     */
     Image(const QString& t=QString(), const QString& d=QString(), const QString& f=QString());
 
@@ -320,16 +359,27 @@ class Audio : public NoteVersion {
     QString file;
     static DerivedRegister<Audio> reg;
 
+    /**
+    * \brief		Méthode pour sauvegarder une version d'un type de note
+    * \details  Elle permet de sauvegarder les version d'un type de note dans un fichier xml lors d'un enregistrement
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les versions d'un type de note
+    */
     void saveNoteVersionType(QXmlStreamWriter& stream) const;
-    void loadNoteVersionType(QXmlStreamReader& xml);
+
+    /**
+    * \brief		Méthode pour charger une version d'un type de note
+    * \details  Elle permet de charger les versions d'un type de note à partir d'un fichier xml
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les versions d'un type de note
+    */
+    void loadNoteVersionType(QXmlStreamReader& stream);
 
 public :
 
     /**
     * \brief		Constructeur de la classe Audio
-    * \param    t  titre d'une note Audio (utilisé par le constructeur de NoteVersion)
-    * \param    d  description d'une note Audio
-    * \param    f  fichier d'une note Audio
+    * \param    t  Titre d'une note Audio (utilisé par le constructeur de NoteVersion)
+    * \param    d  Description d'une note Audio
+    * \param    f  Fichier d'une note Audio
     */
     Audio (const QString& t, const QString& d, const QString& f);
 
@@ -366,16 +416,27 @@ class Video : public NoteVersion {
     QString file;
     static DerivedRegister<Video> reg;
 
+    /**
+    * \brief		Méthode pour sauvegarder une version d'un type de note
+    * \details  Elle permet de sauvegarder les version d'un type de note dans un fichier xml lors d'un enregistrement
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les versions d'un type de note
+    */
     void saveNoteVersionType(QXmlStreamWriter& stream) const;
-    void loadNoteVersionType(QXmlStreamReader& xml);
+
+    /**
+    * \brief		Méthode pour charger une version d'un type de note
+    * \details  Elle permet de charger les versions d'un type de note à partir d'un fichier xml
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les versions d'un type de note
+    */
+    void loadNoteVersionType(QXmlStreamReader& stream);
 
 public :
 
     /**
     * \brief		Constructeur de la classe Video
-    * \param    t  titre d'une note Video (utilisé par le constructeur de NoteVersion)
-    * \param    d  description d'une note Video
-    * \param    f  fichier d'une note video
+    * \param    t  Titre d'une note Video (utilisé par le constructeur de NoteVersion)
+    * \param    d  Description d'une note Video
+    * \param    f  Fichier d'une note video
     */
     Video (const QString& t, const QString& d, const QString& f);
 

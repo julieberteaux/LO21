@@ -33,13 +33,12 @@ class Date {
 
     public:
 
-      /**
-      * \brief		Constructeur à partir d'un jour, mois, année
-      * \param		j		jour avec 1<=j<=31
-      * \param		m		mois avec 1<=m<=12
-      * \param		a		année avec a>=0
-      */
-
+        /**
+        * \brief		Constructeur à partir d'un jour, mois, année
+        * \param		j		Jour avec 1<=j<=31
+        * \param		m		Mois avec 1<=m<=12
+        * \param		a		Année avec a>=0
+        */
         Date(unsigned int short j=1, unsigned int short m=1, unsigned int a=0):jour(1),mois(1),annee(0){ setDate(j,m,a);}
 
         /**
@@ -61,36 +60,36 @@ class Date {
         unsigned int getAnnee() const { return annee; }
 
         /**
-        * \brief		initialisation de la date
-        * \param		j		jour avec 1<=j<=31
-        * \param		m		mois avec 1<=m<=12
-        * \param		a		année avec a>=0
+        * \brief		Initialisation de la date
+        * \param		j		Jour avec 1<=j<=31
+        * \param		m		Mois avec 1<=m<=12
+        * \param		a		Année avec a>=0
         */
         void setDate(unsigned short int j, unsigned short int m, unsigned int a);
 
         /**
-        * \brief		affiche le date sous le format JJ/MM/AAAA
-        * \param		f   flux de sortie
+        * \brief		Affiche le date sous le format JJ/MM/AAAA
+        * \param		f   Flux de sortie
         */
         void afficher(std::ostream& f=std::cout) const;
 
         /**
-        * \brief		d1==d2 retourne vrai si les deux dates sont égales
-        * \param		d   date
-        * \details  on va comparer la date d avec la date appelant la méthode pour voir si elles sont égales
+        * \brief		d1==d2 Retourne vrai si les deux dates sont égales
+        * \param		d   Date
+        * \details  On va comparer la date d avec la date appelant la méthode pour voir si elles sont égales
         */
         bool operator==(const Date& d) const;
 
         /**
         * \brief		Compare deux dates dans le temps
-        * \param		d   date
-        * \details  d1<d2 retourne true si d1 est avant d2
+        * \param		d   Date
+        * \details  d1<d2 Retourne true si d1 est avant d2
         */
         bool operator<(const Date& d) const;
 
         /**
         * \brief		Retourne le nombre de jours séparant les deux dates
-        * \param		d   date
+        * \param		d   Date
         */
         int operator-(const Date& d) const;
 

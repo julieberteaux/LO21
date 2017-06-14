@@ -49,11 +49,11 @@ class Trash
     * \details  Il est privé car c'est un singleton
     */
     ~Trash(){}
-//    Note* getNoteId(int id);
+
 public:
 
     /**
-     * \brief		Fonction qui cree une instance de Trash s'il n'en existe pas une (Trash est une classe singleton)
+     * \brief		Fonction qui crée une instance de Trash s'il n'en existe pas une (Trash est une classe singleton)
      */
         static Trash& getInstance();
 
@@ -73,13 +73,13 @@ public:
 
         /**
      * \brief		Fonction qui supprime une note de la Trash
-    * \param		n		note a retirer de la Trash
+    * \param		n		Note à retirer de la Trash
      */
         void addNote(Note*n);
 
         /**
      * \brief		Fonction qui remet la note dans les notes actives (dans le tableau de notes de NotesManager)
-    * \param		n		note a restaurer
+    * \param		n		Note à restaurer
      */
         void putBackNote(unsigned int id);
 

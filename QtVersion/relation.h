@@ -68,17 +68,17 @@ public:
     /**
     * \brief		Accesseur pour obtenir le titre de la relation
     */
-    const QString& getTitle() {return title;}
+    const QString& getTitle() const {return title;}
 
     /**
     * \brief		Accesseur pour obtenir la description de la relation
     */
-    const QString& getDescription() {return description;}
+    const QString& getDescription() const {return description;}
 
     /**
     * \brief		Accesseur pour obtenir l'orientation de la relation
     */
-    bool getOrientation() {return oriented;}
+    bool getOrientation() const {return oriented;}
 
     /**
     * \brief		Méthode pour sauvegarder une relation

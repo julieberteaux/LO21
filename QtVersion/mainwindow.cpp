@@ -305,6 +305,8 @@ FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r, QString t,  Q
     }
     QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activateSave()));
     QObject::connect(ui->descriptionEdit, SIGNAL(textChanged()),this, SLOT(activateSave()));
+    QObject::connect(ui->oriented, SIGNAL(toggled(bool)),this, SLOT(activateSave()));
+    QObject::connect(ui->nonOriented, SIGNAL(toggled(bool)),this, SLOT(activateSave()));
     if(newRelation==1){
         QObject::connect(ui->saveR, SIGNAL(clicked()),this, SLOT(saveNewRelation()));
     }else{
@@ -346,7 +348,7 @@ void FormRelation::saveNewRelation(){
     mainwindow->refreshRelation();
     QMessageBox::information(this,"Sauvegarde", "Relation sauvegardée !!!");
     this->close();
-    //managerR->save();
+    managerR->save();
 }
 
 void FormRelation::saveRelation(){
@@ -359,10 +361,11 @@ void FormRelation::saveRelation(){
     Relation* r=managerR->getRelation(title);
     r->setTitle(ui->titleEdit->text());
     r->setDescription(ui->descriptionEdit->toPlainText());
+    r->setOrientation(ui->oriented->isChecked());
     //ui->save->setDisabled(true);
     mainwindow->refreshRelation();
 
     QMessageBox::information(this,"Sauvegarde", "Relation sauvegardée !!!");
     this->close();
-    //managerR->save();
+    managerR->save();
 }

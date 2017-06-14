@@ -88,6 +88,10 @@ public:
     * \brief		Accesseur pour obtenir l'orientation de la relation
     */
     bool getOrientation() const {return oriented;}
+    /**
+    * \brief		Accesseur pour obtenir l'orientation de la relation
+    */
+    void setOrientation(bool i) {oriented=i;}
 
     /**
     * \brief		Méthode pour sauvegarder une relation

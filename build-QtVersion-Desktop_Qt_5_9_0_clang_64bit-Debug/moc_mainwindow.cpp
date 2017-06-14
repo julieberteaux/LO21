@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[10];
-    char stringdata0[165];
+    QByteArrayData data[11];
+    char stringdata0[191];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,16 +38,18 @@ QT_MOC_LITERAL(3, 39, 16), // "QListWidgetItem*"
 QT_MOC_LITERAL(4, 56, 4), // "item"
 QT_MOC_LITERAL(5, 61, 30), // "on_activerelations_itemClicked"
 QT_MOC_LITERAL(6, 92, 21), // "on_createNote_clicked"
-QT_MOC_LITERAL(7, 114, 11), // "restoreNote"
-QT_MOC_LITERAL(8, 126, 10), // "deleteNote"
-QT_MOC_LITERAL(9, 137, 27) // "on_trashedNotes_itemClicked"
+QT_MOC_LITERAL(7, 114, 25), // "on_createRelation_clicked"
+QT_MOC_LITERAL(8, 140, 11), // "restoreNote"
+QT_MOC_LITERAL(9, 152, 10), // "deleteNote"
+QT_MOC_LITERAL(10, 163, 27) // "on_trashedNotes_itemClicked"
 
     },
     "MainWindow\0on_activenotes_itemClicked\0"
     "\0QListWidgetItem*\0item\0"
     "on_activerelations_itemClicked\0"
-    "on_createNote_clicked\0restoreNote\0"
-    "deleteNote\0on_trashedNotes_itemClicked"
+    "on_createNote_clicked\0on_createRelation_clicked\0"
+    "restoreNote\0deleteNote\0"
+    "on_trashedNotes_itemClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,7 +59,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,16 +67,18 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x0a /* Public */,
-       5,    1,   47,    2, 0x0a /* Public */,
-       6,    0,   50,    2, 0x0a /* Public */,
-       7,    0,   51,    2, 0x0a /* Public */,
-       8,    0,   52,    2, 0x0a /* Public */,
-       9,    1,   53,    2, 0x0a /* Public */,
+       1,    1,   49,    2, 0x0a /* Public */,
+       5,    1,   52,    2, 0x0a /* Public */,
+       6,    0,   55,    2, 0x0a /* Public */,
+       7,    0,   56,    2, 0x0a /* Public */,
+       8,    0,   57,    2, 0x0a /* Public */,
+       9,    0,   58,    2, 0x0a /* Public */,
+      10,    1,   59,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -92,9 +96,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->on_activenotes_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         case 1: _t->on_activerelations_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         case 2: _t->on_createNote_clicked(); break;
-        case 3: _t->restoreNote(); break;
-        case 4: _t->deleteNote(); break;
-        case 5: _t->on_trashedNotes_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 3: _t->on_createRelation_clicked(); break;
+        case 4: _t->restoreNote(); break;
+        case 5: _t->deleteNote(); break;
+        case 6: _t->on_trashedNotes_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -125,13 +130,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }
@@ -331,8 +336,8 @@ int typeNote::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_FormRelation_t {
-    QByteArrayData data[1];
-    char stringdata0[13];
+    QByteArrayData data[3];
+    char stringdata0[27];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -341,10 +346,12 @@ struct qt_meta_stringdata_FormRelation_t {
     )
 static const qt_meta_stringdata_FormRelation_t qt_meta_stringdata_FormRelation = {
     {
-QT_MOC_LITERAL(0, 0, 12) // "FormRelation"
+QT_MOC_LITERAL(0, 0, 12), // "FormRelation"
+QT_MOC_LITERAL(1, 13, 12), // "activateSave"
+QT_MOC_LITERAL(2, 26, 0) // ""
 
     },
-    "FormRelation"
+    "FormRelation\0activateSave\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -354,21 +361,32 @@ static const uint qt_meta_data_FormRelation[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: name, argc, parameters, tag, flags
+       1,    0,   19,    2, 0x0a /* Public */,
+
+ // slots: parameters
+    QMetaType::Void,
+
        0        // eod
 };
 
 void FormRelation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        FormRelation *_t = static_cast<FormRelation *>(_o);
+        Q_UNUSED(_t)
+        switch (_id) {
+        case 0: _t->activateSave(); break;
+        default: ;
+        }
+    }
     Q_UNUSED(_a);
 }
 
@@ -394,6 +412,17 @@ void *FormRelation::qt_metacast(const char *_clname)
 int FormRelation::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 1;
+    }
     return _id;
 }
 QT_WARNING_POP

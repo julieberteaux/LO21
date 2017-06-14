@@ -15,6 +15,7 @@
 #include <QAction>
 #include <QListWidgetItem>
 #include <QMessageBox>
+#include <Qdialog>
 
 #include "notesmanager.h"
 #include "relationsmanager.h"
@@ -23,6 +24,8 @@ namespace Ui {
 class MainWindow;
 }
 class FormNote;
+class FormRelation;
+
 class FormRelation;
 
 class typeNote;
@@ -37,17 +40,19 @@ class MainWindow : public QMainWindow{
     Trash *trash;
     typeNote* type;
 
-
 public:
     explicit MainWindow(NotesManager *m,RelationsManager* r,Trash* t, QWidget *parent = 0);
     ~MainWindow();
     void loadActiveNotes();
     void unloadActiveNotes();
+    void loadTrashedNotes();
+    void unloadTrashedNotes();
+    void loadRelations();
+    void unloadRelations();
+
     void refresh();
     void refreshTrash();
-    void unloadTrashedNotes();
-    void loadTrashedNotes();
-    void loadRelations();
+    void refreshRelation();
 
 
 
@@ -56,6 +61,7 @@ public slots:
     void on_activerelations_itemClicked(QListWidgetItem *item);
 
     void on_createNote_clicked();
+    void on_createRelation_clicked();
     void restoreNote();
     void deleteNote();
 
@@ -120,6 +126,7 @@ private:
     Ui::typeNote *ui;
 };
 
+
 namespace Ui {
 class FormRelation;
 }
@@ -129,14 +136,18 @@ class FormRelation : public QWidget
     Q_OBJECT
     MainWindow* mainwindow;
     RelationsManager* managerR;
-    //unsigned int idNote;
 
 public:
-    explicit FormRelation(MainWindow* mwind, RelationsManager* m,QWidget *parent = 0);
+    explicit FormRelation(MainWindow* mwind, RelationsManager* r,  QWidget *parent = 0);
     ~FormRelation();
+
+public slots:
+    void activateSave();
+    //void saveRelation();
 
 private:
     Ui::FormRelation *ui;
 };
+
 
 #endif // MAINWINDOW_H

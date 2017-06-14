@@ -20,11 +20,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -59,10 +56,6 @@ public:
     QFrame *line;
     QListWidget *activerelations;
     QPushButton *createRelation;
-    QMenuBar *menuBar;
-    QMenu *menuTrash;
-    QMenu *menutest;
-    QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -161,25 +154,7 @@ public:
         createRelation->setGeometry(QRect(10, 370, 161, 32));
         tabWidget->addTab(Relations, QString());
         MainWindow->setCentralWidget(centralwidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 833, 22));
-        menuBar->setAutoFillBackground(false);
-        menuBar->setDefaultUp(false);
-        menuTrash = new QMenu(menuBar);
-        menuTrash->setObjectName(QStringLiteral("menuTrash"));
-        menutest = new QMenu(menuBar);
-        menutest->setObjectName(QStringLiteral("menutest"));
-        MainWindow->setMenuBar(menuBar);
-        toolBar = new QToolBar(MainWindow);
-        toolBar->setObjectName(QStringLiteral("toolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(activenotes, tabWidget);
-
-        menuBar->addAction(menuTrash->menuAction());
-        menuBar->addAction(menutest->menuAction());
-        menuTrash->addAction(actionOpenTrash);
-        menutest->addAction(actiontest);
 
         retranslateUi(MainWindow);
 
@@ -204,9 +179,6 @@ public:
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));
         createRelation->setText(QApplication::translate("MainWindow", "Nouvelle relation", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Relations), QApplication::translate("MainWindow", "Relations", Q_NULLPTR));
-        menuTrash->setTitle(QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
-        menutest->setTitle(QApplication::translate("MainWindow", "test", Q_NULLPTR));
-        toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
     } // retranslateUi
 
 };

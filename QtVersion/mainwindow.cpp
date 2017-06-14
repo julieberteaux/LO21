@@ -3,6 +3,7 @@
 #include "trasheditor.h"
 #include "ui_mainwindow.h"
 #include "ui_formnote.h"
+#include "ui_formrelation.h"
 #include "ui_typenote.h"
 #include "ui_formrelation.h"
 
@@ -44,7 +45,8 @@ void MainWindow::unloadActiveNotes(){
     }
 }
 
-MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *parent) :manager(m), managerR(r),formnote(nullptr),formrelation(nullptr), QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
+
+MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *parent) :manager(m), managerR(r),formnote(nullptr), formrelation(nullptr),QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
 {
     ui->setupUi(this);
     loadActiveNotes();
@@ -259,35 +261,44 @@ void MainWindow::loadRelations(){
             ui->activerelations->addItem(item);
     }
 }
+void MainWindow::unloadRelations(){
+     QListWidgetItem *item;
+    for(int row = 0; row <= (ui->activerelations->count()); row++)
+    {
+        item = ui->activerelations->item(0);
+        delete item;
+    }
+}
 
-FormRelation::FormRelation(MainWindow* mwind, RelationsManager* m,QWidget *parent): mainwindow(mwind), managerR(m), QWidget(parent),ui(new Ui::FormRelation)
+void MainWindow::refreshRelation(){
+    unloadRelations();
+    loadRelations();
+}
 
+///////////// FormRelation /////////////////////
+
+FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r,  QWidget *parent) : managerR(r), mainwindow(mwind), QWidget(parent), ui(new Ui::FormRelation)
 {
     ui->setupUi(this);
-    /*Note& note=manager->getNote(idNote);
-    ui->idNoteLineEdit->setText(QString::number(note.getIdNote()));
-    ui->idNoteLineEdit->setReadOnly(true);
-    const Date& dateCreation=note.getDateCrea();
-    ui->dateCreaDateEdit->setDate(QDate(dateCreation.getAnnee(),dateCreation.getMois(),dateCreation.getJour()));
-    ui->dateCreaDateEdit->setReadOnly(true);
-    NoteVersion& ver=note.getLatestNoteVersion();
-    ui->idVersionLineEdit->setText(QString::number(ver.getIdVersion()));
-    ui->idVersionLineEdit->setReadOnly(true);
-    ui->titleLineEdit->setText(ver.getTitle());
-    const Date& dateEdit=ver.getDateEdit();
-    ui->dateEditDateEdit->setDate(QDate(dateEdit.getAnnee(),dateEdit.getMois(),dateEdit.getJour()));
-    ui->dateEditDateEdit->setReadOnly(true);
-    version=ver.formVersion();
-    ui->versionLayout->addWidget(version);
-    //ui->save->setEnabled(false);
-    //QObject::connect(ui->titleLineEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
-    QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
-    QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(PutToTrash()));
-*/}
+    ui->oriented->animateClick();
+    QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
+
+}
 
 FormRelation::~FormRelation()
 {
     delete ui;
+}
+
+void MainWindow::on_createRelation_clicked(){
+    FormRelation* rel=new FormRelation(this, managerR);
+
+    rel->show();
+
+}
+
+void FormRelation::activateSave(){
+    ui->saveR->setEnabled(true);
 }
 
 void MainWindow::on_activerelations_itemClicked(QListWidgetItem *item)

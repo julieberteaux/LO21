@@ -171,7 +171,7 @@ void FormNote::PutToTrash()
     mainwindow->refresh();
     QMessageBox::information(this,"Supression", "Note supprimée !!!");
 
-    //manager->save(); A remettre quand la corbeille sera opérationnelle
+    manager->save();
     mainwindow->loadTrashedNotes();
     disableButtons();
 
@@ -280,8 +280,11 @@ void MainWindow::refreshRelation(){
 FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r,  QWidget *parent) : managerR(r), mainwindow(mwind), QWidget(parent), ui(new Ui::FormRelation)
 {
     ui->setupUi(this);
+    ui->saveR->setDisabled(true);
     ui->oriented->animateClick();
-    QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
+    QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activateSave()));
+    QObject::connect(ui->descriptionEdit, SIGNAL(textChanged(QString)),this, SLOT(activateSave()));
+    QObject::connect(ui->saveR, SIGNAL(clicked()),this, SLOT(saveRelation()));
 
 }
 
@@ -308,4 +311,16 @@ void MainWindow::on_activerelations_itemClicked(QListWidgetItem *item)
     //unsigned int i=v.toInt();
     formrelation=new FormRelation(this, managerR);
     ui->centreRelation->addWidget(formrelation);
+}
+
+void FormRelation::saveRelation(){
+    bool o = ui->oriented;
+
+    managerR->addRelation(ui->titleEdit->text(),ui->descriptionEdit->text(),o);
+    //ui->save->setDisabled(true);
+    mainwindow->refreshRelation();
+    QMessageBox::information(this,"Sauvegarde", "Relation sauvegardée !!!");
+    this->close();
+
+    //managerR->save();
 }

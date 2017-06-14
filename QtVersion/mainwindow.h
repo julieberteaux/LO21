@@ -136,9 +136,10 @@ class FormRelation : public QWidget
     Q_OBJECT
     MainWindow* mainwindow;
     RelationsManager* managerR;
+    const QString& title;
 
 public:
-    explicit FormRelation(MainWindow* mwind, RelationsManager* r,  QWidget *parent = 0);
+    explicit FormRelation(MainWindow* mwind, RelationsManager* r, const QString& t="",  QWidget *parent = 0);
     ~FormRelation();
 
 public slots:

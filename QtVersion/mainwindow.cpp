@@ -119,10 +119,6 @@ FormNote::~FormNote()
     delete ui;
 }
 
-
-
-
-
 void FormNote::saveNote()
 {
     Note& n=manager->getNote(idNote);
@@ -277,12 +273,14 @@ void MainWindow::refreshRelation(){
 
 ///////////// FormRelation /////////////////////
 
-FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r,  QWidget *parent) : managerR(r), mainwindow(mwind), QWidget(parent), ui(new Ui::FormRelation)
+FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r, const QString &t,  QWidget *parent) : managerR(r), mainwindow(mwind), title(t), QWidget(parent), ui(new Ui::FormRelation)
 {
     ui->setupUi(this);
     ui->oriented->animateClick();
     QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
+    if(title!=""){
 
+    }
 }
 
 FormRelation::~FormRelation()

@@ -70,7 +70,6 @@ public slots:
 
     void exit();
 
-
 private:
     Ui::MainWindow *ui;
 };

@@ -54,9 +54,11 @@ MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *pa
     QObject::connect(ui->restore, SIGNAL(clicked()),this, SLOT(restoreNote()));
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 
+//    QMenu *menuFile = menuBar()->addMenu("&Fichier");
+//    QAction *exit = menuFile->addAction("&Quitter");
 
     connect(ui->exit, SIGNAL(triggered()), this, SLOT(exit()));
-
+    //menuFile->show();
 }
 
 void MainWindow::exit(){

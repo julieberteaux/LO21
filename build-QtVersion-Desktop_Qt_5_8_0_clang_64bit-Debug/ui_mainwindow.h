@@ -56,6 +56,8 @@ public:
     QFrame *line;
     QListWidget *activerelations;
     QPushButton *createRelation;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *centreRelation;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -152,6 +154,12 @@ public:
         createRelation = new QPushButton(groupBox_2);
         createRelation->setObjectName(QStringLiteral("createRelation"));
         createRelation->setGeometry(QRect(10, 370, 161, 32));
+        verticalLayoutWidget_3 = new QWidget(Relations);
+        verticalLayoutWidget_3->setObjectName(QStringLiteral("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(190, 10, 391, 401));
+        centreRelation = new QVBoxLayout(verticalLayoutWidget_3);
+        centreRelation->setObjectName(QStringLiteral("centreRelation"));
+        centreRelation->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(Relations, QString());
         MainWindow->setCentralWidget(centralwidget);
         QWidget::setTabOrder(activenotes, tabWidget);

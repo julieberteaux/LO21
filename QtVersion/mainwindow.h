@@ -144,7 +144,7 @@ public:
 
 public slots:
     void activateSave();
-    //void saveRelation();
+    void saveRelation();
 
 private:
     Ui::FormRelation *ui;

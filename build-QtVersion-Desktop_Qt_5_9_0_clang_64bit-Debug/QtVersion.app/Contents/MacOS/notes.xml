@@ -88,7 +88,40 @@
                 <annee>2017</annee>
             </dateEdit>
             <description>c'est une image des vacances</description>
-            <file>/vacances.jpeg</file>
+            <file>/Users/Antoine/OneDrive/_DSC0015 - copie.jpg</file>
+        </version>
+        <version>
+            <idVersion>1</idVersion>
+            <title>image des vacances</title>
+            <dateEdit>
+                <jour>13</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description>c'est une image des vacances</description>
+            <file>/Users/Antoine/OneDrive/_DSC0083.jpg</file>
+        </version>
+        <version>
+            <idVersion>2</idVersion>
+            <title>image des vacances</title>
+            <dateEdit>
+                <jour>13</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description>c'est une image des vacances</description>
+            <file>/Users/Antoine/OneDrive/_DSC0015 - copie.jpg</file>
+        </version>
+        <version>
+            <idVersion>3</idVersion>
+            <title>image des vacances</title>
+            <dateEdit>
+                <jour>13</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description>c'est une image des vacances</description>
+            <file>/Users/Antoine/OneDrive/_DSC0015 - copie.jpg</file>
         </version>
     </note>
     <note>

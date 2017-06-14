@@ -20,11 +20,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -52,15 +49,15 @@ public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *supp;
-    QPushButton *save;
+    QPushButton *restore;
     QWidget *Relations;
     QGroupBox *groupBox_2;
     QLabel *label;
     QFrame *line;
-    QMenuBar *menuBar;
-    QMenu *menuTrash;
-    QMenu *menutest;
-    QToolBar *toolBar;
+    QListWidget *activerelations;
+    QPushButton *createRelation;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *centreRelation;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -132,10 +129,10 @@ public:
 
         horizontalLayout->addWidget(supp);
 
-        save = new QPushButton(horizontalLayoutWidget);
-        save->setObjectName(QStringLiteral("save"));
+        restore = new QPushButton(horizontalLayoutWidget);
+        restore->setObjectName(QStringLiteral("restore"));
 
-        horizontalLayout->addWidget(save);
+        horizontalLayout->addWidget(restore);
 
         tabWidget->addTab(Corbeille, QString());
         Relations = new QWidget();
@@ -151,31 +148,25 @@ public:
         line->setGeometry(QRect(160, 20, 20, 401));
         line->setFrameShape(QFrame::VLine);
         line->setFrameShadow(QFrame::Sunken);
+        activerelations = new QListWidget(groupBox_2);
+        activerelations->setObjectName(QStringLiteral("activerelations"));
+        activerelations->setGeometry(QRect(10, 70, 147, 283));
+        createRelation = new QPushButton(groupBox_2);
+        createRelation->setObjectName(QStringLiteral("createRelation"));
+        createRelation->setGeometry(QRect(10, 370, 161, 32));
+        verticalLayoutWidget_3 = new QWidget(Relations);
+        verticalLayoutWidget_3->setObjectName(QStringLiteral("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(190, 10, 391, 401));
+        centreRelation = new QVBoxLayout(verticalLayoutWidget_3);
+        centreRelation->setObjectName(QStringLiteral("centreRelation"));
+        centreRelation->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(Relations, QString());
         MainWindow->setCentralWidget(centralwidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 833, 22));
-        menuBar->setAutoFillBackground(false);
-        menuBar->setDefaultUp(false);
-        menuTrash = new QMenu(menuBar);
-        menuTrash->setObjectName(QStringLiteral("menuTrash"));
-        menutest = new QMenu(menuBar);
-        menutest->setObjectName(QStringLiteral("menutest"));
-        MainWindow->setMenuBar(menuBar);
-        toolBar = new QToolBar(MainWindow);
-        toolBar->setObjectName(QStringLiteral("toolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
         QWidget::setTabOrder(activenotes, tabWidget);
-
-        menuBar->addAction(menuTrash->menuAction());
-        menuBar->addAction(menutest->menuAction());
-        menuTrash->addAction(actionOpenTrash);
-        menutest->addAction(actiontest);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -190,14 +181,12 @@ public:
         createNote->setText(QApplication::translate("MainWindow", "Nouvelle note", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Notes), QApplication::translate("MainWindow", "Notes", Q_NULLPTR));
         supp->setText(QApplication::translate("MainWindow", "Supprimer", Q_NULLPTR));
-        save->setText(QApplication::translate("MainWindow", "Restaurer", Q_NULLPTR));
+        restore->setText(QApplication::translate("MainWindow", "Restaurer", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Corbeille), QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));
+        createRelation->setText(QApplication::translate("MainWindow", "Nouvelle relation", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Relations), QApplication::translate("MainWindow", "Relations", Q_NULLPTR));
-        menuTrash->setTitle(QApplication::translate("MainWindow", "Corbeille", Q_NULLPTR));
-        menutest->setTitle(QApplication::translate("MainWindow", "test", Q_NULLPTR));
-        toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
     } // retranslateUi
 
 };

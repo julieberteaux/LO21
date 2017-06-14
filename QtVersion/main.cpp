@@ -135,6 +135,9 @@ int main(int argc, char* argv[]) {
         managerR.setFilename("relations.xml");
         manager2.load();
         managerR.load();
+        for(std::vector<Relation*>::const_iterator it=managerR.getListRelations().begin(); it!=managerR.getListRelations().end(); ++it){
+            std::cout<<(*it)->getTitle().toStdString()<<std::endl;
+        }
 
         QApplication app(argc, argv);
         MainWindow fenetre(&manager2,&managerR, &trash);

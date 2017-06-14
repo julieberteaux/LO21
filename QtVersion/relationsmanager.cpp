@@ -60,7 +60,7 @@ void RelationsManager::save() const {
     QXmlStreamWriter stream(&newfile);
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
-    stream.writeStartElement("relation");
+    stream.writeStartElement("relations");
 
     for(std::vector<Relation*>::const_iterator it=listRelations.begin(); it!=listRelations.end(); ++it)
         (**it).saveRelation(&stream);
@@ -90,11 +90,10 @@ void RelationsManager::load() {
         // If token is StartElement, we'll see if we can read it.
         if(token == QXmlStreamReader::StartElement) {
             // If it's named notes, we'll go to the next.
-            if(xml.name() == "relation") continue;
+            if(xml.name() == "relations") continue;
             // If it's named tache, we'll dig the information from there.
             if(xml.name() == "relation") {
                 qDebug()<<"new relation\n";
-
                 Relation* r=new Relation();
                 listRelations.push_back(r);
                 xml.readNext();

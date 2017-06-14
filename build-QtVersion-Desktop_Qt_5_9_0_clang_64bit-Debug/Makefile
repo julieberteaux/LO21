@@ -48,8 +48,7 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../QtVersion/plurinotes.cpp \
-		../QtVersion/main.cpp \
+SOURCES       = ../QtVersion/main.cpp \
 		../QtVersion/date.cpp \
 		../QtVersion/notesmanager.cpp \
 		../QtVersion/note.cpp \
@@ -58,12 +57,10 @@ SOURCES       = ../QtVersion/plurinotes.cpp \
 		../QtVersion/relationsmanager.cpp \
 		../QtVersion/mainwindow.cpp \
 		../QtVersion/trash.cpp \
-		../QtVersion/trasheditor.cpp \
-		../QtVersion/noteseditor.cpp moc_noteversion.cpp \
+		../QtVersion/trasheditor.cpp moc_noteversion.cpp \
 		moc_mainwindow.cpp \
 		moc_trasheditor.cpp
-OBJECTS       = plurinotes.o \
-		main.o \
+OBJECTS       = main.o \
 		date.o \
 		notesmanager.o \
 		note.o \
@@ -73,7 +70,6 @@ OBJECTS       = plurinotes.o \
 		mainwindow.o \
 		trash.o \
 		trasheditor.o \
-		noteseditor.o \
 		moc_noteversion.o \
 		moc_mainwindow.o \
 		moc_trasheditor.o
@@ -262,8 +258,7 @@ DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/exceptions.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/yacc.prf \
 		/Applications/Qt/5.9/clang_64/mkspecs/features/lex.prf \
-		../QtVersion/QtVersion.pro ../QtVersion/plurinotes.h \
-		../QtVersion/date.h \
+		../QtVersion/QtVersion.pro ../QtVersion/date.h \
 		../QtVersion/notesmanager.h \
 		../QtVersion/note.h \
 		../QtVersion/noteversion.h \
@@ -271,9 +266,7 @@ DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/relationsmanager.h \
 		../QtVersion/mainwindow.h \
 		../QtVersion/trasheditor.h \
-		../QtVersion/trash.h \
-		../QtVersion/noteseditor.h ../QtVersion/plurinotes.cpp \
-		../QtVersion/main.cpp \
+		../QtVersion/trash.h ../QtVersion/main.cpp \
 		../QtVersion/date.cpp \
 		../QtVersion/notesmanager.cpp \
 		../QtVersion/note.cpp \
@@ -282,8 +275,7 @@ DIST          = /Applications/Qt/5.9/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/relationsmanager.cpp \
 		../QtVersion/mainwindow.cpp \
 		../QtVersion/trash.cpp \
-		../QtVersion/trasheditor.cpp \
-		../QtVersion/noteseditor.cpp
+		../QtVersion/trasheditor.cpp
 QMAKE_TARGET  = QtVersion
 DESTDIR       = 
 TARGET        = QtVersion.app/Contents/MacOS/QtVersion
@@ -297,7 +289,7 @@ EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_formnote.h ui_typenote.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h $(OBJECTS)  
 	@test -d QtVersion.app/Contents/MacOS/ || mkdir -p QtVersion.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -712,9 +704,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Applications/Qt/5.9/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.h ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h ../QtVersion/trasheditor.h ../QtVersion/trash.h ../QtVersion/noteseditor.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/plurinotes.cpp ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp ../QtVersion/trash.cpp ../QtVersion/trasheditor.cpp ../QtVersion/noteseditor.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui ../QtVersion/formnote.ui ../QtVersion/typenote.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h ../QtVersion/trasheditor.h ../QtVersion/trash.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp ../QtVersion/trash.cpp ../QtVersion/trasheditor.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui ../QtVersion/formnote.ui ../QtVersion/typenote.ui ../QtVersion/formrelation.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -766,6 +758,8 @@ moc_noteversion.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Heade
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -808,6 +802,8 @@ moc_mainwindow.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Header
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -815,6 +811,8 @@ moc_mainwindow.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Header
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../QtVersion/trash.h \
+		../QtVersion/relationsmanager.h \
+		../QtVersion/relation.h \
 		../QtVersion/mainwindow.h \
 		moc_predefs.h \
 		/Applications/Qt/5.9/clang_64/bin/moc
@@ -845,6 +843,8 @@ moc_trasheditor.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Heade
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -858,9 +858,9 @@ moc_trasheditor.cpp: /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Heade
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_formnote.h ui_typenote.h
+compiler_uic_make_all: ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_formnote.h ui_typenote.h
+	-$(DEL_FILE) ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h
 ui_mainwindow.h: ../QtVersion/mainwindow.ui \
 		/Applications/Qt/5.9/clang_64/bin/uic
 	/Applications/Qt/5.9/clang_64/bin/uic ../QtVersion/mainwindow.ui -o ui_mainwindow.h
@@ -873,6 +873,10 @@ ui_typenote.h: ../QtVersion/typenote.ui \
 		/Applications/Qt/5.9/clang_64/bin/uic
 	/Applications/Qt/5.9/clang_64/bin/uic ../QtVersion/typenote.ui -o ui_typenote.h
 
+ui_formrelation.h: ../QtVersion/formrelation.ui \
+		/Applications/Qt/5.9/clang_64/bin/uic
+	/Applications/Qt/5.9/clang_64/bin/uic ../QtVersion/formrelation.ui -o ui_formrelation.h
+
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
 compiler_yacc_decl_make_all:
@@ -884,16 +888,6 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
-
-plurinotes.o: ../QtVersion/plurinotes.cpp ../QtVersion/plurinotes.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
-		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QString \
-		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
-		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../QtVersion/date.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o plurinotes.o ../QtVersion/plurinotes.cpp
 
 main.o: ../QtVersion/main.cpp /Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
@@ -915,6 +909,8 @@ main.o: ../QtVersion/main.cpp /Applications/Qt/5.9/clang_64/lib/QtWidgets.framew
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -961,6 +957,8 @@ notesmanager.o: ../QtVersion/notesmanager.cpp ../QtVersion/notesmanager.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -993,6 +991,8 @@ note.o: ../QtVersion/note.cpp ../QtVersion/note.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1019,6 +1019,8 @@ noteversion.o: ../QtVersion/noteversion.cpp ../QtVersion/noteversion.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1047,6 +1049,8 @@ relation.o: ../QtVersion/relation.cpp ../QtVersion/relation.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1076,6 +1080,8 @@ relationsmanager.o: ../QtVersion/relationsmanager.cpp ../QtVersion/relationsmana
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1116,6 +1122,8 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1123,12 +1131,15 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		../QtVersion/trash.h \
+		../QtVersion/relationsmanager.h \
+		../QtVersion/relation.h \
 		../QtVersion/trasheditor.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		ui_mainwindow.h \
 		ui_formnote.h \
-		ui_typenote.h
+		ui_typenote.h \
+		ui_formrelation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
 
 trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h \
@@ -1152,6 +1163,8 @@ trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1186,6 +1199,8 @@ trasheditor.o: ../QtVersion/trasheditor.cpp ../QtVersion/trasheditor.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
 		/Applications/Qt/5.9/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1194,9 +1209,6 @@ trasheditor.o: ../QtVersion/trasheditor.cpp ../QtVersion/trasheditor.h \
 		/Applications/Qt/5.9/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
 		ui_trasheditor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trasheditor.o ../QtVersion/trasheditor.cpp
-
-noteseditor.o: ../QtVersion/noteseditor.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o noteseditor.o ../QtVersion/noteseditor.cpp
 
 moc_noteversion.o: moc_noteversion.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_noteversion.o moc_noteversion.cpp

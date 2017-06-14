@@ -23,6 +23,7 @@ namespace Ui {
 class MainWindow;
 }
 class FormNote;
+class FormRelation;
 
 class typeNote;
 
@@ -31,10 +32,9 @@ class MainWindow : public QMainWindow{
     Q_OBJECT
     NotesManager* manager;
     FormNote* formnote;
+    FormRelation* formrelation;
     RelationsManager* managerR;
-
     Trash *trash;
-
     typeNote* type;
 
 
@@ -53,6 +53,7 @@ public:
 
 public slots:
     void on_activenotes_itemClicked(QListWidgetItem *item);
+    void on_activerelations_itemClicked(QListWidgetItem *item);
 
     void on_createNote_clicked();
     void restoreNote();
@@ -119,5 +120,23 @@ private:
     Ui::typeNote *ui;
 };
 
+namespace Ui {
+class FormRelation;
+}
+
+class FormRelation : public QWidget
+{
+    Q_OBJECT
+    MainWindow* mainwindow;
+    RelationsManager* managerR;
+    //unsigned int idNote;
+
+public:
+    explicit FormRelation(MainWindow* mwind, RelationsManager* m,QWidget *parent = 0);
+    ~FormRelation();
+
+private:
+    Ui::FormRelation *ui;
+};
 
 #endif // MAINWINDOW_H

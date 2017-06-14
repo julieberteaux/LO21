@@ -111,7 +111,7 @@ public:
 
         verticalLayoutWidget = new QWidget(FormNote);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(9, 189, 381, 121));
+        verticalLayoutWidget->setGeometry(QRect(9, 189, 381, 155));
         versionLayout = new QVBoxLayout(verticalLayoutWidget);
         versionLayout->setObjectName(QStringLiteral("versionLayout"));
         versionLayout->setContentsMargins(0, 0, 0, 0);

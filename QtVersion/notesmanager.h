@@ -66,8 +66,8 @@ public:
     }
 
     /**
-        * \brief		Attribue un nom de fichier pour les sauvegardes
-        * \param    str   Chaine de caractère qui définit le nom du fichier
+    * \brief		attribut un nom de fichier pour les sauvegardes
+    * \param    str   Chaine de caractère qui définit le nom du fichier
     */
     void setFilename(const QString& str){filename=str;}
 
@@ -87,7 +87,7 @@ public:
     * \brief	Obtenir une note à partir de son id
     * \param  id    Id de la note que l'on souhaite obtenir
     */
-    Note &getNote(unsigned int id);
+    Note& getNote(unsigned int id);
 
     /**
     * \brief  Obtenir la list de toutes les notes

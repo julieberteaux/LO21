@@ -107,6 +107,11 @@ public:
     NoteVersion& getNoteVersion(unsigned int id) const;
 
     /**
+    * \brief    Méthode pour avoir la liste des versions d'une note
+    */
+    std::vector<NoteVersion*> getListVersions() const{return listVersion;}
+
+    /**
     * \brief    Méthode pour avoir la version actuelle d'une note
     */
     NoteVersion& getLatestNoteVersion(){return *(listVersion.back());}

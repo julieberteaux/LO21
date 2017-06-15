@@ -200,6 +200,13 @@ ListVersions::~ListVersions()
 }
 void ListVersions::loadVersions(){
     Note& n=manager->getNote(idNote);
+    std::vector<NoteVersion*> versions=n.getListVersions();
+    for(auto it=versions.begin(); it!=versions.end(); ++it){
+        std::string str=std::to_string((*it)->getIdVersion())+" "+(*it)->getTitle().toStdString();
+        std::cout<<str<<std::endl;
+        QString qstr = QString::fromStdString(str);
+        ui->listWidget->addItem(qstr);
+    }
 }
 
 

@@ -6,6 +6,7 @@
 #include "ui_formrelation.h"
 #include "ui_typenote.h"
 #include "ui_formrelation.h"
+#include "ui_listversions.h"
 
 #include <QDebug>
 #include<QMessageBox>
@@ -54,7 +55,6 @@ MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *pa
     QObject::connect(ui->restore, SIGNAL(clicked()),this, SLOT(restoreNote()));
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(deleteNote()));
 
-
     connect(ui->exit, SIGNAL(triggered()), this, SLOT(exit()));
 
 }
@@ -97,8 +97,7 @@ void MainWindow::refreshTrash(){
     loadTrashedNotes();
 }
 
-FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget *parent) : mainwindow(mwind), manager(m), idNote(id),version(nullptr),
-    QWidget(parent),ui(new Ui::FormNote)
+FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget *parent) : mainwindow(mwind), manager(m), idNote(id),version(nullptr),listversions(nullptr),QWidget(parent),ui(new Ui::FormNote)
 {
     ui->setupUi(this);
     Note& note=manager->getNote(idNote);
@@ -120,12 +119,15 @@ FormNote::FormNote(MainWindow *mwind, NotesManager *m, unsigned int id, QWidget 
     //QObject::connect(ui->titleLineEdit, SIGNAL(textChanged(QString)),this, SLOT(activerSave()));
     QObject::connect(ui->save, SIGNAL(clicked()),this, SLOT(saveNote()));
     QObject::connect(ui->supp, SIGNAL(clicked()),this, SLOT(PutToTrash()));
+    QObject::connect(ui->versions, SIGNAL(clicked()),this, SLOT(showVersions()));
+
 }
 
 FormNote::~FormNote()
 {
     delete version;
     delete ui;
+    delete listversions;
 }
 
 void FormNote::saveNote()
@@ -181,8 +183,24 @@ void FormNote::PutToTrash()
     disableButtons();
 
 }
+void FormNote::showVersions(){
+    listversions=new ListVersions(manager,idNote);
+    listversions->loadVersions();
+    listversions->show();
+}
 
+ListVersions::ListVersions(NotesManager *m, unsigned int id, QWidget *parent) : manager(m), idNote(id),QWidget(parent),ui(new Ui::ListVersions)
+{
+    ui->setupUi(this);
+}
 
+ListVersions::~ListVersions()
+{
+    delete ui;
+}
+void ListVersions::loadVersions(){
+    Note& n=manager->getNote(idNote);
+}
 
 
 void MainWindow::loadTrashedNotes(){
@@ -282,17 +300,37 @@ void MainWindow::refreshRelation(){
 
 ///////////// FormRelation /////////////////////
 
-FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r, const QString &t,  QWidget *parent) : managerR(r), mainwindow(mwind), title(t), QWidget(parent), ui(new Ui::FormRelation)
+FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r, QString t,  QWidget *parent) : managerR(r), mainwindow(mwind), title(t), QWidget(parent), ui(new Ui::FormRelation)
 {
+
     ui->setupUi(this);
     ui->saveR->setDisabled(true);
-    ui->oriented->animateClick();
+
+    ui->oriented->setChecked(1);
+    unsigned int newRelation=1;
     if(title!=""){
+        newRelation=0;
+        const Relation* rela=managerR->getRelation(title);
+        ui->titleEdit->setText(rela->getTitle());
+        ui->descriptionEdit->setText(rela->getDescription());
+        if(rela->getOrientation()==1){
+            ui->nonOriented->setChecked(1);
+            ui->oriented->setChecked(1);
+        }else{
+            ui->oriented->setChecked(0);
+            ui->nonOriented->setChecked(1);
+        }
 
     }
     QObject::connect(ui->titleEdit, SIGNAL(textChanged(QString)),this, SLOT(activateSave()));
-    QObject::connect(ui->descriptionEdit, SIGNAL(textChanged(QString)),this, SLOT(activateSave()));
-    QObject::connect(ui->saveR, SIGNAL(clicked()),this, SLOT(saveRelation()));
+    QObject::connect(ui->descriptionEdit, SIGNAL(textChanged()),this, SLOT(activateSave()));
+    QObject::connect(ui->oriented, SIGNAL(toggled(bool)),this, SLOT(activateSave()));
+    QObject::connect(ui->nonOriented, SIGNAL(toggled(bool)),this, SLOT(activateSave()));
+    if(newRelation==1){
+        QObject::connect(ui->saveR, SIGNAL(clicked()),this, SLOT(saveNewRelation()));
+    }else{
+        QObject::connect(ui->saveR, SIGNAL(clicked()),this, SLOT(saveRelation()));
+    }
 
 }
 
@@ -317,18 +355,43 @@ void MainWindow::on_activerelations_itemClicked(QListWidgetItem *item)
     delete formrelation;
     //QVariant v = item->data(Qt::UserRole);
     //unsigned int i=v.toInt();
-    formrelation=new FormRelation(this, managerR);
+    formrelation=new FormRelation(this, managerR, item->text());
     ui->centreRelation->addWidget(formrelation);
 }
 
-void FormRelation::saveRelation(){
-    bool o = ui->oriented;
-
-    managerR->addRelation(ui->titleEdit->text(),ui->descriptionEdit->text(),o);
+void FormRelation::saveNewRelation(){
+    bool o;
+    if(ui->oriented->isChecked())
+        o=1;
+    else
+        o=0;
+    managerR->addRelation(ui->titleEdit->text(),ui->descriptionEdit->toPlainText(),o);
     //ui->save->setDisabled(true);
     mainwindow->refreshRelation();
     QMessageBox::information(this,"Sauvegarde", "Relation sauvegardée !!!");
     this->close();
+    managerR->save();
+}
 
-    //managerR->save();
+void FormRelation::saveRelation(){
+
+    std::cout<<"test10"<<std::endl;
+    bool o;
+    if(ui->oriented->isChecked())
+        o=1;
+    else
+        o=0;
+    Relation* r=managerR->getRelation(title);
+    r->setTitle(ui->titleEdit->text());
+    r->setDescription(ui->descriptionEdit->toPlainText());
+    r->setOrientation(ui->oriented->isChecked());
+
+    //ui->save->setDisabled(true);
+    mainwindow->refreshRelation();
+
+    QMessageBox::information(this,"Sauvegarde", "Relation sauvegardée !!!");
+    this->close();
+
+    managerR->save();
+
 }

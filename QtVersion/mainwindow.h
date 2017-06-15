@@ -25,11 +25,9 @@ class MainWindow;
 }
 class FormNote;
 class FormRelation;
-
 class FormRelation;
-
 class typeNote;
-
+class ListVersions;
 
 class MainWindow : public QMainWindow{
     Q_OBJECT
@@ -91,8 +89,7 @@ class FormNote : public QWidget
     NotesManager* manager;
     unsigned int idNote;
     FormVersion* version;
-
-
+    ListVersions* listversions;
 public:
     explicit FormNote(MainWindow* mwind, NotesManager* m, unsigned int id, QWidget *parent = 0);
     ~FormNote();
@@ -102,6 +99,7 @@ public slots:
     void disableButtons();
     void saveNote();
     void PutToTrash();
+    void showVersions();
 
 private:
     Ui::FormNote *ui;
@@ -138,19 +136,37 @@ class FormRelation : public QWidget
     Q_OBJECT
     MainWindow* mainwindow;
     RelationsManager* managerR;
-    const QString& title;
+    QString title;
 
 public:
-    explicit FormRelation(MainWindow* mwind, RelationsManager* r, const QString& t="",  QWidget *parent = 0);
+    explicit FormRelation(MainWindow* mwind, RelationsManager* r, QString t="",  QWidget *parent = 0);
     ~FormRelation();
 
 public slots:
     void activateSave();
+    void saveNewRelation();
     void saveRelation();
 
 private:
     Ui::FormRelation *ui;
 };
 
+namespace Ui {
+class ListVersions;
+}
+
+class ListVersions : public QWidget
+{
+    Q_OBJECT
+    unsigned int idNote;
+    NotesManager* manager;
+public:
+    explicit ListVersions(NotesManager* m, unsigned int id, QWidget *parent = 0);
+    void loadVersions();
+    ~ListVersions();
+
+private:
+    Ui::ListVersions *ui;
+};
 
 #endif // MAINWINDOW_H

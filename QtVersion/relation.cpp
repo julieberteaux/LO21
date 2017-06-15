@@ -5,10 +5,10 @@ void Relation::addCouple(Couple& c){
 }
 
 void Relation::saveRelation(QXmlStreamWriter* stream) const {
-
         stream->writeStartElement("relation");
         stream->writeTextElement("title",title);
         stream->writeTextElement("description",description);
+        stream->writeTextElement("oriented",QString::number(oriented));
         stream->writeEndElement();
 }
 
@@ -25,6 +25,11 @@ void Relation::loadRelation(QXmlStreamReader &xml){
             if(xml.name() == "description") {
                 xml.readNext();
                 description=xml.text().toString();
+                qDebug()<<"description="<<description<<"\n";
+            }
+            if(xml.name() == "oriented") {
+                xml.readNext();
+                oriented=xml.text().toInt();
                 qDebug()<<"description="<<description<<"\n";
             }
         }

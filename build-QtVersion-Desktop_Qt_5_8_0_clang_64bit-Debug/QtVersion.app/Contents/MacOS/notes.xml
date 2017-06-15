@@ -39,6 +39,16 @@
             </dateEdit>
             <text>ceci est un deuxième essai</text>
         </version>
+        <version>
+            <idVersion>3</idVersion>
+            <title>titre de l'article...</title>
+            <dateEdit>
+                <jour>14</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un troisieme test</text>
+        </version>
     </note>
     <note>
         <idNote>1</idNote>
@@ -58,37 +68,7 @@
                 <annee>2017</annee>
             </dateEdit>
             <description>c'est une image des vacances</description>
-            <file>/vacances.jpeg</file>
-        </version>
-    </note>
-    <note>
-        <idNote>2</idNote>
-        <dateCrea>
-            <jour>14</jour>
-            <mois>6</mois>
-            <annee>2017</annee>
-        </dateCrea>
-        <noteState>1</noteState>
-        <type>Article</type>
-        <version>
-            <idVersion>0</idVersion>
-            <title>A MODIFIER: Nouvelle note!</title>
-            <dateEdit>
-                <jour>14</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text></text>
-        </version>
-        <version>
-            <idVersion>1</idVersion>
-            <title>Nouvelle note!</title>
-            <dateEdit>
-                <jour>14</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>jdfho</text>
+            <file></file>
         </version>
     </note>
 </notes>

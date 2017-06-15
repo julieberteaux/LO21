@@ -46,6 +46,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *save;
     QPushButton *supp;
+    QPushButton *versions;
 
     void setupUi(QWidget *FormNote)
     {
@@ -117,7 +118,7 @@ public:
         versionLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayoutWidget = new QWidget(FormNote);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(160, 350, 231, 51));
+        horizontalLayoutWidget->setGeometry(QRect(90, 350, 306, 51));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -132,6 +133,11 @@ public:
         supp->setObjectName(QStringLiteral("supp"));
 
         horizontalLayout->addWidget(supp);
+
+        versions = new QPushButton(horizontalLayoutWidget);
+        versions->setObjectName(QStringLiteral("versions"));
+
+        horizontalLayout->addWidget(versions);
 
 
         retranslateUi(FormNote);
@@ -153,6 +159,7 @@ public:
         dateEditLabel->setText(QApplication::translate("FormNote", "Date d'\303\251dition", Q_NULLPTR));
         save->setText(QApplication::translate("FormNote", "Sauver", Q_NULLPTR));
         supp->setText(QApplication::translate("FormNote", "Supprimer", Q_NULLPTR));
+        versions->setText(QApplication::translate("FormNote", "Versions", Q_NULLPTR));
     } // retranslateUi
 
 };

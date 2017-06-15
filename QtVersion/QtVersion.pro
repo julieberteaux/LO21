@@ -32,4 +32,5 @@ FORMS += \
     mainwindow.ui \
     formnote.ui \
     typenote.ui \
-    formrelation.ui
+    formrelation.ui \
+    listversions.ui

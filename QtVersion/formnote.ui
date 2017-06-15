@@ -96,9 +96,9 @@
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>90</x>
      <y>350</y>
-     <width>231</width>
+     <width>306</width>
      <height>51</height>
     </rect>
    </property>
@@ -123,6 +123,13 @@
      <widget class="QPushButton" name="supp">
       <property name="text">
        <string>Supprimer</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="versions">
+      <property name="text">
+       <string>Versions</string>
       </property>
      </widget>
     </item>

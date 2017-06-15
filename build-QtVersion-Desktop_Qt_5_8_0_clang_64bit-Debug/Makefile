@@ -275,7 +275,7 @@ TARGET        = QtVersion.app/Contents/MacOS/QtVersion
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h ui_listversions.h $(OBJECTS)  
 	@test -d QtVersion.app/Contents/MacOS/ || mkdir -p QtVersion.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -674,7 +674,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h ../QtVersion/trasheditor.h ../QtVersion/trash.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp ../QtVersion/trash.cpp ../QtVersion/trasheditor.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui ../QtVersion/formnote.ui ../QtVersion/typenote.ui ../QtVersion/formrelation.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui ../QtVersion/formnote.ui ../QtVersion/typenote.ui ../QtVersion/formrelation.ui ../QtVersion/listversions.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -828,9 +828,9 @@ moc_trasheditor.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Header
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h
+compiler_uic_make_all: ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h ui_listversions.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h
+	-$(DEL_FILE) ui_mainwindow.h ui_formnote.h ui_typenote.h ui_formrelation.h ui_listversions.h
 ui_mainwindow.h: ../QtVersion/mainwindow.ui \
 		/Users/Laura/Qt/5.8/clang_64/bin/uic
 	/Users/Laura/Qt/5.8/clang_64/bin/uic ../QtVersion/mainwindow.ui -o ui_mainwindow.h
@@ -846,6 +846,10 @@ ui_typenote.h: ../QtVersion/typenote.ui \
 ui_formrelation.h: ../QtVersion/formrelation.ui \
 		/Users/Laura/Qt/5.8/clang_64/bin/uic
 	/Users/Laura/Qt/5.8/clang_64/bin/uic ../QtVersion/formrelation.ui -o ui_formrelation.h
+
+ui_listversions.h: ../QtVersion/listversions.ui \
+		/Users/Laura/Qt/5.8/clang_64/bin/uic
+	/Users/Laura/Qt/5.8/clang_64/bin/uic ../QtVersion/listversions.ui -o ui_listversions.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -1112,7 +1116,8 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		ui_mainwindow.h \
 		ui_formnote.h \
 		ui_formrelation.h \
-		ui_typenote.h
+		ui_typenote.h \
+		ui_listversions.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../QtVersion/mainwindow.cpp
 
 trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h \

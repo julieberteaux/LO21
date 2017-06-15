@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<relation>
+<relations>
     <relation>
         <title>Reference</title>
         <description>Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale</description>
+        <oriented>1</oriented>
     </relation>
     <relation>
         <title>Theme</title>
         <description>Cette relation permet de matérialiser les notes de même thème</description>
+        <oriented>1</oriented>
     </relation>
-</relation>
+    <relation>
+        <title>tuy</title>
+        <description>hul</description>
+        <oriented>1</oriented>
+    </relation>
+</relations>

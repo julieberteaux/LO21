@@ -20,6 +20,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -32,6 +34,7 @@ class Ui_MainWindow
 public:
     QAction *actionOpenTrash;
     QAction *actiontest;
+    QAction *exit;
     QWidget *centralwidget;
     QTabWidget *tabWidget;
     QWidget *Notes;
@@ -58,6 +61,8 @@ public:
     QPushButton *createRelation;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *centreRelation;
+    QMenuBar *menuBar;
+    QMenu *menuFile;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -68,6 +73,8 @@ public:
         actionOpenTrash->setObjectName(QStringLiteral("actionOpenTrash"));
         actiontest = new QAction(MainWindow);
         actiontest->setObjectName(QStringLiteral("actiontest"));
+        exit = new QAction(MainWindow);
+        exit->setObjectName(QStringLiteral("exit"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
@@ -162,7 +169,16 @@ public:
         centreRelation->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(Relations, QString());
         MainWindow->setCentralWidget(centralwidget);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 833, 22));
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
+        MainWindow->setMenuBar(menuBar);
         QWidget::setTabOrder(activenotes, tabWidget);
+
+        menuBar->addAction(menuFile->menuAction());
+        menuFile->addAction(exit);
 
         retranslateUi(MainWindow);
 
@@ -177,6 +193,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         actionOpenTrash->setText(QApplication::translate("MainWindow", "Afficher le contenu", Q_NULLPTR));
         actiontest->setText(QApplication::translate("MainWindow", "test", Q_NULLPTR));
+        exit->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Notes actives", Q_NULLPTR));
         createNote->setText(QApplication::translate("MainWindow", "Nouvelle note", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Notes), QApplication::translate("MainWindow", "Notes", Q_NULLPTR));
@@ -187,6 +204,7 @@ public:
         label->setText(QApplication::translate("MainWindow", "Relations :", Q_NULLPTR));
         createRelation->setText(QApplication::translate("MainWindow", "Nouvelle relation", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(Relations), QApplication::translate("MainWindow", "Relations", Q_NULLPTR));
+        menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -69,6 +69,10 @@ public:
     * \brief		Accesseur pour obtenir le titre de la relation
     */
     const QString& getTitle() const {return title;}
+    /**
+    * \brief		Permet de modifier le titre de la relation
+    */
+    void setTitle(const QString& str)  {title=str;}
 
     /**
     * \brief		Accesseur pour obtenir la description de la relation
@@ -76,9 +80,18 @@ public:
     const QString& getDescription() const {return description;}
 
     /**
+    * \brief		Permet de modifier la description de la relation
+    */
+    void setDescription(const QString& str)  {description=str;}
+
+    /**
     * \brief		Accesseur pour obtenir l'orientation de la relation
     */
     bool getOrientation() const {return oriented;}
+    /**
+    * \brief		Accesseur pour obtenir l'orientation de la relation
+    */
+    void setOrientation(bool i) {oriented=i;}
 
     /**
     * \brief		Méthode pour sauvegarder une relation

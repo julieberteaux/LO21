@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <relations>
     <relation>
-        <title>Reference</title>
+        <title>References</title>
         <description>Cette relation permet de matérialiser les références qu’une note peut faire à d’autres notes grâce à une syntaxe spéciale.</description>
         <oriented>1</oriented>
     </relation>
@@ -11,14 +11,8 @@
         <oriented>1</oriented>
     </relation>
     <relation>
-        <title>test relation</title>
-        <description>description nouvelle 2</description>
-        <oriented>1</oriented>
-    </relation>
-    <relation>
-        <title>test2</title>
-        <description>desc2
-</description>
-        <oriented>1</oriented>
+        <title>Relation</title>
+        <description>Ceci est la description</description>
+        <oriented>0</oriented>
     </relation>
 </relations>

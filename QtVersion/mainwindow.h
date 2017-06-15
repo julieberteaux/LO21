@@ -52,47 +52,47 @@ public:
     ~MainWindow();
 
     /**
-    *\brief
-    */
+   *\brief Charge les notes présentes dans NotesManager
+   */
     void loadActiveNotes();
 
     /**
-    *\brief
+    *\brief Enlève les notes actives de l'interface
     */
     void unloadActiveNotes();
 
     /**
-    *\brief
+    *\brief Charge les notes présentes dans Trash
     */
     void loadTrashedNotes();
 
     /**
-    *\brief
+    *\brief Enlève les notes de l'interface de la Corbeille
     */
     void unloadTrashedNotes();
 
     /**
-    *\brief
+    *\brief Charge les relations présentes dans RelationManager
     */
     void loadRelations();
 
     /**
-    *\brief
+    *\brief Enlève les relations de l'interface
     */
     void unloadRelations();
 
     /**
-    *\brief
+    *\brief Rafraichit l'interface à l'aide des méthodes unloadActiveNotes puis loadActiveNotes
     */
     void refresh();
 
     /**
-    *\brief
+    *\brief Rafraichit l'interface de la Corbeille à l'aide des méthodes unloadTrashedNotes puis loadTrashedNotes
     */
     void refreshTrash();
 
     /**
-    *\brief
+    *\brief Rafraichit l'interface de la Corbeille à l'aide des méthodes unloadRelations puis loadTRelations
     */
     void refreshRelation();
 
@@ -106,42 +106,45 @@ public:
 public slots:
 
     /**
-    *\brief
+    *\brief Affiche les détails de la note cliquée
+    *\param   item   note cliquée
     */
     void on_activenotes_itemClicked(QListWidgetItem *item);
 
     /**
-    *\brief
+    *\brief Affiche les détails de la relation cliquée
+    *\param   item   relation cliquée
     */
     void on_activerelations_itemClicked(QListWidgetItem *item);
 
     /**
-    *\brief
+    *\brief Lance un formulaire pour choisir le type de note désiréé
     */
     void on_createNote_clicked();
 
     /**
-    *\brief
+    *\brief Lance un formulaire pour créer une relation
     */
     void on_createRelation_clicked();
 
     /**
-    *\brief
+    *\brief Restaure une note et la replace dans NotesManager
     */
     void restoreNote();
 
     /**
-    *\brief
+    *\brief Supprime définitivement une note
     */
     void deleteNote();
 
     /**
-    *\brief
+    *\brief Permet d'activer les boutons restaurer et supprimer lorsque une note de la Corbeille est cliquée
+    * \param   item   note cliquée de la Corbeille
     */
     void on_trashedNotes_itemClicked(QListWidgetItem *item);
 
     /**
-    *\brief
+    *\brief Ferme l'application
     */
     void exit();
 
@@ -174,27 +177,27 @@ public:
 public slots:
 
     /**
-    *\brief
+    *\brief Active les boutons sauver et supprimer
     */
     void activateButtons();
 
     /**
-    *\brief
+    *\brief Désactive les boutons sauver et supprimer
     */
     void disableButtons();
 
     /**
-    *\brief
+    *\brief Enregistre la note dans NotesManager
     */
     void saveNote();
 
     /**
-    *\brief
+    *\brief Déplace la note vers la Corbeille
     */
     void PutToTrash();
 
     /**
-    *\brief
+    *\brief Affiche les versions d'une note dans l'interface
     */
     void showVersions();
 
@@ -217,13 +220,13 @@ public:
     ~typeNote();
 
     /**
-    *\brief
+    *\brief Charge l'ensemble des types de notes que l'on peut créer
     */
     void loadTypes();
 public slots:
 
     /**
-    *\brief
+    *\brief Création d'une note correspondant au type cliqué
     */
     void on_type_itemClicked(QListWidgetItem *item);
 
@@ -250,17 +253,17 @@ public:
 public slots:
 
     /**
-    *\brief
+    *\brief Rend le bouton sauver cliquable
     */
     void activateSave();
 
     /**
-    *\brief
+    *\brief Ajoute une nouvelle relation dans RelationsManager
     */
     void saveNewRelation();
 
     /**
-    *\brief
+    *\brief Met à jour et enregistre une relation existante
     */
     void saveRelation();
 
@@ -281,7 +284,7 @@ public:
     explicit ListVersions(NotesManager* m, unsigned int id, QWidget *parent = 0);
 
     /**
-    *\brief
+    *\brief Charge l'ensemble des versions d'une note
     */
     void loadVersions();
 

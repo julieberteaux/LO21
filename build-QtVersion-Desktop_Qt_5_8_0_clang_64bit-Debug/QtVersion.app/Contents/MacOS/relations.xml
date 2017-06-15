@@ -15,4 +15,9 @@
         <description>hul</description>
         <oriented>1</oriented>
     </relation>
+    <relation>
+        <title>TEst</title>
+        <description>cECI EST UN TEST</description>
+        <oriented>1</oriented>
+    </relation>
 </relations>

@@ -13,7 +13,7 @@
 #include <QXmlStreamWriter>
 
 /**
-* \brief		création du type state
+* \brief		Création du type state
 * \details  Nous avons créer une enumération state afin de définir l'état d'une note, 1 -> la note est active, 0 -> la note est supprimée par l'utilisateur mais comme elle est en relation avec une autre elle est dans un état archivée, -1 -> la note est dans la corbeille en attendant d'être supprimée définitivement lorsque la corbeille sera vidée.
 */
 enum state { active=1, archived=0, trashed=-1 };
@@ -32,7 +32,7 @@ class Note{
     /**
     * \brief		Constructeur privé car seul NotesManager peut l'utiliser
     * \details  Il est utilisé par addNote dans NotesManager
-    * \param    id  id d'une note il est unique
+    * \param    id  Id d'une note il est unique
     */
 
     Note(unsigned int id=0): idNote(id), dateCrea(), noteState(active), listVersion(){dateCrea.today();}
@@ -61,37 +61,37 @@ class Note{
     /**
     * \brief		Méthode pour sauvegarder une note
     * \details  Elle permet de sauvegarder les notes dans un fichier xml lors d'un enregistrement
-    * \param    stream  fichier QXmlStreamWriter qui permet de sauver les notes
+    * \param    stream  Fichier QXmlStreamWriter qui permet de sauver les notes
     */
     void saveNote(QXmlStreamWriter* stream) const;
 
     /**
     * \brief		Méthode pour charger une note
     * \details  Elle permet de charger les notes à partir d'un fichier xml
-    * \param    &xml  référence vers le fichier xml d'où on va charger les notes
+    * \param    &xml  Référence vers le fichier xml d'où on va charger les notes
     */
     void loadNote(QXmlStreamReader &xml);
 
 public:
 
     /**
-    * \brief		accesseur pour obtenir l'id d'une note
+    * \brief		Accesseur pour obtenir l'id d'une note
     */
     unsigned int getIdNote() const{return idNote;}
 
     /**
-    * \brief		accesseur pour obtenir la date d'une note
+    * \brief		Accesseur pour obtenir la date d'une note
     */
     const Date& getDateCrea() const {return dateCrea;}
 
     /**
-    * \brief		accesseur pour obtenir l'état d'une note
+    * \brief		Accesseur pour obtenir l'état d'une note
     */
     state getNoteState() {return noteState;}
 
     /**
     * \brief		Méthode pour ajouter une version à une note
-    * \param    n   Reference sur une version d'une note
+    * \param    n   Référence sur une version d'une note
     */
     int addNoteVersion(const NoteVersion& n);
 
@@ -102,19 +102,20 @@ public:
 
     /**
     * \brief    Méthode pour avoir la version d'une note à partir de son id
-    * \param    id  id de la version de la note
+    * \param    id  Id de la version de la note
     */
     NoteVersion& getNoteVersion(unsigned int id) const;
+
+    /**
+    * \brief    Méthode pour avoir la liste des versions d'une note
+    */
+    std::vector<NoteVersion*> getListVersions() const{return listVersion;}
 
     /**
     * \brief    Méthode pour avoir la version actuelle d'une note
     */
     NoteVersion& getLatestNoteVersion(){return *(listVersion.back());}
 
-    // A FAIRE //
-    /*
-     changeState
-     */
 };
 
 

@@ -56,10 +56,8 @@ SOURCES       = ../QtVersion/main.cpp \
 		../QtVersion/relation.cpp \
 		../QtVersion/relationsmanager.cpp \
 		../QtVersion/mainwindow.cpp \
-		../QtVersion/trash.cpp \
-		../QtVersion/trasheditor.cpp moc_noteversion.cpp \
-		moc_mainwindow.cpp \
-		moc_trasheditor.cpp
+		../QtVersion/trash.cpp moc_noteversion.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		date.o \
 		notesmanager.o \
@@ -69,10 +67,8 @@ OBJECTS       = main.o \
 		relationsmanager.o \
 		mainwindow.o \
 		trash.o \
-		trasheditor.o \
 		moc_noteversion.o \
-		moc_mainwindow.o \
-		moc_trasheditor.o
+		moc_mainwindow.o
 DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/qdevice.pri \
 		/Users/Laura/Qt/5.8/clang_64/mkspecs/features/device_config.prf \
@@ -256,7 +252,6 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/relation.h \
 		../QtVersion/relationsmanager.h \
 		../QtVersion/mainwindow.h \
-		../QtVersion/trasheditor.h \
 		../QtVersion/trash.h ../QtVersion/main.cpp \
 		../QtVersion/date.cpp \
 		../QtVersion/notesmanager.cpp \
@@ -265,8 +260,7 @@ DIST          = /Users/Laura/Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../QtVersion/relation.cpp \
 		../QtVersion/relationsmanager.cpp \
 		../QtVersion/mainwindow.cpp \
-		../QtVersion/trash.cpp \
-		../QtVersion/trasheditor.cpp
+		../QtVersion/trash.cpp
 QMAKE_TARGET  = QtVersion
 DESTDIR       = 
 TARGET        = QtVersion.app/Contents/MacOS/QtVersion
@@ -672,8 +666,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h ../QtVersion/trasheditor.h ../QtVersion/trash.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp ../QtVersion/trash.cpp ../QtVersion/trasheditor.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/date.h ../QtVersion/notesmanager.h ../QtVersion/note.h ../QtVersion/noteversion.h ../QtVersion/relation.h ../QtVersion/relationsmanager.h ../QtVersion/mainwindow.h ../QtVersion/trash.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../QtVersion/main.cpp ../QtVersion/date.cpp ../QtVersion/notesmanager.cpp ../QtVersion/note.cpp ../QtVersion/noteversion.cpp ../QtVersion/relation.cpp ../QtVersion/relationsmanager.cpp ../QtVersion/mainwindow.cpp ../QtVersion/trash.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../QtVersion/mainwindow.ui ../QtVersion/formnote.ui ../QtVersion/typenote.ui ../QtVersion/formrelation.ui ../QtVersion/listversions.ui $(DISTDIR)/
 
 
@@ -706,9 +700,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -std=c++11 -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /Users/Laura/Qt/5.8/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_noteversion.cpp moc_mainwindow.cpp moc_trasheditor.cpp
+compiler_moc_header_make_all: moc_noteversion.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_noteversion.cpp moc_mainwindow.cpp moc_trasheditor.cpp
+	-$(DEL_FILE) moc_noteversion.cpp moc_mainwindow.cpp
 moc_noteversion.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
@@ -787,44 +781,6 @@ moc_mainwindow.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers
 		moc_predefs.h \
 		/Users/Laura/Qt/5.8/clang_64/bin/moc
 	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/mainwindow.h -o moc_mainwindow.cpp
-
-moc_trasheditor.cpp: /Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
-		../QtVersion/trash.h \
-		../QtVersion/notesmanager.h \
-		../QtVersion/note.h \
-		../QtVersion/noteversion.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../QtVersion/date.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
-		../QtVersion/trasheditor.h \
-		moc_predefs.h \
-		/Users/Laura/Qt/5.8/clang_64/bin/moc
-	/Users/Laura/Qt/5.8/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/Laura/Qt/5.8/clang_64/mkspecs/macx-clang -I/Users/Laura/Documents/GI02/LO21/Projet/LO21/QtVersion -I/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtGui.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtXml.framework/Headers -I/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/Laura/Qt/5.8/clang_64/lib ../QtVersion/trasheditor.h -o moc_trasheditor.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1111,8 +1067,6 @@ mainwindow.o: ../QtVersion/mainwindow.cpp ../QtVersion/mainwindow.h \
 		../QtVersion/trash.h \
 		../QtVersion/relationsmanager.h \
 		../QtVersion/relation.h \
-		../QtVersion/trasheditor.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		ui_mainwindow.h \
 		ui_formnote.h \
 		ui_formrelation.h \
@@ -1151,51 +1105,11 @@ trash.o: ../QtVersion/trash.cpp ../QtVersion/trash.h \
 		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trash.o ../QtVersion/trash.cpp
 
-trasheditor.o: ../QtVersion/trasheditor.cpp ../QtVersion/trasheditor.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QDialog \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
-		../QtVersion/trash.h \
-		../QtVersion/notesmanager.h \
-		../QtVersion/note.h \
-		../QtVersion/noteversion.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QDebug \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../QtVersion/date.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QObject \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QTextEdit \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qtextedit.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/QXmlStreamWriter \
-		/Users/Laura/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qxmlstream.h \
-		ui_trasheditor.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trasheditor.o ../QtVersion/trasheditor.cpp
-
 moc_noteversion.o: moc_noteversion.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_noteversion.o moc_noteversion.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
-moc_trasheditor.o: moc_trasheditor.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_trasheditor.o moc_trasheditor.cpp
 
 ####### Install
 

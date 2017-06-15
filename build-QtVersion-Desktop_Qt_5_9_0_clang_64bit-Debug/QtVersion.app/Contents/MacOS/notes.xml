@@ -69,6 +69,16 @@
             </dateEdit>
             <text>ceci est un deuxième essai</text>
         </version>
+        <version>
+            <idVersion>6</idVersion>
+            <title>nouveau titre</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un deuxième essai</text>
+        </version>
     </note>
     <note>
         <idNote>1</idNote>

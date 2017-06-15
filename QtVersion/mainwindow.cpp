@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "notesmanager.h"
-#include "trasheditor.h"
 #include "ui_mainwindow.h"
 #include "ui_formnote.h"
 #include "ui_formrelation.h"
@@ -192,6 +191,7 @@ void FormNote::showVersions(){
 ListVersions::ListVersions(NotesManager *m, unsigned int id, QWidget *parent) : manager(m), idNote(id),QWidget(parent),ui(new Ui::ListVersions)
 {
     ui->setupUi(this);
+    ui->restaure->setDisabled(true);
 }
 
 ListVersions::~ListVersions()
@@ -200,8 +200,20 @@ ListVersions::~ListVersions()
 }
 void ListVersions::loadVersions(){
     Note& n=manager->getNote(idNote);
+    std::vector<NoteVersion*> versions=n.getListVersions();
+    for(auto it=versions.begin(); it!=versions.end(); ++it){
+        std::string str=std::to_string((*it)->getIdVersion())+" "+(*it)->getTitle().toStdString();
+        QString qstr = QString::fromStdString(str);
+        QListWidgetItem *item = new QListWidgetItem(qstr);
+        QVariant v;
+        v.setValue((*it)->getIdVersion());
+        item->setData(Qt::UserRole, v);
+        ui->listWidget->addItem(item);
+    }
 }
-
+void ListVersions::on_listWidget_itemClicked(QListWidgetItem *item){
+    ui->restaure->setEnabled(true);
+}
 
 void MainWindow::loadTrashedNotes(){
     const std::vector<Note*>& notes=trash->getListTrashedNotes();
@@ -331,7 +343,6 @@ FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r, QString t,  Q
     }else{
         QObject::connect(ui->saveR, SIGNAL(clicked()),this, SLOT(saveRelation()));
     }
-
 }
 
 FormRelation::~FormRelation()

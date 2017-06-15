@@ -10,7 +10,6 @@
 
 #include "note.h"
 #include "trash.h"
-//fusion
 
 
 /**
@@ -58,7 +57,7 @@ public:
 
     /**
     * \brief		Constructeur de l'unique instance du singleton
-    * \details  c'est une méthode statique
+    * \details  C'est une méthode statique
     */
     static NotesManager& getInstance(){
         static NotesManager instance;
@@ -66,7 +65,7 @@ public:
     }
 
     /**
-    * \brief		attribut un nom de fichier pour les sauvegardes
+    * \brief		Attribut un nom de fichier pour les sauvegardes
     * \param    str   Chaine de caractère qui définit le nom du fichier
     */
     void setFilename(const QString& str){filename=str;}
@@ -114,11 +113,6 @@ public:
     */
     void load();
 
-    /*
-     modifyNote (va appeler addNoteVersion ou copyVersion)
-     listNotes (voir toutes les notes active?) à faire avec l'interface
-     void deleteNote(Note* n);
-     */
 };
 
 

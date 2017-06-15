@@ -191,6 +191,7 @@ void FormNote::showVersions(){
 ListVersions::ListVersions(NotesManager *m, unsigned int id, QWidget *parent) : manager(m), idNote(id),QWidget(parent),ui(new Ui::ListVersions)
 {
     ui->setupUi(this);
+    ui->restaure->setDisabled(true);
 }
 
 ListVersions::~ListVersions()
@@ -202,12 +203,17 @@ void ListVersions::loadVersions(){
     std::vector<NoteVersion*> versions=n.getListVersions();
     for(auto it=versions.begin(); it!=versions.end(); ++it){
         std::string str=std::to_string((*it)->getIdVersion())+" "+(*it)->getTitle().toStdString();
-        std::cout<<str<<std::endl;
         QString qstr = QString::fromStdString(str);
-        ui->listWidget->addItem(qstr);
+        QListWidgetItem *item = new QListWidgetItem(qstr);
+        QVariant v;
+        v.setValue((*it)->getIdVersion());
+        item->setData(Qt::UserRole, v);
+        ui->listWidget->addItem(item);
     }
 }
-
+void ListVersions::on_listWidget_itemClicked(QListWidgetItem *item){
+    ui->restaure->setEnabled(true);
+}
 
 void MainWindow::loadTrashedNotes(){
     const std::vector<Note*>& notes=trash->getListTrashedNotes();

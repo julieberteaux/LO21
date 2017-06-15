@@ -285,6 +285,12 @@ public:
     */
     ~ListVersions();
 
+public slots:
+    /**
+    *\brief
+    */
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
 private:
     Ui::ListVersions *ui;
 };

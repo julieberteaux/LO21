@@ -228,6 +228,8 @@ FormVersion* Image::formVersion() {return new FormImage(this);}
 
 
 /********************************** Audio ****************************/
+//DerivedRegister<Audio> Audio::reg("Audio");
+
 Audio::Audio (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
 
 const QString& Audio::getDescription() const {return description;}
@@ -251,6 +253,7 @@ void Audio::loadNoteVersionType(QXmlStreamReader &xml){
 FormVersion* Audio::formVersion() {return nullptr;}
 
 /********************************** Video ****************************/
+//DerivedRegister<Video> Video::reg("Video");
 
 Video::Video (const QString& t, const QString& d, const QString& f): NoteVersion(0, t), description(d), file(f){}
 

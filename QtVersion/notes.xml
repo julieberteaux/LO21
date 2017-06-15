@@ -152,6 +152,90 @@
                 <annee>2017</annee>
             </dateEdit>
             <description>c'est une image des vacances</description>
+            <file>/Users/Antoine/OneDrive/_DSC0015 - copie.jpg</file>
+        </version>
+        <version>
+            <idVersion>5</idVersion>
+            <title>image des vacances</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description>c'est une image des vacances</description>
+            <file>/Users/Antoine/OneDrive/_DSC0015 - copie.jpg</file>
+        </version>
+    </note>
+    <note>
+        <idNote>2</idNote>
+        <dateCrea>
+            <jour>15</jour>
+            <mois>6</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <noteState>1</noteState>
+        <type>Article</type>
+        <version>
+            <idVersion>0</idVersion>
+            <title>A MODIFIER: Nouvelle note!</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text></text>
+        </version>
+        <version>
+            <idVersion>1</idVersion>
+            <title>Nouvelle note!</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>test</text>
+        </version>
+    </note>
+    <note>
+        <idNote>3</idNote>
+        <dateCrea>
+            <jour>15</jour>
+            <mois>6</mois>
+            <annee>2017</annee>
+        </dateCrea>
+        <noteState>1</noteState>
+        <type>Image</type>
+        <version>
+            <idVersion>0</idVersion>
+            <title>A MODIFIER: Nouvelle note!</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description></description>
+            <file></file>
+        </version>
+        <version>
+            <idVersion>1</idVersion>
+            <title>Nouvelle image!</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description></description>
+            <file>/Users/Antoine/OneDrive/_DSC0083.jpg</file>
+        </version>
+        <version>
+            <idVersion>2</idVersion>
+            <title>Nouvelle image!</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <description></description>
             <file>/Users/Antoine/OneDrive/_DSC0083.jpg</file>
         </version>
     </note>

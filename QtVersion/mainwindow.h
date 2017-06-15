@@ -96,6 +96,11 @@ public:
     */
     void refreshRelation();
 
+    /**
+    *\brief
+    */
+    void resetFormnote(){formnote=nullptr;}
+
 
 
 public slots:

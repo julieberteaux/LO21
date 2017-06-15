@@ -182,11 +182,14 @@ void FormNote::PutToTrash()
     manager->putToTrash(idNote);
     //ui->save->setDisabled(true);
     mainwindow->refresh();
+
     QMessageBox::information(this,"Supression", "Note supprimée !!!");
 
     manager->save();
     mainwindow->loadTrashedNotes();
     disableButtons();
+    mainwindow->resetFormnote();
+    delete this;
 
 }
 void FormNote::showVersions(){
@@ -247,8 +250,7 @@ void MainWindow::restoreNote(){
     trash->putBackNote(id);
     refreshTrash();
     refresh();
-
-
+    manager->save();
 }
 
 void MainWindow::deleteNote(){

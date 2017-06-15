@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "notesmanager.h"
-#include "trasheditor.h"
 #include "ui_mainwindow.h"
 #include "ui_formnote.h"
 #include "ui_formrelation.h"
@@ -337,7 +336,6 @@ FormRelation::FormRelation(MainWindow* mwind, RelationsManager* r, QString t,  Q
     }else{
         QObject::connect(ui->saveR, SIGNAL(clicked()),this, SLOT(saveRelation()));
     }
-
 }
 
 FormRelation::~FormRelation()

@@ -12,9 +12,7 @@ SOURCES += \
     relation.cpp \
     relationsmanager.cpp \
     mainwindow.cpp \
-    trash.cpp \
-    trasheditor.cpp
-
+    trash.cpp
 
 HEADERS += \
     date.h \
@@ -24,7 +22,6 @@ HEADERS += \
     relation.h \
     relationsmanager.h \
     mainwindow.h \
-    trasheditor.h \
     trash.h
 
 

@@ -131,13 +131,6 @@ int main(int argc, char* argv[]) {
         RelationsManager& managerR=RelationsManager::getInstance();
         NotesManager& manager2=NotesManager::getInstance();
         Trash& trash=Trash::getInstance();
-        manager2.setFilename("notes.xml");
-        managerR.setFilename("relations.xml");
-        manager2.load();
-        managerR.load();
-        for(std::vector<Relation*>::const_iterator it=managerR.getListRelations().begin(); it!=managerR.getListRelations().end(); ++it){
-            std::cout<<(*it)->getTitle().toStdString()<<std::endl;
-        }
 
         QApplication app(argc, argv);
         MainWindow fenetre(&manager2,&managerR, &trash);

@@ -48,6 +48,13 @@ void MainWindow::unloadActiveNotes(){
 
 MainWindow::MainWindow(NotesManager* m,RelationsManager* r,Trash* t, QWidget *parent) :manager(m), managerR(r),formnote(nullptr), formrelation(nullptr),QMainWindow(parent),ui(new Ui::MainWindow), trash(t)
 {
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Ouvrir un .xml"), "./", tr("XML Files (*.xml)"));
+    manager->setFilename(fileName);
+    fileName = QFileDialog::getOpenFileName(this, tr("Ouvrir un .xml"), "./", tr("XML Files (*.xml)"));
+    managerR->setFilename(fileName);
+    manager->load();
+    managerR->load();
+
     ui->setupUi(this);
     loadActiveNotes();
     loadRelations();

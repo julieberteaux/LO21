@@ -79,6 +79,16 @@
             </dateEdit>
             <text>ceci est un deuxième essai</text>
         </version>
+        <version>
+            <idVersion>7</idVersion>
+            <title>nouveau titre</title>
+            <dateEdit>
+                <jour>15</jour>
+                <mois>6</mois>
+                <annee>2017</annee>
+            </dateEdit>
+            <text>ceci est un troisième essai</text>
+        </version>
     </note>
     <note>
         <idNote>1</idNote>
@@ -131,47 +141,18 @@
                 <annee>2017</annee>
             </dateEdit>
             <description>c'est une image des vacances</description>
-            <file>/Users/Antoine/OneDrive/_DSC0015 - copie.jpg</file>
+            <file>/Users/Antoine/OneDrive/_DSC0083.jpg</file>
         </version>
-    </note>
-    <note>
-        <idNote>2</idNote>
-        <dateCrea>
-            <jour>11</jour>
-            <mois>6</mois>
-            <annee>2017</annee>
-        </dateCrea>
-        <noteState>1</noteState>
-        <type>Article</type>
         <version>
-            <idVersion>0</idVersion>
-            <title>A MODIFIER: Nouvelle note!</title>
+            <idVersion>4</idVersion>
+            <title>image des vacances</title>
             <dateEdit>
-                <jour>11</jour>
+                <jour>15</jour>
                 <mois>6</mois>
                 <annee>2017</annee>
             </dateEdit>
-            <text></text>
-        </version>
-        <version>
-            <idVersion>1</idVersion>
-            <title>Article de presse</title>
-            <dateEdit>
-                <jour>11</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>Description de l'article</text>
-        </version>
-        <version>
-            <idVersion>2</idVersion>
-            <title>Article de presse</title>
-            <dateEdit>
-                <jour>11</jour>
-                <mois>6</mois>
-                <annee>2017</annee>
-            </dateEdit>
-            <text>Description de l'article...</text>
+            <description>c'est une image des vacances</description>
+            <file>/Users/Antoine/OneDrive/_DSC0083.jpg</file>
         </version>
     </note>
 </notes>

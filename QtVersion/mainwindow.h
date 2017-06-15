@@ -52,9 +52,10 @@ public:
     ~MainWindow();
 
     /**
+
     *\brief Charge les notes présentes dans NotesManager
     */
-    void unloadActiveNotes();
+    void loadActiveNotes();
 
     /**
     *\brief Enlève les notes actives de l'interface

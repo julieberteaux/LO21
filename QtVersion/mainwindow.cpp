@@ -223,6 +223,8 @@ void MainWindow::loadTrashedNotes(){
             v.setValue((**it).getIdNote());
             item->setData(Qt::UserRole, v);
             ui->trashedNotes->addItem(item);
+            ui->restore->setDisabled(true);
+            ui->supp->setDisabled(true);
     }
 }
 

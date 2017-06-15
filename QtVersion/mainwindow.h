@@ -52,7 +52,7 @@ public:
     ~MainWindow();
 
     /**
-    *\brief
+    *\brief 
     */
     void loadActiveNotes();
 
